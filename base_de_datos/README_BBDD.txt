@@ -1,0 +1,1 @@
+Esta carpeta contendrá el diagrama de la base de datos

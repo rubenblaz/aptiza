@@ -1,0 +1,1 @@
+Esta carpeta contendrá los elementos comunes para el diseño
