@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/xampp/htdocs/aulasreserva/config/app.php</file>
+            <file>file:/C:/xampp/htdocs/aulasreserva/resources/views/inicio.blade.php</file>
+            <file>file:/C:/xampp/htdocs/aulasreserva/app/Http/Controllers/Usuarios.php</file>
+            <file>file:/C:/xampp/htdocs/aulasreserva/.env</file>
+            <file>file:/C:/xampp/htdocs/aulasreserva/app/Http/Middleware/AutenticarUsuario.php</file>
+            <file>file:/C:/xampp/htdocs/aulasreserva/resources/views/layouts/cabecera.blade.php</file>
+        </group>
+    </open-files>
+</project-private>
