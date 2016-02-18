@@ -16,12 +16,6 @@ class AutenticarUsuario {
      */
     public function handle($request, Closure $next) {
         
-//        setlocale(LC_TIME, 'Spanish');
-//        dd(Carbon::now()->formatLocalized('%A %d %B %Y'));
-        $loale = new Locale();
-       // $locale = Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']);
-dd($locale);
-
         if ($request->input('email') != null) {
 
             $usuario = new Usuario($request->input('email'), $request->input('pass'));
