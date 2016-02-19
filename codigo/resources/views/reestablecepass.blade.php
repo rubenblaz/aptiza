@@ -1,6 +1,10 @@
 @extends('layouts.plantilla')
 
-@section('contenido')
+@section('element-migas')
+@stop
+@section('element-titulo')
+@stop
+@section('element-contenido')
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">

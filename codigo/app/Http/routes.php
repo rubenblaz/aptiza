@@ -29,7 +29,7 @@
     
     //Recuperar pass por email.
     Route::match(array('GET', 'POST'),'pediremailpass','Recuperarpass@pedirPassEmail');
-    Route::get('reestablecepass','Recuperarpass@nuevoPassEmail')->middleware(['web']);
+    Route::get('reestablecepass',['as'=>'reestablecepass','uses'=>'Recuperarpass@nuevoPassEmail'])->middleware(['web']);
     Route::post('cambiarpass','Recuperarpass@cambiarPassEmail')->middleware(['web']);
 
     
@@ -37,7 +37,7 @@
     Route::group(['middleware' => ['web','validaciones']], function () {
 
         //Rutas de usuario
-        Route::get('logout', 'Usuarios@logout');
+        Route::get('logout','Usuarios@logout');
         Route::get('inicio','Usuarios@inicio');
         
         //Rutas de reservas
