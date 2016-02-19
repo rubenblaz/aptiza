@@ -1,4 +1,4 @@
-@extends('layouts.cabecera')
+@extends('layouts.plantilla')
 
         @if (isset($errors) && $errors->any())
             <p>Corrige los siguientes errores.</p>
