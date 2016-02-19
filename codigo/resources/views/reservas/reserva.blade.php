@@ -115,7 +115,7 @@
                 <div class="panel-heading">Reservas</div>
                 <div class="panel-body">
                     <div class="row">
-                        {!! Form::open(['route'=>'reservar', 'method' => 'POST']) !!}
+                        {!! Form::open(['url'=>'reservar', 'method' => 'POST']) !!}
                         <div class="form-group col-md-4 col-sm-12">
                             <!-- Input Fecha, utilizando el Datepicker -->
                             @if(isset($fecha))

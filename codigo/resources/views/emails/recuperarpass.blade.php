@@ -7,7 +7,7 @@
     </head>
     <body>
         <h1>Recuperación de contraseña de usuario</h1>
-        <p>Siga este link para reestablecer la contraseña de su usuario.</p>
-        <p>{!!URL::route('reestablecepass',['pass' => $pass, 'email' => $email])!!}</p>
+        
+        <p>{{ Html::link('reestablecepass', 'Siga este link para reestablecer contraseña',array('pass' => $pass, 'email' =>$email),null)}}</p>
     </body>
 </html>

@@ -1,12 +1,10 @@
-<?php
-
-namespace App\Http\Middleware;
+<?php namespace App\Http\Middleware;
 
 use Closure;
 use Session;
 
-class ValidacionRutas
-{
+class ValidacionRutas {
+
     /**
      * Handle an incoming request.
      *
@@ -14,12 +12,11 @@ class ValidacionRutas
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
-    {
-        if(!Session::has('USUARIO')){
+    public function handle($request, Closure $next) {
+        if (!Session::has('USUARIO')) {
             return redirect('/');
         }
-        
         return $next($request);
     }
+
 }

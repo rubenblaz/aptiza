@@ -13,7 +13,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Reestablecer contraseña para <b>{!!$email!!}</b></div>
                 <div class="panel-body">
-                    {!! Form::open(['route'=>'cambiarpass', 'method' => 'POST']) !!}
+                    {!! Form::open(['url'=>'cambiarpass'])!!}
                     <div class="form-group">
                         {!!Form::label('pass','Password', ['class' => 'control-label'])!!}
                         {!!Form::password('pass',['class' => 'form-control','required' => 'true'])!!} <!--el campo password no recive un segundo parametro para el value (ni siquiera como null)-->

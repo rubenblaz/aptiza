@@ -108,8 +108,8 @@
                                         Rerservas<span class="caret"></span>
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                        <li><a href="{{url('toreservas')}}">Reservar Aula</a></li>
-                                        <li><a href="{{url('tomisreservas')}}">Mis reservas</a></li>
+                                        <li>{{Html::link('toreservas','Reservar Aula')}}</li>
+                                        <li>{{Html::link('tomisreservas','Mis reservas')}}</a></li>
                                     </ul>
                                 </li>
 

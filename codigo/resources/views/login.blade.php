@@ -26,7 +26,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Login</div>
                 <div class="panel-body">
-                    {!! Form::open(['route' => 'inicio', 'method' => 'POST']) !!}
+                    {!! Form::open(['url' => 'inicio']) !!}
                     <div class="form-group">
                         {!!Form::label('email','Email', ['class' => 'control-label'])!!}
                         {!!Form::email('email',null,['class' => 'form-control'])!!}
@@ -36,7 +36,7 @@
                         {!!Form::password('pass',['class' => 'form-control'])!!} <!--el campo password no recive un segundo parametro para el value (ni siquiera como null)-->
                     </div>
                     <div>
-                        <a class='pull-left' href="{{url('recuperapass')}}">¿Ha olvidado su contraseña?</a>
+                        <span class='pull-left' >{{Html::link('pediremailpass','¿Ha olvidado su contraseña?')}}</span>
                     </div>
                     <div class="form-group">
                         {!!Form::submit('Aceptar',['class' => 'btn btn-primary pull-right'])!!}
