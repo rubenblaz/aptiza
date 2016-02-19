@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Modelo\Usuario;
 use DB;
 use Mail;
+use Session;
 
 class Recuperarpass extends Controller {
 

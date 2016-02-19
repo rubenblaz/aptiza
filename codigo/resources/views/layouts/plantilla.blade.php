@@ -18,7 +18,13 @@
         <style>
             body {
                 font-family: 'Lato';
+                background-color:black !important;
+                background-image: url('img/background.jpg');
+                background-size:cover;
+                background-repeat: no-repeat;
             }
+
+            /*---Cabecera y Menú ----*/
             .cabecera-menu{
                 background-color: #215891;
                 height: 100px;
@@ -41,7 +47,7 @@
             .glyphicon{
                 margin-right: 5px;
             }
-            
+
             @media (max-width: 768px) {
                 .cabecera-menu {
                     display: none;
@@ -55,6 +61,39 @@
                     display:none;
                 }
             }
+            /*--- Contendio ----*/
+
+            section{
+                background-color: white;
+                padding: 20px;
+                padding-top: 30px;
+
+            }
+            .titulo{
+                border-bottom: solid 1px #215891;
+                color:#215891;
+                height: 50px;
+                margin-bottom: 20px;
+                margin-bottom: 50px;
+                background-color: white;
+            }
+            .titulo h3{
+                line-height: 30px;
+            }
+            .articulo > h4{
+                margin: 30px 0px 30px 0px;
+            }
+            .articulo  li{
+                margin-bottom: 40px;
+            }
+            .articulo-fondo{
+                background-color: #215891;
+                color:white;
+                font-weight:lighter;
+            }
+            article{
+                margin-bottom: 10px;
+            }       
         </style>
         @yield('customcss')
     </head>
@@ -66,7 +105,7 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 pull-left">
                             <div class="centro-logo-cabecera">
-                                  <img src="img/centro_logo.jpg"/>
+                                <img src="img/centro_logo.jpg"/>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
@@ -75,10 +114,32 @@
                     </div>
                 </div>
             </div>
-               @include('includes.menu')
+            @include('includes.menu')
         </nav>
 
-        @yield('content')
+        <div class="container">
+            <div class="row">
+                @section('element-migas')
+                <ol class="breadcrumb col-lg-10 col-lg-offset-1 col-md-offset-1 col-md-10">
+                    @yield('migas')
+                </ol>
+                @show
+
+                @section('element-titulo')
+                <div class="titulo col-md-10 col-lg-offset-1 col-md-offset-1">
+                    <h3>
+                        @yield('titulo')
+                    </h3>  
+                </div>
+                @show
+
+                @section('element-contenido')
+                <section class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
+                    @yield('contenido')
+                </section>
+                @show
+            </div>
+        </div>
 
         <!-- JavaScripts CDN -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
