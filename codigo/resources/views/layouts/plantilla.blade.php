@@ -15,6 +15,13 @@
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
         {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
         {!!Html::style('css/aptiza.css')!!}
+
+
+        @if(Session::has('USUARIO') and Session::get('USUARIO')->getRol() == 0)
+        <!--Carga el estilo del administrador si el usuario tiene el rol 0-->
+        {!!Html::style('css/admin_aptiza.css')!!}
+        @endif
+
         @yield('customcss')
     </head>
     <body id="app-layout">
@@ -25,16 +32,52 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 pull-left">
                             <div class="centro-logo-cabecera">
-                                <img src="img/centro_logo.jpg"/>
+                                <a href="{{ url('inicio') }}">
+                                    <img src="img/centro_logo.jpg"/>
+                                </a>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
-                            <img src='img/aptiza_logo.png' class="logo-cabecera pull-right"/>
+                            <a href="{{ url('inicio') }}">
+                                <img src='img/aptiza_logo.png' class="logo-cabecera pull-right"/>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-            @include('includes.menu')
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    @if(Session::has('USUARIO'))
+                    <!-- Boton menu responsive -->
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+                        <span class="sr-only">Toggle Navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @endif
+                    <!-- Zona de logo -->
+                    <a class="navbar-brand" href="{{ url('inicio') }}">
+                        <img src="img/centro_logo.jpg" class="centro-logo-collapse" />
+                    </a>
+                </div>
+                @if(Session::has('USUARIO'))
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 col-lg-offset-2 col-md-offset-1">
+                        <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                            <!-- Elementos del menu según si esta logeado y el rol -->
+                            <ul class="nav navbar-nav navbar-left">
+                                <li><a href="{{ url('inicio') }}"><span class="glyphicon glyphicon-home"></span>Inicio</a></li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <!-- Aquí se incluyen los elementos de menú dependiendo del rol-->
+                                @include('includes.menu')
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                @endif
+            </div>
         </nav>
 
         <div class="container">

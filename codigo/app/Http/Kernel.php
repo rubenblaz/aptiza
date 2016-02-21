@@ -34,9 +34,6 @@ class Kernel extends HttpKernel
         'api' => [
             'throttle:60,1',
         ],
-        'validaciones' => [
-            \App\Http\Middleware\ValidacionRutas::class,
-        ],
     ];
     /**
      * The application's route middleware.
