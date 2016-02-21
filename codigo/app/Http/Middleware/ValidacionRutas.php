@@ -2,6 +2,7 @@
 
 use Closure;
 use Session;
+use App;
 
 class ValidacionRutas {
 
@@ -12,9 +13,12 @@ class ValidacionRutas {
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next) {
-        if (!Session::has('USUARIO')) {
+    public function handle($request, Closure $next, $rol) {
+        
+        if (!Session::has('USUARIO') and Session::get('USUARIO')->getRol() != $rol ) {
             return redirect('/');
+        }else if(Session::get('USUARIO')->getRol() != $rol){
+          App::abort(403, 'Access denied');
         }
         return $next($request);
     }

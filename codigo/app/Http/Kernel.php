@@ -50,6 +50,7 @@ class Kernel extends HttpKernel
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'AutenticarUsuario' => \App\Http\Middleware\AutenticarUsuario::class,
+        'autenticarUsuario' => \App\Http\Middleware\AutenticarUsuario::class,
+        'validarRol' => \App\Http\Middleware\ValidacionRutas::class,
     ];
 }

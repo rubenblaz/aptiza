@@ -29,7 +29,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Login</div>
                 <div class="panel-body">
-                    {!! Form::open(['url' => 'inicio']) !!}
+                    {!! Form::open(['url' => 'login']) !!}
                     <div class="form-group">
                         {!!Form::label('email','Email', ['class' => 'control-label'])!!}
                         {!!Form::email('email',null,['class' => 'form-control'])!!}

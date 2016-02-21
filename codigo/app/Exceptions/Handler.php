@@ -9,6 +9,7 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Foundation\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Response;
 
 class Handler extends ExceptionHandler
 {
@@ -53,6 +54,7 @@ class Handler extends ExceptionHandler
            
            return redirect()->action('Reservas@store', ['fecha'=> $fecha,'aula'=>$aula,'tipomensaje'=>'error','mensaje' => 'No se ha podido realicar la reserva del aula '.$aula.' para el dia '.$fecha.' a todas las horas seleccionadas. Vuelva a revisar la disponibilidad del aula']);
        }
+       
         return parent::render($request, $e);
     }
 }

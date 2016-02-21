@@ -25,7 +25,9 @@
        
     //Rutas de usuario
     Route::get('errorlogin','Usuarios@errorlogin');
-    Route::post('inicio','Usuarios@inicio')->middleware(['web','AutenticarUsuario']); 
+    Route::post('login',function(){
+        return View::make('inicio');
+    })->middleware(['web','autenticarUsuario']); 
     
     //Recuperar pass por email.
     Route::match(array('GET', 'POST'),'pediremailpass','Recuperarpass@pedirPassEmail');
@@ -34,7 +36,7 @@
 
     
 //Middleware Group
-    Route::group(['middleware' => ['web','validaciones']], function () {
+    Route::group(['middleware' => ['web','validarRol:1']], function () {
 
         //Rutas de usuario
         Route::get('logout','Usuarios@logout');
