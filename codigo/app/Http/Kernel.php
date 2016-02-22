@@ -30,10 +30,10 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
 //            \App\Http\Middleware\VerifyCsrfToken::class,
         ],
-
         'api' => [
             'throttle:60,1',
         ],
+        
     ];
     /**
      * The application's route middleware.
@@ -49,5 +49,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'autenticarUsuario' => \App\Http\Middleware\AutenticarUsuario::class,
         'validarRol' => \App\Http\Middleware\ValidacionRutas::class,
+        'tipoInicioSesion' => \App\Http\Middleware\tipoInicioSesion::class,
     ];
 }

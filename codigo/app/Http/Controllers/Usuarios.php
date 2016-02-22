@@ -9,7 +9,8 @@ class Usuarios extends Controller {
         return view('login', ['error' => true]);
     }
 
-    public function inicio() {
+    public function inicio() { 
+        
         return view('inicio');
     }
 
@@ -18,5 +19,10 @@ class Usuarios extends Controller {
         Session::pull('USUARIO');
 
         return view('login');
+    }
+    
+    public function tipoinicio(){
+        
+        return view('tipoinicio');
     }
 }

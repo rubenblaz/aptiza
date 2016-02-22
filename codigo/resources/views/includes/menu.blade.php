@@ -1,5 +1,5 @@
     <!--Reservas elemento de menu-->
-@if(Session::get('USUARIO')->getRol() > 0)
+@if(Session::get('USUARIO')->hasRol(1))
     <li class="dropdown">
         <a href='#' class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             Rerservas<span class="caret"></span>

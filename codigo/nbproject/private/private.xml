@@ -3,16 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/resources/views/solicitarecupass.blade.php</file>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/app/Http/Controllers/Recuperarpass.php</file>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/resources/views/reservas/misreservas.blade.php</file>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/resources/views/emails/recuperarpass.blade.php</file>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/resources/views/reservas/reserva.blade.php</file>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/public/css/aptiza.css</file>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/resources/views/login.blade.php</file>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/app/Http/routes.php</file>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/resources/views/layouts/plantilla.blade.php</file>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/resources/views/reestablecepass.blade.php</file>
+            <file>file:/C:/xampp/htdocs/aptiza/codigo/app/Modelo/Usuario.php</file>
         </group>
     </open-files>
 </project-private>

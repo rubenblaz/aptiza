@@ -17,7 +17,7 @@ class Usuario {
     private $nombre;
     private $pass;
     private $email;
-    private $rol;
+    private $roles;
     
     function __construct($email,$pass){
         
@@ -29,7 +29,7 @@ class Usuario {
         $user = null;
         
         $resultado = DB::table('usuarios')
-            ->select('NOMBRE','PASS','EMAIL','ROL')
+            ->select('NOMBRE','PASS','EMAIL')
             ->where('EMAIL',$this->email)
             ->get();
 
@@ -40,17 +40,87 @@ class Usuario {
             
             if(Hash::check($this->pass,$dbpass)){
                 $valido = true;
-            }else if(substr($this->pass,0,4) == '$2y$' && $dbpass == $this->pass){
+            }else if(substr($this->pass,0,4) == '$2y$' && $dbpass == $this->pass){ //Controla si viene de recuperar el pass por email
                     $valido = true;
             }
             
             if($valido){
                 $this->nombre = $resultado[0]->NOMBRE;
-                $this->rol = $resultado[0]->ROL;
                 $user = $this;
+                $this->consultarRoles($this->email);
             }
         }
+        
         return ($user); //devuelve el usuario completo con todos los datos de la base de datos.
+    }
+    
+    private function consultarRoles($email){
+        
+        $roles = array();
+        
+        $resultado = DB::table('usuariosrol')
+                ->select('IDROL')
+                ->where('EMAIL',$email)
+                ->get();
+        
+        foreach($resultado as $var){
+           
+            $roles[] = $var->IDROL;
+        }
+        
+        $this->roles = $roles;
+    }
+    /**
+     * Devuleve "true" si el usuario es administrador y usuario a la vez
+     * @param null
+     * @return boolean
+     */
+    public function tieneDobleRol(){
+        
+        $tiene = false;
+        
+        if(in_array(0,$this->roles)){
+            foreach($this->roles as $rol){
+                if($rol > 0){
+                    $tiene = true;
+                }
+            }
+        }
+        
+        return $tiene;
+    }
+    /**
+     * Si se le pasa "true" deja al usuario solo con el rol de Administrador
+     * Si se le pasa "false" deja al usuario con los demas roles y le quita el de Administrador
+     * @param boolean $opcion
+     */
+    public function usarComoAdmin($opcion){
+      
+       $this->consultarRoles($this->email);
+            
+        if($opcion){
+            foreach($this->roles as $key=>$rol){
+                if($rol > 0){
+                    unset($this->roles[$key]);
+                }
+            }
+        }
+        if(!$opcion){
+            foreach($this->roles as $key=>$rol){
+                if($rol == 0){
+                    unset($this->roles[$key]);
+                }
+            }
+        }
+    }
+    /**
+     * Consulta si el usuario tiene un rol determinado
+     * @param int (rol)
+     * @return boolean
+     */
+    public function hasRol($rol){
+        
+        return (in_array($rol,$this->roles));
     }
     
     /**
@@ -84,10 +154,6 @@ class Usuario {
         return $this->pass;
     }
     
-    function getRol(){
-        return $this->rol;
-    }
-
     function getEmail() {
         return $this->email;
     }
@@ -95,6 +161,6 @@ class Usuario {
     function setPass($pass){
         $this->pass = $pass;
     }
-
+    //Edicion de usuarios
 
 }
