@@ -96,5 +96,51 @@ class Usuario {
         $this->pass = $pass;
     }
 
+    //CRUD tabla usuario
+    public static function crear_usuario($nombre,$email,$password,$rol)
+    {
+        $result = DB::table('usuarios')->insert(array('NOMBRE' => $nombre,'EMAIL'=>$email,'PASS'=>$password,'ROL'=>$rol));
+
+        return $result;
+    }
+
+    public static function listar_usuarios()
+    {
+
+        $result = DB::table('usuarios')->
+        join('roles', 'usuarios.ROL', '=', 'roles.ID')->
+        select('usuarios.NOMBRE','usuarios.EMAIL','roles.TIPO')->paginate(10);
+        return $result;
+
+    }
+
+    public static function eliminar_usuario($email)
+    {
+        $result = DB::table('usuarios')->where('EMAIL', $email)->delete();
+        return $result;
+    }
+
+    public static function editar_usuario($nombre,$email_anterior, $email,$pass,$id_rol)
+    {
+        $password_encriptado=\Hash::make($pass);
+        $result = DB::table('usuarios')
+            ->where('EMAIL', $email_anterior)
+            ->update(array('EMAIL' => $email,'NOMBRE'=>$nombre,'ROL'=>$id_rol,'PASS'=>$password_encriptado));
+        return $result;
+    }
+    public static function seleccionar_usuario($email) {
+        $result=db::table('usuarios')->select('EMAIL','NOMBRE','ROL')->where('EMAIL',$email)->paginate(1);
+        return $result;
+    }
+    public static function listar_roles() {
+        $result = DB::table('roles')
+            ->get();
+        return $result;
+    }
+
+
+
+
+
 
 }

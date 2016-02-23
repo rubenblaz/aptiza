@@ -49,7 +49,24 @@
     
 //Rutas de Administrador
     Route::group(['middleware' => ['web','validarRol:0']], function () {
-        Route::get('admininicio','AdminUsuarios@inicio');
+        Route::get('admininicio','Usuarios@inicio');
+
+        Route::get('/admin-aulas/',['as'=>'admin-aulas','uses'=> 'reservas\reservasAdminController@mostrar_aulas']);
+        Route::post('/admin-aulas/aula_creada','reservas\reservasAdminController@crear_aulas');
+        Route::get('/admin-aulas/aula_eliminada/{AULA}',array('uses'=>'reservas\reservasAdminController@eliminar_aula'));
+        Route::post('/admin-aulas/aula_editar',array('uses'=>'reservas\reservasAdminController@editar_aula'));
+
+        Route::get('/admin-horas/',['as'=>'admin-horas','uses'=>'reservas\reservasAdminController@mostrar_horas']);
+        Route::post('/admin-horas/hora_editar',array('uses'=>'reservas\reservasAdminController@editar_hora'));
+        Route::get('/admin-horas/hora_eliminada/{NUMHORA}', 'reservas\reservasAdminController@eliminar_horas');
+        Route::post('/admin-horas/hora_creada', 'reservas\reservasAdminController@crear_horas');
+
+        Route::get('/admin-usuarios/', ['as'=>'admin-usuarios','uses'=> 'admin\UsuarioController@index']);
+        Route::post('/admin-usuarios/create', 'admin\UsuarioController@crear');
+        Route::get('/admin-usuarios/listar/','admin\UsuarioController@listar');
+        Route::get('/admin-usuarios/eliminar/{EMAIL}',array('uses'=>'admin\UsuarioController@eliminar'));
+        Route::get('/admin-usuarios/editar/{EMAIL}',['as'=>'admin-usuarios/editar','uses'=>'admin\UsuarioController@editar']);
+        Route::post('/admin-usuarios/actualizar/',array('uses'=>'admin\UsuarioController@actualizar'));
     });
     
 //Rutas de Profesor

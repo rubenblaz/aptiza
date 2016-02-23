@@ -51,7 +51,6 @@ class Handler extends ExceptionHandler
             $fecha = $request->input('fecha');
             $horas = $request->input('horas');
             $aula =$request->input('aula');
-           
            return redirect()->action('Reservas@store', ['fecha'=> $fecha,'aula'=>$aula,'tipomensaje'=>'error','mensaje' => 'No se ha podido realicar la reserva del aula '.$aula.' para el dia '.$fecha.' a todas las horas seleccionadas. Vuelva a revisar la disponibilidad del aula']);
        }
        

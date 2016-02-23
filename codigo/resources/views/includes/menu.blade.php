@@ -1,15 +1,36 @@
     <!--Reservas elemento de menu-->
-@if(Session::get('USUARIO')->getRol() > 0)
+
+@if(Session::get('USUARIO')->getRol() >0)
+
     <li class="dropdown">
         <a href='#' class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             Rerservas<span class="caret"></span>
         </a>
+
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <li>{{Html::link('toreservas','Reservar Aula')}}</li>
-            <li>{{Html::link('tomisreservas','Mis reservas')}}</a></li>
+          <li>{{Html::link('toreservas','Reservar Aula')}}</li>
+            <li>{{Html::link('tomisreservas','Mis reservas')}}</li>
+
         </ul>
     </li>
 @endif
+    @if(Session::get('USUARIO')->getRol() == 0)
+
+        <li class="dropdown">
+            <a href='#' class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="true">
+                Admin reservas<span class="caret"></span>
+            </a>
+
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li>{{Html::link('admin-aulas','Admin-Aulas')}}</li>
+                <li>{{Html::link('admin-horas','Admin-Horas')}}</li>
+
+            </ul>
+
+        </li>
+        <li>{{Html::link('admin-usuarios/listar','Usuarios')}}</li>
+        @endif
 
     <!-- Siguiente elemento de menu -->
 

@@ -45,5 +45,36 @@ class Aula {
         }
         //Implementar un return en el que se controle si se esta anulando,editando o haciendo una reserva nueva.
     }
+                            //CRUD de la tabla aula
+
+
+    public static function crear_aula($nombre)
+    {
+        $result = DB::table('aulas')->insert(array('AULA' => $nombre));
+
+        return $result;
+    }
+
+    public static function mostrar_aulas()
+    {
+        $result = DB::table('aulas')->get();
+
+        return $result;
+
+    }
+
+    public static function eliminar_aula($nombre)
+    {
+        $result = DB::table('aulas')->where('AULA', $nombre)->delete();
+        return $result;
+    }
+
+    public static function editar_aula($nombre_anterior, $nuevo_nombre)
+    {
+        $result = DB::table('aulas')
+            ->where('AULA', $nombre_anterior)
+            ->update(array('AULA' => $nuevo_nombre));
+        return $result;
+    }
 
 }
