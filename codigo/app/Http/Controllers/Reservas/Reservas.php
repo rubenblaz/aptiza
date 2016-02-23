@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers\Reservas;
 
 use Illuminate\Http\Request;
 use App\Modelo\Aula;
@@ -70,7 +68,7 @@ class Reservas extends Controller
         
         Aula::reservar($email,$aula,$fecha,$horas);
         
-        return redirect()->action('Reservas@store', ['fecha'=> $fecha,'aula'=>$aula,'tipomensaje'=>'ok','mensaje' => 'Reserva del aula '.$aula.' para el dia '.$fecha.' realizada correctamente']);
+        return redirect()->action('Reservas\Reservas@store', ['fecha'=> $fecha,'aula'=>$aula,'tipomensaje'=>'ok','mensaje' => 'Reserva del aula '.$aula.' para el dia '.$fecha.' realizada correctamente']);
     }
     public function misreservas(){
         
@@ -82,6 +80,6 @@ class Reservas extends Controller
         
         Reserva::eliminar($request->input('fecha'),$request->input('aula') , Session::get('USUARIO')->getEmail());
         
-        return redirect()->action('Reservas@misreservas');
+        return redirect()->action('Reservas\Reservas@misreservas');
     }
 }

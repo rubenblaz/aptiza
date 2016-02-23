@@ -17,7 +17,7 @@
         {!!Html::style('css/aptiza.css')!!}
 
 
-        @if(Session::has('USUARIO') and Session::get('USUARIO')->getRol() == 0)
+        @if(Session::has('USUARIO') and Session::get('USUARIO')->hasRol(0))
         <!--Carga el estilo del administrador si el usuario tiene el rol 0-->
         {!!Html::style('css/admin_aptiza.css')!!}
         @endif

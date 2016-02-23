@@ -37,6 +37,8 @@
         //Rutas Login 
         Route::get('inicio','Usuarios@inicio')->middleware(['validarRol']);
         Route::post('login','Usuarios@inicio')->middleware(['autenticarUsuario']); 
+        Route::get('tipoinicio','Usuarios@tipoinicio')->middleware(['validarRol']);
+        Route::post('elegirinicio','Usuarios@inicio')->middleware(['tipoInicioSesion']);
         Route::get('errorlogin','Usuarios@errorlogin');
         Route::get('logout','Usuarios@logout');
         
@@ -70,13 +72,13 @@
     });
     
 //Rutas de Profesor
-    Route::group(['middleware' => ['web','validarRol:0']], function () {
+    Route::group(['middleware' => ['web','validarRol:1']], function () {
         
         //Rutas de reservas
-        Route::get('toreservas', ['as' => 'toreservas', 'uses' =>'Reservas@store']);
-        Route::post('ajax','Reservas@ajaxconsulta');
-        Route::get('tomisreservas','Reservas@misreservas');
-        Route::get('delreserva', ['as' => 'delreserva', 'uses' => 'Reservas@reservaborrar']);
-        Route::match(array('GET', 'POST'),'reservar', 'Reservas@hacerReserva');
+        Route::get('toreservas', ['as' => 'toreservas', 'uses' =>'Reservas\Reservas@store']);
+        Route::post('ajax','Reservas\Reservas@ajaxconsulta');
+        Route::get('tomisreservas','Reservas\Reservas@misreservas');
+        Route::get('delreserva', ['as' => 'delreserva', 'uses' => 'Reservas\Reservas@reservaborrar']);
+        Route::match(array('GET', 'POST'),'reservar', 'Reservas\Reservas@hacerReserva');
     });
 
