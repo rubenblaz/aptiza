@@ -5,8 +5,6 @@
         body {
             background-color: #269abc;
         }
-
-
     </style>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css"/>
 @stop

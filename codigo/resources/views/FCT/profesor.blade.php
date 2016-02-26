@@ -58,31 +58,38 @@ use Session;
                                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                                 Ha ocurrido algún error al realizar la operación.
                             </div>
-                        @endif
-                    @endif
-                    @if(Session::has('empresafav'))
-                        @if(Session::get('empresafav') == "ok")
-                            <div class="alert alert-success alert-dismissable fade in" role="alert">
-                                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                Modificado correctamente.
+                            @endif
+                            @endif
+                                    <!-- Ya está pasado a la vista correspondiente -->
+                            @if(Session::has('empresafav'))
+                                @if(Session::get('empresafav') == "ok")
+                                    <div class="alert alert-success alert-dismissable fade in" role="alert">
+                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                        Modificado correctamente.
+                                    </div>
+                                @else
+                                    <div class="alert alert-danger alert-dismissable fade in" role="alert">
+                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                        Fallo al modificar.
+                                    </div>
+                                @endif
+                            @endif
+                            <div class="nav nav-pills">
+                                <li role="presentation" title="Inicio">{{ HTML::link('/validado', 'Inicio') }}</li>
+                                <li role="presentation"
+                                    title="Consultar empresas">{{ HTML::link('/consulta', 'Consultar empresas') }}</li>
+                                <li role="presentation"
+                                    title="Asignar empresas">{{ HTML::link('/practicas', 'Asignar empresas') }}</li>
+                                <li role="presentation"
+                                    title="Solicitar encuestas">{{ HTML::link('/solencuestas', 'Solicitar encuestas') }}</li>
+                                <li role="presentation"
+                                    title="Memoria final">{{ HTML::link('/memoria', 'Memoria') }}</li>
+                                <li role="presentation"
+                                    title="Hoja de firmas de alumnos FCT">{{ HTML::link('/informe1', 'Hoja de firmas de alumnos FCT') }}</li>
+                                <li role="presentation" class="active"
+                                    title="Desconectar">{{ HTML::link('/', 'Desconectar') }}</li>
                             </div>
-                        @else
-                            <div class="alert alert-danger alert-dismissable fade in" role="alert">
-                                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                Fallo al modificar.
-                            </div>
-                        @endif
-                    @endif
-                    <div class="nav nav-pills">
-                        <li role="presentation" title="Inicio">{{ HTML::link('/validado', 'Inicio') }}</li>
-                        <li role="presentation" title="Consultar empresas">{{ HTML::link('/consulta', 'Consultar empresas') }}</li>
-                        <li role="presentation" title="Asignar empresas">{{ HTML::link('/practicas', 'Asignar empresas') }}</li>
-                        <li role="presentation" title="Solicitar encuestas">{{ HTML::link('/solencuestas', 'Solicitar encuestas') }}</li>
-                        <li role="presentation" title="Memoria final">{{ HTML::link('/memoria', 'Memoria') }}</li>
-                        <li role="presentation" title="Hoja de firmas de alumnos FCT">{{ HTML::link('/informe1', 'Hoja de firmas de alumnos FCT') }}</li>
-                        <li role="presentation" class="active" title="Desconectar">{{ HTML::link('/', 'Desconectar') }}</li>
-                    </div>
-                    <hr>
+                            <hr>
                 </div>
             </div>
         </div>
