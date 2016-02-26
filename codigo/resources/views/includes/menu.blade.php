@@ -50,11 +50,11 @@
             Tutor FCT<span class="caret"></span>
         </a>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
-            <li>{{ HTML::link('/consulta', 'Consultar empresas') }}</li>
-            <li title="Asignar empresas">{{ HTML::link('/practicas', 'Asignar empresas') }}</li>
-            <li title="Solicitar encuestas">{{ HTML::link('/solencuestas', 'Solicitar encuestas') }}</li>
-            <li title="Memoria final">{{ HTML::link('/memoria', 'Memoria') }}</li>
-            <li title="Hoja de firmas de alumnos FCT">{{ HTML::link('/informe1', 'Hoja de firmas de alumnos FCT') }}</li>
+            <li>{{ Html::link('/consulta', 'Consultar empresas') }}</li>
+            <li title="Asignar empresas">{{ Html::link('/practicas', 'Asignar empresas') }}</li>
+            <li title="Solicitar encuestas">{{ Html::link('/solencuestas', 'Solicitar encuestas') }}</li>
+            <li title="Memoria final">{{ Html::link('/memoria', 'Memoria') }}</li>
+            <li title="Hoja de firmas de alumnos FCT">{{ Html::link('/informe1', 'Hoja de firmas de alumnos FCT') }}</li>
         </ul>
     </li>
     @endif
@@ -66,8 +66,7 @@
         </a>
 
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
-            <li title="Encuestas">{{ HTML::link('/encuestas', 'Encuestas') }}</li>
-            <li title="Administrar mi cuenta">{{ HTML::link('/admincuenta', 'Administrar mi cuenta') }}</li>
+            <li title="Encuestas">{{ Html::link('/encuestas', 'Encuestas') }}</li>
         </ul>
     </li>
     @endif
@@ -80,8 +79,7 @@
         </a>
 
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu5">
-            <li title="Encuestas">{{ HTML::link('/encuestas', 'Encuestas') }}</li>
-            <li title="Administrar mi cuenta">{{ HTML::link('/admincuenta', 'Administrar mi cuenta') }}</li>
+            <li title="Encuestas">{{ Html::link('/encuestas', 'Encuestas') }}</li>
         </ul>
     </li>
     @endif

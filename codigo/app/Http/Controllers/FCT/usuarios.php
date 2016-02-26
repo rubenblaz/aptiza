@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\FCT;
 
 use App\Modelo\alumno;
 use Illuminate\Http\Request;
@@ -49,7 +49,7 @@ class usuarios extends Controller
          */
         $rol = 4;
         if ($existe == false && $existe2 == false) {
-            $empresa1->insertarUsuario($usuario_empresa, $password, $rol);
+            $empresa1->insertarUsuario($usuario_empresa, $password, $nombre);
             $empresa1->insertarEmpresa($usuario_empresa, $cif, $nombre, $cp, $telefono, $dnirep, $convenio, $alias, $poblacion, $fax, $observaciones, $fechaconv_vec, $direccion, $provincia, $convrep, $tipoempresa, $fav);
             $mensaje = "ok";
             $mensaje_v = [
@@ -131,7 +131,7 @@ class usuarios extends Controller
             }
         }
 
-        return view('FCT/profesor');
+        return view('FCT/practicas');
     }
 
     public function consulta(Request $req)
@@ -162,7 +162,7 @@ class usuarios extends Controller
             $mensaje = "error";
             Session::put('empresafav', $mensaje);
         }
-        return view('FCT/profesor');
+        return redirect('consulta');
     }
 
     public function borrar_empresa(Request $req)
@@ -178,12 +178,11 @@ class usuarios extends Controller
             $mensaje = "error";
             Session::put('deleteinfo', $mensaje);
         }
-        return view('FCT/profesor');
+        return redirect('consulta');
     }
 
     public function memoriafinal()
     {
-
         return view('FCT/memoriafinal');
     }
 }

@@ -91,31 +91,31 @@ Route::group(['middleware' => ['web', 'validarRol:1']], function () {
 //Rutas de profesor FCT
 Route::group(['middleware' => ['web', 'validarRol:3']], function () {
     //Rutas de FCT
-    Route::get('/practicas', 'FCT/usuarios@practicas'); //Asignar empresas a alumnos
-    Route::get('/consulta', 'FCT/usuarios@consulta'); //Todas las empresas
-    Route::get('/informe1', 'FCT/PdfController@invoice'); //PDF
-    Route::get('/borrar/{CIF}', 'FCT/usuarios@borrar_empresa'); //Borrar empresa de favoritas
-    Route::match(array('GET', 'POST'), 'validado2', 'FCT/usuarios@practicas_elegir'); //Asignar empresas a alumnos submit
-    Route::match(array('GET', 'POST'), 'validado3', 'FCT/usuarios@empresas_favoritas'); //Submit de empresas favoritas
-    Route::get('/memoria', 'FCT/usuarios@memoriafinal'); //Memoria final
-    Route::get('pdf', 'FCT/PdfController@invoice'); //PDF
+    Route::get('/practicas', 'FCT\usuarios@practicas'); //Asignar empresas a alumnos
+    Route::get('/consulta', 'FCT\usuarios@consulta'); //Todas las empresas
+    Route::get('/informe1', 'FCT\PdfController@invoice'); //PDF
+    Route::get('/borrar/{CIF}', 'FCT\usuarios@borrar_empresa'); //Borrar empresa de favoritas
+    Route::match(array('GET', 'POST'), 'validado2', 'FCT\usuarios@practicas_elegir'); //Asignar empresas a alumnos submit
+    Route::match(array('GET', 'POST'), 'validado3', 'FCT\usuarios@empresas_favoritas'); //Submit de empresas favoritas
+    Route::get('/memoria', 'FCT\usuarios@memoriafinal'); //Memoria final
+    Route::get('pdf', 'FCT\PdfController@invoice'); //PDF
 
 });
 
 //Rutas de alumno FCT
 Route::group(['middleware' => ['web', 'validarRol:6']], function () {
     //Rutas de FCT
-    Route::get('/encuestas', 'FCT/Admin/otros@urlencuestas'); //URL encuestas
-    Route::get('/admincuenta', 'FCT/Admin/otros@admincuenta'); //URL admin cuenta
-    Route::match(array('GET', 'POST'), 'validado4', 'FCT/Admin/otros@admincuenta2'); //Administrar mi cuenta
-    Route::match(array('GET', 'POST'), 'validado5', 'FCT/encuestas@encuestas'); //Insertar resultados encuestas
+    Route::get('/encuestas', 'FCT\Admin\otros@urlencuestas'); //URL encuestas
+    //Route::get('/admincuenta', 'FCT\Admin\otros@admincuenta'); //URL admin cuenta
+    //Route::match(array('GET', 'POST'), 'validado4', 'FCT\Admin\otros@admincuenta2'); //Administrar mi cuenta
+    Route::match(array('GET', 'POST'), 'validado5', 'FCT\encuestas@encuestas'); //Insertar resultados encuestas
 });
 
 //Rutas de empresas FCT
 Route::group(['middleware' => ['web', 'validarRol:4']], function () {
     //Rutas de FCT
-    Route::get('/encuestas', 'FCT/Admin/otros@urlencuestas'); //URL encuestas
-    Route::get('/admincuenta', 'FCT/Admin/otros@admincuenta'); //URL admin cuenta
-    Route::match(array('GET', 'POST'), 'validado4', 'FCT/Admin/otros@admincuenta2'); //Administrar mi cuenta
-    Route::match(array('GET', 'POST'), 'validado5', 'FCT/encuestas@encuestas'); //Insertar resultados encuestas
+    Route::get('/encuestas', 'FCT\Admin\otros@urlencuestas'); //URL encuestas
+    //Route::get('/admincuenta', 'FCT\Admin\otros@admincuenta'); //URL admin cuenta
+    //Route::match(array('GET', 'POST'), 'validado4', 'FCT\Admin\otros@admincuenta2'); //Administrar mi cuenta
+    Route::match(array('GET', 'POST'), 'validado5', 'FCT\encuestas@encuestas'); //Insertar resultados encuestas
 });

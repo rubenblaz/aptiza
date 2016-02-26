@@ -21,7 +21,7 @@
             <div class="panel panel-default">
                 <center><b><p>Listado completo de todas las empresas disponibles:</p></b></center>
                 <br>
-                {!! Form::open(array('action' => 'FCT/usuarios@empresas_favoritas')) !!}
+                {!! Form::open(array('action' => 'FCT\usuarios@empresas_favoritas')) !!}
                 @if(Session::has('empresafav'))
                     @if(Session::get('empresafav') == "ok")
                         <div class="alert alert-success alert-dismissable fade in" role="alert">

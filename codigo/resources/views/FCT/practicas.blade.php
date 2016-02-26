@@ -20,7 +20,7 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <br>
-                {!! Form::open(array('action' => 'FCT/usuarios@practicas_elegir')) !!}
+                {!! Form::open(array('action' => 'FCT\usuarios@practicas_elegir')) !!}
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">Asignación de empresas a los alumnos:</h3>

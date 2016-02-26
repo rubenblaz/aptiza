@@ -42,7 +42,7 @@
         <div class="col-md-6" style="margin-left: 3%; margin-top: 12%; width: auto;">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    {!! Form::open(array('action' => 'FCT/encuestas@encuestas')) !!}
+                    {!! Form::open(array('action' => 'FCT\encuestas@encuestas')) !!}
                     @if(Session::get('USUARIO')->hasRol(6))
                         <center><h4>CUESTIONARIO SOBRE FCT ALUMNADO</h4></center>
                     @else

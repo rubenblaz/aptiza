@@ -101,10 +101,13 @@ class empresa
         return $existe;
     }
 
-    public function insertarUsuario($usuario, $password, $rol)
+    public function insertarUsuario($usuario, $password, $nombre)
     {
         DB::table('usuarios')->insert(
-            ['EMAIL' => $usuario, 'PASSWORD' => $password, 'ROL' => $rol]
+            ['EMAIL' => $usuario, 'PASS' => $password, 'NOMBRE' => $nombre]
+        );
+        DB::table('usuariosrol')->insert(
+            ['EMAIL' => $usuario, 'IDROL' => 4]
         );
     }
 

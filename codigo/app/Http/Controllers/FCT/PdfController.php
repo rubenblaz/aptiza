@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\FCT;
 
 use App\Modelo\profesor;
 use Illuminate\Http\Request;
