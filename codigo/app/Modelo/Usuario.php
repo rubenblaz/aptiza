@@ -46,8 +46,8 @@ class Usuario {
             
             if($valido){
                 $this->nombre = $resultado[0]->NOMBRE;
+                $this->roles = $this->consultarRoles($this->email);
                 $user = $this;
-                $this->consultarRoles($this->email);
             }
         }
         
@@ -68,7 +68,7 @@ class Usuario {
             $roles[] = $var->IDROL;
         }
         
-        $this->roles = $roles;
+        return $roles;
     }
     /**
      * Devuleve "true" si el usuario es administrador y usuario a la vez
