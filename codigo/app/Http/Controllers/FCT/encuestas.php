@@ -23,35 +23,33 @@ class encuestas extends Controller
         $seleccion = $req->get('opciones');
         $idpreguntas = Session::get('preguntas');
 
-        $usuario = Session::get('usuario');
-        $rol = Session::get('rol');
-        $curso = Session::get('cursoalumno');
+        $usuario = Session::get('USUARIO')->getEmail();
+        //$curso = Session::get('cursoalumno');
+        $curso = $usuario1->obtenerCurso(Session::get('USUARIO')->getEmail());
 
         foreach ($idpreguntas as $idp) {
             $idpreguntas_v[] = $idp->IDPREGUNTA;
         }
 
-        if ($rol == 6) { //Alumnos
+        if (Session::get('USUARIO')->hasRol(6)) { //Alumnos
             DB::table('encuesta')->insert(
                 ['IDUSUARIO' => $usuario, 'IDCICLO' => $curso, 'IDMODELO' => 1]
             );
             $idencuesta = $usuario1->obtenerIdEncuesta($usuario);
-            $idencuesta2 = array_pop($idencuesta);
 
             for ($i = 0; $i < count($idpreguntas_v); $i++) {
                 DB::table('elige')->insert(
-                    ['IDENCUESTA' => $idencuesta2, 'IDPREGUNTA' => $idpreguntas_v[$i], 'IDOPCION' => $seleccion[$i]]);
+                    ['IDENCUESTA' => $idencuesta, 'IDPREGUNTA' => $idpreguntas_v[$i], 'IDOPCION' => $seleccion[$i]]);
             }
         }
-        if ($rol == 4) { //Empresas
+        if (Session::get('USUARIO')->hasRol(4)) { //Empresas
             DB::table('encuesta')->insert(
                 ['IDUSUARIO' => $usuario, 'IDCICLO' => $curso, 'IDMODELO' => 2]
             );
             $idencuesta = $usuario1->obtenerIdEncuesta($usuario);
-            $idencuesta2 = array_pop($idencuesta);
             for ($i = 0; $i < count($idpreguntas_v); $i++) {
                 DB::table('elige')->insert(
-                    ['IDENCUESTA' => $idencuesta2, 'IDPREGUNTA' => $idpreguntas_v[$i], 'IDOPCION' => $seleccion[$i]]);
+                    ['IDENCUESTA' => $idencuesta, 'IDPREGUNTA' => $idpreguntas_v[$i], 'IDOPCION' => $seleccion[$i]]);
             }
         }
         return view('FCT/encuestas');

@@ -54,6 +54,7 @@ class alumno
     {
         $consulta = DB::table('encuesta')
             ->select('IDENCUESTA')
+            ->max('IDENCUESTA')
             ->where('IDUSUARIO', $usuario)
             ->get();
 
@@ -73,5 +74,23 @@ class alumno
             ->where('alumnos.EMAIL', $email)
             ->get();
         return $nombrecurso;
+    }
+
+    public function obtenerEncuestas($email)
+    {
+        $consulta1 = DB::table('profesores')
+            ->select('CURSO')
+            ->where('EMAIL', $email)
+            ->get();
+        $curso = $consulta1[0]->CURSO;
+        $consulta2 = DB::table('encuesta')
+            ->join('elige', 'encuesta.IDENCUESTA', '=', 'elige.IDENCUESTA')
+            ->join('profesores', 'profesores.CURSO', '=', 'encuesta.IDCICLO')
+            ->select('encuesta.IDENCUESTA', 'encuesta.IDUSUARIO', 'elige.IDPREGUNTA', 'elige.IDOPCION')
+            ->where('profesores.CURSO', $curso)
+            ->where('profesores.EMAIL', $email)
+            ->get();
+
+        return $consulta2;
     }
 }

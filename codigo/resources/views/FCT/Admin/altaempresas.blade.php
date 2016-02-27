@@ -17,7 +17,7 @@
 @stop
 @section('contenido')
     <div class="row">
-        <div class="col-md-10" style="margin-left: 8%; margin-top: 2%;">
+        <div class="col-md-12" style="margin-left: auto; margin-top: auto;">
             <div class="panel panel-default" id="panelalta">
                 <div class="panel panel-primary">
                     <!--<div class="panel-heading">
@@ -105,8 +105,8 @@
                                 {!! Form::select('favorita', array('SI' => 'SI', 'NO' => 'NO'), 'SI', array('class'=>'form-control')) !!}
                             </div>
                         </div>
-                        @if(isset($mensaje))
-                            @if($mensaje == "error")
+                        @if(Session::has('mensajealta'))
+                            @if(Session::get('mensajealta') == "error")
                                 <div class="alert alert-danger alert-dismissable fade in" role="alert">
                                     <button type="button" class="close" data-dismiss="alert">&times;</button>
                                     Error al insertar la empresa, ya existe.

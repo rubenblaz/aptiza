@@ -10,6 +10,7 @@ use App\Modelo\alumno;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\Modelo\metodos;
+use Session;
 
 class PdfController extends Controller
 {
@@ -37,7 +38,7 @@ class PdfController extends Controller
         $alumno1 = new alumno();
         $profesor1 = new profesor();
 
-        $curso_tutor = $profesor1->cursoTutor();
+        $curso_tutor = $profesor1->cursoTutor(Session::get('USUARIO')->getEmail());
         $alumnos = $alumno1->obtenerDatosAlumnos($curso_tutor);
         $alumnos_v = array();
 

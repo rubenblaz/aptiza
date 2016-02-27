@@ -77,39 +77,19 @@
                     <div class="table table-responsive">
                         <table class="table">
                             <thead>
-                            <th>Preguntas</th>
-                            <th>Valoración</th>
+                            <th>Encuesta</th>
+                            {!! $aux = 0 !!}
+                            @foreach($encuestas as $enc)
+                                <th>{!! $aux !!}</th>
+                                {!! $aux++ !!}
+                            @endforeach
+                            <th>Media</th>
                             </thead>
                             <tbody>
-                            @foreach($preguntas as $preg)
-                                <tr>
-                                    <td>{!! $preg->TEXTO !!}</td>
-                                    <td>{!! Form::select('opciones[]', $opciones, null , array('class'=>'form-control')) !!}</td>
-                                </tr>
-                            @endforeach
+                            
                             </tbody>
-                            <tr>
-                                <td colspan="2" id="info2">
-                                    Incluye aquel/aquellos aspectos que desees destacar como <b>Positivos</b> o en
-                                    su
-                                    caso
-                                    aquel/aquellos
-                                    que deberían <b>mejorarse</b>.
-                                </td>
-                            </tr>
-                            <tr>
-                                <td id="textarea1" title="Aspectos de positivos">
-                                    <b>Aspectos
-                                        positivos:</b>{!! Form::textarea('observaciones1', null, ['class'=>'form-control', 'required'])!!}
-                                </td>
-                                <td title="Aspectos de mejora">
-                                    <b>Aspectos de
-                                        mejora:</b>{!! Form::textarea('observaciones2', null, ['class'=>'form-control', 'required'])!!}
-                                </td>
-                            </tr>
                         </table>
                     </div>
-                    <center>{!! Form::submit('Enviar encuesta',array('class'=>'btn btn-success', 'title'=>'Enviar encuesta')) !!}</center>
                     {!! Form::close() !!}
                 </div>
             </div>

@@ -209,8 +209,7 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Excel' => 'Maatwebsite\Excel\Facades\Excel',
-        'PDF' => 'Barryvdh\DomPDF\Facade',
-        
+        'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 
 ];

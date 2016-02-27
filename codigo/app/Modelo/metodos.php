@@ -68,7 +68,7 @@ class metodos
         $consulta = DB::table('cursos')
             ->join('profesores', 'cursos.IDCICLO', '=', 'profesores.CURSO')
             ->select('cursos.CICLO')
-            ->where('profesores.EMAIL', \Session::get('usuario'))
+            ->where('profesores.EMAIL', Session::get('USUARIO')->getEmail())
             ->get();
         return $consulta;
     }

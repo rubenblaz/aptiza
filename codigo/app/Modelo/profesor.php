@@ -23,11 +23,11 @@ class profesor
     {
     }
 
-    public function cursoTutor()
+    public function cursoTutor($usuario)
     {
         $curso_tutor = DB::table('profesores')
             ->select('CURSO')
-            ->where('EMAIL', Session::get('usuario'))
+            ->where('EMAIL', $usuario)
             ->get();
 
         return $curso_tutor;

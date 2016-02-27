@@ -54,6 +54,8 @@
             <li title="Asignar empresas">{{ Html::link('/practicas', 'Asignar empresas') }}</li>
             <li title="Solicitar encuestas">{{ Html::link('/solencuestas', 'Solicitar encuestas') }}</li>
             <li title="Memoria final">{{ Html::link('/memoria', 'Memoria') }}</li>
+            <li title="Resumen alumnos">{{ Html::link('/resumenalumnos', 'Resumen encuestas alumnos') }}</li>
+            <li title="Resumen empresas">{{ Html::link('/resumenempresas', 'Resumen encuestas empresas') }}</li>
             <li title="Hoja de firmas de alumnos FCT">{{ Html::link('/informe1', 'Hoja de firmas de alumnos FCT') }}</li>
         </ul>
     </li>

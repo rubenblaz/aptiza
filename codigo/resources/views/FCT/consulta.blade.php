@@ -17,7 +17,7 @@
 @stop
 @section('contenido')
     <div class="row">
-        <div class="col-md-7" style="margin-left: 20%; margin-top: 12%;">
+        <div class="col-md-12" style="margin-left: auto; margin-top: auto;">
             <div class="panel panel-default">
                 <center><b><p>Listado completo de todas las empresas disponibles:</p></b></center>
                 <br>
@@ -78,6 +78,7 @@
             </div>
         </div>
     </div>
+@endsection
 @section('scripts')
     <script src="jquery-1.12.0.min.js">
         $('.input_class_checkbox').each(function () {

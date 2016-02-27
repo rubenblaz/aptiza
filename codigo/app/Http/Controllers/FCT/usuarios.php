@@ -15,6 +15,7 @@ class usuarios extends Controller
 {
     public function alta(Request $req)
     {
+        Session::pull('mensajealta');
         /*
          * Datos de alta de las empresas
          */
@@ -52,16 +53,12 @@ class usuarios extends Controller
             $empresa1->insertarUsuario($usuario_empresa, $password, $nombre);
             $empresa1->insertarEmpresa($usuario_empresa, $cif, $nombre, $cp, $telefono, $dnirep, $convenio, $alias, $poblacion, $fax, $observaciones, $fechaconv_vec, $direccion, $provincia, $convrep, $tipoempresa, $fav);
             $mensaje = "ok";
-            $mensaje_v = [
-                'mensaje' => $mensaje
-            ];
+            Session::put('mensajealta', $mensaje);
         } else {
             $mensaje = "error";
-            $mensaje_v = [
-                'mensaje' => $mensaje
-            ];
+            Session::put('mensajealta', $mensaje);
         }
-        return view('FCT/Admin/altaempresas', $mensaje_v);
+        return redirect('altaempresas');
     }
 
     public function practicas(Request $req)
@@ -69,7 +66,7 @@ class usuarios extends Controller
         $profesor1 = new profesor();
         $empresa1 = new empresa();
 
-        $curso_tutor = $profesor1->cursoTutor();
+        $curso_tutor = $profesor1->cursoTutor(Session::get('USUARIO')->getEmail());
 
         $alumnos = $profesor1->misAlumnos($curso_tutor);
 
@@ -131,11 +128,13 @@ class usuarios extends Controller
             }
         }
 
-        return view('FCT/practicas');
+        return redirect('practicas');
     }
 
     public function consulta(Request $req)
     {
+        Session::pull('deleteinfo');
+        Session::pull('empresafav');
         $empresa1 = new empresa();
 
         $todas_empresas = $empresa1->todasEmpresas();
@@ -148,6 +147,7 @@ class usuarios extends Controller
 
     public function empresas_favoritas(Request $req)
     {
+
         $empresasfav = $req->get('favoritas');
 
         for ($i = 0; $i < count($empresasfav); $i++) {
@@ -184,5 +184,19 @@ class usuarios extends Controller
     public function memoriafinal()
     {
         return view('FCT/memoriafinal');
+    }
+
+    public function resumenalumnos()
+    {
+        $alumno1 = new alumno();
+        $encuestas = $alumno1->obtenerEncuestas(Session::get('USUARIO')->getEmail());
+        dd($encuestas);
+
+        return view('FCT/resumenalumnos', $encuestas);
+    }
+
+    public function resumenempresas()
+    {
+
     }
 }

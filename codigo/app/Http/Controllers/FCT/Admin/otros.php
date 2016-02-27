@@ -28,7 +28,7 @@ class otros extends Controller
         $consulta = DB::table('usuarios')
             ->select('*')
             ->where('PASSWORD', $contraseña_actual)
-            ->where('EMAIL', Session::get('usuario'))
+            ->where('EMAIL', Session::get('USUARIO')->getEmail())
             ->count();
 
         $existe = false;
@@ -63,19 +63,18 @@ class otros extends Controller
         $usuario1 = new alumno();
         $empresa1 = new empresa();
         $encuesta1 = new encuesta();
-        $usuario = Session::get('usuario');
-        $rol = Session::get('rol');
+        $usuario = Session::get('USUARIO')->getEmail();
         $curso = Session::get('cursoalumno');
 
-        if (Session::has('usuario') || Session::has('rol')) {
-            if (Session::get('rol') == 4) {
+        if (Session::has('USUARIO')) {
+            if (Session::get('USUARIO')->hasRol(4)) {
                 $preguntas = $encuesta1->obtenerPreguntasEmpresas();
                 $curso_empresa = $empresa1->obtenerCursoAlumnos($usuario);
                 $mi_nombre = $empresa1->obtenerNombre($usuario);
                 Session::put('mi_nombre', $mi_nombre[0]->NOMBRE);
                 Session::put('curso_empresa', $curso_empresa[0]->CICLO);
             }
-            if (Session::get('rol') == 6) {
+            if (Session::get('USUARIO')->hasRol(6)) {
                 $curso_alumno = $usuario1->obtenerCurso(Session::get('usuario'));
                 Session::put('cursoalumno', $curso_alumno[0]->CURSO);
                 $nombre_curso = $usuario1->obtenerNombreCurso($usuario);
