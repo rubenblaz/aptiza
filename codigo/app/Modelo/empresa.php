@@ -74,9 +74,14 @@ class empresa
 
     public function todasEmpresas()
     {
+        /*
         $consulta = DB::table('empresas')
             ->select('EMAIL', 'CIF', 'POBLACION', 'PROVINCIA', 'TELEFONO', 'NOMBRE', 'ALIAS', 'FAVORITA')
             ->get();
+        */
+        $consulta = DB::table('empresas')
+            ->select('EMAIL', 'CIF', 'POBLACION', 'PROVINCIA', 'TELEFONO', 'NOMBRE', 'ALIAS', 'FAVORITA')
+            ->paginate(10);
         return $consulta;
     }
 

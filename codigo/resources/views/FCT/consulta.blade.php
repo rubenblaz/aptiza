@@ -73,6 +73,7 @@
                         </tbody>
                     </table>
                 </div>
+                {!! $empresas->render() !!}
                 <center>{!! Form::submit('Aceptar', array('class'=>'btn btn-success')) !!}</center>
                 {!! Form::close() !!}
             </div>

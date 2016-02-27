@@ -67,6 +67,7 @@
                             </tbody>
                         </table>
                     </div>
+                    {!! $alumnos->render() !!}
                     <center>{!! Form::submit('Asignar', array('class'=>'btn btn-success', 'id'=>'asignar')) !!}</center>
                 </div>
             </div>
