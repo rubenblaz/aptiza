@@ -28,6 +28,9 @@
         #info2 {
             text-align: center;
         }
+        span{
+            display: none;
+        }
     </style>
 @stop
 @section('migas')
@@ -42,55 +45,35 @@
         <div class="col-md-12" style="margin-left: auto; margin-top: auto; width: auto;">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    {!! Form::open(array('action' => 'FCT\encuestas@encuestas')) !!}
-                    @if(Session::get('USUARIO')->hasRol(6))
-                        <center><h4>CUESTIONARIO SOBRE FCT ALUMNADO</h4></center>
-                    @else
-                        <center><h4>CUESTIONARIO SOBRE FCT EMPRESA</h4></center>
-                    @endif
-                    <hr>
-                    <div id="contenedorinfo">
-                        <div class="infoextra" id="hola">
-                            Curso escolar<br>
-                        </div>
-                        <div class="infoextra">
-                            Ciclo formativo<br>
-                            @if(Session::get('USUARIO')->hasRol(6))
-                                {!! Session::get('nombre_curso') !!}
-                            @else
-                                {!! Session::get('curso_empresa') !!}
-                            @endif
-                        </div>
-                        <div class="infoextra">
-                            Periodo de realización<br>
-                        </div>
-                        <div class="infoextra">
-                            Empresa<br>
-                            @if(Session::get('USUARIO')->hasRol(6))
-                                {!! Session::get('nombre_empresa') !!}
-                            @else
-                                {!! Session::get('mi_nombre') !!}
-                            @endif
-                        </div>
-                    </div>
-                    <hr>
                     <div class="table table-responsive">
                         <table class="table">
                             <thead>
                             <th>Encuesta</th>
-                            {!! $aux = 0 !!}
+                            <span>{!! $aux = 0 !!}</span>
                             @foreach($encuestas as $enc)
                                 <th>{!! $aux !!}</th>
-                                {!! $aux++ !!}
+                                <span>{!! $aux++ !!}</span>
                             @endforeach
                             <th>Media</th>
                             </thead>
                             <tbody>
-                            
+                            @foreach($encuestas as $enc)
+                                <tr>
+                                    <td>{!! $enc->IDUSUARIO !!}</td>
+                                    <td>{!! $enc->IDPREGUNTA !!}</td>
+                                    <td>{!! $enc->IDOPCION !!}</td>
+                                    <td>NA</td>
+                                </tr>
+                            @endforeach
+                            <tr>
+                                <td>Media</td>
+                                <td>NA</td>
+                                <td>NA</td>
+                                <td>NA</td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
-                    {!! Form::close() !!}
                 </div>
             </div>
         </div>

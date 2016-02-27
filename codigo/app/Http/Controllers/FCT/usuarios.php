@@ -190,9 +190,11 @@ class usuarios extends Controller
     {
         $alumno1 = new alumno();
         $encuestas = $alumno1->obtenerEncuestas(Session::get('USUARIO')->getEmail());
-        dd($encuestas);
-
-        return view('FCT/resumenalumnos', $encuestas);
+        //dd($encuestas);
+        $datos = [
+            'encuestas' => $encuestas
+        ];
+        return view('FCT/resumenalumnos', $datos);
     }
 
     public function resumenempresas()

@@ -25,8 +25,8 @@
       <file leaf-file-name="usuarios.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/codigo/app/Http/Controllers/FCT/usuarios.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.038462">
-              <caret line="194" column="52" selection-start-line="194" selection-start-column="52" selection-end-line="194" selection-end-column="52" />
+            <state vertical-scroll-proportion="-14.769231">
+              <caret line="192" column="10" selection-start-line="192" selection-start-column="10" selection-end-line="192" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -35,10 +35,10 @@
       <file leaf-file-name="resumenalumnos.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/codigo/resources/views/FCT/resumenalumnos.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.57039714">
-              <caret line="88" column="28" selection-start-line="88" selection-start-column="28" selection-end-line="88" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.4169675">
+              <caret line="59" column="56" selection-start-line="59" selection-start-column="56" selection-end-line="59" selection-end-column="56" />
               <folding>
-                <element signature="e#951#1008#0#HTML" expanded="true" />
+                <element signature="e#1002#1059#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -47,8 +47,8 @@
       <file leaf-file-name="alumno.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/codigo/app/Modelo/alumno.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.076923">
-              <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+            <state vertical-scroll-proportion="-14.269231">
+              <caret line="89" column="12" selection-start-line="89" selection-start-column="12" selection-end-line="89" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -750,7 +750,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24524158" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1034,13 +1034,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/codigo/storage/framework/views/d1e3ff215a1b187088520e938a81dd5276415e69.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.566787">
-          <caret line="21" column="59" selection-start-line="21" selection-start-column="59" selection-end-line="21" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/codigo/resources/views/layouts/plantilla.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.1046932">
@@ -1165,14 +1158,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/codigo/app/Modelo/alumno.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.076923">
-          <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/codigo/resources/views/FCT/encuestas.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.153846">
@@ -1183,20 +1168,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/codigo/app/Modelo/alumno.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.269231">
+          <caret line="89" column="12" selection-start-line="89" selection-start-column="12" selection-end-line="89" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/codigo/app/Http/Controllers/FCT/usuarios.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.038462">
-          <caret line="194" column="52" selection-start-line="194" selection-start-column="52" selection-end-line="194" selection-end-column="52" />
+        <state vertical-scroll-proportion="-14.769231">
+          <caret line="192" column="10" selection-start-line="192" selection-start-column="10" selection-end-line="192" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/codigo/resources/views/FCT/resumenalumnos.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.57039714">
-          <caret line="88" column="28" selection-start-line="88" selection-start-column="28" selection-end-line="88" selection-end-column="28" />
+        <state vertical-scroll-proportion="0.4169675">
+          <caret line="59" column="56" selection-start-line="59" selection-start-column="56" selection-end-line="59" selection-end-column="56" />
           <folding>
-            <element signature="e#951#1008#0#HTML" expanded="true" />
+            <element signature="e#1002#1059#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
