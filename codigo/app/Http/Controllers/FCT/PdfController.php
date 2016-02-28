@@ -30,7 +30,7 @@ class PdfController extends Controller
         $view = \View::make('FCT/invoice', compact('data', 'date', 'invoice', 'curso2'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        return $pdf->stream('FCT/invoice');
+        return $pdf->stream('invoice');
     }
 
     public function getData()

@@ -2,10 +2,10 @@
 @section('customcss')
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css"/>
-    <style type="text/css"> body {
+    <style type="text/css">
+        body {
             background-color: #269abc;
         }
-
         .infoextra {
             display: inline-flex;
             margin-left: 7.5%;

@@ -28,7 +28,8 @@
         #info2 {
             text-align: center;
         }
-        span{
+
+        span {
             display: none;
         }
     </style>
@@ -49,22 +50,20 @@
                         <table class="table">
                             <thead>
                             <th>Encuesta</th>
-                            <span>{!! $aux = 0 !!}</span>
                             @foreach($encuestas as $enc)
-                                <th>{!! $aux !!}</th>
-                                <span>{!! $aux++ !!}</span>
+                                <th>{!! $enc->IDPREGUNTA !!}</th>
                             @endforeach
                             <th>Media</th>
                             </thead>
                             <tbody>
-                            @foreach($encuestas as $enc)
-                                <tr>
-                                    <td>{!! $enc->IDUSUARIO !!}</td>
-                                    <td>{!! $enc->IDPREGUNTA !!}</td>
-                                    <td>{!! $enc->IDOPCION !!}</td>
-                                    <td>NA</td>
-                                </tr>
-                            @endforeach
+                            <tr>
+                                <td>
+                                    @foreach($encuestas as $enc)
+                                        {!! $enc->IDENCUESTA !!}
+                                </td>
+                                <td>{!! $enc->IDOPCION !!}</td>
+                                @endforeach
+                            </tr>
                             <tr>
                                 <td>Media</td>
                                 <td>NA</td>

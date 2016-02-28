@@ -14,6 +14,53 @@ use App\Modelo\encuesta;
 
 class encuestas extends Controller
 {
+    public function urlencuestas() //pendiente de modificar
+    {
+        $usuario1 = new alumno();
+        $empresa1 = new empresa();
+        $encuesta1 = new encuesta();
+        $usuario = Session::get('USUARIO')->getEmail();
+        //$curso = Session::get('cursoalumno');
+        if (Session::has('USUARIO')) {
+            if (Session::get('USUARIO')->hasRol(4)) {
+                $preguntas = $encuesta1->obtenerPreguntasEmpresas();
+                $curso_empresa = $empresa1->obtenerCursoAlumnos($usuario);
+                $mi_nombre = $empresa1->obtenerNombre($usuario);
+                Session::put('mi_nombre', $mi_nombre[0]->NOMBRE);
+                Session::put('curso_empresa', $curso_empresa[0]->CICLO);
+            }
+            if (Session::get('USUARIO')->hasRol(6)) {
+                $curso_alumno = $usuario1->obtenerCurso($usuario);
+                Session::put('cursoalumno', $curso_alumno[0]->CURSO);
+                $nombre_curso = $usuario1->obtenerNombreCurso($usuario);
+                $nombre_empresa = $empresa1->obtenerNombreEmpresa($usuario);
+                Session::put('nombre_curso', $nombre_curso[0]->CICLO);
+                Session::put('nombre_empresa', $nombre_empresa[0]->NOMBRE);
+                $preguntas = $encuesta1->obtenerPreguntasAlumnos();
+            }
+        }
+
+        Session::put('preguntas', $preguntas);
+
+        //dd($preguntas);
+
+        $opciones = DB::table('modelo_opcion')
+            ->select('IDOPCION', 'OPCION')
+            ->get();
+        $opciones_v = array();
+
+        foreach ($opciones as $opc) {
+            $opciones_v[$opc->IDOPCION] = $opc->OPCION;
+        }
+
+        $datos = [
+            'preguntas' => $preguntas,
+            'opciones' => $opciones_v
+        ];
+
+        return view("FCT/encuestas", $datos);
+    }
+
     public function encuestas(Request $req)
     {
         $usuario1 = new alumno();

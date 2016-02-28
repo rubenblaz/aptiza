@@ -1,19 +1,14 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>PDF del informe de alumnos FCT</title>
+    {!! Html::style('css/FCT/pdf.css') !!}
 </head>
 <body>
 <main>
     <div id="details" class="clearfix">
         <div id="invoice">
-            <img src="img/FCT/cabecera.png" alt="Cabecera" width="100%"/>
+            <img src="img/FCT/cabecera1.png" alt="Cabecera" width="100%"/>
             <br>
             {{--<h1>{{ $invoice }}</h1>--}}
             <br>
