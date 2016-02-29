@@ -57,18 +57,16 @@
                             </thead>
                             <tbody>
                             <tr>
-                                <td>
-                                    @foreach($encuestas as $enc)
-                                        {!! $enc->IDENCUESTA !!}
-                                </td>
-                                <td>{!! $enc->IDOPCION !!}</td>
+                                @foreach($encuestas as $enc)
+                                    <td>{!! $enc->IDENCUESTA !!}</td>
+                                    <td>{!! $enc->IDOPCION !!}</td>
                                 @endforeach
                             </tr>
                             <tr>
                                 <td>Media</td>
-                                <td>NA</td>
-                                <td>NA</td>
-                                <td>NA</td>
+                                @foreach($encuestas as $enc)
+                                    <td>NA</td>
+                                @endforeach
                             </tr>
                             </tbody>
                         </table>

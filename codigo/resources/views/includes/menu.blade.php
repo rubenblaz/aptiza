@@ -68,7 +68,7 @@
         </a>
 
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
-            <li title="Encuestas">{{ Html::link('/encuestas', 'Encuestas') }}</li>
+            <li title="Encuestas">{{ Html::link('/encuestas4', 'Encuestas') }}</li>
         </ul>
     </li>
     @endif
@@ -81,7 +81,7 @@
         </a>
 
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu5">
-            <li title="Encuestas">{{ Html::link('/encuestas', 'Encuestas') }}</li>
+            <li title="Encuestas">{{ Html::link('/encuestas6', 'Encuestas') }}</li>
         </ul>
     </li>
     @endif

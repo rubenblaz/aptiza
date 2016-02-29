@@ -48,6 +48,7 @@ class Usuario {
                 $this->nombre = $resultado[0]->NOMBRE;
                 $this->roles = $this->consultarRoles($this->email);
                 $user = $this;
+
             }
         }
         
@@ -67,7 +68,7 @@ class Usuario {
            
             $roles[] = $var->IDROL;
         }
-        
+
         return $roles;
     }
     /**
@@ -119,7 +120,6 @@ class Usuario {
      * @return boolean
      */
     public function hasRol($rol){
-        
         return (in_array($rol,$this->roles));
     }
     
