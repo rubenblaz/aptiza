@@ -103,6 +103,7 @@ Route::group(['middleware' => ['web', 'validarRol:3']], function () {
     Route::get('/resumenempresas', 'FCT\usuarios@resumenempresas');
     Route::get('/solencuestas', 'FCT\usuarios@solencuestas');
     Route::get('/enviardatos/{CIF}', 'FCT\usuarios@enviaremail');
+    Route::match(array('GET', 'POST'), 'generarexcel1', 'FCT\usuarios@generar_excel'); //Submit de empresas favoritas
 
 });
 

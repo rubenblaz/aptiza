@@ -22,34 +22,44 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="resumenalumnos.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/codigo/resources/views/FCT/resumenalumnos.blade.php">
+      <file leaf-file-name="usuarios.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/codigo/app/Http/Controllers/FCT/usuarios.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.923077">
-              <caret line="59" column="36" selection-start-line="59" selection-start-column="36" selection-end-line="59" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/codigo/app/Http/routes.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.076923">
-              <caret line="111" column="38" selection-start-line="111" selection-start-column="38" selection-end-line="111" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="encuestas.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/codigo/app/Http/Controllers/FCT/encuestas.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8158845">
-              <caret line="98" column="12" selection-start-line="98" selection-start-column="12" selection-end-line="98" selection-end-column="12" />
+            <state vertical-scroll-proportion="-10.846154">
+              <caret line="202" column="41" selection-start-line="202" selection-start-column="41" selection-end-line="202" selection-end-column="41" />
               <folding>
-                <element signature="e#44#67#0#PHP" expanded="true" />
+                <element signature="e#44#66#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="profesor.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/codigo/app/Modelo/profesor.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.6787004">
+              <caret line="74" column="170" selection-start-line="74" selection-start-column="170" selection-end-line="74" selection-end-column="170" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="memoriafinal.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/codigo/resources/views/FCT/memoriafinal.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="36.153847">
+              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="altaempresas.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/codigo/resources/views/FCT/Admin/altaempresas.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="31.0">
+              <caret line="84" column="66" selection-start-line="84" selection-start-column="66" selection-end-line="84" selection-end-column="66" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -68,15 +78,12 @@
         <option value="$PROJECT_DIR$/codigo/resources/views/FCT/Admin/direccion.blade.php" />
         <option value="$PROJECT_DIR$/codigo/resources/views/FCT/Admin/modempresas.blade.php" />
         <option value="$PROJECT_DIR$/codigo/resources/views/FCT/admincuenta.blade.php" />
-        <option value="$PROJECT_DIR$/codigo/resources/views/FCT/memoriafinal.blade.php" />
         <option value="$PROJECT_DIR$/codigo/resources/views/layouts/plantilla.blade.php" />
         <option value="$PROJECT_DIR$/codigo/resources/views/FCT/alumnos.blade.php" />
         <option value="$PROJECT_DIR$/codigo/resources/views/FCT/profesor.blade.php" />
         <option value="$PROJECT_DIR$/codigo/app/Modelo/metodos.php" />
         <option value="$PROJECT_DIR$/codigo/config/app.php" />
         <option value="$PROJECT_DIR$/codigo/resources/views/FCT/Admin/altaempresas.blade.php" />
-        <option value="$PROJECT_DIR$/codigo/resources/views/FCT/consulta.blade.php" />
-        <option value="$PROJECT_DIR$/codigo/app/Modelo/profesor.php" />
         <option value="$PROJECT_DIR$/codigo/resources/views/FCT/practicas.blade.php" />
         <option value="$PROJECT_DIR$/codigo/app/Http/Controllers/FCT/PdfController.php" />
         <option value="$PROJECT_DIR$/codigo/resources/views/FCT/invoice.blade.php" />
@@ -88,14 +95,18 @@
         <option value="$PROJECT_DIR$/codigo/app/Http/Middleware/ValidacionRutas.php" />
         <option value="$PROJECT_DIR$/codigo/resources/views/includes/menu.blade.php" />
         <option value="$PROJECT_DIR$/codigo/resources/views/FCT/encuestas.blade.php" />
-        <option value="$PROJECT_DIR$/codigo/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/codigo/resources/views/FCT/solencuestas.blade.php" />
         <option value="$PROJECT_DIR$/codigo/app/Modelo/empresa.php" />
         <option value="$PROJECT_DIR$/codigo/resources/views/emails/FCT/datos.blade.php" />
-        <option value="$PROJECT_DIR$/codigo/app/Http/Controllers/FCT/usuarios.php" />
+        <option value="$PROJECT_DIR$/codigo/app/Http/Controllers/FCT/encuestas.php" />
+        <option value="$PROJECT_DIR$/codigo/app/Modelo/encuesta.php" />
+        <option value="$PROJECT_DIR$/codigo/resources/views/FCT/consulta.blade.php" />
         <option value="$PROJECT_DIR$/codigo/resources/views/FCT/resumenalumnos.blade.php" />
         <option value="$PROJECT_DIR$/codigo/app/Modelo/alumno.php" />
-        <option value="$PROJECT_DIR$/codigo/app/Http/Controllers/FCT/encuestas.php" />
+        <option value="$PROJECT_DIR$/codigo/app/Http/routes.php" />
+        <option value="$PROJECT_DIR$/codigo/app/Http/Controllers/FCT/usuarios.php" />
+        <option value="$PROJECT_DIR$/codigo/app/Modelo/profesor.php" />
+        <option value="$PROJECT_DIR$/codigo/resources/views/FCT/memoriafinal.blade.php" />
       </list>
     </option>
   </component>
@@ -140,7 +151,6 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -811,6 +821,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -931,13 +942,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/codigo/resources/views/FCT/profesor.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/codigo/resources/views/FCT/Admin/altaempresas.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -980,20 +984,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/codigo/resources/views/FCT/alumnos.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.2888087">
-          <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codigo/resources/views/FCT/memoriafinal.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.3375452">
-          <caret line="69" column="14" selection-start-line="69" selection-start-column="14" selection-end-line="69" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/codigo/resources/views/FCT/admincuenta.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1015,20 +1005,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/codigo/resources/views/FCT/empresa.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.6570397">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codigo/resources/views/FCT/profesor.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.7797834">
-          <caret line="59" column="31" selection-start-line="59" selection-start-column="31" selection-end-line="59" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/codigo/app/Modelo/metodos.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.63176894">
@@ -1047,13 +1023,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-16.346153">
           <caret line="69" column="20" selection-start-line="69" selection-start-column="20" selection-end-line="69" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codigo/app/Modelo/profesor.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7238267">
-          <caret line="46" column="26" selection-start-line="46" selection-start-column="26" selection-end-line="46" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -1089,20 +1058,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-26.538462">
           <caret line="61" column="5" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codigo/app/Modelo/encuesta.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.423077">
-          <caret line="28" column="20" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codigo/config/app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7400722">
-          <caret line="211" column="47" selection-start-line="211" selection-start-column="47" selection-end-line="211" selection-end-column="47" />
         </state>
       </provider>
     </entry>
@@ -1169,24 +1124,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/codigo/resources/views/includes/menu.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8898917">
-          <caret line="70" column="60" selection-start-line="70" selection-start-column="60" selection-end-line="70" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/codigo/resources/views/FCT/encuestas.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.63176894">
           <caret line="34" column="37" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codigo/resources/views/FCT/consulta.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.55595666">
-          <caret line="62" column="40" selection-start-line="62" selection-start-column="40" selection-end-line="62" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -1232,13 +1173,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/codigo/resources/views/FCT/Admin/altaempresas.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.03068592">
-          <caret line="19" column="11" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/codigo/resources/views/emails/recuperarpass.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3068592">
@@ -1253,49 +1187,103 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/codigo/resources/views/FCT/resumenalumnos.blade.php">
+    <entry file="file://$PROJECT_DIR$/codigo/app/Modelo/encuesta.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.923077">
-          <caret line="59" column="36" selection-start-line="59" selection-start-column="36" selection-end-line="59" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codigo/app/Http/Controllers/FCT/usuarios.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.77075815">
-          <caret line="197" column="44" selection-start-line="197" selection-start-column="44" selection-end-line="197" selection-end-column="44" />
-          <folding>
-            <element signature="e#44#66#0#PHP" expanded="true" />
-            <element signature="e#6294#6547#0#PHP" expanded="false" />
-            <element signature="e#6553#7043#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codigo/app/Modelo/alumno.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39891696">
-          <caret line="57" column="32" selection-start-line="57" selection-start-column="32" selection-end-line="57" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codigo/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.076923">
-          <caret line="111" column="38" selection-start-line="111" selection-start-column="38" selection-end-line="111" selection-end-column="38" />
+        <state vertical-scroll-proportion="0.8465704">
+          <caret line="66" column="25" selection-start-line="66" selection-start-column="25" selection-end-line="66" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/codigo/app/Http/Controllers/FCT/encuestas.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8158845">
+        <state vertical-scroll-proportion="0.47833934">
           <caret line="98" column="12" selection-start-line="98" selection-start-column="12" selection-end-line="98" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/codigo/resources/views/includes/menu.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28880867">
+          <caret line="55" column="59" selection-start-line="55" selection-start-column="59" selection-end-line="55" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/codigo/resources/views/FCT/resumenalumnos.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.3076923">
+          <caret line="38" column="37" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/codigo/app/Modelo/alumno.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.423077">
+          <caret line="69" column="20" selection-start-line="69" selection-start-column="20" selection-end-line="69" selection-end-column="20" />
           <folding>
-            <element signature="e#44#67#0#PHP" expanded="true" />
+            <element signature="e#31#70#0#PHP" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/codigo/resources/views/FCT/consulta.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.10469314">
+          <caret line="68" column="64" selection-start-line="68" selection-start-column="64" selection-end-line="68" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/codigo/app/Http/Controllers/FCT/usuarios.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.846154">
+          <caret line="202" column="41" selection-start-line="202" selection-start-column="41" selection-end-line="202" selection-end-column="41" />
+          <folding>
+            <element signature="e#44#66#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/codigo/resources/views/FCT/Admin/altaempresas.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="31.0">
+          <caret line="84" column="66" selection-start-line="84" selection-start-column="66" selection-end-line="84" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/codigo/config/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7761733">
+          <caret line="211" column="47" selection-start-line="211" selection-start-column="47" selection-end-line="211" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/codigo/resources/views/FCT/memoriafinal.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="36.153847">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/codigo/app/Http/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.64440435">
+          <caret line="105" column="65" selection-start-line="105" selection-start-column="65" selection-end-line="105" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/codigo/app/Modelo/profesor.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6787004">
+          <caret line="74" column="170" selection-start-line="74" selection-start-column="170" selection-end-line="74" selection-end-column="170" />
+          <folding />
         </state>
       </provider>
     </entry>

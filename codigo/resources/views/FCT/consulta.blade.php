@@ -5,6 +5,10 @@
         body {
             background-color: #269abc;
         }
+
+        input[type='checkbox']{
+
+        }
     </style>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css"/>
 @stop
@@ -75,6 +79,7 @@
                 </div>
                 {!! $empresas->render() !!}
                 <center>{!! Form::submit('Aceptar', array('class'=>'btn btn-success')) !!}</center>
+                <br>
                 {!! Form::close() !!}
             </div>
         </div>

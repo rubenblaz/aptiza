@@ -50,18 +50,20 @@
                         <table class="table">
                             <thead>
                             <th>Encuesta</th>
-                            @foreach($encuestas as $enc)
-                                <th>{!! $enc->IDPREGUNTA !!}</th>
+                            @foreach($preguntas as $preg)
+                                <th>{!! $preg !!}</th>
                             @endforeach
                             <th>Media</th>
                             </thead>
                             <tbody>
-                            @foreach($encuestas as $enc)
+                            @for($i=0;$i<count($encuestas);$i++)
                                 <tr>
-                                    <td>{!! $enc->IDENCUESTA !!}</td>
-                                    <td>{!! $enc->IDOPCION !!}</td>
+                                    <td>{!! $i !!}</td>
+                                    @foreach($encuestas as $enc)
+                                        <td>{!! $enc->IDOPCION !!}</td>
+                                    @endforeach
                                 </tr>
-                            @endforeach
+                            @endfor
                             <tr>
                                 <td>Media</td>
                             </tr>

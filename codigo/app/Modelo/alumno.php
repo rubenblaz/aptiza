@@ -3,11 +3,13 @@
 
 namespace app\Modelo;
 
+use App\Http\Controllers\FCT\encuestas;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Session;
+use App\Modelo\encuesta;
 
 class alumno
 {
@@ -85,10 +87,16 @@ class alumno
         $consulta2 = DB::table('encuesta')
             ->join('elige', 'encuesta.IDENCUESTA', '=', 'elige.IDENCUESTA')
             ->join('profesores', 'profesores.CURSO', '=', 'encuesta.IDCICLO')
-            ->select('encuesta.IDENCUESTA', 'encuesta.IDUSUARIO', 'elige.IDPREGUNTA', 'elige.IDOPCION')
+            ->select('encuesta.IDENCUESTA', 'elige.IDOPCION')
             ->where('profesores.CURSO', $curso)
             ->where('profesores.EMAIL', $email)
+            ->where('encuesta.IDMODELO', 1)
+            ->orderBy('encuesta.IDENCUESTA', 'elige.IDPREGUNTA')
             ->get();
+        $consulta3 = array();
+        dd($consulta2);
+
+
 
         return $consulta2;
     }

@@ -40,7 +40,8 @@ class encuesta
         return $preguntas;
     }
 
-    public function obtenerPreguntasAlumnos(){
+    public function obtenerPreguntasAlumnos()
+    {
         $preguntas = DB::table('tiene')
             ->join('modelo_pregunta', 'modelo_pregunta.IDPREGUNTA', '=', 'tiene.IDMPREGUNTA')
             ->select('modelo_pregunta.*')
@@ -51,5 +52,18 @@ class encuesta
             ->get();
 
         return $preguntas;
+    }
+
+    public function obtenerPreguntasModeloAlumno()
+    {
+        $consulta = DB::table('tiene')
+            ->select('IDMPREGUNTA')
+            ->where('IDMENCUESTA', 1)
+            ->where('IDMPREGUNTA', '!=', 15)
+            ->where('IDMPREGUNTA', '!=', 16)
+            ->orderBy('IDMPREGUNTA')
+            ->get();
+
+        return $consulta;
     }
 }
