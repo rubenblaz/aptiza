@@ -56,17 +56,14 @@
                             <th>Media</th>
                             </thead>
                             <tbody>
-                            <tr>
-                                @foreach($encuestas as $enc)
+                            @foreach($encuestas as $enc)
+                                <tr>
                                     <td>{!! $enc->IDENCUESTA !!}</td>
                                     <td>{!! $enc->IDOPCION !!}</td>
-                                @endforeach
-                            </tr>
+                                </tr>
+                            @endforeach
                             <tr>
                                 <td>Media</td>
-                                @foreach($encuestas as $enc)
-                                    <td>NA</td>
-                                @endforeach
                             </tr>
                             </tbody>
                         </table>

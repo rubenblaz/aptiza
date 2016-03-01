@@ -54,9 +54,8 @@ class alumno
     {
         $consulta = DB::table('encuesta')
             ->select('IDENCUESTA')
-            ->max('IDENCUESTA')
             ->where('IDUSUARIO', $usuario)
-            ->get();
+            ->max('IDENCUESTA');
 
         return $consulta;
     }

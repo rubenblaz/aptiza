@@ -71,6 +71,7 @@ class encuestas extends Controller
         $idpreguntas = Session::get('preguntas');
 
         $usuario = Session::get('USUARIO')->getEmail();
+
         //$curso = Session::get('cursoalumno');
         $curso = $usuario1->obtenerCurso(Session::get('USUARIO')->getEmail());
 
@@ -80,8 +81,9 @@ class encuestas extends Controller
 
         if (Session::get('USUARIO')->hasRol(6)) { //Alumnos
             DB::table('encuesta')->insert(
-                ['IDUSUARIO' => $usuario, 'IDCICLO' => $curso, 'IDMODELO' => 1]
+                ['IDUSUARIO' => $usuario, 'IDCICLO' => $curso[0]->CURSO, 'IDMODELO' => 1]
             );
+
             $idencuesta = $usuario1->obtenerIdEncuesta($usuario);
 
             for ($i = 0; $i < count($idpreguntas_v); $i++) {
@@ -91,14 +93,16 @@ class encuestas extends Controller
         }
         if (Session::get('USUARIO')->hasRol(4)) { //Empresas
             DB::table('encuesta')->insert(
-                ['IDUSUARIO' => $usuario, 'IDCICLO' => $curso, 'IDMODELO' => 2]
+                ['IDUSUARIO' => $usuario, 'IDCICLO' => $curso[0]->CURSO, 'IDMODELO' => 2]
             );
             $idencuesta = $usuario1->obtenerIdEncuesta($usuario);
+            
             for ($i = 0; $i < count($idpreguntas_v); $i++) {
                 DB::table('elige')->insert(
                     ['IDENCUESTA' => $idencuesta, 'IDPREGUNTA' => $idpreguntas_v[$i], 'IDOPCION' => $seleccion[$i]]);
             }
         }
-        return view('FCT/encuestas');
+        //return view('FCT/encuestas');
+        return view('inicio');
     }
 }

@@ -146,4 +146,12 @@ class empresa
         return $consulta;
     }
 
+    public function obtenerEmail($cif)
+    {
+        $consulta = DB::table('empresas')
+            ->select('EMAIL')
+            ->where('CIF', $cif)
+            ->get();
+        return $consulta;
+    }
 }

@@ -101,11 +101,10 @@ Route::group(['middleware' => ['web', 'validarRol:3']], function () {
     Route::get('pdf', 'FCT\PdfController@invoice'); //PDF
     Route::get('/resumenalumnos', 'FCT\usuarios@resumenalumnos');
     Route::get('/resumenempresas', 'FCT\usuarios@resumenempresas');
-
+    Route::get('/solencuestas', 'FCT\usuarios@solencuestas');
+    Route::get('/enviardatos/{CIF}', 'FCT\usuarios@enviaremail');
 
 });
-
-
 
 //Rutas de empresas FCT
 Route::group(['middleware' => ['web', 'validarRol:4']], function () {

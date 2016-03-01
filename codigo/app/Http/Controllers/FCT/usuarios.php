@@ -10,6 +10,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Session;
+use Mail;
+use Hash;
 
 class usuarios extends Controller
 {
@@ -40,10 +42,14 @@ class usuarios extends Controller
         $email = $req->get('email');
         $fechaconv_vec = date("Y-m-d", strtotime($fechaconv)); //Conversion de formato
         $fav = $req->get('favorita');
+        //$password2 = $password;
+
         $empresa1 = new empresa();
+
 
         $existe = $empresa1->comprobarEmpresa($cif);
         $existe2 = $empresa1->comprobarUsuario($usuario_empresa);
+        //$password = Hash::make($password); //Encriptar contraseña
 
         /*
          * Insertar los datos del formulario en la tabla de empresas
@@ -201,4 +207,34 @@ class usuarios extends Controller
     {
 
     }
+
+    public function solencuestas()
+    {
+        $empresa1 = new empresa();
+
+        $todas_empresas = $empresa1->todasEmpresas();
+        $datos = [
+            'empresas' => $todas_empresas
+        ];
+        return view('FCT/solencuestas', $datos);
+    }
+
+    public function enviaremail(Request $req)
+    {
+        $empresa1 = new empresa();
+        $cif = $req->CIF;
+        $email_empresa = $empresa1->obtenerEmail($cif)[0]->EMAIL;
+        /*
+        $datos = [
+            'usuario' => $email_empresa,
+            'pass' => $pass
+        ];
+        */
+        Mail::send('emails.recuperarpass', null , function ($message) use ($email_empresa) {
+            $message->to($email_empresa)->subject('Introducir nueva contraseña');
+        });
+
+
+    }
+
 }
