@@ -56,17 +56,23 @@
                             <th>Media</th>
                             </thead>
                             <tbody>
-                            @for($i=0;$i<count($encuestas);$i++)
-                                <tr>
-                                    <td>{!! $i !!}</td>
-                                    @foreach($encuestas as $enc)
-                                        <td>{!! $enc->IDOPCION !!}</td>
+                            <span>{!! $cont = 0 !!}</span>
+                            @foreach($encuestas as $enc)
+                                @if($cont%10 == 0)
+                                    <tr>
+                                        <td>
+                                            {!! $enc->IDENCUESTA !!}
+                                        </td>
+                                        @endif
+                                        <td>
+                                            {!! $enc->IDOPCION !!}
+                                        </td>
+                                    <span>{!! $cont++ !!}</span>
                                     @endforeach
-                                </tr>
-                            @endfor
-                            <tr>
-                                <td>Media</td>
-                            </tr>
+                                    </tr>
+                                    <tr>
+                                        <td>Media</td>
+                                    </tr>
                             </tbody>
                         </table>
                     </div>

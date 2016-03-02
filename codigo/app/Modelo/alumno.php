@@ -84,8 +84,8 @@ class alumno
             ->where('EMAIL', $email)
             ->get();
         $curso = $consulta1[0]->CURSO;
-        $consulta2 = DB::table('encuesta')
-            ->join('elige', 'encuesta.IDENCUESTA', '=', 'elige.IDENCUESTA')
+        $consulta2 = DB::table('encuesta')//ENCUESTAS
+        ->join('elige', 'encuesta.IDENCUESTA', '=', 'elige.IDENCUESTA')
             ->join('profesores', 'profesores.CURSO', '=', 'encuesta.IDCICLO')
             ->select('encuesta.IDENCUESTA', 'elige.IDOPCION')
             ->where('profesores.CURSO', $curso)
@@ -93,11 +93,10 @@ class alumno
             ->where('encuesta.IDMODELO', 1)
             ->orderBy('encuesta.IDENCUESTA', 'elige.IDPREGUNTA')
             ->get();
+
         $consulta3 = array();
-        dd($consulta2);
 
-
-
+        //dd($consulta2);
         return $consulta2;
     }
 }
