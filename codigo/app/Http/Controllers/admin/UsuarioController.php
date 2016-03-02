@@ -50,9 +50,9 @@ class UsuarioController extends Controller
             $mensaje = 'Creado correctamente';
             $datosemail['email'] = $email;
             $datosemail['pass'] = Usuario::seleccionar_usuario($email)[0]->PASS;
-
+            
             Mail::send('emails.recuperarpass', $datosemail, function($message)use ($email) {
-                $message->to($email)->subject('Cambio de contraseña');
+                $message->to($email)->subject('Nuevo Usuario');
             });
             return redirect()->action('admin\UsuarioController@listar', ['mensaje' => $mensaje]);
         }
@@ -60,7 +60,7 @@ class UsuarioController extends Controller
             $mensaje_error = 'Correo duplicado';
             return redirect()->action('admin\UsuarioController@index', ['mensaje_error' => $mensaje_error]);
         }
-
+        
 
     }
 

@@ -58,15 +58,15 @@ Route::group(['middleware' => ['web']], function () {
 Route::group(['middleware' => ['web', 'validarRol:0']], function () {
     Route::get('admininicio', 'Usuarios@inicio');
 
-    Route::get('/admin-aulas/', ['as' => 'admin-aulas', 'uses' => 'reservas\reservasAdminController@mostrar_aulas']);
-    Route::post('/admin-aulas/aula_creada', 'reservas\reservasAdminController@crear_aulas');
-    Route::get('/admin-aulas/aula_eliminada/{AULA}', array('uses' => 'reservas\reservasAdminController@eliminar_aula'));
-    Route::post('/admin-aulas/aula_editar', array('uses' => 'reservas\reservasAdminController@editar_aula'));
+    Route::get('/admin-aulas/', ['as' => 'admin-aulas', 'uses' => 'reservas\ReservasAdminController@mostrar_aulas']);
+    Route::post('/admin-aulas/aula_creada', 'reservas\ReservasAdminController@crear_aulas');
+    Route::get('/admin-aulas/aula_eliminada/{AULA}', array('uses' => 'reservas\ReservasAdminController@eliminar_aula'));
+    Route::post('/admin-aulas/aula_editar', array('uses' => 'reservas\ReservasAdminController@editar_aula'));
 
-    Route::get('/admin-horas/', ['as' => 'admin-horas', 'uses' => 'reservas\reservasAdminController@mostrar_horas']);
-    Route::post('/admin-horas/hora_editar', array('uses' => 'reservas\reservasAdminController@editar_hora'));
-    Route::get('/admin-horas/hora_eliminada/{NUMHORA}', 'reservas\reservasAdminController@eliminar_horas');
-    Route::post('/admin-horas/hora_creada', 'reservas\reservasAdminController@crear_horas');
+    Route::get('/admin-horas/', ['as' => 'admin-horas', 'uses' => 'reservas\ReservasAdminController@mostrar_horas']);
+    Route::post('/admin-horas/hora_editar', array('uses' => 'reservas\ReservasAdminController@editar_hora'));
+    Route::get('/admin-horas/hora_eliminada/{NUMHORA}', 'reservas\ReservasAdminController@eliminar_horas');
+    Route::post('/admin-horas/hora_creada', 'reservas\ReservasAdminController@crear_horas');
 
     Route::get('/admin-usuarios/', ['as' => 'admin-usuarios', 'uses' => 'admin\UsuarioController@index']);
     Route::post('/admin-usuarios/create', 'admin\UsuarioController@crear');

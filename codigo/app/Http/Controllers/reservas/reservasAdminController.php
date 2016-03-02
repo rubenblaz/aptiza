@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Redirect;
 use App\Modelo\Aula;
 use App\Modelo\Hora;
 
-class reservasAdminController extends Controller
+class ReservasAdminController extends Controller
 {
 
     public function mostrar_aulas(Request $req)
@@ -38,11 +38,11 @@ class reservasAdminController extends Controller
         if(!$existe_aula) {
             $res = Aula::crear_aula($nombre);
             $mensaje = 'Creado correctamente';
-            return redirect()->action('reservas\reservasAdminController@mostrar_aulas', ['mensaje' => $mensaje]);
+            return redirect()->action('reservas\ReservasAdminController@mostrar_aulas', ['mensaje' => $mensaje]);
         }
         else {
              $mensaje_error = 'Ya existe  el aula';
-              return redirect()->action('reservas\reservasAdminController@mostrar_aulas', ['mensaje_error' => $mensaje_error]);
+              return redirect()->action('reservas\ReservasAdminController@mostrar_aulas', ['mensaje_error' => $mensaje_error]);
 
         }
     }
@@ -52,7 +52,7 @@ class reservasAdminController extends Controller
         $nombre = $req->AULA;
         $res_del = Aula::eliminar_aula($nombre);
         $mensaje = 'Eliminado correctamente';
-        return redirect()->action('reservas\reservasAdminController@mostrar_aulas',['mensaje'=>$mensaje]);
+        return redirect()->action('reservas\ReservasAdminController@mostrar_aulas',['mensaje'=>$mensaje]);
 
 
     }
@@ -63,7 +63,7 @@ class reservasAdminController extends Controller
         $anterior_nombre = $req->aula_editada;
         $res_update = Aula::editar_aula($anterior_nombre, $nuevo_nombre);
         $mensaje = 'Editado correctamente';
-        return redirect()->action('reservas\reservasAdminController@mostrar_aulas', ['mensaje'=>$mensaje]);
+        return redirect()->action('reservas\ReservasAdminController@mostrar_aulas', ['mensaje'=>$mensaje]);
 
     }
     public function mostrar_horas(Request $req)
@@ -91,7 +91,7 @@ class reservasAdminController extends Controller
         $mensaje = 'Creado correctamente';
         $hora = $req->timepicker;
         $res = Hora::crear_hora($hora);
-        return redirect()->action('reservas\reservasAdminController@mostrar_horas', ['mensaje'=>$mensaje]);
+        return redirect()->action('reservas\ReservasAdminController@mostrar_horas', ['mensaje'=>$mensaje]);
 
     }
 
@@ -101,7 +101,7 @@ class reservasAdminController extends Controller
         $num_hora = $req->NUMHORA;
         $res_del = Hora::eliminar_hora($num_hora);
         $mensaje = 'Eliminado correctamente';
-        return redirect()->action('reservas\reservasAdminController@mostrar_horas',['mensaje'=>$mensaje]);
+        return redirect()->action('reservas\ReservasAdminController@mostrar_horas',['mensaje'=>$mensaje]);
     }
 
     public function editar_hora(Request $req)
@@ -110,7 +110,7 @@ class reservasAdminController extends Controller
         $nueva_hora = $req->time_hora;
         $res_update = Hora::editar_hora($id_hora, $nueva_hora);
         $mensaje = 'Editado correctamente';
-        return redirect()->action('reservas\reservasAdminController@mostrar_horas',['mensaje'=>$mensaje]);
+        return redirect()->action('reservas\ReservasAdminController@mostrar_horas',['mensaje'=>$mensaje]);
     }
 
 }

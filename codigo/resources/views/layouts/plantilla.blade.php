@@ -33,14 +33,13 @@
                         <div class="col-lg-6 col-md-6 pull-left">
                             <div class="centro-logo-cabecera">
                                 <a href="{{ url('inicio') }}">
-                                    <img src="<?php echo asset('img/centro_logo.jpg')?>"/>
+                                    {{ HTML::image('img/centro_logo.jpg') }}
                                 </a>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <a href="{{ url('inicio') }}">
-                                <img src="<?php echo asset('img/aptiza_logo.png')?>"
-                                     class="logo-cabecera pull-right"/>
+                                {{ HTML::image('img/aptiza_logo.png','Imagen aptiza logo',['class' => 'logo-cabecera pull-right']) }}
                             </a>
                         </div>
                     </div>
@@ -59,7 +58,7 @@
                     @endif
                     <!-- Zona de logo -->
                     <a class="navbar-brand" href="{{ url('inicio') }}">
-                        <img src="img/centro_logo.jpg" class="centro-logo-collapse" />
+                        {{ HTML::image('img/centro_logo.jpg', 'Marca de Aptiza', array('class' => 'centro-logo-collapse')) }}
                     </a>
                 </div>
                 @if(Session::has('USUARIO'))
