@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class UserRequest extends Request
+class FicheroRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +24,10 @@ class UserRequest extends Request
     public function rules()
     {
         return [
-            'nombre'=>'min:4|required',
-            'password' => array('required', 'regex:/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/'),
-            'password_repeat' => array('required','same:password'),
-            'roles_selec'=>'required',
-
-
+            'fileAlumnos' => 'required',
+            'fileAsignaturas' => 'required',
+            'fileUnidades' => 'required',
+            'fileProfesores' => 'required'
         ];
     }
 }

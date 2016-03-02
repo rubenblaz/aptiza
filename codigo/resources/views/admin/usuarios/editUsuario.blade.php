@@ -9,7 +9,7 @@
 
 @section('contenido')
     <div class="row">
-
+        <div class="col-md-10 col-md-offset-1">
             @if($usuarios_vec)
 
                 @foreach($usuarios_vec as $user)
@@ -26,27 +26,38 @@
                         {!! Form::email('email',$user->EMAIL,array('required','class'=>'form-control')) !!}
                     </div>
                     <div class="form-group">
+                        {!! Form::label('rol','Privilegios:') !!}
+                        <br>
 
-                        {!! Form::label('rol','Privilegio') !!}
-                        {!! Form::select('rol',$roles,$user->ROL,array('class'=>'form-control'))!!}
+                        @foreach($roles as $key=>$rol)
+
+
+                              @if(in_array($key,$roles_usuario))
+                                <div class="checkbox">
+                                    <label>
+                                        {!! Form::checkbox('roles_selec[]',$key,true)!!}
+                                        {!! $rol !!}
+                                    </label>
+                                </div>
+                                  @else
+                                <div class="checkbox">
+                                    <label>
+                                        {!! Form::checkbox('roles_selec[]',$key,false)!!}
+                                        {!! $rol !!}
+                                    </label>
+                                </div>
+                                    @endif
+                        @endforeach
 
                     </div>
                     <div class="form-group">
-                        {!! Form::label('password','Contraseña') !!}
-                        {!! Form::password('password',array('class'=>'form-control')) !!}
-                    </div>
-                    <div class="form-group">
-                        {!! Form::label('password','Repite contraseña') !!}
-                        {!! Form::password('password_repeat',array('class'=>'form-control')) !!}
-                    </div>
-                    <div class="form-group">
-                        {!! Form::submit('Editar',['class'=>'btn  btn-primary']) !!}
+                        {!! Form::submit('Guardar',['class'=>'btn  btn-success']) !!}
                     </div>
                     {!! Form::close() !!}
 
 
         
-        {{$usuarios_vec->render()}}
+
         @endforeach
         @endif
         @if(isset($mensaje_error))
@@ -67,6 +78,7 @@
                 @endif
 
 
+    </div>
     </div>
 
 

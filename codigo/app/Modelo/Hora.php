@@ -45,8 +45,15 @@ class Hora {
 
     public static function mostrar_horas()
     {
-        $result = DB::table('horas')->orderBy('HORA','asc')->get();
+        $result = DB::table('horas')->orderBy('NUMHORA','asc')->get();
         return $result;
+    }
+    public static function recoger_hora($hora)
+    {
+        $result = DB::table('horas')->where('HORA', $hora)->get();
+
+        return $result;
+
     }
 
     public static function eliminar_hora($num_hora)

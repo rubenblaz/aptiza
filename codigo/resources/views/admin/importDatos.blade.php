@@ -12,39 +12,23 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
 
-        {!! Form::open(array('action'=>'admin\UsuarioController@crear','role'=>'form')) !!}
+        {!! Form::open(array('action'=>'admin\ImportController@guardarArchivo','method'=>'POST','files'=>true)) !!}
         <div class="form-group">
-            {!! Form::label('nombre','Nombre') !!}
-            {!! Form::text('nombre',null,array('placeholder'=>'Nombre','class'=>'form-control')) !!}
+            {!! Form::label('Asignaturas','Asignaturas') !!}
+            {!! Form::file('fileAsignaturas') !!}
         </div>
-        <div class="form-group">
-            {!! Form::label('email','Correo electronico') !!}
-            {!! Form::email('email',null,array('placeholder'=>'example@email.com','required','class'=>'form-control')) !!}
-        </div>
-
-            {!! Form::label('rol','Privilegios:') !!}
-        <br>
-            @foreach($roles as $key=>$rol)
-
-                <div class="checkbox">
-                    <label>
-                {!! Form::checkbox('roles_selec[]',$key,false)!!}
-                {!! $rol !!}
-                    </label>
-                </div>
-
-            @endforeach
-
-
-        <div class="form-group">
-            {!! Form::label('password','Contraseña') !!}
-            {!! Form::password('password',array('class'=>'form-control')) !!}
-        </div>
-        <div class="form-group">
-            {!! Form::label('password','Repite contraseña') !!}
-            {!! Form::password('password_repeat',array('class'=>'form-control')) !!}
-
-        </div>
+            <div class="form-group">
+                {!! Form::label('Alumnos','Alumnos') !!}
+                {!! Form::file('fileAlumnos') !!}
+            </div>
+            <div class="form-group">
+                {!! Form::label('Profesores','Profesores') !!}
+                {!! Form::file('fileProfesores') !!}
+            </div>
+            <div class="form-group">
+                {!! Form::label('Unidades','Unidades') !!}
+                {!! Form::file('fileUnidades') !!}
+            </div>
 
         <div class="form-group">
 

@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Http\Controllers\reservas;
+<?php namespace App\Http\Controllers\reservas;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -36,10 +34,17 @@ class reservasAdminController extends Controller
     {
 
         $nombre = $req->nombre_aula;
-        $res = Aula::crear_aula($nombre);
-        $mensaje = 'Creado correctamente';
-        return redirect()->action('reservas\reservasAdminController@mostrar_aulas', ['mensaje'=>$mensaje]);
+        $existe_aula=Aula::recoger_aula($nombre);
+        if(!$existe_aula) {
+            $res = Aula::crear_aula($nombre);
+            $mensaje = 'Creado correctamente';
+            return redirect()->action('reservas\reservasAdminController@mostrar_aulas', ['mensaje' => $mensaje]);
+        }
+        else {
+             $mensaje_error = 'Ya existe  el aula';
+              return redirect()->action('reservas\reservasAdminController@mostrar_aulas', ['mensaje_error' => $mensaje_error]);
 
+        }
     }
 
     public function eliminar_aula(Request $req)

@@ -49,6 +49,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'autenticarUsuario' => \App\Http\Middleware\AutenticarUsuario::class,
         'validarRol' => \App\Http\Middleware\ValidacionRutas::class,
-        'tipoInicioSesion' => \App\Http\Middleware\tipoInicioSesion::class,
+        'tipoInicioSesion' => \App\Http\Middleware\TipoInicioSesion::class,
     ];
 }

@@ -1,7 +1,4 @@
 @extends('layouts.plantilla')
-@section('customcss')
-
-@endsection
 @section('migas')
     <li class="active">Inicio</li>
 @stop
@@ -11,38 +8,45 @@
 
 @section('contenido')
     <div class="row">
+        <div class="col-md-10 col-md-offset-1">
 
-        <a class=" btn btn-info" href="{{ URL::to('/admin-usuarios')}}">
-            Crear usuario
-        </a>
-        <br>
-        <div class="table-responsive">
-            <table class="table-hover table">
-                @if(isset($lista_usuarios))
-                    <th>Nombre</th>
-                    <th>Email</th>
-                    <th>Rol</th>
-                    <th colspan="2">Operaciones</th>
-                    @foreach($lista_usuarios as $users)
-                        <tr>
-                            <td>{!! $users->NOMBRE !!}</td>
-                            <td>{!! $users->EMAIL !!}</td>
-                            <td>{!! $users->TIPO !!}</td>
-                            <td><a href="{{ URL::to('/admin-usuarios/eliminar',$users->EMAIL) }}">
-                                    <i class="glyphicon glyphicon-remove"></i>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="{{ URL::to('/admin-usuarios/editar',$users->EMAIL) }}">
-                                    <span class="glyphicon glyphicon-pencil"></span>
-                                </a>
-                            </td>
-                        </tr>
+            <a class=" btn btn-success" href="{{ URL::to('/admin-usuarios')}}">
+                Crear usuario
+            </a>
 
-                    @endforeach
-                @endif
-            </table>
+            <div class="table-responsive">
+                <table class="table-hover table">
+                    @if(isset($lista_usuarios))
+                        <th>Nombre</th>
+                        <th>Email</th>
 
+                        <th colspan="3">Operaciones</th>
+
+                        @foreach($lista_usuarios as $users)
+                            <tr>
+                                <td>{!! $users->NOMBRE !!}</td>
+                                <td>{!! $users->EMAIL !!}</td>
+
+                                <td><a href="{{ URL::to('/admin-usuarios/eliminar',$users->EMAIL) }}">
+                                        <i class="glyphicon glyphicon-remove"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{{ URL::to('/admin-usuarios/editar',$users->EMAIL) }}">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{{ URL::to('/admin-usuarios/formPassword',$users->EMAIL) }}">
+                                        <span class="glyphicon glyphicon-lock"></span>
+                                    </a>
+                                </td>
+                            </tr>
+
+                        @endforeach
+                    @endif
+                </table>
+            </div>
             {{$lista_usuarios->render()}}
             @if(isset($mensaje_error))
                 <div class="alert alert-danger alert-dismissable fade in" id="msg_success" role="alert">
@@ -59,8 +63,8 @@
                 <?php unset($mensaje);?>
             @endif
         </div>
-
     </div>
+
 @endsection
 
 @section('scripts')
@@ -71,7 +75,6 @@
             $("#msg_success").removeClass('in');
             $("#msg_error").removeClass('in');
         }, 5000);
-
 
     </script>
 @endsection

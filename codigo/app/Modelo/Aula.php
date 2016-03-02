@@ -62,6 +62,13 @@ class Aula {
         return $result;
 
     }
+    public static function recoger_aula($nombre)
+    {
+        $result = DB::table('aulas')->where('AULA', $nombre)->get();
+
+        return $result;
+
+    }
 
     public static function eliminar_aula($nombre)
     {

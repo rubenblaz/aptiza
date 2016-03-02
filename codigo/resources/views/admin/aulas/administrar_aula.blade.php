@@ -1,10 +1,5 @@
 @extends('layouts.plantilla')
 @include ('admin.aulas.modal')
-
-
-@section('customcss')
-
-@endsection
 @section('migas')
     <li class="active">Inicio</li>
 @stop
@@ -16,6 +11,7 @@
 
 
     <div class="row">
+        <div class="col-md-10 col-md-offset-1">
 
             {!! Form::open(array('action'=>'reservas\reservasAdminController@crear_aulas','role'=>'form','class'=>'form-inline')) !!}
             <div class="form-group">
@@ -32,9 +28,10 @@
             <br>
             </div>
 
-            <table class="table-hover table">
 
-                @if(isset($aulas))
+
+                @if($aulas!=[])
+                    <table class="table-hover table">
                     <th>Aula</th>
                     <th colspan="2">Operaciones</th>
                     @foreach($aulas as $nombre)
@@ -56,8 +53,14 @@
                         </tr>
 
                     @endforeach
+                    </table>
+                @else
+                    <div class="alert alert-info alert-dismissable " id="msg_nodata" role="alert">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        No existen datos
+                    </div>
                 @endif
-            </table>
+
             @if(isset($mensaje_error))
                 <div class="alert alert-danger alert-dismissable fade in"  id="msg_success" role="alert">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -70,6 +73,7 @@
                     {!! $mensaje !!}
                 </div>
             @endif
+    </div>
     </div>
 @endsection
 @section('scripts')
