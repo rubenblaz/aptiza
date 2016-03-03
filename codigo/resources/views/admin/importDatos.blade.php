@@ -1,5 +1,7 @@
 @extends('layouts.plantilla')
-
+@section('customcss')
+    <link rel="stylesheet" type="text/css" href="css/fileinput.css">
+    @endsection
 @section('migas')
     <li class="active">Inicio</li>
 @stop
@@ -15,19 +17,19 @@
         {!! Form::open(array('action'=>'admin\ImportController@guardarArchivo','method'=>'POST','files'=>true)) !!}
         <div class="form-group">
             {!! Form::label('Asignaturas','Asignaturas') !!}
-            {!! Form::file('fileAsignaturas') !!}
+            {!! Form::file('fileAsignaturas',array('class'=>'file','data-show-preview'=>'false')) !!}
         </div>
             <div class="form-group">
                 {!! Form::label('Alumnos','Alumnos') !!}
-                {!! Form::file('fileAlumnos') !!}
+                {!! Form::file('fileAlumnos',array('class'=>'file','data-show-preview'=>'false')) !!}
             </div>
             <div class="form-group">
                 {!! Form::label('Profesores','Profesores') !!}
-                {!! Form::file('fileProfesores') !!}
+                {!! Form::file('fileProfesores',array('class'=>'file','data-show-preview'=>'false')) !!}
             </div>
             <div class="form-group">
                 {!! Form::label('Unidades','Unidades') !!}
-                {!! Form::file('fileUnidades') !!}
+                {!! Form::file('fileUnidades',array('class'=>'file','data-show-preview'=>'false')) !!}
             </div>
 
         <div class="form-group">
@@ -68,6 +70,8 @@
 
 @endsection
 @section('scripts')
+    <script type="text/javascript" src="js/fileinput.js"></script>
+    <script type="text/javascript" src="js/fileinput_locale_es.js"></script>
 
     <script type="text/javascript">
 
@@ -75,6 +79,12 @@
             $("#msg_success").removeClass('in');
             $("#msg_error").removeClass('in');
         }, 3000);
+        $(".file").fileinput({
+            language: "es",
+            allowedFileExtensions: ["csv","xml"],
+            showUpload:false
+
+        });
 
 
     </script>
