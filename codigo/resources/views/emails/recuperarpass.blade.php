@@ -8,6 +8,6 @@
     <body>
         <h1>Recuperación de contraseña de usuario</h1>
         
-         <a href="{{URL::route('reestablecepass',['pass'=>$pass,'email'=>$email])}}">Siga este link para reestablecer contraseña</a>
+         <a href="{{URL::route('/solicitaPass/nuevoPassEmail',['pass'=>$pass,'email'=>$email])}}">Siga este link para reestablecer contraseña</a>
     </body>
 </html>

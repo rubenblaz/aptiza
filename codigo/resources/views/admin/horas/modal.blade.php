@@ -9,7 +9,7 @@
             <div class="modal-body">
 
 
-                {!! Form::open(array('action'=>'reservas\reservasAdminController@editar_hora','role'=>'form','class'=>'form-inline')) !!}
+                {!! Form::open(array('action'=>'reservas\ReservasAdminController@editar_hora','role'=>'form','class'=>'form-inline')) !!}
                 <input type="hidden" id="hora_editada" name="hora_editada">
                 <div class="form-group">
                     <div class="input-group clockpicker" data-autoclose="true">

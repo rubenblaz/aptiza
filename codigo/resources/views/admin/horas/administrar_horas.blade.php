@@ -17,7 +17,7 @@
 
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            {!! Form::open(array('action'=>'reservas\reservasAdminController@crear_horas','role'=>'form','class'=>'form-inline')) !!}
+            {!! Form::open(array('action'=>'reservas\ReservasAdminController@crear_horas','role'=>'form','class'=>'form-inline')) !!}
             <div class="form-group">
                 <div class="input-group clockpicker" data-autoclose="true">
                     <input type="text" pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" class="form-control" name="timepicker"

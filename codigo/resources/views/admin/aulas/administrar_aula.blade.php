@@ -13,7 +13,7 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
 
-            {!! Form::open(array('action'=>'reservas\reservasAdminController@crear_aulas','role'=>'form','class'=>'form-inline')) !!}
+            {!! Form::open(array('action'=>'reservas\ReservasAdminController@crear_aulas','role'=>'form','class'=>'form-inline')) !!}
             <div class="form-group">
 
                 {!! Form::text('nombre_aula',null,array('placeholder'=>'Nombre de aula','required','class'=>'form-control')) !!}

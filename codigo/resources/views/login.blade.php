@@ -39,7 +39,7 @@
                         {!!Form::password('pass',['class' => 'form-control'])!!} <!--el campo password no recive un segundo parametro para el value (ni siquiera como null)-->
                     </div>
                     <div>
-                        <span class='pull-left' >{{Html::link('pediremailpass','¿Ha olvidado su contraseña?')}}</span>
+                        <span class='pull-left' >{{Html::link('/solicitaPass','¿Ha olvidado su contraseña?')}}</span>
                     </div>
                     <div class="form-group">
                         {!!Form::submit('Aceptar',['class' => 'btn btn-primary pull-right'])!!}

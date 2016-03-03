@@ -35,7 +35,7 @@ Route::group(['middleware' => ['web']], function () {
     });
 
     //Rutas Login
-    Route::get('inicio', 'Usuarios@inicio')->middleware(['validarRol']);
+    Route::get('inicio', ['as' => 'inicio','uses'=>'Usuarios@inicio'])->middleware(['validarRol']);
     Route::post('login', 'Usuarios@inicio')->middleware(['autenticarUsuario']);
     Route::get('tipoinicio', 'Usuarios@tipoinicio')->middleware(['validarRol']);
     Route::post('elegirinicio', 'Usuarios@inicio')->middleware(['tipoInicioSesion']);
@@ -43,9 +43,10 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('logout', 'Usuarios@logout');
 
     //Rutas recuperar pass por email
-    Route::get('reestablecepass', ['as' => 'reestablecepass', 'uses' => 'Recuperarpass@nuevoPassEmail']);
-    Route::post('cambiarpass', 'Recuperarpass@cambiarPassEmail');
-    Route::match(array('GET', 'POST'), 'pediremailpass', 'Recuperarpass@pedirPassEmail');
+    Route::get('/solicitaPass', 'Recuperarpass@introducirEmail');
+    Route::post('/solicitaPass/mandarPassEmail', 'Recuperarpass@mandarPassEmail');
+    Route::get('/solicitaPass/nuevoPassEmail', ['as'=>'/solicitaPass/nuevoPassEmail','uses' =>'Recuperarpass@nuevoPassEmail']);
+    Route::post('/solicitaPass/establecePass', 'Recuperarpass@estableceNuevoPass');
     //Perfil usuario
 
     Route::get('/perfilUsuario/', ['as' => 'perfilUsuario', 'uses' => 'Usuarios@perfilUsuario']);
