@@ -3,8 +3,9 @@
 use Closure;
 use App\Modelo\Usuario;
 use Session;
+use Request;
 
-class AutenticarUsuario {
+class AutenticarUsuario extends \App\Http\Controllers\Controller {
 
     /**
      * Handle an incoming request.
@@ -14,6 +15,8 @@ class AutenticarUsuario {
      * @return mixed
      */
     public function handle($request, Closure $next) {
+            
+            $this->validate($request,['email' => 'required','pass' => 'required']);
        
             $usuario = new Usuario($request->input('email'), $request->input('pass'));
             

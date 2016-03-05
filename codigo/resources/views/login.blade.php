@@ -1,11 +1,6 @@
 @extends('layouts.plantilla')
 
-        @if (isset($errors) && $errors->any())
-            <p>Corrige los siguientes errores.</p>
-            @foreach($errors->all() as $error)
-                {!! $error !!}<br/>
-            @endforeach
-        @endif
+
 @section('element-migas')
 @stop
 @section('element-titulo')     
@@ -15,15 +10,27 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             @if(isset($error))
+            {{-- Mensaje de datos incorrectos--}}
             <div class="alert alert-danger alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <p>Datos incorrectos</p>
             </div>
             @endif
             @if(isset($mensaje))
+            {{-- Mensaje de enlace de recuperar contraseña mandado al email--}}
             <div class="alert alert-success alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 {!!$mensaje!!}
+            </div>
+            @endif
+            @if(count($errors)>0)
+            {{-- Mensaje de validación de los campos del formulario --}}
+            <div class="alert alert-danger alert-dismissable fade in" role="alert">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <p>Corrige los siguientes errores:</p>
+                @foreach($errors->all() as $error)
+                <p>{!! $error !!}</p>
+                @endforeach
             </div>
             @endif
             <div class="panel panel-default">
@@ -32,7 +39,7 @@
                     {!! Form::open(['url' => 'login']) !!}
                     <div class="form-group">
                         {!!Form::label('email','Email', ['class' => 'control-label'])!!}
-                        {!!Form::email('email',null,['class' => 'form-control'])!!}
+                        {!!Form::text('email',null,['class' => 'form-control'])!!}
                     </div>
                     <div class="form-group">
                         {!!Form::label('pass','Password', ['class' => 'control-label'])!!}
