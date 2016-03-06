@@ -86,14 +86,26 @@ Route::group(['middleware' => ['web', 'validarRol:0']], function () {
 
 });
 
-//Rutas de Profesor
+//Rutas de Tutor
 Route::group(['middleware' => ['web', 'validarRol:1']], function () {
+    
+    
+});
+
+//Rutas de Profesor
+Route::group(['middleware' => ['web', 'validarRol:2']], function () {
 
     //Rutas de reservas
-    Route::get('toreservas', ['as' => 'toreservas', 'uses' => 'reservas\reservas@store']);
+    Route::get('toreservas', ['as' => 'toreservas', 'uses' => 'reservas\Reservas@store']);
     Route::post('ajax', 'reservas\reservas@ajaxconsulta');
     Route::get('tomisreservas', 'reservas\reservas@misreservas');
-    Route::get('delreserva', ['as' => 'delreserva', 'uses' => 'reservas\reservas@reservaborrar']);
-    Route::match(array('GET', 'POST'), 'reservar', 'reservas\reservas@hacerReserva');
+    Route::get('delreserva', ['as' => 'delreserva', 'uses' => 'reservas\Reservas@reservaborrar']);
+    Route::match(array('GET', 'POST'), 'reservar', 'reservas\Reservas@hacerReserva');
+    
+    //Rutas de informes
+    Route::get('/informes/elegirGrupo', ['as' => '/informes/elegirGrupo','uses'=> 'informes\Informes@elegirGrupo']);
+    Route::post('/informes/ajaxAlumnos', ['as' => '/informes/ajaxAlumnos','uses'=> 'informes\Informes@ajaxAlumnos']);
+     Route::get('/informes/ajaxAlumnos', ['as' => '/informes/ajaxAlumnos','uses'=> 'informes\Informes@ajaxAlumnos']);
+    
 });
 
