@@ -6,6 +6,7 @@
         body {
             background-color: #269abc;
         }
+
         .infoextra {
             display: inline-flex;
             margin-left: 7.5%;

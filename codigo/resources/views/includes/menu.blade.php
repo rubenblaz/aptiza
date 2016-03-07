@@ -52,7 +52,7 @@
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
             <li>{{ Html::link('/consulta', 'Consultar empresas') }}</li>
             <li title="Asignar empresas">{{ Html::link('/practicas', 'Asignar empresas') }}</li>
-            <li title="Solicitar encuestas">{{ Html::link('/solencuestas', 'Solicitar encuestas') }}</li>
+            {{--<li title="Solicitar encuestas">{{ Html::link('/solencuestas', 'Solicitar encuestas') }}</li>--}}
             <li title="Memoria final">{{ Html::link('/memoria', 'Memoria') }}</li>
             <li title="Resumen alumnos">{{ Html::link('/resumenalumnos', 'Resumen encuestas alumnos') }}</li>
             <li title="Resumen empresas">{{ Html::link('/resumenempresas', 'Resumen encuestas empresas') }}</li>

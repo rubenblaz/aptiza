@@ -37,7 +37,7 @@
 @stop
 @section('migas')
     <li>{{ Html::link('inicio', 'Inicio') }}</li>
-    <li class="active">Resumen encuestas alumnos</li>
+    <li class="active">Resumen encuestas empresas</li>
 @stop
 @section('titulo')
     Encuestas

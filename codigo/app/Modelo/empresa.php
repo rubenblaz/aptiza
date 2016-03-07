@@ -13,7 +13,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Session;
-
+use Hash;
 
 class empresa
 {
@@ -44,10 +44,10 @@ class empresa
     {
         DB::table('empresas')->insert(
             ['EMAIL' => $usuario, 'CIF' => $cif, 'NOMBRE' => $nombre, 'CP' => $cp, 'TELEFONO' => $telefono,
-                'DNI REPRESENTANTE' => $dnirep, 'CONVENIO' => $convenio, 'ALIAS' => $alias,
+                'DNI_REPRESENTANTE' => $dnirep, 'CONVENIO' => $convenio, 'ALIAS' => $alias,
                 'POBLACION' => $poblacion, 'FAX' => $fax, 'OBSERVACIONES' => $observaciones,
-                'FECHA DE CONVENIO' => $fechaconv_vec, 'DIRECCION' => $direccion, 'PROVINCIA' => $provincia,
-                'CONVENIO REPRESENTANTE' => $convrep, 'TIPO' => $tipoempresa, 'FAVORITA' => $fav
+                'FECHA_DE_CONVENIO' => $fechaconv_vec, 'DIRECCION' => $direccion, 'PROVINCIA' => $provincia,
+                'CONVENIO_REPRESENTANTE' => $convrep, 'TIPO' => $tipoempresa, 'FAVORITA' => $fav
             ]
         );
     }
@@ -109,7 +109,7 @@ class empresa
     public function insertarUsuario($usuario, $password, $nombre)
     {
         DB::table('usuarios')->insert(
-            ['EMAIL' => $usuario, 'PASS' => $password, 'NOMBRE' => $nombre]
+            ['EMAIL' => $usuario, 'PASS' => Hash::make($password), 'NOMBRE' => $nombre]
         );
         DB::table('usuariosrol')->insert(
             ['EMAIL' => $usuario, 'IDROL' => 4]
@@ -154,4 +154,62 @@ class empresa
             ->get();
         return $consulta;
     }
+
+    public function obtenerEncuestas($email)
+    {
+        $consulta1 = DB::table('profesores')
+            ->select('CURSO')
+            ->where('EMAIL', $email)
+            ->get();
+        $curso = $consulta1[0]->CURSO;
+        $consulta2 = DB::table('encuesta')//ENCUESTAS
+        ->join('elige', 'encuesta.IDENCUESTA', '=', 'elige.IDENCUESTA')
+            ->join('profesores', 'profesores.CURSO', '=', 'encuesta.IDCICLO')
+            ->select('encuesta.IDENCUESTA', 'elige.IDOPCION')
+            ->where('profesores.CURSO', $curso)
+            ->where('profesores.EMAIL', $email)
+            ->where('encuesta.IDMODELO', 2)
+            ->orderBy('encuesta.IDENCUESTA', 'elige.IDPREGUNTA')
+            ->get();
+
+        return $consulta2;
+    }
+
+    public function obtenerTodosDatos($cif)
+    {
+        $consulta = DB::table('empresas')
+            ->select('EMAIL', 'CIF', 'NOMBRE', 'CP', 'TELEFONO', 'DNI_REPRESENTANTE', 'CONVENIO', 'ALIAS', 'POBLACION', 'FAX', 'OBSERVACIONES',
+                'FECHA_DE_CONVENIO', 'DIRECCION', 'PROVINCIA', 'CONVENIO_REPRESENTANTE', 'TIPO', 'FAVORITA')
+            ->where('CIF', $cif)
+            ->get();
+        return $consulta;
+    }
+
+    public function actualizarUsuario($usuario_empresa, $usuario_original)
+    {
+        DB::table('usuarios')
+            ->where('EMAIL', $usuario_original)
+            ->update(['EMAIL' => $usuario_empresa]);
+        DB::table('usuariosrol')
+            ->where('EMAIL', $usuario_original)
+            ->update(['EMAIL' => $usuario_empresa]);
+
+    }
+
+    public function actualizarDatos($usuario_empresa, $cif, $nombre, $cp, $telefono, $dnirep, $convenio, $alias, $poblacion, $fax, $observaciones, $fechaconv_vec, $direccion, $provincia, $convrep, $tipoempresa, $fav, $usuario_empresa_original)
+    {
+
+        DB::table('empresas')
+            ->where('EMAIL', $usuario_empresa_original)
+            ->update(
+            ['EMAIL' => $usuario_empresa, 'CIF' => $cif, 'NOMBRE' => $nombre, 'CP' => $cp, 'TELEFONO' => $telefono,
+                'DNI_REPRESENTANTE' => $dnirep, 'CONVENIO' => $convenio, 'ALIAS' => $alias,
+                'POBLACION' => $poblacion, 'FAX' => $fax, 'OBSERVACIONES' => $observaciones,
+                'FECHA_DE_CONVENIO' => $fechaconv_vec, 'DIRECCION' => $direccion, 'PROVINCIA' => $provincia,
+                'CONVENIO_REPRESENTANTE' => $convrep, 'TIPO' => $tipoempresa, 'FAVORITA' => $fav
+            ]
+        );
+
+    }
+
 }

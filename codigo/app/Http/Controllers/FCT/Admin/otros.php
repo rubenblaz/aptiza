@@ -72,11 +72,61 @@ class otros extends Controller
 
     public function urlmodempresas()
     {
-        //Mostrar las empresas con boton de editar al lado, pasar por get el CIF
-        return view('FCT/Admin/modempresas');
+        $empresa1 = new empresa();
+        $todas_empresas = $empresa1->todasEmpresas();
+
+        $datos = [
+            'todas_empresas' => $todas_empresas
+        ];
+
+        return view('FCT/Admin/modempresas', $datos);
     }
 
-    public function modempresas(){
-        //Aqui hacer el update
+    public function modempresas(Request $req)
+    {
+        $cif = $req->CIF;
+        $empresa1 = new empresa();
+        $empresa_modificar = $empresa1->obtenerTodosDatos($cif);
+
+        $datos = [
+            'empresa_modificar' => $empresa_modificar
+        ];
+
+
+        return view('FCT/Admin/modempresas_form', $datos);
+    }
+
+    public function modempresas_submit(Request $req)
+    {
+        $usuario_empresa = $req->get('usuario');
+        $cif = $req->get('cif');
+        $nombre = $req->get('nombre');
+        $cp = $req->get('cp');
+        $telefono = $req->get('telefono');
+        $dnirep = $req->get('dnirep');
+        $convenio = $req->get('convenio');
+        $alias = $req->get('alias');
+        $poblacion = $req->get('poblacion');
+        $fax = $req->get('fax');
+        $observaciones = $req->get('observaciones');
+        $fechaconv = $req->get('fechaconvenio');
+        $direccion = $req->get('direccion');
+        $provincia = $req->get('provincia');
+        $convrep = $req->get('convrep');
+        $tipoempresa = $req->get('tipoempresa');
+        //$password = $req->get('password');
+        $email = $req->get('email');
+        $fechaconv_vec = date("Y-m-d", strtotime($fechaconv)); //Conversion de formato
+        $fav = $req->get('favorita');
+
+        $empresa1 = new empresa();
+
+        $usuario_empresa_original = $req->get('usuario_original');
+
+        $empresa1->actualizarUsuario($usuario_empresa, $usuario_empresa_original);
+        $empresa1->actualizarDatos($usuario_empresa, $cif, $nombre, $cp, $telefono, $dnirep, $convenio, $alias, $poblacion, $fax, $observaciones, $fechaconv_vec, $direccion, $provincia, $convrep, $tipoempresa, $fav, $usuario_empresa_original);
+
+
+        return redirect('modempresas');
     }
 }

@@ -18,7 +18,9 @@ class usuarios extends Controller
 {
     public function alta(Request $req)
     {
-        Session::pull('mensajealta');
+        if (Session::has('mensajealta')) {
+            Session::forget('mensajealta');
+        }
         /*
          * Datos de alta de las empresas
          */
@@ -59,6 +61,16 @@ class usuarios extends Controller
         if ($existe == false && $existe2 == false) {
             $empresa1->insertarUsuario($usuario_empresa, $password, $nombre);
             $empresa1->insertarEmpresa($usuario_empresa, $cif, $nombre, $cp, $telefono, $dnirep, $convenio, $alias, $poblacion, $fax, $observaciones, $fechaconv_vec, $direccion, $provincia, $convrep, $tipoempresa, $fav);
+            /*
+             * Enviar link al email
+             */
+            $datosemail['email'] = $email;
+            $datosemail['pass'] = DB::table('usuarios')->select('PASS')->where('EMAIL', $email)->get()[0]->pass;
+
+            Mail::send('emails.emailfct', $datosemail, function($message)use ($email) {
+                $message->to($email)->subject('Acceso a las encuestas en Aptiza.');
+            });
+            /******/
             $mensaje = "ok";
             Session::put('mensajealta', $mensaje);
         } else {
@@ -104,35 +116,27 @@ class usuarios extends Controller
 
     public function practicas_elegir(Request $req)
     {
+        if (Session::has('operacion')) {
+            Session::forget('operacion');
+        }
         $empresa1 = new empresa();
         $alumno1 = new alumno();
 
         $seleccion_alumnos = $req->get('seleccionado'); //N_EXP de los alumnos que elige
         $seleccion_empresa = $req->get('empresas'); //Empresa que elige en el select list
 
-        $mensaje = " ";
-        $mensajes = array();
+        //$mensajes = array();
 
         $usuario_empresa = $empresa1->usuarioEmpresa($seleccion_empresa);
 
         $update = $alumno1->actualizarAlumnos($seleccion_alumnos, $usuario_empresa);
 
-        for ($i = 0; $i < count($seleccion_alumnos); $i++) {
-            if ($update) {
-                $mensajes[$i] = "ok";
-            } else {
-                $mensajes[$i] = "Error con el alumno: " . $seleccion_alumnos[$i];
-            }
-        }
-
-        for ($i = 0; $i < count($mensajes); $i++) {
-            if (equalToIgnoringWhiteSpace(equalToIgnoringCase($mensajes[$i], "Error"))) {
-                $mensaje = $mensajes[$i];
-                Session::put('operacion', $mensaje);
-            } else {
-                $mensaje = "ok";
-                Session::put('operacion', $mensaje);
-            }
+        if ($update) {
+            $mensaje = "ok";
+            Session::put('operacion', $mensaje);
+        } else {
+            $mensaje = "error";
+            Session::put('operacion', $mensaje);
         }
 
         return redirect('practicas');
@@ -140,8 +144,7 @@ class usuarios extends Controller
 
     public function consulta(Request $req)
     {
-        Session::pull('deleteinfo');
-        Session::pull('empresafav');
+
         $empresa1 = new empresa();
 
         $todas_empresas = $empresa1->todasEmpresas();
@@ -154,6 +157,9 @@ class usuarios extends Controller
 
     public function empresas_favoritas(Request $req)
     {
+        if (Session::has('empresafav')) {
+            Session::forget('empresafav');
+        }
 
         $empresasfav = $req->get('favoritas');
 
@@ -178,13 +184,7 @@ class usuarios extends Controller
         $cif = $req->CIF;
 
         $update = $empresa1->borrarFavorita($cif);
-        if (!$update) {
-            $mensaje = "ok";
-            Session::put('deleteinfo', $mensaje);
-        } else {
-            $mensaje = "error";
-            Session::put('deleteinfo', $mensaje);
-        }
+
         return redirect('consulta');
     }
 
@@ -210,11 +210,13 @@ class usuarios extends Controller
         $datos = [
             'mis_alumnos' => $mis_alumnos
         ];
+
         return view('FCT/memoriafinal', $datos);
     }
 
-    public function generar_excel(){
-        return view('memoriafinal');
+    public function generar_excel()
+    {
+        return route('/excel');
     }
 
     public function resumenalumnos()
@@ -234,12 +236,29 @@ class usuarios extends Controller
             'preguntas' => $preguntas_v,
             'encuestas' => $encuestas
         ];
+
         return view('FCT/resumenalumnos', $datos);
     }
 
     public function resumenempresas()
     {
+        $empresa1 = new empresa();
+        $encuesta1 = new encuesta();
+        $preguntas = $encuesta1->obtenerPreguntasModeloEmpresa();
+        $preguntas_v = array();
 
+        foreach ($preguntas as $preg) {
+            $preguntas_v[] = $preg->IDMPREGUNTA;
+        }
+
+        $encuestas = $empresa1->obtenerEncuestas(Session::get('USUARIO')->getEmail());
+
+        $datos = [
+            'preguntas' => $preguntas_v,
+            'encuestas' => $encuestas
+        ];
+
+        return view('FCT/resumenempresas', $datos);
     }
 
     public function solencuestas()
@@ -264,7 +283,8 @@ class usuarios extends Controller
             'pass' => $pass
         ];
         */
-        Mail::send('emails.recuperarpass', null , function ($message) use ($email_empresa) {
+        dd("En construcción...");
+        Mail::send('emails.recuperarpass', null, function ($message) use ($email_empresa) {
             $message->to($email_empresa)->subject('Introducir nueva contraseña');
         });
 

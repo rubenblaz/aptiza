@@ -36,16 +36,15 @@ class profesor
 
     public function misAlumnos($curso_tutor)
     {
-        /*
-        $alumnos = DB::table('alumnos')
-            ->select('N_EXP', 'NOMBRE', 'APELLIDOS', 'CURSO', 'CALIFICACION')
-            ->where('CURSO', $curso_tutor[0]->CURSO)
-            ->get();
-        */
-        $alumnos = DB::table('alumnos')
-            ->select('N_EXP', 'NOMBRE', 'APELLIDOS', 'CURSO', 'CALIFICACION')
-            ->where('CURSO', $curso_tutor[0]->CURSO)
+        $alumnos = DB::table('empresas')
+            ->join('alumnos', 'alumnos.IDEMPRESA', '=', 'empresas.EMAIL')
+            ->select('alumnos.N_EXP','alumnos.CURSO','alumnos.NOMBRE', 'alumnos.APELLIDOS', 'empresas.NOMBRE as NOMBRE_E')
+            ->where('alumnos.CURSO', $curso_tutor[0]->CURSO)
             ->paginate(10);
+        /*$alumnos = DB::table('alumnos')
+            ->select('N_EXP', 'NOMBRE', 'APELLIDOS', 'CURSO', 'CALIFICACION')
+            ->where('CURSO', $curso_tutor[0]->CURSO)
+            ->paginate(10);*/
         return $alumnos;
     }
 

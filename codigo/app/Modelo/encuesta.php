@@ -66,4 +66,16 @@ class encuesta
 
         return $consulta;
     }
+    public function obtenerPreguntasModeloEmpresa()
+    {
+        $consulta = DB::table('tiene')
+            ->select('IDMPREGUNTA')
+            ->where('IDMENCUESTA', 2)
+            ->where('IDMPREGUNTA', '!=', 15)
+            ->where('IDMPREGUNTA', '!=', 16)
+            ->orderBy('IDMPREGUNTA')
+            ->get();
+
+        return $consulta;
+    }
 }

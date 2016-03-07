@@ -5,8 +5,7 @@
         body {
             background-color: #269abc;
         }
-
-        input[type='checkbox']{
+        input[type="checkbox"]{
 
         }
     </style>
@@ -22,23 +21,37 @@
 @section('contenido')
     <div class="row">
         <div class="col-md-12" style="margin-left: auto; margin-top: auto;">
+            @if(Session::has('empresafav'))
+                @if(Session::get('empresafav') == "ok")
+                    <div class="alert alert-success alert-dismissable fade in" role="alert">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        Modificado correctamente.
+                    </div>
+                @else
+                    <div class="alert alert-danger alert-dismissable fade in" role="alert">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        Fallo al modificar.
+                    </div>
+                @endif
+            @endif
             <div class="panel panel-default">
-                <center><b><p>Listado completo de todas las empresas disponibles:</p></b></center>
                 <br>
                 {!! Form::open(array('action' => 'FCT\usuarios@empresas_favoritas')) !!}
-                @if(Session::has('empresafav'))
-                    @if(Session::get('empresafav') == "ok")
-                        <div class="alert alert-success alert-dismissable fade in" role="alert">
-                            <button type="button" class="close" data-dismiss="alert">&times;</button>
-                            Modificado correctamente.
-                        </div>
-                    @else
-                        <div class="alert alert-danger alert-dismissable fade in" role="alert">
-                            <button type="button" class="close" data-dismiss="alert">&times;</button>
-                            Fallo al modificar.
-                        </div>
-                    @endif
-                @endif
+                <div class="row">
+                    <div id="botonayuda" class="col-md-6">
+                        <a href="#top"><img src="img/FCT/ayuda.png" style="width: 6%; margin-left: 3%;" alt="Ayuda"/></a>
+                    </div>
+                    <div id="ayuda" class="col-md-6" style="display:none;" title="Ayuda">
+                        <ul>
+                            <li>Para borrar una empresa de favoritas, pulsar sobre el icono de la papelera de reciclaje <i class="glyphicon glyphicon-trash"></i>.</li>
+                            <li>Para añadir empresas a las favoritas, seleccionarlas con las casillas y hacer click en aceptar <i class="glyphicon glyphicon-check"></i>.</li>
+                            <li>El icono de la papelera <i class="glyphicon glyphicon-trash"></i> solo pone la empresa en NO FAVORITA. En ningún momento borra ningún dato de la empresa.</li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+                <br>
+                <center><b><p>Listado completo de todas las empresas disponibles:</p></b></center>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
@@ -93,6 +106,13 @@
         });
         $('.class_checkbox').on('click', function () {
             $(this).toggleClass('checked').prev().prop('checked', $(this).is('.checked'))
+        });
+    </script>
+    <script type="text/javascript" language="JavaScript">
+        $(document).ready(function () {
+            $("#botonayuda").on("click", function () {
+                $("#ayuda").toggle("fast");
+            });
         });
     </script>
 @stop

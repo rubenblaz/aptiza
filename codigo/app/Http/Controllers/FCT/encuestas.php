@@ -16,11 +16,14 @@ class encuestas extends Controller
 {
     public function urlencuestas() //pendiente de modificar
     {
+        if (Session::has('preguntas')) {
+            Session::forget('preguntas');
+        }
         $usuario1 = new alumno();
         $empresa1 = new empresa();
         $encuesta1 = new encuesta();
         $usuario = Session::get('USUARIO')->getEmail();
-        //$curso = Session::get('cursoalumno');
+
         if (Session::has('USUARIO')) {
             if (Session::get('USUARIO')->hasRol(4)) {
                 $preguntas = $encuesta1->obtenerPreguntasEmpresas();
@@ -42,8 +45,6 @@ class encuestas extends Controller
 
         Session::put('preguntas', $preguntas);
 
-        //dd($preguntas);
-
         $opciones = DB::table('modelo_opcion')
             ->select('IDOPCION', 'OPCION')
             ->get();
@@ -64,7 +65,7 @@ class encuestas extends Controller
     public function encuestas(Request $req)
     {
         $usuario1 = new alumno();
-        $empresa1 = new empresa();
+
 
 
         $seleccion = $req->get('opciones');
@@ -72,7 +73,6 @@ class encuestas extends Controller
 
         $usuario = Session::get('USUARIO')->getEmail();
 
-        //$curso = Session::get('cursoalumno');
         $curso = $usuario1->obtenerCurso(Session::get('USUARIO')->getEmail());
 
         foreach ($idpreguntas as $idp) {
@@ -103,7 +103,9 @@ class encuestas extends Controller
                     ['IDENCUESTA' => $idencuesta, 'IDPREGUNTA' => $idpreguntas_v[$i], 'IDOPCION' => $seleccion[$i]]);
             }
         }
-        //return view('FCT/encuestas');
+        if (Session::has('preguntas')) {
+            Session::forget('preguntas');
+        }
         return view('inicio');
     }
 }

@@ -5,7 +5,6 @@
         body {
             background-color: #269abc;
         }
-
     </style>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css"/>
 @stop
@@ -23,11 +22,6 @@
         <div class="row">
             @if(Session::has('operacion'))
                 @if(Session::get('operacion') == "ok")
-                    <div class="alert alert-danger alert-dismissable fade in" role="alert">
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        Error al asignar la empresa.
-                    </div>
-                @else
                     <div class="alert alert-success alert-dismissable fade in" role="alert">
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
                         Empresa asignada correctamente.
@@ -35,6 +29,23 @@
                 @endif
             @endif
         </div>
+        <div class="row">
+            <div id="botonayuda" class="col-md-6">
+                <a href="#top" title="Ayuda"><img src="img/FCT/ayuda.png" style="width: 6%; margin-left: 3%;"
+                                                  alt="Ayuda"/></a>
+            </div>
+            <div id="ayuda" class="col-md-6" style="display:none;">
+                <ul>
+                    <li>Seleccionar la empresa en la lista superior.</li>
+                    <li>Con una empresa seleccionada, marcar las casillas <i class="glyphicon glyphicon-check"></i> de
+                        los alumnos que queramos asignar a esa
+                        empresa.
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <br>
         <div class="panel panel-primary">
             <div class="panel-body">
                 <div class="form-group">
@@ -45,33 +56,44 @@
                 </div>
                 <div class="form-group">
                     <center>{!! Form::label('Mis alumnos') !!}</center>
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                            <th>Nombre</th>
-                            <th>Apellidos</th>
-                            <!--<th>Curso</th>-->
-                            <th>Calificacion</th>
-                            <th>Selección</th>
-                            </thead>
-                            <tbody>
-                            @foreach ($alumnos as $al)
-                                <tr>
-                                    <td>{{ $al->NOMBRE }}</td>
-                                    <td>{{ $al->APELLIDOS }}</td>
-                                    {{--<td>{{ $al->CURSO }}</td>--}}
-                                    <td>{{ $al->CALIFICACION }}</td>
-                                    <td>{{ Form::checkbox('seleccionado[]',$al->N_EXP,false) }}</td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
+                    <div class="row">
+                        <div class="col-md-3" title="Nombre">
+                            <b>Nombre</b>
+                        </div>
+                        <div class="col-md-3" title="Apellidos">
+                            <b>Apellidos</b>
+                        </div>
+                        <div class="col-md-3" title="Calificacion">
+                            <b>Calificacion</b>
+                        </div>
+                        <div class="col-md-3" title="Seleccion">
+                            <b>Seleccion</b>
+                        </div>
                     </div>
-                    {!! $alumnos->render() !!}
-                    <center>{!! Form::submit('Asignar', array('class'=>'btn btn-success', 'id'=>'asignar')) !!}</center>
+                    @foreach ($alumnos as $al)
+                        <div class="row">
+                            <div class="col-md-3" title="Nombre">{{ $al->NOMBRE }}</div>
+                            <div class="col-md-3" title="Apellidos">{{ $al->APELLIDOS }}</div>
+                            {{--<td>{{ $al->CURSO }}</td>--}}
+                            <div class="col-md-3" title="Calificacion">{{ $al->NOMBRE_E }}</div>
+                            <div class="col-md-3"
+                                 title="Seleccion">{{ Form::checkbox('seleccionado[]',$al->N_EXP,false) }}</div>
+                        </div>
+                    @endforeach
                 </div>
+                {!! $alumnos->render() !!}
+                <center>{!! Form::submit('Asignar', array('class'=>'btn btn-success', 'id'=>'asignar')) !!}</center>
             </div>
         </div>
-        {!! Form::close() !!}
     </div>
+    {!! Form::close() !!}
+@endsection
+@section('scripts')
+    <script type="text/javascript" language="JavaScript">
+        $(document).ready(function () {
+            $("#botonayuda").on("click", function () {
+                $("#ayuda").toggle("fast");
+            });
+        });
+    </script>
 @endsection

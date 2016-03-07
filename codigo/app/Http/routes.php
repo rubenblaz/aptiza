@@ -75,6 +75,8 @@ Route::group(['middleware' => ['web', 'validarRol:0']], function () {
     Route::get('/altaempresas', 'FCT\Admin\otros@urlempresas'); //Alta empresas
     Route::get('/modempresas', 'FCT\Admin\otros@urlmodempresas'); //Modificacion empresas
     Route::match(array('GET', 'POST'), 'alta', 'FCT\usuarios@alta'); //Submit alta empresas
+    Route::get('/modempresas2/{CIF}', 'FCT\Admin\otros@modempresas'); //Pasar por get el CIF de la empresa a modificar
+    Route::match(array('GET', 'POST'), 'modempresas_submit', 'FCT\Admin\otros@modempresas_submit'); //Submit alta empresas
 
 });
 
@@ -91,7 +93,7 @@ Route::group(['middleware' => ['web', 'validarRol:1']], function () {
 //Rutas de profesor FCT
 Route::group(['middleware' => ['web', 'validarRol:3']], function () {
     //Rutas de FCT
-    Route::get('/practicas', 'FCT\usuarios@practicas'); //Asignar empresas a alumnos
+    Route::get('/practicas', 'FCT\usuarios@practicas', ['as' => 'practicas']); //Asignar empresas a alumnos
     Route::get('/consulta', 'FCT\usuarios@consulta'); //Todas las empresas
     Route::get('/informe1', 'FCT\PdfController@invoice'); //PDF
     Route::get('/borrar/{CIF}', 'FCT\usuarios@borrar_empresa'); //Borrar empresa de favoritas
@@ -104,6 +106,7 @@ Route::group(['middleware' => ['web', 'validarRol:3']], function () {
     Route::get('/solencuestas', 'FCT\usuarios@solencuestas');
     Route::get('/enviardatos/{CIF}', 'FCT\usuarios@enviaremail');
     Route::match(array('GET', 'POST'), 'generarexcel1', 'FCT\usuarios@generar_excel'); //Submit de empresas favoritas
+    Route::resource('excel','ExcelController');
 
 });
 

@@ -94,9 +94,6 @@ class alumno
             ->orderBy('encuesta.IDENCUESTA', 'elige.IDPREGUNTA')
             ->get();
 
-        $consulta3 = array();
-
-        //dd($consulta2);
         return $consulta2;
     }
 }
