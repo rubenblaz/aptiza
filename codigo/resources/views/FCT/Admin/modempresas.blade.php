@@ -19,7 +19,7 @@
             <div class="col-md-10 well">
                 {!! $emp->NOMBRE !!}
             </div>
-            <div class="col-md-2 well">
+            <div class="col-md-2">
                 <a href="{{URL::to('/modempresas2', $emp->CIF)}}"
                    title="Modificar empresa">
                     <i class="glyphicon glyphicon-pencil"></i>

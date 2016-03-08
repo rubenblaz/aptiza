@@ -38,7 +38,7 @@ class otros extends Controller
             if ($contraseña_nueva == $contraseña_nueva2) {
                 DB::table('usuarios')
                     ->where('PASSWORD', $contraseña_actual)
-                    ->where('EMAIL', Session::get('usuario'))
+                    ->where('EMAIL', Session::get('usuario')->getEmail())
                     ->update(['PASSWORD' => $contraseña_nueva2]);
                 $mensaje = "Correcto";
             }
@@ -61,13 +61,6 @@ class otros extends Controller
     public function urlinforme()
     {
         return view('FCT/invoice');
-    }
-
-    public function urlencuestasemp()
-    {
-        $empresa1 = new empresa();
-
-        return view('encuestasemp');
     }
 
     public function urlmodempresas()
@@ -114,8 +107,6 @@ class otros extends Controller
         $provincia = $req->get('provincia');
         $convrep = $req->get('convrep');
         $tipoempresa = $req->get('tipoempresa');
-        //$password = $req->get('password');
-        $email = $req->get('email');
         $fechaconv_vec = date("Y-m-d", strtotime($fechaconv)); //Conversion de formato
         $fav = $req->get('favorita');
 
@@ -125,7 +116,6 @@ class otros extends Controller
 
         $empresa1->actualizarUsuario($usuario_empresa, $usuario_empresa_original);
         $empresa1->actualizarDatos($usuario_empresa, $cif, $nombre, $cp, $telefono, $dnirep, $convenio, $alias, $poblacion, $fax, $observaciones, $fechaconv_vec, $direccion, $provincia, $convrep, $tipoempresa, $fav, $usuario_empresa_original);
-
 
         return redirect('modempresas');
     }

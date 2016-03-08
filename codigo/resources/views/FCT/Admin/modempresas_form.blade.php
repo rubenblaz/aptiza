@@ -20,9 +20,6 @@
         <div class="col-md-12" style="margin-left: auto; margin-top: auto;">
             <div class="panel panel-default" id="panelalta">
                 <div class="panel panel-primary">
-                    <!--<div class="panel-heading">
-                        <h4 class="panel-title">Dar de alta una empresa:</h4>
-                    </div>-->
                     <div class="panel-body">
                         {!! Form::open(array('action' => 'FCT\Admin\otros@modempresas_submit')) !!}
                         @foreach($empresa_modificar as $emp)
@@ -108,19 +105,6 @@
                                 </div>
                             </div>
                         @endforeach
-                        {{--@if(Session::has('mensajealta'))
-                            @if(Session::get('mensajealta') == "error")
-                                <div class="alert alert-danger alert-dismissable fade in" role="alert">
-                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                    Error al insertar la empresa, ya existe.
-                                </div>
-                            @else
-                                <div class="alert alert-success alert-dismissable fade in" role="alert">
-                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                    Empresa insertada correctamente.
-                                </div>
-                            @endif
-                        @endif--}}
                         <center>{!! Form::submit('Modificar empresa',array('class'=>'btn btn-success', 'title'=>'Modificar empresa')) !!}</center>
                         {!! Form::close() !!}
                     </div>

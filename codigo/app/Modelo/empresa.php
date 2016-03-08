@@ -198,18 +198,12 @@ class empresa
 
     public function actualizarDatos($usuario_empresa, $cif, $nombre, $cp, $telefono, $dnirep, $convenio, $alias, $poblacion, $fax, $observaciones, $fechaconv_vec, $direccion, $provincia, $convrep, $tipoempresa, $fav, $usuario_empresa_original)
     {
-
         DB::table('empresas')
             ->where('EMAIL', $usuario_empresa_original)
-            ->update(
-            ['EMAIL' => $usuario_empresa, 'CIF' => $cif, 'NOMBRE' => $nombre, 'CP' => $cp, 'TELEFONO' => $telefono,
+            ->update(['EMAIL' => $usuario_empresa, 'CIF' => $cif, 'NOMBRE' => $nombre, 'CP' => $cp, 'TELEFONO' => $telefono,
                 'DNI_REPRESENTANTE' => $dnirep, 'CONVENIO' => $convenio, 'ALIAS' => $alias,
                 'POBLACION' => $poblacion, 'FAX' => $fax, 'OBSERVACIONES' => $observaciones,
                 'FECHA_DE_CONVENIO' => $fechaconv_vec, 'DIRECCION' => $direccion, 'PROVINCIA' => $provincia,
-                'CONVENIO_REPRESENTANTE' => $convrep, 'TIPO' => $tipoempresa, 'FAVORITA' => $fav
-            ]
-        );
-
+                'CONVENIO_REPRESENTANTE' => $convrep, 'TIPO' => $tipoempresa, 'FAVORITA' => $fav]);
     }
-
 }

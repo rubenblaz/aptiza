@@ -25,7 +25,6 @@ class usuarios extends Controller
          * Datos de alta de las empresas
          */
         $usuario_empresa = $req->get('usuario');
-        $mensaje_v = array();
         $cif = $req->get('cif');
         $nombre = $req->get('nombre');
         $cp = $req->get('cp');
@@ -64,12 +63,13 @@ class usuarios extends Controller
             /*
              * Enviar link al email
              */
-            $datosemail['email'] = $email;
-            $datosemail['pass'] = DB::table('usuarios')->select('PASS')->where('EMAIL', $email)->get()[0]->pass;
+            $datosemail['email'] = $usuario_empresa;
+            $datosemail['pass'] = DB::table('usuarios')->select('PASS')->where('EMAIL', $usuario_empresa)->get()[0]->PASS;
 
-            Mail::send('emails.emailfct', $datosemail, function($message)use ($email) {
-                $message->to($email)->subject('Acceso a las encuestas en Aptiza.');
+            Mail::send('emails.emailfct', $datosemail, function ($message) use ($usuario_empresa) {
+                $message->to($usuario_empresa)->subject('Acceso a las encuestas en Aptiza.');
             });
+
             /******/
             $mensaje = "ok";
             Session::put('mensajealta', $mensaje);
