@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Http\Controllers\informes;
+<?php namespace App\Http\Controllers\informes;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -8,6 +6,7 @@ use App\Modelo\Profesor;
 use App\Modelo\Grupo;
 use App\Modelo\Alumno;
 use App\Modelo\Asignatura;
+use App\Modelo\Evaluacion;
 
 class Informes extends Controller {
 
@@ -19,6 +18,9 @@ class Informes extends Controller {
 
         $datos['grupos'] = $grupos;
         $datos['grupo'] = ($grupo = array_keys($grupos)[0]);
+        
+        $eval = Evaluacion::listEvaluacion();
+        $datos['evaluaciones'] = $eval;
         return view('informes\elegirGrupo', $datos);
     }
 
@@ -35,7 +37,7 @@ class Informes extends Controller {
             }
         }
         
-        
+  
         $lista = Alumno::listByGrupo($request->input('grupo'));
 
         foreach ($lista as $key=>$alum) {
@@ -43,5 +45,12 @@ class Informes extends Controller {
         }
         
         return json_encode($json);
+    }
+    public function elegirAlumnosPag(Request $request){
+        
+        dd($request->get('alumnos'));
+        
+        
+        
     }
 }

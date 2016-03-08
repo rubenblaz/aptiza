@@ -105,7 +105,7 @@ Route::group(['middleware' => ['web', 'validarRol:2']], function () {
     //Rutas de informes
     Route::get('/informes/elegirGrupo', ['as' => '/informes/elegirGrupo','uses'=> 'informes\Informes@elegirGrupo']);
     Route::post('/informes/ajaxAlumnos', ['as' => '/informes/ajaxAlumnos','uses'=> 'informes\Informes@ajaxAlumnos']);
-     Route::get('/informes/ajaxAlumnos', ['as' => '/informes/ajaxAlumnos','uses'=> 'informes\Informes@ajaxAlumnos']);
-    
+    Route::get('/informes/ajaxAlumnos', ['as' => '/informes/ajaxAlumnos','uses'=> 'informes\Informes@ajaxAlumnos']);
+    Route::post('/informes/elegirAlumnoPag',['as' => '/informes/elegirAlumnosPag','uses'=> 'informes\Informes@elegirAlumnosPag']);
 });
 
