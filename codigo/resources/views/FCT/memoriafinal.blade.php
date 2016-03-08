@@ -9,7 +9,23 @@
         span {
             display: none;
         }
-        .fechas{
+
+        .fechas {
+            font-size: smaller;
+        }
+
+        .table-responsive {
+            font-size: 0.8em;
+        }
+
+        .inputs {
+            font-size: 1em !important;
+        }
+
+        textarea {
+            resize: none;
+        }
+        input[type="checkbox"]{
 
         }
     </style>
@@ -22,21 +38,24 @@
     Memoria final
 @stop
 @section('contenido')
-    {!! Form::open(array('action' => 'FCT\usuarios@generar_excel')) !!}
+    {!! Form::open(array('action' => 'FCT\PdfController@invoice2')) !!}
     <div class="row">
         <div class="col-md-12">
-            <p><b>Tutor: </b> {!! Session::get('nombre_tutor') . " " . Session::get('apellidos_tutor')!!}</p>
-            <p><b>Grupo: </b> {!! Session::get('nombre_grupo') !!}</p>
+            <p>
+                <b>Tutor: </b> {!! Form::text('nombre_tutor', Session::get('nombre_tutor') . ", " . Session::get('apellidos_tutor'), array('class'=>'form-control','title'=>'Nombre y apellidos de tutor', 'disabled')) !!}
+            </p>
+            <p>
+                <b>Grupo: </b> {!! Form::text('nombre_grupo', Session::get('nombre_grupo'),array('class'=>'form-control','disabled','title'=>'Nombre del grupo')) !!}
+            </p>
         </div>
     </div>
     <div class="row">
         <div class="from-group">
-            <div class="col-md-2">
+            <div class="col-md-12">
                 {!! Form::label('Curso académico: ') !!}
-            </div>
-            <div class="col-md-2">
                 {!! Form::text('curso_academico', null, array('placeholder'=>'2016/2017', 'class'=>'form-control', 'required', 'title'=>'Curso académico')) !!}
             </div>
+
         </div>
     </div>
     <div class="table-responsive">
@@ -52,6 +71,7 @@
             <th>Fecha inicio</th>
             <th>Fecha fin</th>
             <th>¿Apto?</th>
+            <hr>
             </thead>
             <tbody>
             <span>{!! $cont = 0 !!}</span>
@@ -61,31 +81,31 @@
                         {!! $cont !!}
                     </td>
                     <td>
-                        {!! $al->APELLIDOS . ", " . $al->NOMBRE!!}
+                        {!! Form::textarea('nombre_apellidos[]', $al->APELLIDOS . ", " . $al->NOMBRE, array('class'=>'form-control inputs', 'rows'=>'4', 'title'=>'Nombre y apellidos')) !!}
                     </td>
                     <td>
-                        {!! $al->NOMBRE_E !!}
+                        {!! Form::textarea('nombre_e[]', $al->NOMBRE_E ,array('class'=>'form-control inputs', 'rows'=>'4', 'title'=>'Nombre empresa')) !!}
                     </td>
                     <td>
-                        {!! $al->CONVENIO !!}
+                        {!! Form::textarea('convenio[]', $al->CONVENIO ,array('class'=>'form-control inputs', 'rows'=>'4', 'title'=>'Convenio')) !!}
                     </td>
                     <td>
-                        {!! $al->TELEFONO_M !!}
+                        {!! Form::textarea('telefono_m[]', $al->TELEFONO_M ,array('class'=>'form-control inputs','rows'=>'4', 'title'=>'Telefono movil')) !!}
                     </td>
                     <td>
-                        {!! $al->TELEFONO_F !!}
+                        {!! Form::textarea('telefono_f[]', $al->TELEFONO_F ,array('class'=>'form-control inputs', 'rows'=>'4','title'=>'Telefono fijo')) !!}
                     </td>
                     <td>
-                        {!! $al->EMAIL !!}
+                        {!! Form::textarea('email[]', $al->EMAIL ,array('class'=>'form-control inputs','rows'=>'4', 'title'=>'Email')) !!}
                     </td>
                     <td>
-                        {!! Form::date('fecha_inicio[]', null, array('class'=>'form-control fechas')) !!}
+                        {!! Form::date('fecha_inicio[]', null, array('class'=>'form-control fechas', 'title'=>'Fecha de inicio')) !!}
                     </td>
                     <td>
-                        {!! Form::date('fecha_fin[]', null, array('class'=>'form-control fechas')) !!}
+                        {!! Form::date('fecha_fin[]', null, array('class'=>'form-control fechas', 'title'=>'Fecha de fin')) !!}
                     </td>
                     <td>
-                        {!! Form::text('apto', null, array('placeholder'=>'APTO/NO APTO', 'class'=>'form-control', 'required')) !!}
+                        {!! Form::text('aptos[]', "S", ['title'=>'¿Apto o no apto?', 'class'=>'form-control inputs']) !!}
                     </td>
                 </tr>
                 <span>{!! $cont++ !!}</span>
@@ -94,7 +114,7 @@
         </table>
     </div>
     <br>
-    <center>{!! Form::submit('Generar Excel', array('class'=>'btn btn-success')) !!}</center>
+    <center>{!! Form::submit('Generar PDF', array('class'=>'btn btn-success', 'title'=>'Crear PDF')) !!}</center>
     {!! Form::close() !!}
 @stop
 @section('scripts')

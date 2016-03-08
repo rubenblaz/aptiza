@@ -14,6 +14,10 @@ use Session;
 
 class PdfController extends Controller
 {
+    /**
+     * @return mixed
+     * Genera el PDF de las hojas de firmas de FCT.
+     */
     public function invoice()
     {
         $metodos1 = new metodos();
@@ -56,4 +60,61 @@ class PdfController extends Controller
         ];
         return $data;
     }
+
+    /**
+     * @param Request $req
+     * @return mixed
+     * Genera el PDF de la memoria final.
+     */
+    public function invoice2(Request $req)
+    {
+        $nombre_tutor = $req->get('nombre_tutor');
+        $nombre_grupo = $req->get('nombre_grupo');
+        $curso_academico = $req->get('curso_academico');
+        $nombre_apellidos_alumnos = $req->get('nombre_apellidos');
+        $nombre_empresas = $req->get('nombre_e');
+        $convenios = $req->get('convenio');
+        $telefonos_m = $req->get('telefono_m');
+        $telefonos_f = $req->get('telefono_f');
+        $emails = $req->get('email');
+        $fechas_inicio = $req->get('fecha_inicio');
+        $fechas_fin = $req->get('fecha_fin');
+        $aptos = $req->get('aptos');
+
+        $alumnos = array();
+
+        for ($i = 0; $i < count($nombre_apellidos_alumnos); $i++) {
+            $alumnos[$i] = [
+                'nombre_apellidos_alumnos' => $nombre_apellidos_alumnos[$i],
+                'nombre_empresas' => $nombre_empresas[$i],
+                'convenios' => $convenios[$i],
+                'telefonos_m' => $telefonos_m[$i],
+                'telefonos_f' => $telefonos_f[$i],
+                'emails' => $emails[$i],
+                'fechas_inicio' => $fechas_inicio[$i],
+                'fechas_fin' => $fechas_fin[$i],
+                'aptos' => $aptos[$i]
+            ];
+        }
+
+        $metodos1 = new metodos();
+        $dia = date('d');
+        $mes = date('M');
+        $anio = date('Y');
+        $mes1 = $metodos1->convertirMes($mes);
+        $date = "Puertollano a " . $dia . " de " . $mes1 . " de " . $anio;
+        $invoice = "Memoria final de FCT.";
+        $view = \View::make('FCT/invoice2', compact('data', 'date', 'invoice', 'alumnos'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('Memoria final de FCT.');
+    }
+
+    /*public function getData2(Request $req){
+        $nombre_tutor = $req->get('nombre_tutor');
+        $nombre_grupo = $req->get('nombre_grupo');
+        $curso_academico = $req->get('curso_academico');
+        $nombre_apellidos_alumnos = $req->get('nombreapellidos');
+        dd($nombre_apellidos_alumnos);
+    }*/
 }

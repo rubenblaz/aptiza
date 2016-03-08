@@ -100,6 +100,8 @@ Route::group(['middleware' => ['web', 'validarRol:3']], function () {
     Route::match(array('GET', 'POST'), 'validado3', 'FCT\usuarios@empresas_favoritas'); //Submit de empresas favoritas
     Route::get('/memoria', 'FCT\usuarios@memoriafinal'); //Memoria final
     Route::get('pdf', 'FCT\PdfController@invoice'); //PDF
+    Route::get('pdf2', 'FCT\PdfController@invoice2'); //PDF
+    Route::match(array('GET', 'POST'), 'generarpdfmemoria', 'FCT\PdfController@invoice2'); //Submit generar PDF memoria final
     Route::get('/resumenalumnos', 'FCT\usuarios@resumenalumnos');
     Route::get('/resumenempresas', 'FCT\usuarios@resumenempresas');
     Route::get('/solencuestas', 'FCT\usuarios@solencuestas');

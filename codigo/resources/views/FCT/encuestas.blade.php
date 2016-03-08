@@ -51,9 +51,6 @@
                     @endif
                     <hr>
                     <div id="contenedorinfo">
-                        <div class="infoextra" id="hola">
-                            Curso escolar<br>
-                        </div>
                         <div class="infoextra">
                             Ciclo formativo<br>
                             @if(Session::get('USUARIO')->hasRol(6))
@@ -61,9 +58,6 @@
                             @else
                                 {!! Session::get('curso_empresa') !!}
                             @endif
-                        </div>
-                        <div class="infoextra">
-                            Periodo de realización<br>
                         </div>
                         <div class="infoextra">
                             Empresa<br>

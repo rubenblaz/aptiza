@@ -51,11 +51,13 @@
                 <div class="form-group">
                     <center>
                         {!! Form::label('Empresas favoritas') !!}<br>
+                        <hr>
                         {!! Form::select('empresas', $empresas, null, array('class'=>'form-control','style'=>'')) !!}
                     </center>
                 </div>
                 <div class="form-group">
                     <center>{!! Form::label('Mis alumnos') !!}</center>
+                    <hr>
                     <div class="row">
                         <div class="col-md-3" title="Nombre">
                             <b>Nombre</b>
@@ -63,8 +65,8 @@
                         <div class="col-md-3" title="Apellidos">
                             <b>Apellidos</b>
                         </div>
-                        <div class="col-md-3" title="Calificacion">
-                            <b>Calificacion</b>
+                        <div class="col-md-3" title="Empresa actual">
+                            <b>Empresa actual</b>
                         </div>
                         <div class="col-md-3" title="Seleccion">
                             <b>Seleccion</b>
@@ -75,7 +77,7 @@
                             <div class="col-md-3" title="Nombre">{{ $al->NOMBRE }}</div>
                             <div class="col-md-3" title="Apellidos">{{ $al->APELLIDOS }}</div>
                             {{--<td>{{ $al->CURSO }}</td>--}}
-                            <div class="col-md-3" title="Calificacion">{{ $al->NOMBRE_E }}</div>
+                            <div class="col-md-3" title="Empresa actual">{{ $al->NOMBRE_E }}</div>
                             <div class="col-md-3"
                                  title="Seleccion">{{ Form::checkbox('seleccionado[]',$al->N_EXP,false) }}</div>
                         </div>
