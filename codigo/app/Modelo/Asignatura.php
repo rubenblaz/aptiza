@@ -49,7 +49,6 @@ private static function comprobarFormato($datosAsignatura) {
 
     }
     return $valido;
-
 }
 
 }

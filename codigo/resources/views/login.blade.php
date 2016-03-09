@@ -34,7 +34,7 @@
             </div>
             @endif
             <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
+                <div class="panel-heading"><h1>Acceso Usuarios</h1></div>
                 <div class="panel-body">
                     {!! Form::open(['url' => 'login']) !!}
                     <div class="form-group">

@@ -22,7 +22,7 @@
             </div>
             @endif
             <div class="panel panel-default">
-                <div class="panel-heading">¿Como quiere iniciar sesion?</div>
+                <div class="panel-heading"><h1>Tipo de Usuario</h1></div>
                 <div class="panel-body">
                     {!! Form::open(['url' => 'elegirinicio']) !!}
                     <div class="form-group">

@@ -17,7 +17,7 @@
                 </div>
             @endif
             <div class="panel panel-default">
-                <div class="panel-heading">Recuperar Contraseña</div>
+                <div class="panel-heading"><h1>Recuperar Contraseña</h1></div>
                 <div class="panel-body">
                     {!! Form::open(['url'=>'/solicitaPass/mandarPassEmail']) !!}
                     <div class="form-group">

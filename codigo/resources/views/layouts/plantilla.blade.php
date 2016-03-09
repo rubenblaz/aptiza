@@ -32,9 +32,9 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 pull-left">
                             <div class="centro-logo-cabecera">
-                                <a href="{{ url('inicio') }}">
-                                    {{ HTML::image('img/centro_logo.jpg') }}
-                                </a>
+                               <a href="{{ url('inicio') }}">
+                                {{ HTML::image('img/centro_logo.jpg','Imagen logo del centro',['class' => 'logo-cabecera']) }}
+                            </a>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">

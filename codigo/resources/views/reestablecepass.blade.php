@@ -17,7 +17,7 @@
                 </div>
             @endif
             <div class="panel panel-default">
-                <div class="panel-heading">Restablecer contraseña para <b>{!!$email!!}</b></div>
+                <div class="panel-heading"><h1>Restablecer contraseña para {!!$email!!}</h1></div>
                 <div class="panel-body">
                      {!! Form::open(['url'=>'/solicitaPass/establecePass']) !!}
                     <div class="form-group">
