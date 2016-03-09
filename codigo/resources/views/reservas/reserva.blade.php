@@ -95,7 +95,7 @@
 @stop
 @section('migas')
 <li>{!!Html::link('inicio','Inicio')!!}</li>
-<li><a href="#"></a>Reservar aulas</li>
+<li class="active">Reservar Aula</li>
 @stop
 
 @section('titulo')

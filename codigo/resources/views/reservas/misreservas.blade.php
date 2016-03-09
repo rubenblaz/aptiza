@@ -21,7 +21,7 @@
 
 @section('migas')
 <li>{!!Html::link('inicio','Inicio')!!}</li>
-<li><a href="#"></a>Mis Reservas</li>
+<li class="active">Mis Reservas</li>
 @stop
 @section('titulo')
 Mis reservas
@@ -29,7 +29,6 @@ Mis reservas
 @section('contenido')
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
-
         <ul>
             @if(count($misreservas) == 0)
             <p class='text-center'>No tiene reservas activas</p>
@@ -43,8 +42,8 @@ Mis reservas
                                 <p class="">{{$reserva->getFecha()}} - {{$reserva->getAula()}}</p>
                             </div>    
                             <div id='reservaseditar' class="pull-right">
-                                <a  class='btn btn-default btn-sm glyphicon glyphicon-trash' href="{{route('delreserva',['fecha' => $reserva->getFecha(),'aula' => $reserva->getAula()])}}"></a>
-                                <a  class='btn btn-default btn-sm glyphicon glyphicon-pencil' href="{{route('toreservas',['fecha' => $reserva->getFecha(),'aula' => $reserva->getAula()])}}"></a>
+                                <a  class='btn btn-default btn-sm glyphicon glyphicon-trash' href="{{route('delreserva',['fecha' => $reserva->getFecha(),'aula' => $reserva->getAula()])}}">Editar</a>
+                                <a  class='btn btn-default btn-sm glyphicon glyphicon-pencil' href="{{route('toreservas',['fecha' => $reserva->getFecha(),'aula' => $reserva->getAula()])}}">Eliminar</a>
                             </div>
                         </div>
                     </li>
