@@ -35,9 +35,22 @@
       <file leaf-file-name="altaempresas.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/codigo/resources/views/FCT/Admin/altaempresas.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.769231">
-              <caret line="102" column="49" selection-start-line="102" selection-start-column="49" selection-end-line="102" selection-end-column="49" />
+            <state vertical-scroll-proportion="-21.576923">
+              <caret line="33" column="50" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="encuestas.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/codigo/resources/views/FCT/encuestas.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="1.0162455">
+              <caret line="62" column="39" selection-start-line="62" selection-start-column="39" selection-end-line="62" selection-end-column="39" />
+              <folding>
+                <element signature="e#1575#1602#0#HTML" expanded="true" />
+                <element signature="e#2005#2032#0#HTML" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -52,10 +65,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="memoriafinal.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="memoriafinal.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/codigo/resources/views/FCT/memoriafinal.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5090253">
+            <state vertical-scroll-proportion="-10.846154">
               <caret line="110" column="39" selection-start-line="110" selection-start-column="39" selection-end-line="110" selection-end-column="39" />
               <folding />
             </state>
@@ -121,7 +134,6 @@
         <option value="$PROJECT_DIR$/codigo/app/Modelo/empresa.php" />
         <option value="$PROJECT_DIR$/codigo/app/Http/Controllers/FCT/usuarios.php" />
         <option value="$PROJECT_DIR$/codigo/app/Http/Controllers/FCT/PdfController2.php" />
-        <option value="$PROJECT_DIR$/codigo/resources/views/FCT/encuestas.blade.php" />
         <option value="$PROJECT_DIR$/codigo/app/Http/Controllers/FCT/encuestas.php" />
         <option value="$PROJECT_DIR$/codigo/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/codigo/config/dompdf.php" />
@@ -131,6 +143,7 @@
         <option value="$PROJECT_DIR$/codigo/public/css/FCT/pdf2.css" />
         <option value="$PROJECT_DIR$/codigo/resources/views/FCT/invoice2.blade.php" />
         <option value="$PROJECT_DIR$/codigo/resources/views/FCT/memoriafinal.blade.php" />
+        <option value="$PROJECT_DIR$/codigo/resources/views/FCT/encuestas.blade.php" />
       </list>
     </option>
   </component>
@@ -919,13 +932,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/codigo/resources/views/FCT/encuestas.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.3375452">
-          <caret line="106" column="28" selection-start-line="106" selection-start-column="28" selection-end-line="106" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/codigo/app/Http/Controllers/FCT/encuestas.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.018050542">
@@ -1027,19 +1033,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/codigo/resources/views/FCT/Admin/altaempresas.blade.php">
+    <entry file="file://$PROJECT_DIR$/codigo/resources/views/FCT/memoriafinal.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.769231">
-          <caret line="102" column="49" selection-start-line="102" selection-start-column="49" selection-end-line="102" selection-end-column="49" />
+        <state vertical-scroll-proportion="-10.846154">
+          <caret line="110" column="39" selection-start-line="110" selection-start-column="39" selection-end-line="110" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/codigo/resources/views/FCT/memoriafinal.blade.php">
+    <entry file="file://$PROJECT_DIR$/codigo/resources/views/FCT/Admin/altaempresas.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5090253">
-          <caret line="110" column="39" selection-start-line="110" selection-start-column="39" selection-end-line="110" selection-end-column="39" />
+        <state vertical-scroll-proportion="-21.576923">
+          <caret line="33" column="50" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/codigo/resources/views/FCT/encuestas.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0162455">
+          <caret line="62" column="39" selection-start-line="62" selection-start-column="39" selection-end-line="62" selection-end-column="39" />
+          <folding>
+            <element signature="e#1575#1602#0#HTML" expanded="true" />
+            <element signature="e#2005#2032#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

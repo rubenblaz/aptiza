@@ -50,8 +50,8 @@
                         <center><h4>CUESTIONARIO SOBRE FCT EMPRESA</h4></center>
                     @endif
                     <hr>
-                    <div id="contenedorinfo">
-                        <div class="infoextra">
+                    <div class="row">
+                        <div class="col-md-6" style="text-align: center;">
                             Ciclo formativo<br>
                             @if(Session::get('USUARIO')->hasRol(6))
                                 {!! Session::get('nombre_curso') !!}
@@ -59,7 +59,7 @@
                                 {!! Session::get('curso_empresa') !!}
                             @endif
                         </div>
-                        <div class="infoextra">
+                        <div class="col-md-6" style="text-align: center;">
                             Empresa<br>
                             @if(Session::get('USUARIO')->hasRol(6))
                                 {!! Session::get('nombre_empresa') !!}
