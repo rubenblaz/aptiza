@@ -8,6 +8,14 @@
         input[type="checkbox"]{
 
         }
+        .centradonegrita{
+            font-weight: bold;
+            text-align: center;
+        }
+        .centrarinput{
+            margin-bottom: 1%;
+            margin-left: 45%;
+        }
     </style>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css"/>
 @stop
@@ -43,15 +51,15 @@
                     </div>
                     <div id="ayuda" class="col-md-6" style="display:none;" title="Ayuda">
                         <ul>
-                            <li>Para borrar una empresa de favoritas, pulsar sobre el icono de la papelera de reciclaje <i class="glyphicon glyphicon-trash"></i>.</li>
-                            <li>Para añadir empresas a las favoritas, seleccionarlas con las casillas y hacer click en aceptar <i class="glyphicon glyphicon-check"></i>.</li>
-                            <li>El icono de la papelera <i class="glyphicon glyphicon-trash"></i> solo pone la empresa en NO FAVORITA. En ningún momento borra ningún dato de la empresa.</li>
+                            <li>Para borrar una empresa de favoritas, pulsar sobre el icono de la papelera de reciclaje <span class="glyphicon glyphicon-trash" title="Papelera"></span>.</li>
+                            <li>Para añadir empresas a las favoritas, seleccionarlas con las casillas y hacer click en aceptar <span class="glyphicon glyphicon-check" title="Papelera"></span>.</li>
+                            <li>El icono de la papelera <span class="glyphicon glyphicon-trash" title="Papelera"></span> solo pone la empresa en NO FAVORITA. En ningún momento borra ningún dato de la empresa.</li>
                         </ul>
                     </div>
                 </div>
                 <hr>
                 <br>
-                <center><b><p>Listado completo de todas las empresas disponibles:</p></b></center>
+                <p class="centradonegrita" title="Listado completo de todas las empresas disponibles.">Listado completo de todas las empresas disponibles:</p>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
@@ -76,7 +84,7 @@
                                     @if($emp->FAVORITA == "SI") <!-- Preguntar a fernando que hacer en el caso de que sea favorita y en el caso de que no -->
                                     <a href="{{URL::to('/borrar', $emp->CIF)}}"
                                        title="Borrar empresa de favoritas">
-                                        <i class="glyphicon glyphicon-trash"></i>
+                                        <span class="glyphicon glyphicon-trash" title="Borrar empresa de favoritas"></span>
                                     </a>
                                     {{--<a href="{{route('/borrar', ['CIF'=>$emp->CIF])}}">
                                         <i class="glyphicon glyphicon-trash"></i>
@@ -91,7 +99,7 @@
                     </table>
                 </div>
                 {!! $empresas->render() !!}
-                <center>{!! Form::submit('Aceptar', array('class'=>'btn btn-success')) !!}</center>
+                {!! Form::submit('Aceptar', array('class'=>'btn btn-success centrarinput')) !!}
                 <br>
                 {!! Form::close() !!}
             </div>

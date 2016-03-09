@@ -5,6 +5,15 @@
         body {
             background-color: #269abc;
         }
+        .centrado{
+            text-align: center;
+        }
+        .negrita{
+            font-weight:bold;
+        }
+        .centrarinput{
+            margin-left: 45%;
+        }
     </style>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css"/>
 @stop
@@ -30,14 +39,14 @@
             @endif
         </div>
         <div class="row">
-            <div id="botonayuda" class="col-md-6">
+            <div id="botonayuda" class="col-md-6" title="Ayuda">
                 <a href="#top" title="Ayuda"><img src="img/FCT/ayuda.png" style="width: 6%; margin-left: 3%;"
                                                   alt="Ayuda"/></a>
             </div>
             <div id="ayuda" class="col-md-6" style="display:none;">
                 <ul>
                     <li>Seleccionar la empresa en la lista superior.</li>
-                    <li>Con una empresa seleccionada, marcar las casillas <i class="glyphicon glyphicon-check"></i> de
+                    <li>Con una empresa seleccionada, marcar las casillas <span class="glyphicon glyphicon-check" title="Casilla de verificación"></span> de
                         los alumnos que queramos asignar a esa
                         empresa.
                     </li>
@@ -49,27 +58,25 @@
         <div class="panel panel-primary">
             <div class="panel-body">
                 <div class="form-group">
-                    <center>
-                        {!! Form::label('Empresas favoritas') !!}<br>
+                        <center>{!! Form::label('empresas', 'Empresas favoritas') !!}</center><br> <!-- No se puede centrar esta etiqueta únicamente con CSS. -->
                         <hr>
-                        {!! Form::select('empresas', $empresas, null, array('class'=>'form-control','style'=>'')) !!}
-                    </center>
+                        {!! Form::select('empresas', $empresas, null, array('class'=>'form-control centrado','style'=>'')) !!}
                 </div>
                 <div class="form-group">
-                    <center>{!! Form::label('Mis alumnos') !!}</center>
+                    <center>{!! Form::label('alumnos', 'Mis alumnos') !!}</center> <!-- Problema al centrar con solo CSS -->
                     <hr>
                     <div class="row">
-                        <div class="col-md-3" title="Nombre">
-                            <b>Nombre</b>
+                        <div class="col-md-3 negrita" title="Nombre">
+                            Nombre
                         </div>
-                        <div class="col-md-3" title="Apellidos">
-                            <b>Apellidos</b>
+                        <div class="col-md-3 negrita" title="Apellidos">
+                            Apellidos
                         </div>
-                        <div class="col-md-3" title="Empresa actual">
-                            <b>Empresa actual</b>
+                        <div class="col-md-3 negrita" title="Empresa actual">
+                            Empresa actual
                         </div>
-                        <div class="col-md-3" title="Seleccion">
-                            <b>Seleccion</b>
+                        <div class="col-md-3 negrita" title="Seleccion">
+                            Seleccion
                         </div>
                     </div>
                     @foreach ($alumnos as $al)
@@ -84,7 +91,7 @@
                     @endforeach
                 </div>
                 {!! $alumnos->render() !!}
-                <center>{!! Form::submit('Asignar', array('class'=>'btn btn-success', 'id'=>'asignar')) !!}</center>
+                {!! Form::submit('Asignar', array('class'=>'btn btn-success centrarinput', 'id'=>'asignar')) !!}
             </div>
         </div>
     </div>

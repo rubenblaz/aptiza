@@ -28,6 +28,9 @@
         input[type="checkbox"]{
 
         }
+        .centrarinput{
+            margin-left: 45%;
+        }
     </style>
 @stop
 @section('migas')
@@ -53,7 +56,7 @@
         <div class="from-group">
             <div class="col-md-12">
                 {!! Form::label('Curso académico: ') !!}
-                {!! Form::text('curso_academico', null, array('placeholder'=>'2016/2017', 'class'=>'form-control', 'required', 'title'=>'Curso académico')) !!}
+                {!! Form::text('curso_academico', "2016/2017", array('placeholder'=>'2016/2017', 'class'=>'form-control', 'required', 'title'=>'Curso académico')) !!}
             </div>
 
         </div>
@@ -99,13 +102,14 @@
                         {!! Form::textarea('email[]', $al->EMAIL ,array('class'=>'form-control inputs','rows'=>'4', 'title'=>'Email')) !!}
                     </td>
                     <td>
-                        {!! Form::date('fecha_inicio[]', null, array('class'=>'form-control fechas', 'title'=>'Fecha de inicio')) !!}
+                        {!! Form::date('fecha_inicio[]', \Carbon\Carbon::now(), array('class'=>'form-control fechas', 'title'=>'Fecha de inicio')) !!}
                     </td>
                     <td>
-                        {!! Form::date('fecha_fin[]', null, array('class'=>'form-control fechas', 'title'=>'Fecha de fin')) !!}
+                        {!! Form::date('fecha_fin[]', \Carbon\Carbon::now(), array('class'=>'form-control fechas', 'title'=>'Fecha de fin')) !!}
                     </td>
                     <td>
-                        {!! Form::text('aptos[]', "S", ['title'=>'¿Apto o no apto?', 'class'=>'form-control inputs']) !!}
+                        {!! Form::select('aptos[]', array('SI' => 'SI', 'NO' => 'NO'), 'SI', array('class'=>'form-control')) !!}
+                        {{--{!! Form::text('aptos[]', "S", ['title'=>'¿Apto o no apto?', 'class'=>'form-control inputs']) !!}--}}
                     </td>
                 </tr>
                 <span>{!! $cont++ !!}</span>
@@ -114,7 +118,7 @@
         </table>
     </div>
     <br>
-    <center>{!! Form::submit('Generar PDF', array('class'=>'btn btn-success', 'title'=>'Crear PDF')) !!}</center>
+    {!! Form::submit('Generar PDF', array('class'=>'btn btn-success centrarinput', 'title'=>'Crear PDF')) !!}
     {!! Form::close() !!}
 @stop
 @section('scripts')

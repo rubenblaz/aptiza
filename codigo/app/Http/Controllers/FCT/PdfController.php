@@ -68,6 +68,7 @@ class PdfController extends Controller
      */
     public function invoice2(Request $req)
     {
+
         $nombre_tutor = $req->get('nombre_tutor');
         $nombre_grupo = $req->get('nombre_grupo');
         $curso_academico = $req->get('curso_academico');
@@ -82,7 +83,13 @@ class PdfController extends Controller
         $aptos = $req->get('aptos');
 
         $alumnos = array();
+        $datosv = array();
 
+        $datosv = [
+            'nombre_tutor' => $nombre_tutor,
+            'nombre_grupo' => $nombre_grupo,
+            'curso_academico' => $curso_academico
+        ];
         for ($i = 0; $i < count($nombre_apellidos_alumnos); $i++) {
             $alumnos[$i] = [
                 'nombre_apellidos_alumnos' => $nombre_apellidos_alumnos[$i],
@@ -104,7 +111,7 @@ class PdfController extends Controller
         $mes1 = $metodos1->convertirMes($mes);
         $date = "Puertollano a " . $dia . " de " . $mes1 . " de " . $anio;
         $invoice = "Memoria final de FCT.";
-        $view = \View::make('FCT/invoice2', compact('data', 'date', 'invoice', 'alumnos'))->render();
+        $view = \View::make('FCT/invoice2', compact('data', 'date', 'invoice', 'alumnos', 'datosv'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         return $pdf->stream('Memoria final de FCT.');
