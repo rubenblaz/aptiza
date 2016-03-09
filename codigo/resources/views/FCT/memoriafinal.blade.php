@@ -42,10 +42,10 @@
     <div class="row">
         <div class="col-md-12">
             <p>
-                <b>Tutor: </b> {!! Form::text('nombre_tutor', Session::get('nombre_tutor') . ", " . Session::get('apellidos_tutor'), array('class'=>'form-control','title'=>'Nombre y apellidos de tutor', 'disabled')) !!}
+                <b>Tutor: </b> {!! Form::text('nombre_tutor', Session::get('nombre_tutor') . ", " . Session::get('apellidos_tutor'), array('class'=>'form-control','title'=>'Nombre y apellidos de tutor')) !!}
             </p>
             <p>
-                <b>Grupo: </b> {!! Form::text('nombre_grupo', Session::get('nombre_grupo'),array('class'=>'form-control','disabled','title'=>'Nombre del grupo')) !!}
+                <b>Grupo: </b> {!! Form::text('nombre_grupo', Session::get('nombre_grupo'),array('class'=>'form-control','title'=>'Nombre del grupo')) !!}
             </p>
         </div>
     </div>
