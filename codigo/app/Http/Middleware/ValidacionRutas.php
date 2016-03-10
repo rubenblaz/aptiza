@@ -21,7 +21,7 @@ class ValidacionRutas {
         }else if($rol == null){
             return $next($request);
         }else if(!Session::get('USUARIO')->hasRol($rol)){
-            dd($rol);
+
           App::abort(403, 'Access denied');
         }
         return $next($request);

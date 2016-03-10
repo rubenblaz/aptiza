@@ -22,8 +22,8 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div style="display: inline;">
-                            <p><span class="nombresempresas">{!! $emp->NOMBRE !!}</span></p>
-                            <p><span class="label label-info" class="iconoemail"><a
+                            <p title="Nombre empresa"><span class="nombresempresas">{!! $emp->NOMBRE !!}</span></p>
+                            <p title="Icono enviar correo"><span class="label label-info" class="iconoemail"><a
                                             href="{{URL::to('/enviardatos', $emp->CIF)}}"
                                             title="Enviar credenciales">
                                         <i class="glyphicon glyphicon-envelope" style="width: 15%; color: white;"></i>

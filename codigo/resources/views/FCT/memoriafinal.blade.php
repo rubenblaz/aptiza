@@ -31,6 +31,11 @@
         .centrarinput{
             margin-left: 45%;
         }
+        .negrita{
+            font-weight: bold;
+            display: inline-flex;
+        }
+
     </style>
 @stop
 @section('migas')
@@ -45,10 +50,10 @@
     <div class="row">
         <div class="col-md-12">
             <p>
-                <b>Tutor: </b> {!! Form::text('nombre_tutor', Session::get('nombre_tutor') . ", " . Session::get('apellidos_tutor'), array('class'=>'form-control','title'=>'Nombre y apellidos de tutor')) !!}
+                <span class="negrita" title="Tutor"> Tutor: </span> {!! Form::text('nombre_tutor', Session::get('nombre_tutor') . ", " . Session::get('apellidos_tutor'), array('class'=>'form-control','title'=>'Nombre y apellidos de tutor')) !!}
             </p>
             <p>
-                <b>Grupo: </b> {!! Form::text('nombre_grupo', Session::get('nombre_grupo'),array('class'=>'form-control','title'=>'Nombre del grupo')) !!}
+                <span class="negrita" title="Grupo">Grupo: </span> {!! Form::text('nombre_grupo', Session::get('nombre_grupo'),array('class'=>'form-control','title'=>'Nombre del grupo')) !!}
             </p>
         </div>
     </div>
@@ -58,7 +63,6 @@
                 {!! Form::label('Curso académico: ') !!}
                 {!! Form::text('curso_academico', "2016/2017", array('placeholder'=>'2016/2017', 'class'=>'form-control', 'required', 'title'=>'Curso académico')) !!}
             </div>
-
         </div>
     </div>
     <div class="table-responsive">

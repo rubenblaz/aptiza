@@ -83,8 +83,8 @@
                                 <td>
                                     @if($emp->FAVORITA == "SI") <!-- Preguntar a fernando que hacer en el caso de que sea favorita y en el caso de que no -->
                                     <a href="{{URL::to('/borrar', $emp->CIF)}}"
-                                       title="Borrar empresa de favoritas">
-                                        <span class="glyphicon glyphicon-trash" title="Borrar empresa de favoritas"></span>
+                                       title="Borrar empresa de favoritas" class="glyphicon glyphicon-trash">
+                                        <span style="display: none;" title="Borrar empresa de favoritas">Borrar empresas favoritas</span>
                                     </a>
                                     {{--<a href="{{route('/borrar', ['CIF'=>$emp->CIF])}}">
                                         <i class="glyphicon glyphicon-trash"></i>

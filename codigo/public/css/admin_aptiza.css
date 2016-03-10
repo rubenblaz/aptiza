@@ -9,8 +9,10 @@ and open the template in the editor.
 */
 body {
     font-family: 'Lato';
-    background-color:red !important;
-    background-image:none;
+    background-image: url('../img/background.jpg');
     background-size:cover;
     background-repeat: no-repeat;
+}
+.cabecera-menu{
+    background-color: rebeccapurple;
 }

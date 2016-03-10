@@ -16,6 +16,7 @@ class encuestas extends Controller
 {
     public function urlencuestas() //pendiente de modificar
     {
+
         if (Session::has('preguntas')) {
             Session::forget('preguntas');
         }
@@ -78,7 +79,7 @@ class encuestas extends Controller
         foreach ($idpreguntas as $idp) {
             $idpreguntas_v[] = $idp->IDPREGUNTA;
         }
-
+        
         if (Session::get('USUARIO')->hasRol(6)) { //Alumnos
             DB::table('encuesta')->insert(
                 ['IDUSUARIO' => $usuario, 'IDCICLO' => $curso[0]->CURSO, 'IDMODELO' => 1]

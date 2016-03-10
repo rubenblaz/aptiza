@@ -17,7 +17,9 @@
         #contenedorinfo {
 
         }
-
+        span{
+            font-weight: bold;
+        }
         textarea {
             resize: none;
         }
@@ -52,7 +54,7 @@
                     <hr>
                     <div class="row">
                         <div class="col-md-6" style="text-align: center;">
-                            Ciclo formativo<br>
+                            <span>Ciclo formativo</span><br>
                             @if(Session::get('USUARIO')->hasRol(6))
                                 {!! Session::get('nombre_curso') !!}
                             @else
@@ -60,7 +62,7 @@
                             @endif
                         </div>
                         <div class="col-md-6" style="text-align: center;">
-                            Empresa<br>
+                            <span>Empresa</span><br>
                             @if(Session::get('USUARIO')->hasRol(6))
                                 {!! Session::get('nombre_empresa') !!}
                             @else
@@ -85,21 +87,21 @@
                             </tbody>
                             <tr>
                                 <td colspan="2" id="info2">
-                                    Incluye aquel/aquellos aspectos que desees destacar como <b>Positivos</b> o en
+                                    Incluye aquel/aquellos aspectos que desees destacar como <span>Positivos</span> o en
                                     su
                                     caso
                                     aquel/aquellos
-                                    que deberían <b>mejorarse</b>.
+                                    que deberían <span>mejorarse</span>.
                                 </td>
                             </tr>
                             <tr>
                                 <td id="textarea1" title="Aspectos de positivos">
-                                    <b>Aspectos
-                                        positivos:</b>{!! Form::textarea('observaciones1', null, ['class'=>'form-control', 'required'])!!}
+                                    <span>Aspectos
+                                        positivos:</span>{!! Form::textarea('observaciones1', null, ['class'=>'form-control', 'required'])!!}
                                 </td>
                                 <td title="Aspectos de mejora">
-                                    <b>Aspectos de
-                                        mejora:</b>{!! Form::textarea('observaciones2', null, ['class'=>'form-control', 'required'])!!}
+                                    <span>Aspectos de
+                                        mejora:</span>{!! Form::textarea('observaciones2', null, ['class'=>'form-control', 'required'])!!}
                                 </td>
                             </tr>
                         </table>
