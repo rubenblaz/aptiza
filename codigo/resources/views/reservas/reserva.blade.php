@@ -121,13 +121,15 @@
     </div>
             <div class="row">
                 {!! Form::open(['url'=>'reservar', 'method' => 'POST']) !!}
-                <div class="form-group col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-12 col-sm-offset-4 col-xs-offset-2">
+                <div class="form-group col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-12 col-sm-offset-3 col-xs-offset-0">
                     <!-- Input Fecha, utilizando el Datepicker -->
                     @if(isset($fecha))
                     <div id="datepicker" data-date="{{$fecha}}" ></div> <!--Si viene de editar de la sección de Mis reservas-->
+                    <label id='input_fecha_oculto'>fecha</label>
                     <input name="fecha" hidden value="{{$fecha}}" id="input_fecha_oculto">
                     @else
                     <div id="datepicker" data-date="{{\Carbon\Carbon::today()->format('Y/m/d')}}" ></div> <!-- Toma esta fecha para establecer el dia de hoy del datepicker -->
+                    <label id='input_fecha_oculto'>fecha</label>
                     <input name="fecha" hidden value="{{\Carbon\Carbon::today()->format('Y/m/d')}}" id="input_fecha_oculto">
                     @endif
                 </div>
@@ -149,7 +151,8 @@
                             <li id='{{$idhora}}' class="">
                                 <span class="hora">{!!$hora!!}</span>
                                 <span class='reserva'></span>
-                                {!!Form::checkbox('horas[]',$idhora,false,['class'=>'pull-right clearfix','hidden'=>'true'])!!}
+                                {!!Form::label($idhora,'Horas',['class'=>'control-label'])!!}
+                                {!!Form::checkbox('horas[]',$idhora,false,['class'=>'pull-right clearfix','id'=>$idhora,'hidden'=>'true'])!!}
                             </li>
                             @endforeach
                         </ul>

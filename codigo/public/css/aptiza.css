@@ -84,7 +84,6 @@ section{
 .titulo h1:before{
     content: url(../img/aptiza_logo_check.png);
 }
-
 .articulo > h4{
     margin: 30px 0px 30px 0px;
 }
