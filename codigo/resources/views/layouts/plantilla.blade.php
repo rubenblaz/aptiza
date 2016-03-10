@@ -4,8 +4,9 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="favicon.ico" />
 
-        <title>Fray Andres</title>
+        <title>Aptiza</title>
 
         <!-- Fuentes -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
@@ -90,9 +91,9 @@
 
                 @section('element-titulo')
                 <div class="titulo col-md-10 col-lg-offset-1 col-md-offset-1">
-                    <h3>
+                    <h1>
                         @yield('titulo')
-                    </h3>  
+                    </h1>  
                 </div>
                 @show
 
