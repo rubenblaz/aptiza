@@ -14,7 +14,11 @@ use App\Modelo\encuesta;
 
 class encuestas extends Controller
 {
-    public function urlencuestas() //pendiente de modificar
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Muestra las preguntas y las opciones dependiendo del rol del usuario.
+     */
+    public function urlencuestas()
     {
 
         if (Session::has('preguntas')) {
@@ -63,10 +67,14 @@ class encuestas extends Controller
         return view("FCT/encuestas", $datos);
     }
 
+    /**
+     * @param Request $req
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Almacena los resultados de las encuestas en la base de datos
+     */
     public function encuestas(Request $req)
     {
         $usuario1 = new alumno();
-
 
 
         $seleccion = $req->get('opciones');
@@ -79,7 +87,7 @@ class encuestas extends Controller
         foreach ($idpreguntas as $idp) {
             $idpreguntas_v[] = $idp->IDPREGUNTA;
         }
-        
+
         if (Session::get('USUARIO')->hasRol(6)) { //Alumnos
             DB::table('encuesta')->insert(
                 ['IDUSUARIO' => $usuario, 'IDCICLO' => $curso[0]->CURSO, 'IDMODELO' => 1]
@@ -109,4 +117,7 @@ class encuestas extends Controller
         }
         return view('inicio');
     }
+
+
+
 }

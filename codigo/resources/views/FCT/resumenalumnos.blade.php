@@ -58,6 +58,7 @@
                             </thead>
                             <tbody>
                             <span>{!! $cont = 0 !!}</span>
+                            <span>{!! $media = 0 !!}</span>
                             @foreach($encuestas as $enc)
                                 @if($cont%10 == 0)
                                     <tr>
@@ -70,7 +71,17 @@
                                         </td>
                                         <span>{!! $cont++ !!}</span>
                                         @endforeach
+                                                <!-- Medias de las encuestas -->
+                                        @for($i=0;$i<count($medias_encuestas);$i++)
+                                            @if($i%10==0)
+                                                <td>
+                                                    {!! floor($medias_encuestas[$i]) !!}
+                                                </td>
+                                            @endif
+                                        @endfor
+
                                     </tr>
+                                    <!-- Medias de las preguntas -->
                                     <tr>
                                         <td>Media</td>
                                     </tr>

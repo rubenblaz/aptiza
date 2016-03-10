@@ -25,6 +25,11 @@ class empresa
     {
     }
 
+    /**
+     * @param $cif
+     * @return bool
+     * Comprueba si existe una empresa mediante el $cif
+     */
     public function comprobarEmpresa($cif)
     {
         $cifempresa = DB::table('empresas')
@@ -40,6 +45,26 @@ class empresa
         return $existe;
     }
 
+    /**
+     * @param $usuario
+     * @param $cif
+     * @param $nombre
+     * @param $cp
+     * @param $telefono
+     * @param $dnirep
+     * @param $convenio
+     * @param $alias
+     * @param $poblacion
+     * @param $fax
+     * @param $observaciones
+     * @param $fechaconv_vec
+     * @param $direccion
+     * @param $provincia
+     * @param $convrep
+     * @param $tipoempresa
+     * @param $fav
+     * Inserta una nueva empresa en la bbdd.
+     */
     public function insertarEmpresa($usuario, $cif, $nombre, $cp, $telefono, $dnirep, $convenio, $alias, $poblacion, $fax, $observaciones, $fechaconv_vec, $direccion, $provincia, $convrep, $tipoempresa, $fav)
     {
         DB::table('empresas')->insert(
@@ -52,6 +77,10 @@ class empresa
         );
     }
 
+    /**
+     * @return mixed
+     * Devuelve las empresas favoritas "SI".
+     */
     public function empresasFavoritas()
     {
         $empresas_fav = DB::table('empresas')
@@ -62,6 +91,11 @@ class empresa
         return $empresas_fav;
     }
 
+    /**
+     * @param $seleccion_empresa
+     * @return mixed
+     * Devuelve el email de la empresa pasada como parametro.
+     */
     public function usuarioEmpresa($seleccion_empresa)
     {
         $usuario_empresa = DB::table('empresas')
@@ -72,6 +106,10 @@ class empresa
         return $usuario_empresa;
     }
 
+    /**
+     * @return mixed
+     * Devuelve todas las empresas paginadas de 10 en 10.
+     */
     public function todasEmpresas()
     {
         /*
@@ -85,6 +123,10 @@ class empresa
         return $consulta;
     }
 
+    /**
+     * @param $cif
+     * Elimina una empresa de favoritas.
+     */
     public function borrarFavorita($cif)
     {
         DB::table('empresas')
@@ -92,6 +134,11 @@ class empresa
             ->update(['FAVORITA' => 'NO']);
     }
 
+    /**
+     * @param $usuario
+     * @return bool
+     * Comprueba si existe el usuario pasado por parametro.
+     */
     public function comprobarUsuario($usuario)
     {
         $existe = false;
@@ -106,6 +153,12 @@ class empresa
         return $existe;
     }
 
+    /**
+     * @param $usuario
+     * @param $password
+     * @param $nombre
+     * Inserta una empresa nueva como usuario capaz de loguerse en la aplicación web.
+     */
     public function insertarUsuario($usuario, $password, $nombre)
     {
         DB::table('usuarios')->insert(
@@ -116,6 +169,11 @@ class empresa
         );
     }
 
+    /**
+     * @param $email
+     * @return mixed
+     * Obtiene el nombre de la empresa pasada como parametro referente a alumnos.
+     */
     public function obtenerNombreEmpresa($email)
     {
         $nombre_empresa = DB::table('empresas')
@@ -126,6 +184,11 @@ class empresa
         return $nombre_empresa;
     }
 
+    /**
+     * @param $email
+     * @return mixed
+     * Obtiene el nombre de la empresa pasada como parametro.
+     */
     public function obtenerNombre($email)
     {
         $consulta = DB::table('empresas')
@@ -135,6 +198,11 @@ class empresa
         return $consulta;
     }
 
+    /**
+     * @param $email
+     * @return mixed
+     * Obtiene el curso del alumno que coincida con la empresa pasada como parametro.
+     */
     public function obtenerCursoAlumnos($email)
     {
         $consulta = DB::table('alumnos')
@@ -146,6 +214,11 @@ class empresa
         return $consulta;
     }
 
+    /**
+     * @param $cif
+     * @return mixed
+     * Obtiene el email de la empresa que coincida con el CIF pasado como parametro.
+     */
     public function obtenerEmail($cif)
     {
         $consulta = DB::table('empresas')
@@ -155,6 +228,11 @@ class empresa
         return $consulta;
     }
 
+    /**
+     * @param $email
+     * @return mixed
+     * Obtiene las encuestas realizadas de las empresas.
+     */
     public function obtenerEncuestas($email)
     {
         $consulta1 = DB::table('profesores')
@@ -169,12 +247,17 @@ class empresa
             ->where('profesores.CURSO', $curso)
             ->where('profesores.EMAIL', $email)
             ->where('encuesta.IDMODELO', 2)
-            ->orderBy('encuesta.IDENCUESTA', 'elige.IDPREGUNTA')
+            ->orderBy('encuesta.IDENCUESTA')
             ->get();
 
         return $consulta2;
     }
 
+    /**
+     * @param $cif
+     * @return mixed
+     * Obtiene todos los datos de una empresa que coincida con el CIF pasado como parametro.
+     */
     public function obtenerTodosDatos($cif)
     {
         $consulta = DB::table('empresas')
@@ -185,6 +268,11 @@ class empresa
         return $consulta;
     }
 
+    /**
+     * @param $usuario_empresa
+     * @param $usuario_original
+     * Actualiza los datos de usuario de una empresa ya creada con anterioridad.
+     */
     public function actualizarUsuario($usuario_empresa, $usuario_original)
     {
         DB::table('usuarios')
@@ -196,6 +284,27 @@ class empresa
 
     }
 
+    /**
+     * @param $usuario_empresa
+     * @param $cif
+     * @param $nombre
+     * @param $cp
+     * @param $telefono
+     * @param $dnirep
+     * @param $convenio
+     * @param $alias
+     * @param $poblacion
+     * @param $fax
+     * @param $observaciones
+     * @param $fechaconv_vec
+     * @param $direccion
+     * @param $provincia
+     * @param $convrep
+     * @param $tipoempresa
+     * @param $fav
+     * @param $usuario_empresa_original
+     * Actualiza los datos de la empresa ya existente a unos nuevos.
+     */
     public function actualizarDatos($usuario_empresa, $cif, $nombre, $cp, $telefono, $dnirep, $convenio, $alias, $poblacion, $fax, $observaciones, $fechaconv_vec, $direccion, $provincia, $convrep, $tipoempresa, $fav, $usuario_empresa_original)
     {
         DB::table('empresas')

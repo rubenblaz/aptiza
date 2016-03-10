@@ -20,6 +20,11 @@ class metodos
     {
     }
 
+    /**
+     * @param $mes
+     * @return string
+     * Convierte cualquier mes a español.
+     */
     public function convertirMes($mes)
     {
         switch ($mes) {
@@ -63,6 +68,10 @@ class metodos
         return $mes;
     }
 
+    /**
+     * @return mixed
+     * Obtiene el curso del tutor logueado en la plataforma en ese momento.
+     */
     public function cursoTutor()
     {
         $consulta = DB::table('cursos')

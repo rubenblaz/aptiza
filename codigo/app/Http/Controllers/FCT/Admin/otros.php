@@ -13,11 +13,20 @@ use App\Modelo\empresa;
 
 class otros extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * No se usa actualmente.
+     */
     public function admincuenta()
     {
         return view('FCT/admincuenta');
     }
 
+    /**
+     * @param Request $req
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * No se usa actualmente. Permitía cambiar los datos de la cuenta a un usuario determinado.
+     */
     public function admincuenta2(Request $req)
     {
         $contraseña_actual = $req->get('passactual');
@@ -53,16 +62,28 @@ class otros extends Controller
         return view('FCT/admincuenta', $datos);
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Devuelve a la vista altaempresas.
+     */
     public function urlempresas()
     {
         return view('FCT/Admin/altaempresas');
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Devuelve a la vista invoice.
+     */
     public function urlinforme()
     {
         return view('FCT/invoice');
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Devuelve todas las empresas a la vista modempresas.
+     */
     public function urlmodempresas()
     {
         $empresa1 = new empresa();
@@ -75,6 +96,11 @@ class otros extends Controller
         return view('FCT/Admin/modempresas', $datos);
     }
 
+    /**
+     * @param Request $req
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Rellena el formulario de modificación de datos de la empresa con sus datos actuales en la vista modempresas_form.
+     */
     public function modempresas(Request $req)
     {
         $cif = $req->CIF;
@@ -89,6 +115,11 @@ class otros extends Controller
         return view('FCT/Admin/modempresas_form', $datos);
     }
 
+    /**
+     * @param Request $req
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * Actualiza la bbdd de la empresa en cuestión con los datos nuevos.
+     */
     public function modempresas_submit(Request $req)
     {
         $usuario_empresa = $req->get('usuario');

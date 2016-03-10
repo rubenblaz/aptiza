@@ -26,6 +26,10 @@ class encuesta
     {
     }
 
+    /**
+     * @return mixed
+     * Obtiene las preguntas de las empresas.
+     */
     public function obtenerPreguntasEmpresas()
     {
         $preguntas = DB::table('tiene')
@@ -40,6 +44,10 @@ class encuesta
         return $preguntas;
     }
 
+    /**
+     * @return mixed
+     * Obtiene las preguntas de los alumnos.
+     */
     public function obtenerPreguntasAlumnos()
     {
         $preguntas = DB::table('tiene')
@@ -54,6 +62,10 @@ class encuesta
         return $preguntas;
     }
 
+    /**
+     * @return mixed
+     * Obtiene las preguntas de los alumnos específicas.
+     */
     public function obtenerPreguntasModeloAlumno()
     {
         $consulta = DB::table('tiene')
@@ -66,6 +78,11 @@ class encuesta
 
         return $consulta;
     }
+
+    /**
+     * @return mixed
+     * Obtiene las preguntas de las empresas específicas.
+     */
     public function obtenerPreguntasModeloEmpresa()
     {
         $consulta = DB::table('tiene')
@@ -76,6 +93,32 @@ class encuesta
             ->orderBy('IDMPREGUNTA')
             ->get();
 
+        return $consulta;
+    }
+
+    /**
+     * @param $idencuesta
+     * @return mixed
+     * Devuelve la media de las respuestas de una encuesta pasada como parametro.
+     */
+    public function mediasOpciones($idencuesta)
+    {
+        $consulta = DB::table('elige')
+            ->where('IDENCUESTA', $idencuesta)
+            ->avg('IDOPCION');
+        return $consulta;
+    }
+
+    /**
+     * @param $idpregunta
+     * @return mixed
+     * Devuelve la media de las respuestas de una pregunta pasada como parametro.
+     */
+    public function mediasOpciones2($idpregunta)
+    {
+        $consulta = DB::table('elige')
+            ->where('IDPREGUNTA', $idpregunta)
+            ->avg('IDOPCION');
         return $consulta;
     }
 }

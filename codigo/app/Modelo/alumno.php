@@ -22,6 +22,12 @@ class alumno
 
     }
 
+    /**
+     * @param $seleccion_alumnos
+     * @param $usuario_empresa
+     * @return mixed
+     * Actualiza la empresa de los alumnos seleccionados a la empresa seleccionada.
+     */
     public function actualizarAlumnos($seleccion_alumnos, $usuario_empresa)
     {
         for ($i = 0; $i < count($seleccion_alumnos); $i++) {
@@ -32,6 +38,11 @@ class alumno
         return $update;
     }
 
+    /**
+     * @param $curso_tutor
+     * @return mixed
+     * Obtiene el nombre y apellidos de los alumnos del tutor logueado en el la plataforma.
+     */
     public function obtenerDatosAlumnos($curso_tutor)
     {
         $alumnos = DB::table('alumnos')
@@ -42,6 +53,11 @@ class alumno
         return $alumnos;
     }
 
+    /**
+     * @param $email
+     * @return mixed
+     * Obtiene el curso del alumno que tenga el $email que se le pasa como parámetro.
+     */
     public function obtenerCurso($email)
     {
         $consulta = DB::table('alumnos')
@@ -52,6 +68,11 @@ class alumno
         return $consulta;
     }
 
+    /**
+     * @param $usuario
+     * @return mixed
+     * Obtiene la ID de la encuesta del $usuario pasado como parámetro.
+     */
     public function obtenerIdEncuesta($usuario)
     {
         $consulta = DB::table('encuesta')
@@ -67,6 +88,11 @@ class alumno
 
     }
 
+    /**
+     * @param $email
+     * @return mixed
+     * Obtiene el nombre del curso del alumno con el $email pasado como parámetro.
+     */
     public function obtenerNombreCurso($email)
     {
         $nombrecurso = DB::table('cursos')
@@ -77,6 +103,11 @@ class alumno
         return $nombrecurso;
     }
 
+    /**
+     * @param $email
+     * @return mixed
+     * Obtiene las encuestas de los alumnos realizadas.
+     */
     public function obtenerEncuestas($email)
     {
         $consulta1 = DB::table('profesores')
@@ -91,7 +122,7 @@ class alumno
             ->where('profesores.CURSO', $curso)
             ->where('profesores.EMAIL', $email)
             ->where('encuesta.IDMODELO', 1)
-            ->orderBy('encuesta.IDENCUESTA', 'elige.IDPREGUNTA')
+            ->orderBy('encuesta.IDENCUESTA')
             ->get();
 
         return $consulta2;

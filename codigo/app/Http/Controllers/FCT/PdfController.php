@@ -37,6 +37,10 @@ class PdfController extends Controller
         return $pdf->stream('FCT ' . $curso2);
     }
 
+    /**
+     * @return array
+     * Obtiene los datos para pasarselos luego a la vista
+     */
     public function getData()
     {
         $alumno1 = new alumno();
@@ -116,12 +120,4 @@ class PdfController extends Controller
         $pdf->loadHTML($view);
         return $pdf->stream('Memoria final de FCT.');
     }
-
-    /*public function getData2(Request $req){
-        $nombre_tutor = $req->get('nombre_tutor');
-        $nombre_grupo = $req->get('nombre_grupo');
-        $curso_academico = $req->get('curso_academico');
-        $nombre_apellidos_alumnos = $req->get('nombreapellidos');
-        dd($nombre_apellidos_alumnos);
-    }*/
 }

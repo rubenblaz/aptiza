@@ -16,6 +16,11 @@ use Hash;
 
 class usuarios extends Controller
 {
+    /**
+     * @param Request $req
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * Recoge los datos de una empresa nueva y la crea en la bbdd.
+     */
     public function alta(Request $req)
     {
         if (Session::has('mensajealta')) {
@@ -80,6 +85,11 @@ class usuarios extends Controller
         return redirect('altaempresas');
     }
 
+    /**
+     * @param Request $req
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Devuelve los alumnos segun el tutor y las empresas favoritas.
+     */
     public function practicas(Request $req)
     {
         $profesor1 = new profesor();
@@ -114,6 +124,11 @@ class usuarios extends Controller
         return view('FCT/practicas', $datos);
     }
 
+    /**
+     * @param Request $req
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * Asigna empresas a alumnos.
+     */
     public function practicas_elegir(Request $req)
     {
         if (Session::has('operacion')) {
@@ -142,6 +157,11 @@ class usuarios extends Controller
         return redirect('practicas');
     }
 
+    /**
+     * @param Request $req
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Muestra todas las empresas disponibles en la bbdd.
+     */
     public function consulta(Request $req)
     {
 
@@ -155,6 +175,11 @@ class usuarios extends Controller
         return view('FCT/consulta', $datos);
     }
 
+    /**
+     * @param Request $req
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * Vuelve a las empresas favoritas
+     */
     public function empresas_favoritas(Request $req)
     {
         if (Session::has('empresafav')) {
@@ -178,6 +203,11 @@ class usuarios extends Controller
         return redirect('consulta');
     }
 
+    /**
+     * @param Request $req
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * Elimina una empresa de la lista de favoritas
+     */
     public function borrar_empresa(Request $req)
     {
         $empresa1 = new empresa();
@@ -188,6 +218,10 @@ class usuarios extends Controller
         return redirect('consulta');
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Datos para usarlos en la vista de la memoria final
+     */
     public function memoriafinal()
     {
         $usuario1 = new alumno();
@@ -214,32 +248,57 @@ class usuarios extends Controller
         return view('FCT/memoriafinal', $datos);
     }
 
+    /**
+     * @return string
+     * Sin usar
+     */
     public function generar_excel()
     {
         return route('/excel');
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Muestra el resumen de las encuestas de los alumnos
+     */
     public function resumenalumnos()
     {
         $alumno1 = new alumno();
         $encuesta1 = new encuesta();
         $preguntas = $encuesta1->obtenerPreguntasModeloAlumno();
         $preguntas_v = array();
+        $medias_encuestas = array();
+        $medias_preguntas = array();
+
 
         foreach ($preguntas as $preg) {
             $preguntas_v[] = $preg->IDMPREGUNTA;
         }
 
         $encuestas = $alumno1->obtenerEncuestas(Session::get('USUARIO')->getEmail());
+        $i = 0;
+        foreach ($encuestas as $enc) {
+            $medias_encuestas[$i] = $encuesta1->mediasOpciones($enc->IDENCUESTA);
+            $i++;
+        }
+        /*for ($e = 0; $e < count($encuestas); $e++) {
+            $medias_preguntas[$i] = $encuesta1->mediasOpciones2($preguntas_v[$i]);
+        }*/
+
 
         $datos = [
             'preguntas' => $preguntas_v,
-            'encuestas' => $encuestas
+            'encuestas' => $encuestas,
+            'medias_encuestas' => $medias_encuestas
         ];
 
         return view('FCT/resumenalumnos', $datos);
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Muestra el resumen de las encuestas de las empresas
+     */
     public function resumenempresas()
     {
         $empresa1 = new empresa();
@@ -261,6 +320,10 @@ class usuarios extends Controller
         return view('FCT/resumenempresas', $datos);
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Muestra todas las empresas disponibles en la bbdd.
+     */
     public function solencuestas()
     {
         $empresa1 = new empresa();
@@ -272,6 +335,10 @@ class usuarios extends Controller
         return view('FCT/solencuestas', $datos);
     }
 
+    /**
+     * @param Request $req
+     * No se usa ya.
+     */
     public function enviaremail(Request $req)
     {
         $empresa1 = new empresa();
@@ -283,7 +350,7 @@ class usuarios extends Controller
             'pass' => $pass
         ];
         */
-        dd("En construcción...");
+        dd("FUNCIONALIDAD ABANDONADA");
         Mail::send('emails.recuperarpass', null, function ($message) use ($email_empresa) {
             $message->to($email_empresa)->subject('Introducir nueva contraseña');
         });

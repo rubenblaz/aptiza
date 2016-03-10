@@ -24,6 +24,11 @@ class profesor
     {
     }
 
+    /**
+     * @param $usuario
+     * @return mixed
+     * Obtiene el curso del tutor pasado como parámetro.
+     */
     public function cursoTutor($usuario)
     {
         $curso_tutor = DB::table('profesores')
@@ -34,6 +39,11 @@ class profesor
         return $curso_tutor;
     }
 
+    /**
+     * @param $curso_tutor
+     * @return mixed
+     * Devuelve una lista con los alumnos del curso del tutor.
+     */
     public function misAlumnos($curso_tutor)
     {
         $alumnos = DB::table('empresas')
@@ -48,6 +58,11 @@ class profesor
         return $alumnos;
     }
 
+    /**
+     * @param $email
+     * @return mixed
+     * Devuelve el nombre y apellidos del profesor pasado como parametro.
+     */
     public function obtenerNombreApellidos($email)
     {
         $consulta = DB::table('profesores')
@@ -57,6 +72,11 @@ class profesor
         return $consulta;
     }
 
+    /**
+     * @param $email
+     * @return mixed
+     * Devuelve el nombre del curso del profesor pasado como parametro.
+     */
     public function nombreCurso($email)
     {
         $consulta = DB::table('cursos')
@@ -67,6 +87,11 @@ class profesor
         return $consulta;
     }
 
+    /**
+     * @param $curso
+     * @return mixed
+     * Devuelve una lista con los alumnos del curso pasado como parametro.
+     */
     public function misAlumnos2($curso)
     {
         $consulta = DB::table('alumnos')
