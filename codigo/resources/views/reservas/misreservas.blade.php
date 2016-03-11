@@ -42,8 +42,8 @@ Mis reservas
                                 <p class="">{{$reserva->getFecha()}} - {{$reserva->getAula()}}</p>
                             </div>    
                             <div id='reservaseditar' class="pull-right">
-                                <a  class='btn btn-default btn-sm glyphicon glyphicon-trash' href="{{route('delreserva',['fecha' => $reserva->getFecha(),'aula' => $reserva->getAula()])}}">Editar</a>
-                                <a  class='btn btn-default btn-sm glyphicon glyphicon-pencil' href="{{route('toreservas',['fecha' => $reserva->getFecha(),'aula' => $reserva->getAula()])}}">Eliminar</a>
+                                <a  class='btn btn-default btn-sm glyphicon glyphicon-trash' tittle='eliminar' href="{{route('delreserva',['fecha' => $reserva->getFecha(),'aula' => $reserva->getAula()])}}"><span class='src_only' style='display:none'>>Eliminar</span></a>
+                                <a  class='btn btn-default btn-sm glyphicon glyphicon-pencil' tittle='modificar' href="{{route('toreservas',['fecha' => $reserva->getFecha(),'aula' => $reserva->getAula()])}}"><span class='src_only' style='display:none'>Editar</span></a>
                             </div>
                         </div>
                     </li>
