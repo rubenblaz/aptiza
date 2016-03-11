@@ -16,7 +16,7 @@ Elegir Alumnos
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
 
-        {!! Form::open(['url'=>'/informes/elegirAlumnoPag', 'method' => 'POST']) !!}
+        {!! Form::open(['url'=>'/informes/calificarAlumno', 'method' => 'POST']) !!}
         <div class="form-group">
             {!!Form::label('grupos','Grupos', ['class' => 'control-label'])!!}
             {!! Form::select('grupo',$grupos, $grupo,['class' => 'form-control']) !!}   
@@ -25,7 +25,7 @@ Elegir Alumnos
             <label>Evaluacion</label><br>
             @foreach($evaluaciones as $eval)
             <div class="radio-inline">
-                <label><input type="radio" name="evaluacion">{{$eval}}</label>
+                <label><input type="radio"  value={{$eval}} name="evaluacion">{{$eval}}</label>
             </div>
             @endforeach
         </div>
@@ -67,7 +67,7 @@ Elegir Alumnos
                     $.each(JSON.parse(data), function (index, value) {
 
                         if (index.indexOf('ALUMN') >= 0) {
-                            $('#alumnos').append('<div class="checkbox"><label><input type="checkbox" name="alumno" value="' + value.COD + '">' + value.NOMBRE + ' ' + value.APELLIDOS + '</label></div>');
+                            $('#alumnos').append('<div class="checkbox"><label><input type="checkbox" name="alumnos[]" value="' + value.COD + '">' + value.NOMBRE + ' ' + value.APELLIDOS + '</label></div>');
                         } else {
                             $('#asignaturas').append('<option value="' + value.COD + '">' + value.NOMBRE + '</option>');
                         }

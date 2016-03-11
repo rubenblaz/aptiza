@@ -7,6 +7,7 @@ use App\Modelo\Grupo;
 use App\Modelo\Alumno;
 use App\Modelo\Asignatura;
 use App\Modelo\Evaluacion;
+use App\Modelo\PagAlumnos;
 
 class Informes extends Controller {
 
@@ -46,11 +47,9 @@ class Informes extends Controller {
         
         return json_encode($json);
     }
-    public function elegirAlumnosPag(Request $request){
+    public function calificarAlumno(Request $request){
         
-        dd($request->get('alumnos'));
-        
-        
-        
+        $paginacion = new PagAlumnos($request->input('asignatura'),$request->input('evaluacion'),$request->input('alumnos'));
+        dd($paginacion);
     }
 }

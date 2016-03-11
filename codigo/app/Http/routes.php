@@ -56,7 +56,7 @@ Route::group(['middleware' => ['web']], function () {
 });
 
 //Rutas de Administrador
-Route::group(['middleware' => ['web', 'validarRol:0']], function () {
+Route::group(['middleware' => ['web', 'validarRol:0']], function() {
     Route::get('admininicio', 'Usuarios@inicio');
 
     Route::get('/admin-aulas/', ['as' => 'admin-aulas', 'uses' => 'reservas\ReservasAdminController@mostrar_aulas']);
@@ -105,7 +105,6 @@ Route::group(['middleware' => ['web', 'validarRol:2']], function () {
     //Rutas de informes
     Route::get('/informes/elegirGrupo', ['as' => '/informes/elegirGrupo','uses'=> 'informes\Informes@elegirGrupo']);
     Route::post('/informes/ajaxAlumnos', ['as' => '/informes/ajaxAlumnos','uses'=> 'informes\Informes@ajaxAlumnos']);
-    Route::get('/informes/ajaxAlumnos', ['as' => '/informes/ajaxAlumnos','uses'=> 'informes\Informes@ajaxAlumnos']);
-    Route::post('/informes/elegirAlumnoPag',['as' => '/informes/elegirAlumnosPag','uses'=> 'informes\Informes@elegirAlumnosPag']);
+    Route::post('/informes/calificarAlumno',['as' => '/informes/calificarAlumno','uses'=> 'informes\Informes@calificarAlumno']);
 });
 
