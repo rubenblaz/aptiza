@@ -21,9 +21,7 @@ class TipoInicioSesion
                 Session::put('USUARIO',Session::pull('ADMIN'));
             }
             Session::get('USUARIO')->usarComoAdmin($request->input('administrador'));
-            
-            
-            
+        
         return $next($request);
     }
 }

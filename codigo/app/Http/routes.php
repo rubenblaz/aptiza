@@ -110,14 +110,13 @@ Route::group(['middleware' => ['web', 'validarRol:3']], function () {
     Route::match(array('GET', 'POST'), 'generarexcel1', 'FCT\usuarios@generar_excel');
     Route::resource('excel','ExcelController');
     Route::get('/excel', 'ExcelController@store');
-
 });
 
 //Rutas de empresas FCT
 Route::group(['middleware' => ['web', 'validarRol:4']], function () {
     //Rutas de FCT
     Route::get('/encuestas4', 'FCT\encuestas@urlencuestas'); //URL encuestas
-    Route::match(array('GET', 'POST'), 'validado5', 'FCT\encuestas@encuestas'); //Insertar resultados encuestas
+    Route::match(array('GET', 'POST'), 'validado4', 'FCT\encuestas@encuestas'); //Insertar resultados encuestas
 });
 
 

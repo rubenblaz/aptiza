@@ -61,19 +61,21 @@ class ExcelController extends Controller
          * Aqui jugaremos con las hojas del documento y las celdas.
          * Podemos aplicarles atributos y sus valores.
          */
-        Excel::create('Memoria final', function ($excel) use ($alumnos) {
+        Excel::create('Memoria final', function ($excel) use ($alumnos) { //Con el parámetro "use" le podemos pasar variables externas en este caso los $alumnos
             $excel->sheet('Memoria final FCT', function ($sheet) use ($alumnos) {
                 $sheet->row(1, array('ALUMNO', 'EMPRESA', 'CONVENIO', 'TELEFONO MOVIL', 'TELEFONO FIJO', 'EMAIL', 'FECHA INICIO', 'FECHA FIN', '¿APTO?')); //En la fila una ponemos los nombres de las cabeceras
                 $sheet->cells('A1:I1', function ($cells) { //Rango de las celdas que vamos a modificar
-                    $cells->setBackground('#ff5733'); //Setea el color de fondo de las celdas A1:C1
+                    $cells->setBackground('#abebc6'); //Setea el color de fondo de las celdas A1:C1
                     $cells->setAlignment('center'); //Alineación del texto de las celdas A1:C1
                 });
+                //Recorremos los alumnos y vamos rellenando las celdas en las distintas filas con los datos del array asociativo.
                 for ($i = 0; $i < count($alumnos); $i++) {
                     $sheet->row($i + 2, $alumnos[$i]);
                 }
-                $sheet->setBorder('A1:I10', 'thin');
+                $sheet->setBorder('A1:I10', 'thin'); //Dibujamos el borde de la tabla al rango de celdas que queramos.
+                $sheet->setAutoSize(true); //Le decimos que el tamaño del documento será automático.
             });
-        })->export('xls');
+        })->export('xls'); //Formato del archivo que se generará para guardar o ver.
     }
 }
 

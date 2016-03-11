@@ -1,4 +1,4 @@
-<@extends('layouts.plantilla')
+@extends('layouts.plantilla')
 @section('customcss')
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
     <style type="text/css">
@@ -58,12 +58,12 @@
         <div class="panel panel-primary">
             <div class="panel-body">
                 <div class="form-group">
-                        <center>{!! Form::label('empresas', 'Empresas favoritas') !!}</center><br> <!-- No se puede centrar esta etiqueta únicamente con CSS. -->
+                        {!! Form::label('empresas', 'Empresas favoritas', ['style'=>'display: block; text-align: center;']) !!}<br> <!-- No se puede centrar esta etiqueta únicamente con CSS. -->
                         <hr>
                         {!! Form::select('empresas', $empresas, null, array('class'=>'form-control centrado','style'=>'')) !!}
                 </div>
                 <div class="form-group">
-                    <center>{!! Form::label('alumnos', 'Mis alumnos') !!}</center> <!-- Problema al centrar con solo CSS -->
+                    {!! Form::label('alumnos', 'Mis alumnos', ['style'=>'display: block; text-align: center;']) !!} <!-- Problema al centrar con solo CSS -->
                     <hr>
                     <div class="row">
                         <div class="col-md-3 negrita" title="Nombre">
