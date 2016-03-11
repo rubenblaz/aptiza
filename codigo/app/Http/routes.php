@@ -98,16 +98,18 @@ Route::group(['middleware' => ['web', 'validarRol:3']], function () {
     Route::get('/borrar/{CIF}', 'FCT\usuarios@borrar_empresa'); //Borrar empresa de favoritas
     Route::match(array('GET', 'POST'), 'validado2', 'FCT\usuarios@practicas_elegir'); //Asignar empresas a alumnos submit
     Route::match(array('GET', 'POST'), 'validado3', 'FCT\usuarios@empresas_favoritas'); //Submit de empresas favoritas
-    Route::get('/memoria', 'FCT\usuarios@memoriafinal'); //Memoria final
+    Route::get('/memoria', 'FCT\usuarios@memoriafinal'); //Memoria final PDF
+    Route::get('/memoria2', 'FCT\usuarios@memoriafinal2'); //Memoria Excel
     Route::get('pdf', 'FCT\PdfController@invoice'); //PDF
     Route::get('pdf2', 'FCT\PdfController@invoice2'); //PDF
     Route::match(array('GET', 'POST'), 'generarpdfmemoria', 'FCT\PdfController@invoice2'); //Submit generar PDF memoria final
-    Route::get('/resumenalumnos', 'FCT\usuarios@resumenalumnos');
-    Route::get('/resumenempresas', 'FCT\usuarios@resumenempresas');
+    Route::get('/resumenalumnos', 'FCT\usuarios@resumenalumnos'); //Resumen de las encuestas de los alumnos
+    Route::get('/resumenempresas', 'FCT\usuarios@resumenempresas'); //Resumen de las encuestas de las empresas
     Route::get('/solencuestas', 'FCT\usuarios@solencuestas');
     Route::get('/enviardatos/{CIF}', 'FCT\usuarios@enviaremail');
-    Route::match(array('GET', 'POST'), 'generarexcel1', 'FCT\usuarios@generar_excel'); //Submit de empresas favoritas
+    Route::match(array('GET', 'POST'), 'generarexcel1', 'FCT\usuarios@generar_excel');
     Route::resource('excel','ExcelController');
+    Route::get('/excel', 'ExcelController@store');
 
 });
 
@@ -123,5 +125,5 @@ Route::group(['middleware' => ['web', 'validarRol:4']], function () {
 Route::group(['middleware' => ['web', 'validarRol:6']], function () {
     //Rutas de FCT
     Route::get('/encuestas6', 'FCT\encuestas@urlencuestas'); //URL encuestas
-    Route::match(array('GET', 'POST'), 'validado5', 'FCT\encuestas@encuestas'); //Insertar resultados encuestas
+    Route::match(array('GET', 'POST'), 'validado6', 'FCT\encuestas@encuestas'); //Insertar resultados encuestas
 });

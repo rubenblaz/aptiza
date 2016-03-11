@@ -14,15 +14,80 @@ use Maatwebsite\Excel\Writers\CellWriter;
 
 class ExcelController extends Controller
 {
-    public function index()
+    public function store(Request $req)
     {
+        /**
+         * Recogida de datos del formulario.
+         */
+        $nombre_tutor = $req->get('nombre_tutor');
+        $nombre_grupo = $req->get('nombre_grupo');
+        $curso_academico = $req->get('curso_academico');
+        $nombre_apellidos_alumnos = $req->get('nombre_apellidos');
+        $nombre_empresas = $req->get('nombre_e');
+        $convenios = $req->get('convenio');
+        $telefonos_m = $req->get('telefono_m');
+        $telefonos_f = $req->get('telefono_f');
+        $emails = $req->get('email');
+        $fechas_inicio = $req->get('fecha_inicio');
+        $fechas_fin = $req->get('fecha_fin');
+        $aptos = $req->get('aptos');
 
-        $aux = "prueba";
+        $alumnos = array();
+        $datosv = array();
 
-        Excel::create('Memoria Excel', function ($excel) use ($aux){
-            $excel->sheet('Memoria', function ($sheet) use ($aux){
-                $sheet->with(array($aux, "holaaaa"));
+        $datosv = [
+            'nombre_tutor' => $nombre_tutor,
+            'nombre_grupo' => $nombre_grupo,
+            'curso_academico' => $curso_academico
+        ];
+        for ($i = 0; $i < count($nombre_apellidos_alumnos); $i++) {
+            $alumnos[$i] = [
+                'nombre_apellidos_alumnos' => $nombre_apellidos_alumnos[$i],
+                'nombre_empresas' => $nombre_empresas[$i],
+                'convenios' => $convenios[$i],
+                'telefonos_m' => $telefonos_m[$i],
+                'telefonos_f' => $telefonos_f[$i],
+                'emails' => $emails[$i],
+                'fechas_inicio' => $fechas_inicio[$i],
+                'fechas_fin' => $fechas_fin[$i],
+                'aptos' => $aptos[$i]
+            ];
+        }
+
+        //dd($alumnos);
+
+        /**
+         * Function para crear el archivo excel.
+         * Aqui jugaremos con las hojas del documento y las celdas.
+         * Podemos aplicarles atributos y sus valores.
+         */
+        Excel::create('Memoria final', function ($excel) use ($alumnos) {
+            $excel->sheet('Memoria final FCT', function ($sheet) use ($alumnos) {
+                $sheet->row(1, array('ALUMNO', 'EMPRESA', 'CONVENIO', 'TELEFONO MOVIL', 'TELEFONO FIJO', 'EMAIL', 'FECHA INICIO', 'FECHA FIN', '¿APTO?')); //En la fila una ponemos los nombres de las cabeceras
+                $sheet->cells('A1:I1', function ($cells) { //Rango de las celdas que vamos a modificar
+                    $cells->setBackground('#ff5733'); //Setea el color de fondo de las celdas A1:C1
+                    $cells->setAlignment('center'); //Alineación del texto de las celdas A1:C1
+                });
+                for ($i = 0; $i < count($alumnos); $i++) {
+                    $sheet->row($i + 2, $alumnos[$i]);
+                }
+                $sheet->setBorder('A1:I10', 'thin');
             });
         })->export('xls');
     }
 }
+
+/**
+ * Excel::create('Ejemplo excel', function ($excel) use ($datos) {
+ * $excel->sheet('Ejemplo hoja 1', function ($sheet) use ($datos) {
+ * $sheet->row(1, array('NOMBRE', 'APELLIDOS', 'EMAIL')); //En la fila una ponemos los nombres de las cabeceras
+ * $sheet->cells('A1:C1', function ($cells) { //Rango de las celdas que vamos a modificar
+ * $cells->setBackground('#ff5733'); //Setea el color de fondo de las celdas A1:C1
+ * $cells->setAlignment('center'); //Alineación del texto de las celdas A1:C1
+ * });
+ * for ($i = 0; $i < count($datos); $i++) {
+ * $sheet->row($i + 2, (array($datos[$i]->NOMBRE, $datos[$i]->APELLIDOS, $datos[$i]->EMAIL)));
+ * }
+ * $sheet->setBorder('A1:C10', 'thin');
+ * });
+ */

@@ -220,7 +220,7 @@ class usuarios extends Controller
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * Datos para usarlos en la vista de la memoria final
+     * Datos para usarlos en la vista de la memoria final para luego exportarlos a PDF.
      */
     public function memoriafinal()
     {
@@ -246,6 +246,36 @@ class usuarios extends Controller
         ];
 
         return view('FCT/memoriafinal', $datos);
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Rellena el formulario para luego exportar los datos a Excel.
+     */
+    public function memoriafinal2()
+    {
+        $usuario1 = new alumno();
+        $profesor1 = new profesor();
+
+        $email_profesor = Session::get('USUARIO')->getEmail();
+        $nombre_apellidos_tutor = $profesor1->obtenerNombreApellidos($email_profesor);
+        $nombre_curso_tutor = $profesor1->nombreCurso($email_profesor)[0]->CICLO;
+        $id_curso_tutor = $profesor1->cursoTutor($email_profesor)[0]->CURSO;
+
+        $nombre = $nombre_apellidos_tutor[0]->NOMBRE;
+        $apellidos = $nombre_apellidos_tutor[0]->APELLIDOS;
+        $mis_alumnos = $profesor1->misAlumnos2($id_curso_tutor);
+
+
+        Session::put('nombre_tutor', $nombre);
+        Session::put('apellidos_tutor', $apellidos);
+        Session::put('nombre_grupo', $nombre_curso_tutor);
+
+        $datos = [
+            'mis_alumnos' => $mis_alumnos
+        ];
+
+        return view('FCT/memoriafinal2', $datos);
     }
 
     /**

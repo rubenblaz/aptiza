@@ -46,13 +46,13 @@
 @stop
 @section('migas')
     <li>{{ Html::link('inicio', 'Inicio') }}</li>
-    <li class="active">Memoria final - PDF</li>
+    <li class="active">Memoria final - Excel</li>
 @stop
 @section('titulo')
-    Memoria final - PDF
+    Memoria final - Excel
 @stop
 @section('contenido')
-    {!! Form::open(array('action' => 'FCT\PdfController@invoice2', 'id'=>'formulario')) !!}
+    {!! Form::open(array('action' => 'ExcelController@index', 'id'=>'formulario')) !!}
     <div class="row">
         <div class="col-md-12">
             <p>
@@ -130,7 +130,7 @@
         </table>
     </div>
     <br>
-    {!! Form::submit('Generar PDF', array('class'=>'btn btn-success centrarinput', 'title'=>'Crear PDF')) !!}
+    {!! Form::submit('Generar Excel', array('class'=>'btn btn-success centrarinput', 'title'=>'Generar Excel')) !!}
     {!! Form::close() !!}
 @stop
 @section('scripts')
