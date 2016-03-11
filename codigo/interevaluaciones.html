@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<!--
+        INTEREVALUACIONES
+-->
+<html lang="es" >
+    <head>
+        <link rel="shorcut icon" href="favicon.ico" > <!--  Link para el favicon -->
+
+        <link   href="css/bootstrap.min.css" rel="stylesheet" media="screen"> <!--Estilos css bootstrap-->
+        <link href="css/propio.css" rel="stylesheet" media="screen"> <!--Estilos propio css-->
+
+        <script src="js/jquery-1.11.3.min.js" type="text/javascript" ></script> <!-- Libreria JQUERY-->
+        <script src="js/bootstrap.min.js"></script> <!-- Libreria Javascript bootsstrap-->
+        <script src="js/boton_informacion.js" type="text/javascript" ></script> <!-- JQUERY BOTON DE INFORMACION -->
+
+        <title>APTIZA</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <header> 
+            <!-- DIV SUPERIOR QUE CONTIENE LOS LOGTIPOS, TANTO DEL CENTRO COMO DE LA APLICACION -->
+            <div class="divSuperior_menu">
+                <img src="img/centro_logo.jpg" class="img-responsive logoCentro" alt="Logo I.F.P VIRGEN DE GRACIA"> 
+                <img src="img/aptiza_logo.png" class="img-responsive logoAptiza" alt="Logo de la aplicacion, aptiza"> 
+            </div>
+
+            <!--            MENU        -->    
+            <nav class="navbar navbar-inverse ">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse" title="Desplegar Menu">
+                        <span class="sr-only" title="Desplegar Navegacion">Desplegar navegación</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <img src="img/centro_logo.jpg" id="logo_centro_subnmenu" alt="Logo I.F.P VIRGEN DE GRACIA">
+                </div>
+
+                <div class="collapse navbar-collapse navbar-ex1-collapse"> 
+                    <ul class="nav navbar-nav">
+                        <li><a href="inicio2.html"><span class="glyphicon glyphicon-home"></span> Inicio <!-- Icono inicio --> </a></li>
+                        <li><a href="programacion.html">Programacion</a></li>
+                        <li><a href="diario.html">Diario Actividades</a></li>
+                        <li><a href="unidades.html">Unidades</a></li>
+                        <li><a class="iconoUsuario" href="interevaluaciones.html">Interevaluaciones</a></li>
+                        <li class="dropdown">
+                            <a  class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user "></span>&nbsp;&nbsp;Jaime&nbsp;<span class="caret"></span></a>
+                            <ul class="dropdown-menu" >
+                                <li><a id="cerrarSesion" href="index.html" ><span class="glyphicon glyphicon-share"></span>&nbsp;Cerrar sesion</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+        </header>
+
+        <!--        MIGAS DE PAN        -->
+
+        <ol class="breadcrumb col-lg-10 col-lg-offset-1 col-md-offset-1 col-md-10 ">
+            <li><a href="inicio2.html">Inicio</a></li>
+            <li class="active">Interevaluaciones</li>
+        </ol>
+
+        <div class="titulo col-md-10 col-lg-offset-1 col-md-offset-1" >
+            <h1>Ficha de Interevaluaciones</h1>
+        </div>
+
+        <section class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
+            
+            <!--            BOTON DE INFORMACION        -->
+            <a class="btn btn-default btn-sm glyphicon glyphicon-info-sign icon_info" href="#" title="Mas Informacion">&nbsp;Info</a>
+
+            <div class="clearfix"></div>
+
+            <div class="panel panel-default ayuda col-md-2">
+                <img alt="cerrar anuncio" class="cerrar pull-right" src="img/cerrar.png" >
+                <div class="panel-body">
+                    En esta pagina puedes rellenar la ficha que necesites para los alumnos suspensos, Ademas de : <br>
+                    <span class="glyphicon glyphicon-floppy-disk"> Guardar el Documento o  </span> <br>
+                    <span class="glyphicon glyphicon-print"> Imprimir el Documento. </span> <br> 
+                </div>
+            </div>
+            
+            <div class="col-md-7 col-md-offset-2 col-sm-10 col-sm-offset-1 ">
+                <div class="row">
+                    <div>
+                        <img class="img-responsive" src="img/inter.png" alt="Imagen correspondiente a la ficha de interevaluaciones, con el logo del centro educativo">
+                    </div>
+                    
+                    <!--        GRUPO       -->
+                    <div class="form-group ">
+                        <label for="curso" class="control-label"> CURSO </label>
+                        <select id="curso" class="form-control">
+                            <option value="2º DAW">2º DAW</option>
+                            <option value="1º DAM">1º DAM</option>
+                            <option value="1º DAW">1º DAW</option>
+                            <option value="2º DAM">2º DAM</option>
+                            <option value="2º ASIR">2º ASIR</option>
+                        </select>
+                    </div>
+
+                    <!--        ALUMNOS     -->
+                    <div class="form-group ">
+                        <label for="alumno" class="control-label"> ALUMNO </label>
+                        <select id="alumno" class="form-control">
+                            <option value="ALUMNO">AROA NOTARIO RODRIGUEZ</option>
+                            <option value="ALUMNO">ERNESTO RUIZ MOYA</option>
+                            <option value="ALUMNO">ANGEL SANCHEZ-CRESPO ZAMORA</option>
+                            <option value="ALUMNO">JOSE LUIS GOMEZ ALVAREZ</option>
+                            <option value="ALUMNO">ALFREDO VILLAR DELGADO</option>
+                        </select>
+                    </div>
+
+                   <!--     MODULOS SUSPENSOS Y RECOMENDACIONES PARA EL EXAMEN      -->
+                        <div class="grupo_modulo form-group col-md-12">
+                                <label for="modSus" >MODULO SUSPENSO</label>
+                                <input id="modSus" type="text" class="form-control" placeholder=" " >
+                                <label for="recomendacion">RECOMENDACIONES PARA EXAMEN</label>
+                                <textarea class="form-control" rows="5" id="recomendacion"></textarea>
+                        </div>
+                        
+                       <div class="grupo_modulo form-group col-md-12">
+                                <label for="moduloSus2">MODULO SUSPENSO</label>
+                                <input type="text" class="form-control" placeholder=" " id="moduloSus2">   
+                                <label for="recomendacion2">RECOMENDACIONES PARA EXAMEN</label>
+                                <textarea class="form-control" rows="5" id="recomendacion2"></textarea>
+                        </div>
+                        
+                         <div class="grupo_modulo form-group col-md-12">
+                                <label for="moduloSus3">MODULO SUSPENSO</label>
+                                <input type="text" class="form-control" placeholder=" " id="moduloSus3">
+                                <label for="recomendacion3">RECOMENDACIONES PARA EXAMEN</label>
+                                <textarea class="form-control" rows="5" id="recomendacion3"></textarea>
+                        </div>
+                        
+                    <!--        FUNCION DE JAVASCRIPT PARA QUE A LA HORA DE RELLENAR EL DOCUMENTO SIEMPRE NOS SALGA LA FECHA ACTUAL Y ASI PODER GUARDARLO O IMPRIMIRLO CON EL DIA QUE SE RELLENO-->
+                        <div class="fechaActual">
+                            <script>
+                                var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"); 
+                                var f = new Date(); 
+                                document.write('Puertollano ' + f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear());
+                            </script>
+                            <p>Fdo. Tutor/a</p>
+                        </div>
+                    
+                    <!--        ICONOS DE GUARDAR E IMPRIMIR       -->
+                    
+                    <!--        AL PINCHAR EN EL ICONO DE GUARDAR NOS LLEVARIA A UNA PAGINA DE EJEMPLO DE ERROR  -503.html-  
+                                ES UN EJEMPLO DE LA PAGINA A LA QUE NOS TENDRIA QUE ENVIAR EN CASO DE ESE ERROR
+                    -->
+                    
+                    <div class="pull-right"> 
+                        <a class="btn btn-default btn-sm glyphicon glyphicon-floppy-disk" href="503.html" title="Guardar Documento">
+                            <span class="sr-only">Guardar Documento</span>
+                        </a>
+                        <a class="btn btn-default btn-sm glyphicon glyphicon-print" href="#" title="Imprimir Documento">
+                            <span class="sr-only">Imprimir Documento</span>
+                        </a>
+                    </div>
+                </div>   
+            </div> 
+        </section>
+
+        <!--        FOOTER Y MAPA DEL SITIO     -->
+        <footer class="panel-footer">
+            <address>2016 APTIZA&copy; </address>
+            <div class="mapaSitio">
+                <a href="inicio2.html">Inicio</a>&nbsp;
+                <a href="programacion.html">Programacion</a>&nbsp;
+                <a href="diario.html">Diario de Actividades</a>&nbsp;
+                <a href="unidades.html">Unidades</a>&nbsp;
+                <a href="interevaluaciones.html">Interevaluaciones</a>
+            </div>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,16 @@
+
+body {
+    background-color: white;
+    margin: 20px;
+}
+
+#aptiza{
+    margin-left: 980px
+}
+
+.info_error{
+    text-align: center;
+    border: 1px solid red;
+    padding: 20px;
+   
+}

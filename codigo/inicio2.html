@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!--
+        PAGINA DE INICIO TRAS EL LOGEO
+-->
+<html lang="es">
+    <head>
+        <link rel="shorcut icon" href="favicon.ico" > <!--  Link para el favicon -->
+        
+        <link   href="css/bootstrap.min.css" rel="stylesheet" media="screen"> <!--Estilos css bootstrap-->
+        <link href="css/propio.css" rel="stylesheet" media="screen"> <!--Estilo propio css-->
+        <link rel="stylesheet" href="css/bootstrap-theme.css" type="text/css"/>
+
+        <script src="js/jquery-1.11.3.min.js" type="text/javascript" ></script> <!-- Libreria JQUERY-->
+        <script src="js/bootstrap.min.js"></script> <!-- Libreria Javascript bootsstrap-->
+        
+        <title>APTIZA</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    
+    <body>
+        <header> 
+            <!-- DIV SUPERIOR QUE CONTIENE LOS LOGTIPOS, TANTO DEL CENTRO COMO DE LA APLICACION -->
+            <div class="divSuperior_menu">
+                <img src="img/centro_logo.jpg" class="img-responsive logoCentro" alt="Logo I.F.P VIRGEN DE GRACIA"> 
+                <img src="img/aptiza_logo.png" class="img-responsive logoAptiza" alt="Logo de la aplicacion, APTIZA"> 
+            </div>
+            
+            <!--            MENU        -->    
+            <nav class="navbar navbar-inverse ">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse" title="Desplegar Menu">
+                        <span class="sr-only">Desplegar navegación</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <img src="img/centro_logo.jpg" id="logo_centro_subnmenu" alt="Logo I.F.P VIRGEN DE GRACIA">
+                </div>
+
+                <div class="collapse navbar-collapse navbar-ex1-collapse"> 
+                    <ul class="nav navbar-nav">
+                        <li><a href="inicio2.html"><span class="glyphicon glyphicon-home"></span> Inicio <!-- Icono inicio --> </a></li>
+                        <li><a href="programacion.html">Programacion</a></li>
+                        <li><a href="diario.html">Diario Actividades</a></li>
+                        <li><a href="unidades.html">Unidades</a></li>
+                        <li><a class="iconoUsuario" href="interevaluaciones.html">Interevaluaciones</a></li>
+                        <li class="dropdown">
+                            <a  class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user "></span>&nbsp;&nbsp;Jaime&nbsp;<span class="caret"></span></a>
+                            <ul class="dropdown-menu" >
+                                <li><a id="cerrarSesion" href="index.html" ><span class="glyphicon glyphicon-share"></span>&nbsp;Cerrar sesion</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+       
+        <!--        MIGAS DE PAN       -->
+            <ol class="breadcrumb col-lg-10 col-lg-offset-1 col-md-offset-1 col-md-10 ">
+                <li class="active">Inicio</li>
+            </ol>
+        
+       <div class="titulo col-md-10 col-lg-offset-1 col-md-offset-1" >
+            <h1>Inicio</h1>
+        </div>
+        
+        
+      <section class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
+          <div class="row">  
+              <article class="articulo col-lg-10 col-lg-offset-1 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+                  <img class="img-responsive" src="img/aptiza_logo_invert.png" alt="Logo de la aplicacion APTIZA en color azul">
+              </article>
+              <article class="col-md-6 col-sm-6 col-xs-12">
+                  <h1 class="text-right">Herramienta de gestión para docentes  </h1>
+              </article>
+              <article class="articulo col-md-6 col-sm-6 col-xs-12 col-sm-offset-0 col-md-offset-0 col-xs-offset-0">
+                  <img class="imgLlave" src="img/llave.PNG" alt="Imagen de una llave inglesa con una persona en el centro explicando">
+              </article>
+              <article class="articulo col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <h2 class="textoH">"Bienvenido Jaime"</h2>
+                  <h2 class="text-right textoH">
+                      "Realice las tareas de supervision, coordinacion y generacion de informes entre otras, de manera sencilla"
+                  </h2>
+              </article>
+              <article class="articulo articulo-fondo col-lg-6 col-md-6 col-md-offset-2 col-sm-6 col-xs-10 col-sm-offset-0 col-md-offset-0 col-xs-offset-2">
+                  <ul>
+                      <li>
+                          <h3>Alumnos</h3>
+                      </li>
+                      <li>
+                          <h3>Profesores</h3>
+                      </li>
+                      <li>
+                          <h3>Padres</h3>
+                      </li>
+                      <li>
+                          <h3>Tutores</h3>
+                      </li>
+                  </ul>
+              </article>
+          </div>
+        </section>
+       
+         <!--        FOOTER Y MAPA DEL SITIO     -->
+        <footer class="panel-footer">
+              <address>2016 APTIZA&copy; </address>
+              <div class="mapaSitio">
+                  <a href="inicio2.html">Inicio</a>&nbsp;
+                  <a href="programacion.html">Programacion</a>&nbsp;
+                  <a href="diario.html">Diario de Actividades</a>&nbsp;
+                  <a href="unidades.html">Unidades</a>&nbsp;
+                  <a href="interevaluaciones.html">Interevaluaciones</a>
+              </div>
+        </footer>
+    </body>
+</html>

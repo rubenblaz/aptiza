@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<!--
+        UNIDADES IMPARTIDAS DURANTE EL AÑO ESCOLAR
+-->
+<html lang="es" >
+    <head>
+        <link rel="shorcut icon" href="favicon.ico" > <!--  Link para el favicon -->
+
+        <link   href="css/bootstrap.min.css" rel="stylesheet" media="screen"> <!--Estilos css bootstrap-->
+        <link href="css/propio.css" rel="stylesheet" media="screen"> <!--Estilos propio css-->
+
+        <script src="js/jquery-1.11.3.min.js" type="text/javascript" ></script> <!-- Libreria JQUERY-->
+        <script src="js/bootstrap.min.js"></script> <!-- Libreria Javascript bootsstrap-->
+        <script src="js/boton_informacion.js" type="text/javascript" ></script> <!-- JQUERY BOTON DE INFORMACION -->
+
+        <title>APTIZA </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <header> 
+            <!-- DIV SUPERIOR QUE CONTIENE LOS LOGTIPOS, TANTO DEL CENTRO COMO DE LA APLICACION -->
+            <div class="divSuperior_menu">
+                <img src="img/centro_logo.jpg" class="img-responsive logoCentro" alt="Logo I.F.P VIRGEN DE GRACIA"> 
+                <img src="img/aptiza_logo.png" class="img-responsive logoAptiza" alt="Logo de la aplicacion, aptiza"> 
+            </div>
+
+            <!--            MENU        -->    
+            <nav class="navbar navbar-inverse ">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse" title="Desplegas Menu">
+                        <span class="sr-only">Desplegar navegación</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <img src="img/centro_logo.jpg" id="logo_centro_subnmenu" alt="Logo I.F.P VIRGEN DE GRACIA">
+                </div>
+
+                <div class="collapse navbar-collapse navbar-ex1-collapse"> 
+                    <ul class="nav navbar-nav">
+                        <li><a href="inicio2.html"><span class="glyphicon glyphicon-home"></span> Inicio <!-- Icono inicio --> </a></li>
+                        <li><a href="programacion.html">Programacion</a></li>
+                        <li><a href="diario.html">Diario Actividades</a></li>
+                        <li><a href="unidades.html">Unidades</a></li>
+                        <li><a class="iconoUsuario" href="interevaluaciones.html">Interevaluaciones</a></li>
+                        <li class="dropdown">
+                            <a  class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user "></span>&nbsp;&nbsp;Jaime&nbsp;<span class="caret"></span></a>
+                            <ul class="dropdown-menu" >
+                                <li><a id="cerrarSesion" href="index.html" ><span class="glyphicon glyphicon-share"></span>&nbsp;Cerrar sesion</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+        </header>
+
+        <!--        MIGAS DE PAN        -->
+        <ol class="breadcrumb col-lg-10 col-lg-offset-1 col-md-offset-1 col-md-10 ">
+            <li><a href="inicio2.html">Inicio</a></li>
+            <li class="active" >Unidades</li>
+        </ol>
+
+        <div class="titulo col-md-10 col-lg-offset-1 col-md-offset-1" >
+            <h1>UNIDADES IMPARTIDAS DURANTE EL AÑO ESCOLAR</h1>
+        </div>
+
+        <section class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
+            
+            <!--            BOTON DE INFORMACION        -->
+            <a class="btn btn-default btn-sm glyphicon glyphicon-info-sign icon_info" href="#" title="Mas Informacion">&nbsp;Info</a>
+
+            <div class="clearfix"></div>
+
+            <div class="panel panel-default ayuda col-md-2">
+                <img alt="cerrar anuncio" class="cerrar pull-right" src="img/cerrar.png" >
+                <div class="panel-body">
+                    En esta pagina puedes consultar las Unidades que has impartido en un curso, para llevar un control de lo impartido, Ademas de : <br>
+                    <span class="glyphicon glyphicon-pencil"> Editar o Visualizar una Unidad. </span> <br>
+                    <span class="glyphicon glyphicon-trash"> Eliminar una Unidad. </span> <br> o Agregar una nueva Unidad.
+                </div>
+            </div>
+            
+            <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+                <div class="row">
+                    <div class="form-group ">
+                        <label for="curso" class="control-label"> CURSO </label>
+                        <select id="curso" class="form-control">
+                            <option value="2º DAW">2º DAW</option>
+                            <option value="1º DAM">1º DAM</option>
+                            <option value="1º DAW">1º DAW</option>
+                            <option value="2º DAM">2º DAM</option>
+                            <option value="2º ASIR">2º ASIR</option>
+                        </select>
+                    </div>
+                    <div class="form-group ">
+                        <label for="asignaturas" class="control-label"> ASIGNATURA </label>
+                        <select id="asignaturas" class="form-control">
+                            <option value="Diseño de Interface WebS">Diseño de Interface Web</option>
+                            <option value="Desarrollo Web en Entorno Servidor">Desarrollo Web en Entorno Servidor</option>
+                            <option value="Despliegue Aplicaciones Web">Despliegue Aplicaciones Web</option>
+                        </select>
+                    </div>
+
+                    <div class="cuadroLista">
+                        <ol class="lista" >
+                            <li><a href="#">Unidad 1 - CSS </a> 
+                                <div class="pull-right"> 
+                                    <fieldset>
+                                        <label for="completada" class="checkbox-inline"> 
+                                            <span class="glyphicon glyphicon-ok pull-left">Completada</span>
+                                            <input id="completada"  type="checkbox" name="tick"/>
+                                        </label>  
+                                    
+                                    <a class="btn btn-default btn-sm glyphicon glyphicon-pencil " href="#" title="Editar Unidad">
+                                        <span class="sr-only">Editar Unidad</span>
+                                    </a> 
+                                    <a class=" btn btn-default btn-sm glyphicon glyphicon-trash" href="#" title="Eliminar Unidad">
+                                        <span class="sr-only">Eliminar Unidad</span>
+                                    </a> 
+                                        </fieldset>
+                                </div>
+                                <div class="clearfix"></div>
+                            </li>
+                            <li><a href="#">Unidad 2 - FLEX</a> 
+                                <div class="pull-right"> 
+                                    <fieldset>
+                                    <label for="completada2" class="checkbox-inline"> 
+                                        <span class="glyphicon glyphicon-ok pull-left">Completada</span>
+                                        <input id="completada2"  type="checkbox" name="tick"/>
+                                    </label> 
+                                    
+                                    <a class="btn btn-default btn-sm glyphicon glyphicon-pencil " href="#" title="Editar Unidad">
+                                        <span class="sr-only">Editar Unidad</span>
+                                    </a> 
+                                    <a class=" btn btn-default btn-sm glyphicon glyphicon-trash" href="#" title="Eliminar Unidad">
+                                        <span class="sr-only">Eliminar Unidad</span>
+                                    </a>
+                                        </fieldset>
+                                </div>
+                                <div class="clearfix"></div>
+                            </li>
+                            <li><a href="#">Unidad 3 - BOOTSTRAP</a> 
+                                <div class="pull-right">
+                                    <fieldset>
+                                    <label for="completada3" class="checkbox-inline"> 
+                                        <span class="glyphicon glyphicon-ok pull-left">Completada</span>
+                                        <input id="completada3" type="checkbox" name="tick"/>
+                                    </label> 
+                                    
+                                    <a class="btn btn-default btn-sm glyphicon glyphicon-pencil " href="#" title="Editar Unidad">
+                                        <span class="sr-only">Editar Unidad</span>
+                                    </a> 
+                                    <a class=" btn btn-default btn-sm glyphicon glyphicon-trash" href="#" title="Eliminar Unidad">
+                                        <span class="sr-only">Eliminar Unidad</span>
+                                    </a>
+                                        </fieldset>
+                                </div>
+                                <div class="clearfix"></div>
+                            </li>
+                        </ol>
+                        <a class="btn btn-primary btn-sm glyphicon glyphicon-plus pull-right" href="agregarUnidad.html"> Agregar Unidad</a><br>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>   
+            </div>
+        </section>
+
+        <!--        FOOTER Y MAPA DEL SITIO     -->
+        <footer class="panel-footer">
+            <address>2016 APTIZA&copy; </address>
+            <div class="mapaSitio">
+                <a href="inicio2.html">Inicio</a>&nbsp;
+                <a href="programacion.html">Programacion</a>&nbsp;
+                <a href="diario.html">Diario de Actividades</a>&nbsp;
+                <a href="unidades.html">Unidades</a>&nbsp;
+                <a href="interevaluaciones.html">Interevaluaciones</a>
+            </div>
+        </footer>
+    </body>
+</html>

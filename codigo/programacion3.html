@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<!--
+        TERCERA VENTANA DE PROGRAMACION     -      ACTIVIDADES DE LA UNIDAD
+-->
+<html lang="es" >
+    <head>
+        <link rel="shorcut icon" href="favicon.ico" > <!--  Link para el favicon -->
+
+        <link   href="css/bootstrap.min.css" rel="stylesheet" media="screen"> <!--Estilos css bootstrap-->
+        <link href="css/propio.css" rel="stylesheet" media="screen"> <!--Estilos propio css-->
+
+        <script src="js/jquery-1.11.3.min.js" type="text/javascript" ></script> <!-- Libreria JQUERY-->
+        <script src="js/bootstrap.min.js"></script> <!-- Libreria Javascript bootsstrap-->
+        <script src="js/boton_informacion.js" type="text/javascript" ></script> <!-- JQUERY BOTON DE INFORMACION -->
+
+        <title>APTIZA</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+
+    <body>
+        <header> 
+            <!-- DIV SUPERIOR QUE CONTIENE LOS LOGTIPOS, TANTO DEL CENTRO COMO DE LA APLICACION -->
+            <div class="divSuperior_menu">
+                <img src="img/centro_logo.jpg" class="img-responsive logoCentro" alt="Logo I.F.P VIRGEN DE GRACIA"> 
+                <img src="img/aptiza_logo.png" class="img-responsive logoAptiza" alt="Logo de la aplicacion, aptiza"> 
+            </div>
+
+            <!--            MENU        -->    
+            <nav class="navbar navbar-inverse ">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse" title="Desplegar Menu">
+                        <span class="sr-only">Desplegar navegación</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <img src="img/centro_logo.jpg" id="logo_centro_subnmenu" alt="Logo I.F.P VIRGEN DE GRACIA">
+                </div>
+
+                <div class="collapse navbar-collapse navbar-ex1-collapse"> 
+                    <ul class="nav navbar-nav">
+                        <li><a href="inicio2.html"><span class="glyphicon glyphicon-home"></span> Inicio <!-- Icono inicio --> </a></li>
+                        <li><a href="programacion.html">Programacion</a></li>
+                        <li><a href="diario.html">Diario Actividades</a></li>
+                        <li><a href="unidades.html">Unidades</a></li>
+                        <li><a class="iconoUsuario" href="interevaluaciones.html">Interevaluaciones</a></li>
+                        <li class="dropdown">
+                            <a  class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user "></span>&nbsp;&nbsp;Jaime&nbsp;<span class="caret"></span></a>
+                            <ul class="dropdown-menu" >
+                                <li><a id="cerrarSesion" href="index.html" ><span class="glyphicon glyphicon-share"></span>&nbsp;Cerrar sesion</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+        </header>
+
+        <!--        MIGAS DE PAN        -->
+        <ol class="breadcrumb col-lg-10 col-lg-offset-1 col-md-offset-1 col-md-10 ">
+            <li><a href="inicio2.html">Inicio</a></li>
+            <li><a href="programacion.html">Programacion</a></li>
+            <li><a href="programacion2.html">Unidades</a></li>
+            <li class="active">Actividades de cada unidad</li>
+        </ol>
+
+        <div class="titulo col-md-10 col-lg-offset-1 col-md-offset-1" >
+            <h1>ACTIVIDADES DE LA UNIDAD  </h1>
+        </div>
+
+        <section class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
+
+            <!--            BOTON DE INFORMACION        -->
+            <a class="btn btn-default btn-sm glyphicon glyphicon-info-sign icon_info" href="#" title="Mas Informacion">&nbsp;Info</a>
+
+            <div class="clearfix"></div>
+
+            <div class="panel panel-default ayuda col-md-2">
+                <img alt="cerrar anuncio" class="cerrar pull-right" src="img/cerrar.png" >
+                <div class="panel-body">
+                    En esta pagina puedes consultar las Actividades correspondientes a la unidad que seleccionaste en la pagina anterior, Ademas de : <br>
+                    <span class="glyphicon glyphicon-pencil"> Editar o Visualizar una Actividad. </span> <br>
+                    <span class="glyphicon glyphicon-trash"> Eliminar una Actividad. </span> <br> o Agregar una nueva Actividad.
+                </div>
+            </div>
+            
+            <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+                <div class="row">
+                    <div class="cuadroLista">
+                        <ol class="lista">
+                            <li><a href="programacion3.html">Actividad 1 - Maquetación </a> 
+                                <div class="pull-right"> 
+                                    <a class="btn btn-default btn-sm glyphicon glyphicon-pencil" href="#" title="Editar una Actividad">
+                                        <span class="sr-only">Editar Actividad</span>
+                                    </a>
+                                    <a class="btn btn-default btn-sm glyphicon glyphicon-trash" href="#" title="Eliminar una Actividad">
+                                        <span class="sr-only">Eliminar Actividad</span>
+                                    </a> 
+                                </div>
+                                <div class="clearfix"></div>
+                            </li>
+                            <li><a href="#">Actividad 2 - Display y Media Query </a> 
+                                <div class="pull-right"> 
+                                    <a class="btn btn-default btn-sm glyphicon glyphicon-pencil" href="#" title="Editar una Actividad">
+                                        <span class="sr-only">Editar Actividad</span>
+                                    </a>
+                                    <a class="btn btn-default btn-sm glyphicon glyphicon-trash" href="#" title="Eliminar una Actividad">
+                                        <span class="sr-only">Eliminar Actividad</span>
+                                    </a>
+                                </div>
+                                <div class="clearfix"></div>
+                            </li>
+                            <li><a href="#">Actividad 3 - Desafio sobre Maquetacion </a> 
+                                <div class="pull-right"> 
+                                    <a class="btn btn-default btn-sm glyphicon glyphicon-pencil" href="#" title="Editar una Actividad">
+                                        <span class="sr-only">Editar Actividad</span>
+                                    </a>
+                                    <a class="btn btn-default btn-sm glyphicon glyphicon-trash" href="#" title="Eliminar una Actividad">
+                                        <span class="sr-only">Eliminar Actividad</span>
+                                    </a>
+                                </div>
+                                <div class="clearfix"></div>
+                            </li>
+                            <li>
+                                <a href="#">Actividad 4 - Desafio sobre Display y Media Query  </a> 
+                                <div class="pull-right"> 
+                                    <a class="btn btn-default btn-sm glyphicon glyphicon-pencil" href="#" title="Editar una Actividad">
+                                        <span class="sr-only">Editar Actividad</span>
+                                    </a>
+                                    <a class="btn btn-default btn-sm glyphicon glyphicon-trash" href="#" title="Eliminar una Actividad">
+                                        <span class="sr-only">Eliminar Actividad</span>
+                                    </a> 
+                                </div>
+                                <div class="clearfix"></div>
+                            </li>
+                        </ol>
+                        <div class="pull-right">
+                            <a class="btn btn-primary btn-sm glyphicon glyphicon-plus pull-right" href="agregarActividad.html"> Agregar Actividad</a><br>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div> 
+                </div>
+            </div>
+        </section>
+
+        <!--        FOOTER Y MAPA DEL SITIO     -->
+        <footer class="panel-footer">
+            <address>2016 APTIZA&copy; </address>
+            <div class="mapaSitio">
+                <a href="inicio2.html">Inicio</a>&nbsp;
+                <a href="programacion.html">Programacion</a>&nbsp;
+                <a href="diario.html">Diario de Actividades</a>&nbsp;
+                <a href="unidades.html">Unidades</a>&nbsp;
+                <a href="interevaluaciones.html">Interevaluaciones</a>
+            </div>
+        </footer> 
+    </body>
+</html>

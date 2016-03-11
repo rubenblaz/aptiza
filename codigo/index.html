@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--
+        PAGINA DE LOGEO
+-->
+<html lang="es" >
+    <head>
+        <link rel="shorcut icon" href="favicon.ico" > <!--  Link para el favicon -->
+        
+        <link   href="css/bootstrap.min.css" rel="stylesheet" media="screen"> <!--Estilos css bootstrap-->
+        <link   href="css/propio.css" rel="stylesheet" media="screen"> <!--Estilos propio css-->
+        
+        <script src="js/jquery-1.11.3.min.js" type="text/javascript" ></script> <!-- Libreria JQUERY-->
+        <script src="js/bootstrap.min.js"></script> <!-- Libreria Javascript bootsstrap-->
+        
+        <title>APTIZA</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+       
+    </head>
+    <body>
+       
+        <header>
+            <!-- DIV SUPERIOR QUE CONTIENE LOS LOGTIPOS, TANTO DEL CENTRO COMO DE LA APLICACION -->
+            <div class="divSuperior_menu">
+                <img src="img/centro_logo.jpg" class="img-responsive logoCentro" alt="Logo I.F.P VIRGEN DE GRACIA"> 
+                <img src="img/aptiza_logo.png" class="img-responsive logoAptiza" alt="Logo de la aplicacion, APTIZA"> 
+            </div>
+            
+            <!--    BARRA MENU, PERO SIN MENU SOLO CON EL LOGO, EL MENU APARECE AL LOGEARNOS  -->
+            <nav class="navbar navbar-inverse menuIndex">
+                <div class="navbar-header">
+                    <img src="img/centro_logo.jpg" id="logo_centro_subnmenu" alt="Logo I.F.P VIRGEN DE GRACIA">
+                </div>
+            </nav>
+        </header>
+       
+        <!--        FORMULARIO DE LOGIN     -->
+        <div class="container"> 
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 panel-login" >
+                    <div class="panel panel-default " >
+                        <div class="panel-heading"><h1 class="textoH">Iniciar Sesion</h1></div>
+                        <div class="panel-body">
+                            <form accept-charset="UTF-8" action="" method="POST">
+                            <div class="form-group ">
+                                <label for="email" class="control-label" >Email</label>
+                                <input id="email" class="form-control" type="email"  placeholder="Introduce un correo electronico" name="email">
+                            </div>
+                            <div class="form-group ">
+                                <label for="contraseña" class="control-label" >Contraseña</label>
+                                <input id="contraseña" class="form-control" type="password"  placeholder="Introduce una contraseña" name="password">
+                            </div>
+                            <div> 
+                                <a class="pull-left" href="#" title="Enlace para recuperar la contraseña" >¿Has olvidado tu contraseña?</a>
+                            </div>
+                            <div class="form-group">
+                                <input class="btn btn-primary pull-right" type="submit" value="Aceptar" name="aceptar">
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

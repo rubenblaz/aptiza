@@ -1,0 +1,281 @@
+
+/*      FUENTE LATO     */ 
+@import url("https://fonts.googleapis.com/css?family=Lato");
+
+
+body{
+    background-image:url('../img/fondo3.jpg');
+    background-size:cover;
+    background-repeat: no-repeat;
+    font-family: Lato;
+    
+}
+
+section{
+    background-color: white;
+    display:table-cell;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/*  MIGAS DE PAN    */
+
+.breadcrumb{
+    background-color:  #215891;
+    margin-bottom: 0px;
+    border-radius: 0px;
+    
+   
+}
+.active{
+    color: #F2CF3D !important
+}
+.breadcrumb li a{
+     color: #B6B6B6;
+}
+
+/*   FOOTER Y MAPA DEL SITIO */
+.panel-footer{
+    clear: both;
+    margin-top: 130px;
+    background-color: #215891 !important;
+    border-top: 0px !important;
+    color: #9E9E9E;
+}
+.mapaSitio>a{
+    color:#B6B6B6;
+}
+
+/*      DIV SUPERIOR, QUE SE ENCUENTRA POR ENCIMA DEL MENU Y TIENE LOS DOS LOGOS, INSTITUTO Y LOGO APLICACION */
+.divSuperior_menu{
+    background-color: #215891;
+    height: 100px;  
+}
+
+/*          COLOCACION DE LAS LETRAS EI CONOS DEL MENU EN DISTINTAS POSICONES */
+.navbar-inverse .navbar-nav  {
+   margin-left: 80px;
+}
+
+.iconoUsuario{
+    margin-right: 450px;
+}
+
+/*     LOGOTIPO  INSTITUTO  */
+.logoCentro{
+    float: left;
+    position: relative;
+    top: 10px;
+    margin-left: 120px;
+}
+/*      LOGOTIPO  APLICACION   */
+.logoAptiza{
+    float: right;
+    margin-top: 10px;
+    margin-right: 110px;
+}
+
+/*      PANEL QUE COMPONE EL LOGIN DE LA PAGINA INDEX   */
+.panel-login{
+   margin-top: 50px;
+}
+
+/*      TITULO DE CADA PAGINA, QUE NOS INDICA DONDE NOS ENCONTRAMOS     */
+.titulo{
+    border-bottom: solid 3px #F2C53D;
+    color: whitesmoke;
+    background-color: #215891;
+    
+}
+
+.titulo h1{
+    margin-top: 0px;
+    text-align: right;
+    font-size: 1.5em;
+   
+}
+
+/*      CON ESTO, METEMOS EL TICK DELANTE DEL TITULO (IMG))*/
+.titulo h1:before{
+    content: url('../img/aptiza_logo_check.png');
+    
+}
+
+/*      LOGO DEL INSTITUTO QUE DESAPARECE Y APARECE EN EL MENU CUANDO SE HACE PEQUEÑO */
+#logo_centro_subnmenu{
+        display:none;
+    }
+    
+    .menuIndex{
+        display: none;
+    }
+    
+    /*      PAGINA DE INICIO 2  */
+/* LISTA DONDE PONE PROFESORES, PADRES, ALUMNOS Y TUTORES */
+.articulo  li{
+    margin-bottom: 40px;
+}   
+.articulo-fondo {
+    background-color: #215891;
+    color: white;
+    font-weight: lighter;
+}
+
+.titulo h3{
+    line-height: 30px;
+}
+/* articulo que informa quien esta en la pagina y una breve descripcion*/
+.articulo > h4{
+   margin: 30px 0px 30px 0px;
+}
+article{
+   margin-bottom: 10px;
+}   
+    
+
+/* BOTONES */
+
+.btn-group{
+    margin: 20px;
+}
+
+/*CALENDARIO*/
+.fecha{
+  margin: 10px;
+  margin-left: 20px
+}
+
+.cuadroLista{
+    border: 1px lightgray solid;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.lista li{
+    padding: 10px;
+    padding-top: 15px;
+    list-style: none;
+    border-radius: 0px;
+    margin-bottom: 3px;
+    border-bottom: 1px solid lightgray;
+}
+
+
+.glyphicon-ok{
+    color: green;
+    float: right;
+    margin-right: 30px;
+}
+
+/*.completada{
+  margin-left:  2000px
+}*/
+
+.aceptar{
+    margin-right: 5px;
+}
+
+.navbar-inverse .navbar-nav {
+    margin-bottom: 0px !important;
+}
+
+/***************        AYUDA/INFORMACION       *********************/
+
+/*     ICONO INFORMACION       */
+.icon_info{
+    margin-right:  200px;
+    z-index: 2;
+    margin-bottom: 10px;
+}
+.icon_info:hover{
+    background-color: #F2CF3D;
+}
+/*      PANEL DE AYUDA  QUE DESPLIEGA EL BOTON DE INFORMACION   */
+.ayuda{
+   margin-top: 5px;
+   display: none;
+   position: absolute;
+   z-index: 99;
+   background-color: lightblue;
+}
+.cerrar{
+    height: 15px;
+    margin-top: 5px;
+}
+
+/******************      DOCUMENTO INTEREVALUACIONES     *****************/
+
+/*      FECHA ACTUAL   */
+.fechaActual{
+    text-align: center;
+}
+
+/*  CUADROS DE LAS ASIGNATURAS  */
+.grupo_modulo{
+   padding: 15px;
+  border: 1px solid #215891;
+ 
+}
+/* oculatar texto en los iconos clase en un span */
+.invisible{
+    display: none;
+}
+
+/* h1 del index
+    H2 DEL INICIO.2
+*/
+.textoH{
+    font-size: 1.2em;
+}
+
+/*      @MEDIA    */  
+
+@media screen and (max-width: 1300px){
+    
+    .navbar-inverse .navbar-nav  {
+        margin-left: 60px;
+    }
+    .iconoUsuario{
+        margin-right:  0px;
+    }
+}
+
+@media screen and (max-width: 765px){
+
+    /*  DIV QUE ESTA POR ENCIMA DEL MENU */
+    .divSuperior_menu{
+        display: none;
+    }
+    /*  LOGO DEL CENTRO QUE SE COLOCA EN EL MENU EN VERSION MOVIL*/
+    #logo_centro_subnmenu{
+        display:block !important;
+        width: 100px;
+        padding: 2px;
+    }
+    .navbar-brand{
+        padding: 0px;
+    }
+    
+    /*  DESPLEGABLE, CERRAR SESION */
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a {
+        color: #1D3282;
+    }
+    
+    /*LETRAS E ICONOS DEL MENU */
+    
+    .navbar-inverse .navbar-nav  {
+        margin-left: 0px;
+    }
+    /*      IMAGEN LLAVE INGLESA INICIO2    */
+    .imgLlave{
+        margin-left: 30px;
+    }
+    .menuIndex{
+        display: block;
+    }
+    /*      PARA QUE CUANDO LO PONGAMOS EN VERSION MOVIL SE VEA TODA LA IMAGEN  */
+    body{
+        background-size: auto;
+    }
+    
+}
