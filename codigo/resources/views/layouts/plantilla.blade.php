@@ -33,13 +33,13 @@
                         <div class="col-lg-6 col-md-6 pull-left">
                             <div class="centro-logo-cabecera">
                                 <a href="{{ url('inicio') }}">
-                                    <img src="img/centro_logo.jpg"/>
+                                    {!! Html::image('img/centro_logo.jpg') !!}
                                 </a>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <a href="{{ url('inicio') }}">
-                                <img src='img/aptiza_logo.png' class="logo-cabecera pull-right"/>
+                                {!! Html::image('img/aptiza_logo.png', null, ['class'=>'logo-cabecera pull-right']) !!}
                             </a>
                         </div>
                     </div>
