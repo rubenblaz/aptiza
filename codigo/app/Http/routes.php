@@ -116,7 +116,7 @@ Route::group(['middleware' => ['web', 'validarRol:3']], function () {
 Route::group(['middleware' => ['web', 'validarRol:4']], function () {
     //Rutas de FCT
     Route::get('/encuestas4', 'fct\encuestas@urlencuestas'); //URL encuestas
-    Route::match(array('GET', 'POST'), 'validado4', 'fct\encuestas@encuestas'); //Insertar resultados encuestas empresas
+    Route::match(array('GET', 'POST'), 'validado4', 'fct\encuestas@encuestas_empresas'); //Insertar resultados encuestas empresas
 });
 
 

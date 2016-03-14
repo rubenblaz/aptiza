@@ -88,29 +88,15 @@ class encuestas extends Controller
             $idpreguntas_v[] = $idp->IDPREGUNTA;
         }
 
-        if (Session::get('USUARIO')->hasRol(6)) { //Alumnos
-            DB::table('encuesta')->insert(
-                ['IDUSUARIO' => $usuario, 'IDCICLO' => $curso[0]->CURSO, 'IDMODELO' => 1]
-            );
+        DB::table('encuesta')->insert(
+            ['IDUSUARIO' => $usuario, 'IDCICLO' => $curso[0]->CURSO, 'IDMODELO' => 1]
+        );
 
-            $idencuesta = $usuario1->obtenerIdEncuesta($usuario);
+        $idencuesta = $usuario1->obtenerIdEncuesta($usuario);
 
-            for ($i = 0; $i < count($idpreguntas_v); $i++) {
-                DB::table('elige')->insert(
-                    ['IDENCUESTA' => $idencuesta, 'IDPREGUNTA' => $idpreguntas_v[$i], 'IDOPCION' => $seleccion[$i]]);
-            }
-        }
-        if (Session::get('USUARIO')->hasRol(4)) { //Empresas
-            DB::table('encuesta')->insert(
-                ['IDUSUARIO' => $usuario, 'IDCICLO' => $curso[0]->CURSO, 'IDMODELO' => 2]
-            );
-
-            $idencuesta = $usuario1->obtenerIdEncuesta($usuario);
-
-            for ($i = 0; $i < count($idpreguntas_v); $i++) {
-                DB::table('elige')->insert(
-                    ['IDENCUESTA' => $idencuesta, 'IDPREGUNTA' => $idpreguntas_v[$i], 'IDOPCION' => $seleccion[$i]]);
-            }
+        for ($i = 0; $i < count($idpreguntas_v); $i++) {
+            DB::table('elige')->insert(
+                ['IDENCUESTA' => $idencuesta, 'IDPREGUNTA' => $idpreguntas_v[$i], 'IDOPCION' => $seleccion[$i]]);
         }
         if (Session::has('preguntas')) {
             Session::forget('preguntas');
@@ -118,6 +104,36 @@ class encuestas extends Controller
         return view('inicio');
     }
 
+    public function encuestas_empresas(Request $req)
+    {
+        $usuario1 = new alumno();
+
+        $seleccion = $req->get('opciones');
+        $idpreguntas = Session::get('preguntas');
+
+        $usuario = Session::get('USUARIO')->getEmail();
+
+        $curso = $usuario1->obtenerCurso(Session::get('USUARIO')->getEmail()); //Arreglar problema con el curso
+
+        foreach ($idpreguntas as $idp) {
+            $idpreguntas_v[] = $idp->IDPREGUNTA;
+        }
+
+        DB::table('encuesta')->insert(
+            ['IDUSUARIO' => $usuario, 'IDCICLO' => $curso[0]->CURSO, 'IDMODELO' => 2] //Problema con el curso
+        );
+
+        $idencuesta = $usuario1->obtenerIdEncuesta($usuario);
+
+        for ($i = 0; $i < count($idpreguntas_v); $i++) {
+            DB::table('elige')->insert(
+                ['IDENCUESTA' => $idencuesta, 'IDPREGUNTA' => $idpreguntas_v[$i], 'IDOPCION' => $seleccion[$i]]);
+        }
+        if (Session::has('preguntas')) {
+            Session::forget('preguntas');
+        }
+        return view('inicio');
+    }
 
 
 }
