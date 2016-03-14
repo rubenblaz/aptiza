@@ -27,7 +27,7 @@
 @section('contenido')
     <div class="col-md-12" style="margin-left: auto; margin-top: auto;">
         <br>
-        {!! Form::open(array('action' => 'FCT\usuarios@practicas_elegir')) !!}
+        {!! Form::open(array('action' => 'fct\usuarios@practicas_elegir')) !!}
         <div class="row">
             @if(Session::has('operacion'))
                 @if(Session::get('operacion') == "ok")

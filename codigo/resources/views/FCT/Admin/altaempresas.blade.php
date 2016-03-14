@@ -24,7 +24,7 @@
                         <h4 class="panel-title">Dar de alta una empresa:</h4>
                     </div>-->
                     <div class="panel-body">
-                        {!! Form::open(array('action' => 'FCT\usuarios@alta')) !!}
+                        {!! Form::open(array('action' => 'fct\usuarios@alta')) !!}
                         <div class="col-md-4">
                             <div class="form-group">
                                 {!! Form::label('CIF') !!}

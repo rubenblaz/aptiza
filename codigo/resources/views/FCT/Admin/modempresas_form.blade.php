@@ -21,7 +21,7 @@
             <div class="panel panel-default" id="panelalta">
                 <div class="panel panel-primary">
                     <div class="panel-body">
-                        {!! Form::open(array('action' => 'FCT\Admin\otros@modempresas_submit')) !!}
+                        {!! Form::open(array('action' => 'fct\admin\otros@modempresas_submit')) !!}
                         @foreach($empresa_modificar as $emp)
                             <input type="hidden" value="{!! $emp->EMAIL !!}" name="usuario_original"/>
                             <div class="col-md-4">

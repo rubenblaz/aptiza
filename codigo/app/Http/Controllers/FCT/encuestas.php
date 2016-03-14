@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\FCT;
+namespace App\Http\Controllers\fct;
 
 use App\Modelo\empresa;
 use Illuminate\Http\Request;
@@ -64,7 +64,7 @@ class encuestas extends Controller
             'opciones' => $opciones_v
         ];
 
-        return view("FCT/encuestas", $datos);
+        return view("fct/encuestas", $datos);
     }
 
     /**

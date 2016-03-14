@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\FCT\Admin;
+namespace App\Http\Controllers\fct\admin;
 
 use App\Modelo\alumno;
 use App\Modelo\encuesta;
@@ -19,7 +19,7 @@ class otros extends Controller
      */
     public function admincuenta()
     {
-        return view('FCT/admincuenta');
+        return view('fct/admincuenta');
     }
 
     /**
@@ -59,7 +59,7 @@ class otros extends Controller
             'mensaje' => $mensaje
         ];
 
-        return view('FCT/admincuenta', $datos);
+        return view('fct/admincuenta', $datos);
     }
 
     /**
@@ -68,7 +68,7 @@ class otros extends Controller
      */
     public function urlempresas()
     {
-        return view('FCT/Admin/altaempresas');
+        return view('fct/admin/altaempresas');
     }
 
     /**
@@ -77,7 +77,7 @@ class otros extends Controller
      */
     public function urlinforme()
     {
-        return view('FCT/invoice');
+        return view('fct/invoice');
     }
 
     /**
@@ -93,7 +93,7 @@ class otros extends Controller
             'todas_empresas' => $todas_empresas
         ];
 
-        return view('FCT/Admin/modempresas', $datos);
+        return view('fct/admin/modempresas', $datos);
     }
 
     /**
@@ -112,7 +112,7 @@ class otros extends Controller
         ];
 
 
-        return view('FCT/Admin/modempresas_form', $datos);
+        return view('fct/admin/modempresas_form', $datos);
     }
 
     /**

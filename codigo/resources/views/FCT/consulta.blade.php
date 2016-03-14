@@ -44,7 +44,7 @@
             @endif
             <div class="panel panel-default">
                 <br>
-                {!! Form::open(array('action' => 'FCT\usuarios@empresas_favoritas')) !!}
+                {!! Form::open(array('action' => 'fct\usuarios@empresas_favoritas')) !!}
                 <div class="row">
                     <div id="botonayuda" class="col-md-6">
                         <a href="#top"><img src="img/FCT/ayuda.png" style="width: 6%; margin-left: 3%;" alt="Ayuda"/></a>

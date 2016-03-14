@@ -52,7 +52,7 @@
     Memoria final - PDF
 @stop
 @section('contenido')
-    {!! Form::open(array('action' => 'FCT\PdfController@invoice2', 'id'=>'formulario')) !!}
+    {!! Form::open(array('action' => 'fct\PdfController@invoice2', 'id'=>'formulario')) !!}
     <div class="row">
         <div class="col-md-12">
             <p>

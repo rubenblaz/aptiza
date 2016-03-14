@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\FCT;
+namespace App\Http\Controllers\fct;
 
 use App\Modelo\alumno;
 use App\Modelo\encuesta;
@@ -121,7 +121,7 @@ class usuarios extends Controller
             'alumnos' => $alumnos,
             'cursos' => $vec_aux
         ];
-        return view('FCT/practicas', $datos);
+        return view('fct/practicas', $datos);
     }
 
     /**
@@ -172,7 +172,7 @@ class usuarios extends Controller
         $datos = [
             'empresas' => $todas_empresas
         ];
-        return view('FCT/consulta', $datos);
+        return view('fct/consulta', $datos);
     }
 
     /**
@@ -245,7 +245,7 @@ class usuarios extends Controller
             'mis_alumnos' => $mis_alumnos
         ];
 
-        return view('FCT/memoriafinal', $datos);
+        return view('fct/memoriafinal', $datos);
     }
 
     /**
@@ -275,7 +275,7 @@ class usuarios extends Controller
             'mis_alumnos' => $mis_alumnos
         ];
 
-        return view('FCT/memoriafinal2', $datos);
+        return view('fct/memoriafinal2', $datos);
     }
 
     /**
@@ -322,7 +322,7 @@ class usuarios extends Controller
             'medias_encuestas' => $medias_encuestas
         ];
 
-        return view('FCT/resumenalumnos', $datos);
+        return view('fct/resumenalumnos', $datos);
     }
 
     /**
@@ -347,7 +347,7 @@ class usuarios extends Controller
             'encuestas' => $encuestas
         ];
 
-        return view('FCT/resumenempresas', $datos);
+        return view('fct/resumenempresas', $datos);
     }
 
     /**
@@ -362,7 +362,7 @@ class usuarios extends Controller
         $datos = [
             'empresas' => $todas_empresas
         ];
-        return view('FCT/solencuestas', $datos);
+        return view('fct/solencuestas', $datos);
     }
 
     /**
