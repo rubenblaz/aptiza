@@ -3,7 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/app/Modelo/Usuario.php</file>
+            <file>file:/C:/xampp/htdocs/aptiza/codigo/app/Modelo/PagAlumnos.php</file>
+            <file>file:/C:/xampp/htdocs/aptiza/codigo/resources/views/reservas/reserva.blade.php</file>
+            <file>file:/C:/xampp/htdocs/aptiza/codigo/app/Http/Middleware/AutenticarUsuario.php</file>
+            <file>file:/C:/xampp/htdocs/aptiza/codigo/resources/views/informes/elegirGrupo.blade.php</file>
+            <file>file:/C:/xampp/htdocs/aptiza/codigo/app/Http/routes.php</file>
+            <file>file:/C:/xampp/htdocs/aptiza/codigo/resources/views/informes/calificar.blade.php</file>
+            <file>file:/C:/xampp/htdocs/aptiza/codigo/app/Http/Controllers/informes/Informes.php</file>
+            <file>file:/C:/xampp/htdocs/aptiza/codigo/app/Http/Controllers/Usuarios.php</file>
         </group>
     </open-files>
 </project-private>

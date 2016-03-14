@@ -32,7 +32,7 @@ class PagAlumnos {
     
     public function anterior(){
         
-         if($this->indice > 0){
+        if($this->indice > 0){
             $this->indice--;
         }
     }

@@ -8,6 +8,7 @@ use App\Modelo\Alumno;
 use App\Modelo\Asignatura;
 use App\Modelo\Evaluacion;
 use App\Modelo\PagAlumnos;
+use Session;
 
 class Informes extends Controller {
 
@@ -37,8 +38,7 @@ class Informes extends Controller {
                 $json['ASIGNATURA_'.$key ] = ['COD'=>$asig->COD,'NOMBRE'=>$asig->NOMBRE,'GRUPO'=>$asig->GRUPO];
             }
         }
-        
-  
+          
         $lista = Alumno::listByGrupo($request->input('grupo'));
 
         foreach ($lista as $key=>$alum) {
@@ -47,9 +47,18 @@ class Informes extends Controller {
         
         return json_encode($json);
     }
-    public function calificarAlumno(Request $request){
+    public function calificar(Request $request){
         
         $paginacion = new PagAlumnos($request->input('asignatura'),$request->input('evaluacion'),$request->input('alumnos'));
-        dd($paginacion);
+        
+        Session::put('PAGINACION',$paginacion);
+        
+        return view('informes/calificar');
+    }
+    public function calificarAlumno(Request $request){
+        
+        $datos['paginacion'] = $request->PAG;
+        
+        return view('informes/calificar',$datos);
     }
 }

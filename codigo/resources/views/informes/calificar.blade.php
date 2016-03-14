@@ -10,42 +10,19 @@
 <li><a href="#"></a>Informes</li>
 @stop
 @section('titulo')
-Elegir Alumnos
+Calificar
 @stop
 @section('contenido')
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
 
-        {!! Form::open(['url'=>'/informes/calificar', 'method' => 'POST']) !!}
-        <div class="form-group">
-            {!!Form::label('grupos','Grupos', ['class' => 'control-label'])!!}
-            {!! Form::select('grupo',$grupos, $grupo,['class' => 'form-control']) !!}   
-        </div>
-        <div class="form-group">
-            <label>Evaluacion</label><br>
-            @foreach($evaluaciones as $eval)
-            <div class="radio-inline">
-                <label><input type="radio"  value={{$eval}} name="evaluacion">{{$eval}}</label>
-            </div>
-            @endforeach
-        </div>
-        <div class="form-group">
-            <label for="asignaturas">Asignaturas</label>
-            <select name='asignatura' class="form-control" id="asignaturas" multiple>
-
-            </select>
-        </div>
-        <div class="form-group">
-            <label>Alumnos</label>
-            <div id='alumnos'>
-
-            </div>
-        </div>
-        <div class="form-group">
+        {!! Form::open(['url'=>'/informes/calificarAlumno', 'method' => 'POST']) !!}
+        
+        {{Session::get('PAGINACION')->getAlumno()}}
+        {{$paginacion}}
             {!!Form::submit('Aceptar',['class' => 'btn btn-primary pull-right'])!!}
-        </div>
         {!!Form::close()!!}
-
+        </div>
     </div>
     @stop
     @section('scripts')
