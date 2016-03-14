@@ -62,5 +62,14 @@ class Asignatura {
     
         return $result;
     }
+    static public function nombreByCod($cod){
+        
+        $result = DB::table('asignatura')
+                ->where('COD',$cod)
+                ->select('NOMBRE')
+                ->get();
+        
+        return $result[0]->NOMBRE;
+    }
     
 }

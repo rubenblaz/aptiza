@@ -15,42 +15,30 @@ Calificar
 @section('contenido')
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
-
+        <h2>{{Session::get('PAGINACION')->getAsignatura_nombre()}}</h2>
+        <h3 class="pull-right">Evaluacion<span class="label label-primary">{{Session::get('PAGINACION')->getEvaluacion()}}</span></h3>
+        <h1>{{$nombre}}</h1>
         {!! Form::open(['url'=>'/informes/calificarAlumno', 'method' => 'POST']) !!}
-        
-        {{Session::get('PAGINACION')->getAlumno()}}
-        {{$paginacion}}
             {!!Form::submit('Aceptar',['class' => 'btn btn-primary pull-right'])!!}
         {!!Form::close()!!}
+    </div>
+    <div class='col-md-6 col-md-offset-3'>
+        <div class="pull-left">
+            @if(!Session::get('PAGINACION')->esPrimero())
+                {{Html::link('/informes/calificarAlumno/ant','Anterior')}}
+            @else
+                <p>Anterior</p>
+            @endif
+        </div>
+        <div class="pull-right">
+            @if(!Session::get('PAGINACION')->esUltimo())
+                {{Html::link('/informes/calificarAlumno/sig','Siguiente')}}
+            @else
+                <p>Siguiente</p>
+            @endif
         </div>
     </div>
-    @stop
-    @section('scripts')
-    <script>
-        $('document').ready(function () {
-
-            $('select[name="grupo"]').change(consulta);
-
-            consulta();
-
-            function consulta() {
-                $('#alumnos').html('');
-                $('#asignaturas').html('');
-
-                var grupo = $('select[name="grupo"]').val(); //variable para ajax;
-
-                $.post("{{url('/informes/ajaxAlumnos')}}", {grupo: grupo}, function (data) {
-
-                    $.each(JSON.parse(data), function (index, value) {
-
-                        if (index.indexOf('ALUMN') >= 0) {
-                            $('#alumnos').append('<div class="checkbox"><label><input type="checkbox" name="alumnos[]" value="' + value.COD + '">' + value.NOMBRE + ' ' + value.APELLIDOS + '</label></div>');
-                        } else {
-                            $('#asignaturas').append('<option value="' + value.COD + '">' + value.NOMBRE + '</option>');
-                        }
-                    });
-                });
-            }
-        });
-    </script>
-    @stop
+</div>
+@stop
+@section('scripts')
+@stop

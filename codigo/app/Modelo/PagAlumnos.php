@@ -13,6 +13,7 @@
  */
 class PagAlumnos {
     private $asignatura;
+    private $asignatura_nombre;
     private $alumnos = array();
     private $evaluacion;
     private $indice = 0;
@@ -25,7 +26,7 @@ class PagAlumnos {
     
     public function siguiente(){
         
-        if($this->indice < count($this->alumnos)){
+        if($this->indice < (count($this->alumnos)-1)){
             $this->indice++;
         }
     }
@@ -41,7 +42,7 @@ class PagAlumnos {
         return $this->alumnos[$this->indice];
     }
     
-    public function esEltimo(){
+    public function esUltimo(){
         
         return ($this->indice == count($this->alumnos)-1);
     }
@@ -50,11 +51,20 @@ class PagAlumnos {
         return($this->indice == 0);
     }
     
-    function getAsignatura() {
+    public function getAsignatura() {
         return $this->asignatura;
     }
 
-    function getEvaluacion() {
+    public function getEvaluacion() {
         return $this->evaluacion;
+    }
+    public function getAsignatura_nombre() {
+        return $this->asignatura_nombre;
+    }
+    public function setAsignatura_nombre($asignatura_nombre) {
+        $this->asignatura_nombre = $asignatura_nombre;
+    }
+    public function getIndice(){
+        return $this->indice;
     }
 }

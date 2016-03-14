@@ -51,13 +51,22 @@ class Informes extends Controller {
         
         $paginacion = new PagAlumnos($request->input('asignatura'),$request->input('evaluacion'),$request->input('alumnos'));
         
+        $paginacion->setAsignatura_nombre(Asignatura::nombreByCod($request->input('asignatura')));
+        
         Session::put('PAGINACION',$paginacion);
         
-        return view('informes/calificar');
+        return redirect('informes/calificarAlumno/inicio');
     }
-    public function calificarAlumno(Request $request){
+    public function calificarAlumno(Request $request){  
         
-        $datos['paginacion'] = $request->PAG;
+        if($request->PAG == 'sig'){
+            Session::get('PAGINACION')->siguiente();
+        }
+        if($request->PAG == 'ant'){
+            Session::get('PAGINACION')->anterior();
+        }
+        
+        $datos['nombre'] = Alumno::getNombreByCod(Session::get('PAGINACION')->getAlumno());
         
         return view('informes/calificar',$datos);
     }
