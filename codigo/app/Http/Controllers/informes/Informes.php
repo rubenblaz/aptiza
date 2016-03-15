@@ -9,6 +9,7 @@ use App\Modelo\Asignatura;
 use App\Modelo\Evaluacion;
 use App\Modelo\PagAlumnos;
 use Session;
+use DB;
 
 class Informes extends Controller {
 
@@ -67,7 +68,21 @@ class Informes extends Controller {
         }
         
         $datos['nombre'] = Alumno::getNombreByCod(Session::get('PAGINACION')->getAlumno());
+        $datos['secciones'] = $this->secciones();
+        $datos['valores']  = $this->valores();
         
         return view('informes/calificar',$datos);
+    }
+    
+    private function valores(){
+        
+        $result = DB::table('valor')->get();
+        
+        return $result;
+    }
+    private function secciones(){
+        $result = DB::table('seccion')->get();
+        
+        return $result;
     }
 }

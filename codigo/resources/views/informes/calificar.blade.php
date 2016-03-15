@@ -19,6 +19,35 @@ Calificar
         <h3 class="pull-right">Evaluacion<span class="label label-primary">{{Session::get('PAGINACION')->getEvaluacion()}}</span></h3>
         <h1>{{$nombre}}</h1>
         {!! Form::open(['url'=>'/informes/calificarAlumno', 'method' => 'POST']) !!}
+            @foreach($secciones as $seccion)
+                <p>{{$seccion->NOMBRE}}</p>
+                @if($seccion->COD == 1)
+                    <select name="valoracion" class='form-control' id="">
+                    @foreach($valores as $valor)
+                        @if($valor->APARTADO == $seccion->COD)
+                            <option value="{{$valor->COD}}">{{$valor->NOMBRE}}</option>
+                        @endif
+                    @endforeach
+                    </select>
+                @endif
+                @if($seccion->COD == 2)
+                <select name="valoracion" class='form-control' id="">
+                    @foreach($valores as $valor)
+                        @if($valor->APARTADO == $seccion->COD)
+                            <option value="{{$valor->COD}}">{{$valor->NOMBRE}}</option>
+                        @endif
+                    @endforeach
+                </select>
+                @endif
+                @if($seccion->COD == 3)
+                    @foreach($valores as $valor
+                        @if($valor->APARTADO == $seccion->COD)
+                        <label>
+                        <input type="checkbox" name="medidas[]" value="{{$valor->COD}}">
+                        @endif
+                    @endforeach
+                @endif
+            @endforeach
             {!!Form::submit('Aceptar',['class' => 'btn btn-primary pull-right'])!!}
         {!!Form::close()!!}
     </div>
