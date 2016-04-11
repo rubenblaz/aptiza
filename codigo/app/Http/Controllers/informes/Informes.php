@@ -70,6 +70,7 @@ class Informes extends Controller {
         $datos['nombre'] = Alumno::getNombreByCod(Session::get('PAGINACION')->getAlumno());
         $datos['secciones'] = $this->secciones();
         $datos['valores']  = $this->valores();
+        $datos['apartados'] = $this->apartados();
         
         return view('informes/calificar',$datos);
     }
@@ -82,6 +83,11 @@ class Informes extends Controller {
     }
     private function secciones(){
         $result = DB::table('seccion')->get();
+        
+        return $result;
+    }
+    private function apartados(){
+        $result = DB::table('apartado')->get();
         
         return $result;
     }
