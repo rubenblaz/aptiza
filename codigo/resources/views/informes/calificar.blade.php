@@ -22,54 +22,42 @@ Calificar
         <h1>{{$nombre}}</h1>
         {!! Form::open(['url'=>'/informes/calificarAlumno', 'method' => 'POST']) !!}
         @foreach($secciones as $seccion)
-            <p>{{$seccion->NOMBRE}}</p>
-            @if($seccion->COD == 1)
-                <select name="valoracion" class='form-control' id="">
-                    @foreach($valores as $valor)
-                        @if($valor->APARTADO == $seccion->COD)
-                        <option value="{{$valor->COD}}">{{$valor->NOMBRE}}</option>
-                        @endif
-                    @endforeach
-                </select>
-            @endif
-            @if($seccion->COD == 2)
-                <select name="valoracion" class='form-control' id="">
-                    @foreach($valores as $valor)
-                        @if($valor->APARTADO == $seccion->COD)
-                            <option value="{{$valor->COD}}">{{$valor->NOMBRE}}</option>
-                        @endif
-                    @endforeach
-                </select>
-            @endif
-            @if($seccion->COD == 3)
-                @foreach($valores as $valor)
-                    @if($valor->APARTADO == $seccion->COD)
-                        <div class="form-group">
-                            <input type="checkbox" name="medidas[]" id="{{$valor->COD}}" value="{{$valor->COD}}">
-                            <label for="{{$valor->COD}}" text="{{$valor->NOMBRE}}">{{$valor->NOMBRE}}</label>
-                        </div>
-                    @endif
-                @endforeach
-            @endif
-            @if($seccion->COD == 4)
-                @foreach($apartados as $apartado)
-                    @if($apartado->SECCION == $seccion->COD)
-                        {{$apartado->NOMBRE}}<br>
-                        <div class="radio radio-inline">
-                        @foreach($valores as $key => $valor)
+                <p>{{$seccion->NOMBRE}}</p>
+            @foreach($apartados as $apartado)
+                @if($seccion->COD == 1 && $apartado->SECCION == $seccion->COD)
+                    <select name="valoracion" class='form-control' id="">
+                        @foreach($valores as $valor)
                             @if($valor->APARTADO == $seccion->COD)
-                                @if($key === 16)
-                                <label><input type="radio" checked="checked" name="{{$apartado->COD}}" selected="true" value="{{$valor->COD}}"/>{{$valor->NOMBRE}}</label>
-                                @else
-                                    <label><input type="radio" name="{{$apartado->COD}}" value="{{$valor->COD}}"/>{{$valor->NOMBRE}}</label>
-                                @endif
+                            <option value="{{$valor->COD}}">{{$valor->NOMBRE}}</option>
                             @endif
-                        @endforeach    
-                        </div>
-                        <br>
-                    @endif
-                @endforeach
-            @endif
+                        @endforeach
+                    </select>
+                @endif
+                @if($seccion->COD == 2 && $apartado->SECCION == $seccion->COD)
+                    <select name="valoracion" class='form-control' id="">
+                        @foreach($valores as $valor)
+                            @if($valor->APARTADO == $seccion->COD)
+                                <option value="{{$valor->COD}}">{{$valor->NOMBRE}}</option>
+                            @endif
+                        @endforeach
+                    </select>
+                @endif
+                @if($seccion->COD == 3 && $apartado->SECCION == $seccion->COD)
+                    @foreach($valores as $valor)
+                        @if($valor->APARTADO == $seccion->COD)
+                            <div class="form-group">
+                                <input type="checkbox" name="medidas[]" id="{{$valor->COD}}" value="{{$valor->COD}}">
+                                <label for="{{$valor->COD}}" text="{{$valor->NOMBRE}}">{{$valor->NOMBRE}}</label>
+                            </div>
+                        @endif
+                    @endforeach
+                @endif
+                @if($seccion->COD == 4 && $apartado->SECCION == $seccion->COD)
+
+                            {{$apartado->NOMBRE}}<br>
+
+                @endif
+            @endforeach
         @endforeach
         {!!Form::submit('Aceptar',['class' => 'btn btn-primary pull-right'])!!}
         {!!Form::close()!!}
