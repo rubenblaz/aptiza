@@ -99,15 +99,17 @@ class usuarios extends Controller
 
         $alumnos = $profesor1->misAlumnos($curso_tutor);
 
-        //Cuenta cuantos alumnos hay
-        $cantidad_alumnos = count($alumnos);
-        $cont = 0;
-        $vec_aux = array();
-        while ($cont < $cantidad_alumnos) {
-            $vec_aux[$cont] = DB::table('cursos')->select('CICLO')->where('IDCICLO', $alumnos[$cont]->CURSO)->get();
-            $cont++;
-        }
+        // dd($alumnos);
 
+        //Cuenta cuantos alumnos hay
+        /**$cantidad_alumnos = count($alumnos);
+         * $cont = 0;
+         * $vec_aux = array();
+         * while ($cont < $cantidad_alumnos) {
+         * $vec_aux[$cont] = DB::table('cursos')->select('CICLO')->where('IDCICLO', $alumnos[$cont]->NOMBRE)->get();
+         * $cont++;
+         * }
+         **/
         $empresas_fav = $empresa1->empresasFavoritas();
 
         $empresas_fav_vec = array();
@@ -118,8 +120,8 @@ class usuarios extends Controller
 
         $datos = [
             'empresas' => $empresas_fav_vec,
-            'alumnos' => $alumnos,
-            'cursos' => $vec_aux
+            'alumnos' => $alumnos
+            //'cursos' => $vec_aux
         ];
         return view('fct/practicas', $datos);
     }
@@ -156,6 +158,8 @@ class usuarios extends Controller
 
         return redirect('practicas');
     }
+
+
 
     /**
      * @param Request $req
@@ -229,17 +233,17 @@ class usuarios extends Controller
 
         $email_profesor = Session::get('USUARIO')->getEmail();
         $nombre_apellidos_tutor = $profesor1->obtenerNombreApellidos($email_profesor);
-        $nombre_curso_tutor = $profesor1->nombreCurso($email_profesor)[0]->CICLO;
-        $id_curso_tutor = $profesor1->cursoTutor($email_profesor)[0]->CURSO;
-
+        $nombre_curso_tutor = $profesor1->nombreCurso($email_profesor);
+        //$id_curso_tutor = $profesor1->cursoTutor($email_profesor)[0]->CURSO;
         $nombre = $nombre_apellidos_tutor[0]->NOMBRE;
         $apellidos = $nombre_apellidos_tutor[0]->APELLIDOS;
-        $mis_alumnos = $profesor1->misAlumnos2($id_curso_tutor);
+        $mis_alumnos = $profesor1->misAlumnos2($nombre_curso_tutor[0]->NOMBRE);
 
+        //dd($mis_alumnos);
 
         Session::put('nombre_tutor', $nombre);
         Session::put('apellidos_tutor', $apellidos);
-        Session::put('nombre_grupo', $nombre_curso_tutor);
+        Session::put('nombre_grupo', $nombre_curso_tutor[0]->NOMBRE);
 
         $datos = [
             'mis_alumnos' => $mis_alumnos
@@ -259,17 +263,17 @@ class usuarios extends Controller
 
         $email_profesor = Session::get('USUARIO')->getEmail();
         $nombre_apellidos_tutor = $profesor1->obtenerNombreApellidos($email_profesor);
-        $nombre_curso_tutor = $profesor1->nombreCurso($email_profesor)[0]->CICLO;
-        $id_curso_tutor = $profesor1->cursoTutor($email_profesor)[0]->CURSO;
-
+        $nombre_curso_tutor = $profesor1->nombreCurso($email_profesor);
+        //$id_curso_tutor = $profesor1->cursoTutor($email_profesor)[0]->CURSO;
         $nombre = $nombre_apellidos_tutor[0]->NOMBRE;
         $apellidos = $nombre_apellidos_tutor[0]->APELLIDOS;
-        $mis_alumnos = $profesor1->misAlumnos2($id_curso_tutor);
+        $mis_alumnos = $profesor1->misAlumnos2($nombre_curso_tutor[0]->NOMBRE);
 
+        //dd($mis_alumnos);
 
         Session::put('nombre_tutor', $nombre);
         Session::put('apellidos_tutor', $apellidos);
-        Session::put('nombre_grupo', $nombre_curso_tutor);
+        Session::put('nombre_grupo', $nombre_curso_tutor[0]->NOMBRE);
 
         $datos = [
             'mis_alumnos' => $mis_alumnos

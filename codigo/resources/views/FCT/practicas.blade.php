@@ -85,7 +85,7 @@
                             <div class="col-md-3" title="Apellidos" for="{!! $al->APELLIDOS !!}">{{ $al->APELLIDOS }}</div>
                             <div class="col-md-3" title="Empresa actual">{{ $al->NOMBRE_E }}</div>
                             <div class="col-md-3"
-                                 title="Seleccion">{{ Form::checkbox('seleccionado[]',$al->N_EXP,false, ['id'=>$al->APELLIDOS]) }}</div>
+                                 title="Seleccion">{{ Form::checkbox('seleccionado[]',$al->COD,false, ['id'=>$al->APELLIDOS]) }}</div>
                         </div>
                     @endforeach
                 </div>

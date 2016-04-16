@@ -30,13 +30,14 @@
 
         }
 
-        .centrarinput{
+        .centrarinput {
             margin-left: 45%;
         }
 
-        #submitpdf{
+        #submitpdf {
             margin-left: 40%;
         }
+
         .negrita {
             font-weight: bold;
             display: inline-flex;
@@ -136,12 +137,12 @@
 @section('scripts')
     <script type="text/javascript" language="JavaScript">
         /*$(document).ready(function () {
-            $("input[type=submit]").click(function () {
-                var accion = $(this).attr('dir');
-                $('form').attr('action', accion);
-                $('form').submit();
-            });
-        });*/
+         $("input[type=submit]").click(function () {
+         var accion = $(this).attr('dir');
+         $('form').attr('action', accion);
+         $('form').submit();
+         });
+         });*/
     </script>
 
 @stop

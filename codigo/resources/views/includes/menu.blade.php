@@ -55,8 +55,8 @@
             {{--<li title="Solicitar encuestas">{{ Html::link('/solencuestas', 'Solicitar encuestas') }}</li>--}}
             <li title="Memoria final PDF">{{ Html::link('/memoria', 'Memoria final - PDF') }}</li>
             <li title="Memoria final Excel">{{ Html::link('/memoria2', 'Memoria final - Excel') }}</li>
-            <li title="Resumen alumnos">{{ Html::link('/resumenalumnos', 'Resumen encuestas alumnos') }}</li>
-            <li title="Resumen empresas">{{ Html::link('/resumenempresas', 'Resumen encuestas empresas') }}</li>
+            {{--<li title="Resumen alumnos">{{ Html::link('/resumenalumnos', 'Resumen encuestas alumnos') }}</li>--}}
+            {{--<li title="Resumen empresas">{{ Html::link('/resumenempresas', 'Resumen encuestas empresas') }}</li>--}}
             <li title="Hoja de firmas de alumnos FCT">{{ Html::link('/informe1', 'Hoja de firmas de alumnos FCT') }}</li>
         </ul>
     </li>
@@ -67,7 +67,6 @@
            aria-haspopup="true" aria-expanded="true">
             Empresa FCT<span class="caret"></span>
         </a>
-
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
             <li title="Encuestas">{{ Html::link('/encuestas4', 'Encuestas') }}</li>
         </ul>

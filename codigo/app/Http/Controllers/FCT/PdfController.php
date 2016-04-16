@@ -28,7 +28,7 @@ class PdfController extends Controller
         $anio = date('Y');
         $mes1 = $metodos1->convertirMes($mes);
         $curso1 = $metodos1->cursoTutor();
-        $curso2 = $curso1[0]->CICLO;
+        $curso2 = $curso1[0]->NOMBRE;
         $date = "Puertollano a " . $dia . " de " . $mes1 . " de " . $anio;
         $invoice = "Informes para alumnos de FCT";
         $view = \View::make('FCT/invoice', compact('data', 'date', 'invoice', 'curso2'))->render();

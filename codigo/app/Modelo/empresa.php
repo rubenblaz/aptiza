@@ -176,10 +176,17 @@ class empresa
      */
     public function obtenerNombreEmpresa($email)
     {
+        /**
         $nombre_empresa = DB::table('empresas')
             ->join('alumnos', 'empresas.EMAIL', '=', 'alumnos.IDEMPRESA')
             ->select('empresas.NOMBRE')
             ->where('alumnos.EMAIL', $email)
+            ->get();**/
+        $nombre_empresa = DB::table('alumno_empresa')
+            ->join('alumno', 'alumno.COD', '=', 'alumno_empresa.IDALUMNO')
+            ->join('empresas', 'empresas.EMAIL', '=', 'alumno_empresa.IDEMPRESA')
+            ->select('empresas.NOMBRE')
+            ->where('alumno.EMAIL', $email)
             ->get();
         return $nombre_empresa;
     }
@@ -205,12 +212,22 @@ class empresa
      */
     public function obtenerCursoAlumnos($email)
     {
-        $consulta = DB::table('alumnos')
+        /*$consulta = DB::table('alumnos')
             ->join('empresas', 'empresas.EMAIL', '=', 'alumnos.IDEMPRESA')
             ->join('cursos', 'cursos.IDCICLO', '=', 'alumnos.CURSO')
             ->select('cursos.CICLO')
             ->where('alumnos.IDEMPRESA', $email)
+            ->get();*/
+        /** @var  $consulta
+         * Adaptado a Aptiza
+         **/
+
+        $consulta = DB::table('alumno_empresa')
+            ->join('matricula', 'alumno_empresa.IDALUMNO', '=', 'matricula.ALUMNO')
+            ->select('matricula.GRUPO')
+            ->where('alumno_empresa.IDEMPRESA', $email)
             ->get();
+
         return $consulta;
     }
 

@@ -31,9 +31,10 @@ class profesor
      */
     public function cursoTutor($usuario)
     {
-        $curso_tutor = DB::table('profesores')
-            ->select('CURSO')
-            ->where('EMAIL', $usuario)
+        $curso_tutor = DB::table('grupo')
+            ->join('profesor', 'profesor.COD', '=', 'grupo.TUTOR')
+            ->select('grupo.NOMBRE', 'grupo.CURSO')
+            ->where('profesor.EMAIL', $usuario)
             ->get();
 
         return $curso_tutor;
@@ -46,15 +47,25 @@ class profesor
      */
     public function misAlumnos($curso_tutor)
     {
-        $alumnos = DB::table('empresas')
+
+        /**$alumnos = DB::table('empresas')
             ->join('alumnos', 'alumnos.IDEMPRESA', '=', 'empresas.EMAIL')
             ->select('alumnos.N_EXP','alumnos.CURSO','alumnos.NOMBRE', 'alumnos.APELLIDOS', 'empresas.NOMBRE as NOMBRE_E')
             ->where('alumnos.CURSO', $curso_tutor[0]->CURSO)
             ->paginate(10);
+        **/
         /*$alumnos = DB::table('alumnos')
             ->select('N_EXP', 'NOMBRE', 'APELLIDOS', 'CURSO', 'CALIFICACION')
             ->where('CURSO', $curso_tutor[0]->CURSO)
             ->paginate(10);*/
+
+        $alumnos = DB::table('alumno')
+            ->join('matricula', 'matricula.ALUMNO', '=', 'alumno.COD')
+            ->join('alumno_empresa', 'alumno_empresa.IDALUMNO', '=', 'alumno.COD')
+            ->join('empresas', 'empresas.EMAIL', '=', 'alumno_empresa.IDEMPRESA')
+            ->select('alumno.NOMBRE', 'alumno.APELLIDOS', 'alumno_empresa.IDEMPRESA', 'alumno.COD', 'empresas.NOMBRE AS NOMBRE_E')
+            ->where('matricula.GRUPO', $curso_tutor[0]->NOMBRE)
+            ->paginate(10);
         return $alumnos;
     }
 
@@ -65,7 +76,7 @@ class profesor
      */
     public function obtenerNombreApellidos($email)
     {
-        $consulta = DB::table('profesores')
+        $consulta = DB::table('profesor')
             ->select('NOMBRE', 'APELLIDOS')
             ->where('EMAIL', $email)
             ->get();
@@ -79,10 +90,17 @@ class profesor
      */
     public function nombreCurso($email)
     {
+        /**
         $consulta = DB::table('cursos')
             ->join('profesores', 'profesores.CURSO', '=', 'cursos.IDCICLO')
             ->select('cursos.CICLO')
             ->where('profesores.EMAIL', $email)
+            ->get();
+          **/
+        $consulta = DB::table('grupo')
+            ->join('profesor', 'profesor.COD', '=', 'grupo.TUTOR')
+            ->select('grupo.NOMBRE')
+            ->where('profesor.EMAIL', $email)
             ->get();
         return $consulta;
     }
@@ -94,10 +112,28 @@ class profesor
      */
     public function misAlumnos2($curso)
     {
+        /**
         $consulta = DB::table('alumnos')
             ->join('empresas', 'empresas.EMAIL', '=', 'alumnos.IDEMPRESA')
             ->select('alumnos.NOMBRE', 'alumnos.APELLIDOS', 'alumnos.EMAIL', 'alumnos.TELEFONO_M', 'alumnos.TELEFONO_F', 'empresas.NOMBRE AS NOMBRE_E', 'empresas.CONVENIO')
             ->where('alumnos.CURSO', $curso)
+            ->get();
+          **/
+        /**
+        $consulta = DB::table('alumno')
+            ->join('matricula', 'matricula.GRUPO', '=', 'alumno.COD')
+            ->join('alumno_empresa', 'alumno_empresa.IDALUMNO', '=', 'alumno.COD')
+            ->join('empresas', 'empresas.EMAIL', '=', 'alumno_empresa.IDEMPRESA')
+            ->select('alumno.NOMBRE', 'alumno.APELLIDOS', 'alumno.EMAIL', 'alumno_empresa.IDEMPRESA AS EMPRESA_EMAIL', 'empresas.CONVENIO' )
+            ->where('matricula.GRUPO', $curso)
+            ->get();
+         * **/
+        $consulta = DB::table('alumno')
+            ->join('matricula', 'alumno.COD', '=', 'matricula.ALUMNO')
+            ->join('alumno_empresa', 'alumno_empresa.IDALUMNO', '=', 'alumno.COD')
+            ->join('empresas', 'empresas.EMAIL', '=', 'alumno_empresa.IDEMPRESA')
+            ->select('alumno.NOMBRE', 'alumno.APELLIDOS', 'alumno.EMAIL', 'alumno.TELEFONO_F', 'alumno.TELEFONO_M', 'empresas.NOMBRE AS NOMBRE_E', 'empresas.CONVENIO')
+            ->where('matricula.GRUPO', $curso)
             ->get();
         return $consulta;
     }

@@ -31,9 +31,9 @@ class alumno
     public function actualizarAlumnos($seleccion_alumnos, $usuario_empresa)
     {
         for ($i = 0; $i < count($seleccion_alumnos); $i++) {
-            $update = DB::table('alumnos')
-                ->where('N_EXP', $seleccion_alumnos[$i])
-                ->update(['IDEMPRESA' => $usuario_empresa[0]->EMAIL, 'CALIFICACION' => 'APTO']);
+            $update = DB::table('alumno_empresa')
+                ->where('IDALUMNO', $seleccion_alumnos[$i])
+                ->update(['IDEMPRESA' => $usuario_empresa[0]->EMAIL]);
         }
         return $update;
     }
@@ -45,9 +45,16 @@ class alumno
      */
     public function obtenerDatosAlumnos($curso_tutor)
     {
-        $alumnos = DB::table('alumnos')
+        /**
+        $alumnos = DB::table('alumno')
             ->select('NOMBRE', 'APELLIDOS')
-            ->where('CURSO', $curso_tutor[0]->CURSO)
+            ->where('CURSO', $curso_tutor[0]->NOMBRE)
+            ->get();
+        **/
+        $alumnos = DB::table('alumno')
+            ->join('matricula', 'alumno.COD', '=', 'matricula.ALUMNO')
+            ->select('NOMBRE', 'APELLIDOS')
+            ->where('matricula.GRUPO', $curso_tutor[0]->NOMBRE)
             ->get();
 
         return $alumnos;
@@ -60,11 +67,28 @@ class alumno
      */
     public function obtenerCurso($email)
     {
+        /**
         $consulta = DB::table('alumnos')
             ->select('CURSO')
             ->where('EMAIL', $email)
             ->get();
+        **/
+        /**
+         * Adaptado a aptiza
+         */
+        $consulta = DB::table('matricula')
+            ->join('alumno', 'alumno.COD', '=', 'matricula.ALUMNO')
+            ->select('matricula.GRUPO')
+            ->where('alumno.EMAIL', $email)
+            ->get();
+        return $consulta;
+    }
 
+    public function obtenerCurso2($email){
+        $consulta = DB::table('alumno_empresa')
+            ->select('IDCURSO')
+            ->where('IDEMPRESA', $email)
+            ->get();
         return $consulta;
     }
 
@@ -95,10 +119,16 @@ class alumno
      */
     public function obtenerNombreCurso($email)
     {
+        /**
         $nombrecurso = DB::table('cursos')
             ->join('alumnos', 'alumnos.CURSO', '=', 'cursos.IDCICLO')
             ->select('cursos.CICLO')
             ->where('alumnos.EMAIL', $email)
+            ->get();**/
+        $nombrecurso = DB::table('matricula')
+            ->join('alumno', 'alumno.COD', '=', 'matricula.ALUMNO')
+            ->select('matricula.GRUPO')
+            ->where('alumno.EMAIL', $email)
             ->get();
         return $nombrecurso;
     }

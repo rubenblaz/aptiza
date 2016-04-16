@@ -74,10 +74,18 @@ class metodos
      */
     public function cursoTutor()
     {
+        /**
         $consulta = DB::table('cursos')
             ->join('profesores', 'cursos.IDCICLO', '=', 'profesores.CURSO')
             ->select('cursos.CICLO')
             ->where('profesores.EMAIL', Session::get('USUARIO')->getEmail())
+            ->get();
+
+        **/
+        $consulta = DB::table('grupo')
+            ->join('profesor', 'profesor.COD', '=', 'grupo.TUTOR')
+            ->select('grupo.NOMBRE')
+            ->where('profesor.EMAIL', Session::get('USUARIO')->getEmail())
             ->get();
         return $consulta;
     }
