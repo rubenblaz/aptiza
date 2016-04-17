@@ -8,6 +8,7 @@ use App\Modelo\Alumno;
 use App\Modelo\Asignatura;
 use App\Modelo\Evaluacion;
 use App\Modelo\PagAlumnos;
+use App\Modelo\Informe;
 use Session;
 use DB;
 
@@ -15,7 +16,7 @@ class Informes extends Controller {
 
     public function elegirGrupo() {
 
-        $profe = new Profesor(\Session::get('USUARIO')->getEmail());
+        $profe = new Profesor(Session::get('USUARIO')->getEmail());
 
         $grupos = (new Grupo())->listByProfesor($profe->getCod());
 
@@ -91,4 +92,16 @@ class Informes extends Controller {
         
         return $result;
     }
+    
+    public function generarInforme(Request $request){
+        
+        $profesor_cod = (new Profesor(Session::get('USUARIO')->getEmail()))->getCod();
+        $paginacion = Session::get('PAGINACION');
+        $calificacion = $request->all();
+        array_shift($calificacion); //elimina el token del resquest al devolver request->all()
+        $informe = new Informe(111,$paginacion->getAsignatura(),$profesor_cod,$paginacion->getAlumno(),$paginacion->getEvaluacion(),$calificacion);
+        
+        $informe->guardar();
+    }
+    
 }

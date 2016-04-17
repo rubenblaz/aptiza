@@ -96,16 +96,17 @@ Route::group(['middleware' => ['web', 'validarRol:1']], function () {
 Route::group(['middleware' => ['web', 'validarRol:2']], function () {
 
     //Rutas de reservas
-    Route::get('toreservas', ['as' => 'toreservas', 'uses' => 'reservas\Reservas@store']);
+    Route::get('toreservas', ['as' => 'toreservas', 'uses' => 'reservas\reservas@store']);
     Route::post('ajax', 'reservas\reservas@ajaxconsulta');
     Route::get('tomisreservas', 'reservas\reservas@misreservas');
-    Route::get('delreserva', ['as' => 'delreserva', 'uses' => 'reservas\Reservas@reservaborrar']);
-    Route::match(array('GET', 'POST'), 'reservar', 'reservas\Reservas@hacerReserva');
+    Route::get('delreserva', ['as' => 'delreserva', 'uses' => 'reservas\reservas@reservaborrar']);
+    Route::match(array('GET', 'POST'), 'reservar', 'reservas\reservas@hacerReserva');
     
     //Rutas de informes
     Route::get('/informes/elegirGrupo', ['as' => '/informes/elegirGrupo','uses'=> 'informes\Informes@elegirGrupo']);
     Route::post('/informes/ajaxAlumnos', ['as' => '/informes/ajaxAlumnos','uses'=> 'informes\Informes@ajaxAlumnos']);
     Route::post('/informes/calificar', ['as' => '/informes/calificar','uses' => 'informes\Informes@calificar']);
     Route::get('/informes/calificarAlumno/{PAG}','informes\Informes@calificarAlumno');
+    Route::post('/informes/generarInforme',['as' =>'informes/generarInforme','uses'=> 'informes\Informes@generarInforme']);
 });
 

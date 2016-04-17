@@ -20,12 +20,12 @@ Calificar
         <h2>{{Session::get('PAGINACION')->getAsignatura_nombre()}}</h2>
         <h3 class="pull-right">Evaluacion<span class="label label-primary">{{Session::get('PAGINACION')->getEvaluacion()}}</span></h3>
         <h1>{{$nombre}}</h1>
-        {!! Form::open(['url'=>'/informes/calificarAlumno', 'method' => 'POST']) !!}
+        {!! Form::open(['url'=>'/informes/generarInforme', 'method' => 'POST']) !!}
         @foreach($secciones as $seccion)
-                <p>{{$seccion->NOMBRE}}</p>
+            <p>{{$seccion->NOMBRE}}</p>
             @foreach($apartados as $apartado)
                 @if($seccion->COD == 1 && $apartado->SECCION == $seccion->COD)
-                    <select name="valoracion" class='form-control' id="">
+                    <select name="{{$apartado->COD}}" class='form-control' id="">
                         @foreach($valores as $valor)
                             @if($valor->APARTADO == $seccion->COD)
                             <option value="{{$valor->COD}}">{{$valor->NOMBRE}}</option>
@@ -34,7 +34,7 @@ Calificar
                     </select>
                 @endif
                 @if($seccion->COD == 2 && $apartado->SECCION == $seccion->COD)
-                    <select name="valoracion" class='form-control' id="">
+                    <select name="{{$apartado->COD}}" class='form-control' id="">
                         @foreach($valores as $valor)
                             @if($valor->APARTADO == $seccion->COD)
                                 <option value="{{$valor->COD}}">{{$valor->NOMBRE}}</option>
@@ -46,16 +46,26 @@ Calificar
                     @foreach($valores as $valor)
                         @if($valor->APARTADO == $seccion->COD)
                             <div class="form-group">
-                                <input type="checkbox" name="medidas[]" id="{{$valor->COD}}" value="{{$valor->COD}}">
+                                <input type="checkbox" name="{{$apartado->COD}}[]" id="{{$valor->COD}}" value="{{$valor->COD}}">
                                 <label for="{{$valor->COD}}" text="{{$valor->NOMBRE}}">{{$valor->NOMBRE}}</label>
                             </div>
                         @endif
                     @endforeach
                 @endif
                 @if($seccion->COD == 4 && $apartado->SECCION == $seccion->COD)
-
-                            {{$apartado->NOMBRE}}<br>
-
+                    {{$apartado->NOMBRE}}<br>
+                    <div class="radio radio-inline">
+                    @foreach($valores as $key => $valor)
+                        @if($valor->APARTADO == $seccion->COD)
+                            @if(($key+1) === 17)
+                            <label><input type="radio" checked="checked" name="{{$apartado->COD}}" selected="true" value="{{$valor->COD}}"/>{{$valor->NOMBRE}}</label>
+                            @else
+                                <label><input type="radio" name="{{$apartado->COD}}" value="{{$valor->COD}}"/>{{$valor->NOMBRE}}</label>
+                            @endif
+                        @endif
+                    @endforeach    
+                    </div>
+                    <br>
                 @endif
             @endforeach
         @endforeach

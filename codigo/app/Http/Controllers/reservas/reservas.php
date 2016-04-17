@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use Session;
 use DB;
 
-class Reservas extends Controller
+class reservas extends Controller
 {
     
     public function store(Request $request){

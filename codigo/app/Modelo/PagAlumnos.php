@@ -67,4 +67,7 @@ class PagAlumnos {
     public function getIndice(){
         return $this->indice;
     }
+    public function getProfesor(){
+        return $this->profesor;
+    }
 }
