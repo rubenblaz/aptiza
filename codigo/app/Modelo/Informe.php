@@ -30,9 +30,9 @@ class Informe {
         
         $old_informe = DB::table('informe')
                        ->where('COD',$cod_informe)->get();
-        
-        if(count($old_informe) != 0){
-            $this->actualizar_informe($cod_informe);
+       
+        if(count($old_informe) > 0){
+            $this->actualizar_calificacion($cod_informe);
         }else{
             $this->nuevo_informe($cod_informe);
         }
@@ -48,7 +48,7 @@ class Informe {
             'EVALUACION'=>$this->evaluacion,
             )   
         );
-       dd($this->correcto);
+        
         $this->nueva_calificacion($cod_informe);
     }
     
@@ -67,6 +67,9 @@ class Informe {
         $nivel = $n; //subnivel de arrays anidados en el que encuentra en ese momento.
         $apartado = $apart; //apartado inicial que se va incrementando
         foreach($vector as $key=>$value){
+            if($nivel == 0 && !is_array($value) && $apartado == 3){//Controla que el apartado 3 no tenga opciones que añadir.
+                $apartado++;
+            }
             if(is_array($value)){
                 $this->recorr_calificacion($value,$apartado,($nivel +1));
             }else{
@@ -74,7 +77,7 @@ class Informe {
             }
             if($nivel == 0){
                 $apartado++;
-            }
+            } 
         }
     }
     private function insert_apartado_calificacion($cod_informe,$apartado,$valor){
@@ -86,11 +89,11 @@ class Informe {
             )    
         );
     }
-    
-    private function actualizar_informe($cod_informe){
-      
-    }
-    private function actualizar_calificacion(){
+   
+    private function actualizar_calificacion($cod_informe){
         
+        DB::table('informe_calificacion')->where('INFORME',$cod_informe)->delete();
+      
+        $this->nueva_calificacion();
     }
 }
