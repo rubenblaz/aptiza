@@ -107,6 +107,7 @@ Route::group(['middleware' => ['web', 'validarRol:2']], function () {
     Route::post('/informes/ajaxAlumnos', ['as' => '/informes/ajaxAlumnos','uses'=> 'informes\Informes@ajaxAlumnos']);
     Route::post('/informes/calificar', ['as' => '/informes/calificar','uses' => 'informes\Informes@calificar']);
     Route::get('/informes/calificarAlumno/{PAG}','informes\Informes@calificarAlumno');
+    Route::get('/informes/calificarAlumno',['as'=>'\informes\calificarAlumno','uses'=>'informes\Informes@calificarAlumno']);
     Route::post('/informes/generarInforme',['as' =>'informes/generarInforme','uses'=> 'informes\Informes@generarInforme']);
 });
 

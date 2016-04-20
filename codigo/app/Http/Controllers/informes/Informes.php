@@ -11,6 +11,7 @@ use App\Modelo\PagAlumnos;
 use App\Modelo\Informe;
 use Session;
 use DB;
+use Redirect;
 
 class Informes extends Controller {
 
@@ -60,14 +61,15 @@ class Informes extends Controller {
         return redirect('informes/calificarAlumno/inicio');
     }
     public function calificarAlumno(Request $request){  
-        
-        if($request->PAG == 'sig'){
-            Session::get('PAGINACION')->siguiente();
+       
+        if(isset($request->PAG)){
+            if($request->PAG == 'sig'){
+                Session::get('PAGINACION')->siguiente();
+            }
+            if($request->PAG == 'ant'){
+                Session::get('PAGINACION')->anterior();
+            }
         }
-        if($request->PAG == 'ant'){
-            Session::get('PAGINACION')->anterior();
-        }
-        
         $datos['nombre'] = Alumno::getNombreByCod(Session::get('PAGINACION')->getAlumno());
         $datos['secciones'] = $this->secciones();
         $datos['valores']  = $this->valores();
@@ -99,9 +101,11 @@ class Informes extends Controller {
         $paginacion = Session::get('PAGINACION');
         $calificacion = $request->all();
         array_shift($calificacion); //elimina el token del resquest al devolver request->all()
-        $informe = new Informe(111,$paginacion->getAsignatura(),$profesor_cod,$paginacion->getAlumno(),$paginacion->getEvaluacion(),$calificacion);
+        $informe = new Informe(null,$paginacion->getAsignatura(),$profesor_cod,$paginacion->getAlumno(),$paginacion->getEvaluacion(),$calificacion);
         
         $informe->guardar();
+        
+        return redirect('\informes\calificarAlumno')->with('mensaje', 'Calificación guardada correctamente para ');  
     }
     
 }
