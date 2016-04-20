@@ -51,6 +51,24 @@ class Alumno {
       
         return $list;
     }
+    static function listByInforme($grupo,$eval){
+        
+        $lista_alumno = array();
+        
+        $result = DB::table('alumno')
+                ->join('informe','informe.ALUMNO','=','alumno.COD')
+                ->join('matricula','matricula.ALUMNO','=','alumno.COD')
+                ->where('GRUPO',$grupo)
+                ->where('EVALUACION',$eval)
+                ->select('alumno.COD','NOMBRE','APELLIDOS','EMAIL')
+                ->groupBy('alumno.COD')
+                ->get();
+       
+        foreach($result as $r){
+            $lista_alumno[] = new Alumno($r->COD,$r->NOMBRE,$r->APELLIDOS,$r->EMAIL);
+        }
+        return $lista_alumno;
+    }
     function getCod() {
         return $this->cod;
     }
@@ -89,5 +107,8 @@ class Alumno {
                 ->get();
         
         return $result[0]->NOMBRE.' '.$result[0]->APELLIDOS;
+    }
+    public function esInformeCompleto(){
+        //Query que comprueba si existe calificación para todas sus asignaturas.
     }
 }

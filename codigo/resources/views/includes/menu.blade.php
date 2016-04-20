@@ -19,9 +19,9 @@
         </a>
 
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <li>{{Html::link('/informes/elegirGrupo','Calificar')}}</li>
+            <li>{{Html::link('informes/elegirGrupo','Calificar')}}</li>
             @if(Session::get('USUARIO')->hasRol(1))
-                <li>{{Html::link('tomisreservas','Generar')}}</li>
+                <li>{{Html::link('informes/generarInforme','Generar')}}</li>
             @endif
         </ul>
     </li>

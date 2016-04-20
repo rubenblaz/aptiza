@@ -47,6 +47,7 @@ Elegir Alumnos
         {!!Form::close()!!}
 
     </div>
+</div>
     @stop
     @section('scripts')
     <script>

@@ -11,7 +11,6 @@ use App\Modelo\PagAlumnos;
 use App\Modelo\Informe;
 use Session;
 use DB;
-use Redirect;
 
 class Informes extends Controller {
 
@@ -58,7 +57,7 @@ class Informes extends Controller {
         
         Session::put('PAGINACION',$paginacion);
         
-        return redirect('informes/calificarAlumno/inicio');
+        return redirect('informes/calificarAlumno');
     }
     public function calificarAlumno(Request $request){  
        
@@ -95,7 +94,7 @@ class Informes extends Controller {
         return $result;
     }
     
-    public function generarInforme(Request $request){
+    public function crearInforme(Request $request){
         
         $profesor_cod = (new Profesor(Session::get('USUARIO')->getEmail()))->getCod();
         $paginacion = Session::get('PAGINACION');
@@ -104,8 +103,25 @@ class Informes extends Controller {
         $informe = new Informe(null,$paginacion->getAsignatura(),$profesor_cod,$paginacion->getAlumno(),$paginacion->getEvaluacion(),$calificacion);
         
         $informe->guardar();
-        
+       
         return redirect('\informes\calificarAlumno')->with('mensaje', 'Calificación guardada correctamente para ');  
     }
-    
+    public function generarInforme(Request $request){
+        
+        $request->exists('evaluacion')? $eval = $request->get('evaluacion') : $eval = 1;
+       
+        $profesor = new Profesor(Session::get('USUARIO')->getEmail());
+        
+        $lista_alumnos = Alumno::listByInforme($profesor->grupoTutor(),$eval);
+        
+        $datos['actualeval'] = $eval;
+        $datos['evaluaciones'] = Evaluacion::listEvaluacion();
+        $datos['alumnos'] = $lista_alumnos;
+        $datos['grupo'] = $profesor->grupoTutor();
+        
+        return view('informes/generarInforme',$datos);
+    }
+    public function generarPDF(Request $request){
+        dd($request->COD);
+    }
 }

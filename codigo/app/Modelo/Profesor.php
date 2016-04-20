@@ -29,7 +29,21 @@ class Profesor {
         return $result[0];
     }
     
-    function getCod(){
+    public function getCod(){
         return $this->cod;
-    }   
+    }
+    public function grupoTutor(){
+        $grupo = null;
+        
+        $result = DB::table('grupo')
+                ->where('TUTOR',$this->cod)
+                ->get();
+       
+        if(count($result) == 1){
+            $grupo = $result[0]->NOMBRE;
+        }
+        
+        return $grupo;
+    }
+    
 }

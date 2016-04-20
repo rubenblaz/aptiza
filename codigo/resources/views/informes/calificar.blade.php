@@ -77,7 +77,7 @@ Calificar
     <div class="col-md-10 col-md-offset-1">
     @if (session('mensaje'))
         <div class="alert alert-success">
-            {{ session('mensaje') }}
+            <p>{{ session('mensaje') }}<b>{{$nombre}}</b>.</p>
         </div>
     @endif
         <div class="botonera-top col-xs-12">            
@@ -106,7 +106,7 @@ Calificar
     </div>
     <div class="col-md-10 col-md-offset-1 formulario">
         
-        {!! Form::open(['url'=>'/informes/generarInforme', 'method' => 'POST']) !!}
+        {!! Form::open(['url'=>'/informes/crearInforme', 'method' => 'POST']) !!}
         @foreach($secciones as $key=>$seccion)
             @foreach($apartados as $apartado)
                 @if($seccion->COD == 1 && $apartado->SECCION == $seccion->COD)  
