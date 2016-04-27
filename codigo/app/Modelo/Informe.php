@@ -96,4 +96,9 @@ class Informe {
       
         $this->nueva_calificacion();
     }
+    static public function getApartados(){
+        $result = DB::table('apartado')->get();
+        
+        return $result;
+    }
 }

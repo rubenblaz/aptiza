@@ -11,6 +11,8 @@ use App\Modelo\PagAlumnos;
 use App\Modelo\Informe;
 use Session;
 use DB;
+use View;
+use App;
 
 class Informes extends Controller {
 
@@ -122,6 +124,12 @@ class Informes extends Controller {
         return view('informes/generarInforme',$datos);
     }
     public function generarPDF(Request $request){
-        dd($request->COD);
+        $apartados = Informe::getApartados();
+        
+        $vista = View::make('informes.pdf.informe',compact('apartados'))->render();
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadHTML($vista);
+        
+        return $pdf->stream('reporte');
     }
 }
