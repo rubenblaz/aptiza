@@ -101,4 +101,66 @@ class Informe {
         
         return $result;
     }
+    /**
+     * Devuelve las asignaturas de un grupo pasandole el tutor.
+     * @param type $cod, es el código del tutor que será el del profesor que este guardado en la session.
+     * @return Array asociativo [CODASIGNATURA => NOMBREASIGNATURA]
+     */
+    static public function getAsignaturas($cod){
+        $result = DB::table('grupo')->join('asignatura','grupo.CURSO','=','asignatura.CURSO')
+                ->where('TUTOR',$cod)
+                ->lists('asignatura.NOMBRE','COD');
+    
+        return $result;
+    } 
+    static public function getValores(){
+        $result = DB::table('valor')->get();
+        
+        return $result;
+    }
+    /**
+     * Funcion estática que anida los datos obtenidos de una sola query que une las tablas "seccion,apartado,valor" en una sola consulta.
+     * Produce un arbol con ramificaciones [seccion->[apartado->[valor]]]
+     * @return type Devuelve una matriz con la jerarquia del informe.
+     */
+    static public function InformeCompleto(){
+        $consulta = DB::table('seccion')
+                    ->join('apartado','apartado.SECCION','=','seccion.COD')
+                    ->join('valor','valor.APARTADO','=','seccion.COD')
+                    ->select('seccion.COD as SECCIONCOD','seccion.NOMBRE as SECCIONNOMBRE','apartado.COD as APARTADOCOD','apartado.SECCION as APARTADOSECCION','apartado.NOMBRE as APARTADONOMBRE','valor.COD as VALORCOD','valor.NOMBRE as VALORNOMBRE','valor.APARTADO as VALORAPARTADO')
+                    ->get();
+        $informe = array();$i = 0;
+        function getApartados($seccion,$consulta){
+            $listado = array();$i=0;
+            foreach($consulta as $apartado){
+                if($seccion == $apartado->APARTADOSECCION && end($listado)['NOMBRE']!=$apartado->APARTADONOMBRE){
+                    $listado[$i]['COD'] = $apartado->APARTADOCOD;
+                    $listado[$i]['NOMBRE'] = $apartado->APARTADONOMBRE;
+                    $listado[$i]['VALORES'] = getValores($apartado->SECCIONCOD,$consulta);
+                    $i++;
+                }
+            }
+            return $listado;
+        }
+        function getValores($apartado,$consulta){
+            $i=0;$listado = array();
+            foreach($consulta as $valor){
+                if($apartado == $valor->VALORAPARTADO && end($listado)['COD']!= $valor->VALORCOD && !in_array($valor->VALORCOD,array_column($listado,'COD'))){
+                    $listado[$i]['COD']= $valor->VALORCOD;
+                    $listado[$i]['NOMBRE'] = $valor->VALORNOMBRE;
+                    $i++;
+                }         
+            }
+                return $listado;
+        }
+        foreach($consulta as $key=>$seccion){
+           if($key == 0 || end($informe)['COD'] != $seccion->SECCIONCOD){
+               $informe[$i]['COD']= $seccion->SECCIONCOD;
+               $informe[$i]['NOMBRE'] = $seccion->SECCIONNOMBRE;
+               $informe[$i]['APARTADOS'] = getApartados($seccion->SECCIONCOD,$consulta);
+               $i++;
+           }
+        }
+        return $informe;
+    }
 }

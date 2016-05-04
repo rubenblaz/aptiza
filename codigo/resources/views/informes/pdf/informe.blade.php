@@ -12,23 +12,33 @@
     </style>
     <body>
         <table>
-            
-           <thead>
-                 <tr>
-                    <th>Cod</th>
-                    <th>Nombre</th>
-                    <th>Seccion</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($apartados as $apartado)
-                    <tr>
-                        <td>{{$apartado->COD}}</td>
-                        <td>{{$apartado->NOMBRE}}</td>
-                        <td>{{$apartado->SECCION}}</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+  <tr>
+    <th rowspan="2">Materia</th>
+    <th colspan="{{count($datos['VALORES']->get)}}">Valoración del trabajo</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>2</td>
+    <td>3</td>
+    <td>4</td>
+    <td>5</td>
+  </tr>
+  <tr>
+    <td>Asignatura2</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Asignatura3</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
     </body>
 </html>

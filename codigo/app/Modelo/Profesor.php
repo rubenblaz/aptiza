@@ -45,5 +45,17 @@ class Profesor {
         
         return $grupo;
     }
-    
+    public function grupoTutorCod(){
+        $grupo = null;
+        
+        $result = DB::table('grupo')
+                ->where('TUTOR',$this->cod)
+                ->get();
+      
+        if(count($result) == 1){
+            $grupo = $result[0]->TUTOR;
+        }
+        
+        return $grupo;
+    }
 }
