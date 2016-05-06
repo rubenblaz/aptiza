@@ -34,7 +34,7 @@ class Alumno {
     $this->email = $datos->EMAIL;
     }
     
-    static function listByGrupo($grupo){ //En un futuro filtra tambien por asignatura
+    static function listByGrupo($grupo){ //En un futuro filtrar tambien por asignatura
         
         $result = DB::table('alumno')
                 ->join('matricula','alumno.COD','=','matricula.ALUMNO')
@@ -48,7 +48,6 @@ class Alumno {
            
             $list[] = new Alumno($alum->COD, $alum->NOMBRE, $alum->APELLIDOS, $alum->EMAIL);
         }
-      
         return $list;
     }
     static function listByInforme($grupo,$eval){

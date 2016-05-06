@@ -9,7 +9,6 @@ use App\Modelo\Asignatura;
 use App\Modelo\Evaluacion;
 use App\Modelo\PagAlumnos;
 use App\Modelo\Informe;
-use App\Modelo\Valor;
 use Session;
 use DB;
 use View;
@@ -126,13 +125,13 @@ class Informes extends Controller {
     }
     public function generarPDF(Request $request){
         
-       dd(Informe::InformeCompleto());
+       //dd(Informe::InformeCompleto());
         
         $profesor = new Profesor(Session::get('USUARIO')->getEmail());
         
         $datos['ASIGNATURAS'] = Informe::getAsignaturas($profesor->grupoTutorCod());
-        $datos['APARTADOS'] = Informe::getApartados();
-        $datos['VALORES'] = new Valor();
+        $datos['MODELOINFORME'] = Informe::InformeCompleto();
+        
       
         $vista = View::make('informes.pdf.informe',compact('datos'))->render();
         
