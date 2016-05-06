@@ -82,14 +82,14 @@ Calificar
     @endif
         <div class="botonera-top col-xs-12">            
             @if(!Session::get('PAGINACION')->esPrimero())
-                <a href="{{url('/informes/calificarAlumno/ant')}}" class="btn btn-primary col-sm-2 col-xs-2"><span class="glyphicon glyphicon-chevron-left"></span><span class="anterior"></span></a>
+                <a href="{{url('/informes/calificarAlumno/ant')}}" class="btn btn-primary col-xs-2"><span class="glyphicon glyphicon-chevron-left"></span><span class="anterior"></span></a>
             @else
-                 <a href="" class="btn btn-primary disabled col-md-2 col-xs-2"><span class="glyphicon glyphicon-chevron-left"></span><span class="anterior"></span></a>
+                 <a href="" class="btn btn-primary disabled col-xs-2"><span class="glyphicon glyphicon-chevron-left"></span><span class="anterior"></span></a>
             @endif
             @if(!Session::get('PAGINACION')->esUltimo())
-                <a href="{{url('/informes/calificarAlumno/sig')}}" class="btn btn-primary pull-right col-sm-2 col-xs-2"><span class="siguiente"></span> <span class="glyphicon glyphicon-chevron-right"></span></a>
+                <a href="{{url('/informes/calificarAlumno/sig')}}" class="btn btn-primary pull-right col-xs-2"><span class="siguiente"></span> <span class="glyphicon glyphicon-chevron-right"></span></a>
             @else           
-                <a href="" class="btn disabled pull-right btn-primary col-sm-2 col-xs-2"><span class="siguiente"></span><span class="glyphicon glyphicon-chevron-right"></span></a>    
+                <a href="" class="btn disabled pull-right btn-primary col-xs-2"><span class="siguiente"></span><span class="glyphicon glyphicon-chevron-right"></span></a>    
             @endif
             <div class="clearfix"></div>
         </div>
@@ -105,81 +105,68 @@ Calificar
         </div>
     </div>
     <div class="col-md-10 col-md-offset-1 formulario">
-        
         {!! Form::open(['url'=>'/informes/crearInforme', 'method' => 'POST']) !!}
-        @foreach($secciones as $key=>$seccion)
-            @foreach($apartados as $apartado)
-                @if($seccion->COD == 1 && $apartado->SECCION == $seccion->COD)  
-                    <div class="apartado col-lg-6">    
+        @foreach($modeloinforme as $seccion)
+            @if($seccion->COD == 1)
+                <div class="apartado col-lg-6">    
                     <h1>{{$seccion->NOMBRE}}</h1>
-                    <select name="{{$apartado->COD}}" class='form-control' id="">
-                        @foreach($valores as $valor)
-                            @if($valor->APARTADO == $seccion->COD)
+                    <select name="{{$seccion->APARTADOS[0]->COD}}" class='form-control' id="">
+                        @foreach($seccion->APARTADOS[0]->VALORES as $valor)
                             <option value="{{$valor->COD}}">{{$valor->NOMBRE}}</option>
-                            @endif
                         @endforeach
                     </select>
-                    </div>
-                @endif
-                @if($seccion->COD == 2 && $apartado->SECCION == $seccion->COD)
-                    <div class="apartado col-lg-6">
+                </div>
+            @endif
+            @if($seccion->COD == 2)
+                <div class="apartado col-lg-6">
                     <h1>{{$seccion->NOMBRE}}</h1>
-                    <select name="{{$apartado->COD}}" class='form-control' id="">
-                        @foreach($valores as $valor)
-                            @if($valor->APARTADO == $seccion->COD)
+                    <select name="{{$seccion->APARTADOS[0]->COD}}" class='form-control' id="">
+                        @foreach($seccion->APARTADOS[0]->VALORES as $valor)
                                 <option value="{{$valor->COD}}">{{$valor->NOMBRE}}</option>
-                            @endif
                         @endforeach
                     </select>
-                    </div>
-                @endif
-                @if($seccion->COD == 3 && $apartado->SECCION == $seccion->COD)
-                    <div class="apartado col-lg-6">
+                </div>
+            @endif
+            @if($seccion->COD == 3)
+                <div class="apartado col-lg-6">
                     <h1>{{$seccion->NOMBRE}}</h1>
-                    @foreach($valores as $valor)
-                        @if($valor->APARTADO == $seccion->COD)
+                    @foreach($seccion->APARTADOS[0]->VALORES as $valor)
                             <div class="form-group">
-                                <input type="checkbox" name="{{$apartado->COD}}[]" id="{{$valor->COD}}" value="{{$valor->COD}}">
-                                <label for="{{$valor->COD}}" text="{{$valor->NOMBRE}}">{{$valor->NOMBRE}}</label>
+                                <label for="{{$valor->COD}}" text="{{$valor->NOMBRE}}">
+                                    <input type="checkbox" name="{{$seccion->APARTADOS[0]->COD}}[]" id="{{$valor->COD}}" value="{{$valor->COD}}">
+                                    <span> {{$valor->NOMBRE}}</span>
+                                </label>
                             </div>
-                        @endif
                     @endforeach
-                    </div>
-                @endif
-                @if($seccion->COD == 4 && $apartado->SECCION == $seccion->COD)
-                    @if($key == 3)
-                        <div class="apartado col-lg-6">  
-                        <h1>{{$seccion->NOMBRE}}</h1>
-                    @endif
+                </div>
+            @endif
+            @if($seccion->COD == 4)
+                <div class="apartado col-lg-6">  
+                <h1>{{$seccion->NOMBRE}}</h1>
+                @foreach($seccion->APARTADOS as $apartado)
                     <p class="apartado-radio">{{$apartado->NOMBRE}}<p>
                     <div class="radio radio-inline">
-                    @foreach($valores as $key => $valor)
-                        @if($valor->APARTADO == $seccion->COD)
-                            @if(($key+1) === 17)
-                                <label><input type="radio" checked="checked" name="{{$apartado->COD}}" selected="true" value="{{$valor->COD}}"/>{{$valor->NOMBRE}}</label>
-                            @else
-                                <label><input type="radio" name="{{$apartado->COD}}" value="{{$valor->COD}}"/>{{$valor->NOMBRE}}</label>
-                            @endif
-                        @endif
-                    @endforeach    
+                        @foreach($apartado->VALORES as $key => $valor)<!--Primera opción por defecto-->
+                            <label><input type="radio" {{($key==0)?'checked':''}} name="{{$apartado->COD}}" value="{{$valor->COD}}"/>{{$valor->NOMBRE}}</label>
+                        @endforeach    
                     </div>                    
-                @endif
-            @endforeach
+                @endforeach
+            @endif
         @endforeach
         </div>
         <div class="botonera-bottom col-xs-12">            
             @if(!Session::get('PAGINACION')->esPrimero())
-                <a href="{{url('/informes/calificarAlumno/ant')}}" class="btn btn-primary col-sm-2 col-xs-2"><span class="glyphicon glyphicon-chevron-left"></span><span class="anterior"></span></a>
+                <a href="{{url('/informes/calificarAlumno/ant')}}" class="btn btn-primary col-xs-2"><span class="glyphicon glyphicon-chevron-left"></span><span class="anterior"></span></a>
             @else
-                 <a href="" class="btn btn-primary disabled col-md-2 col-xs-2"><span class="glyphicon glyphicon-chevron-left"></span><span class="anterior"></span></a>
+                 <a href="" class="btn btn-primary disabled  col-xs-2"><span class="glyphicon glyphicon-chevron-left"></span><span class="anterior"></span></a>
             @endif
 
             {!!Form::submit('Confirmar',['class' => 'btn btn-primary col-sm-4 col-sm-offset-2 col-xs-offset-2 col-xs-4'])!!}
 
             @if(!Session::get('PAGINACION')->esUltimo())
-                <a href="{{url('/informes/calificarAlumno/sig')}}" class="btn btn-primary pull-right col-sm-2 col-xs-2"><span class="siguiente"></span> <span class="glyphicon glyphicon-chevron-right"></span></a>
+                <a href="{{url('/informes/calificarAlumno/sig')}}" class="btn btn-primary pull-right col-xs-2"><span class="siguiente"></span> <span class="glyphicon glyphicon-chevron-right"></span></a>
             @else           
-                <a href="" class="btn disabled pull-right btn-primary col-sm-2 col-xs-2"><span class="siguiente"></span><span class="glyphicon glyphicon-chevron-right"></span></a>    
+                <a href="" class="btn disabled pull-right btn-primary col-xs-2"><span class="siguiente"></span><span class="glyphicon glyphicon-chevron-right"></span></a>    
             @endif
             <div class="clearfix"></div>
         </div>

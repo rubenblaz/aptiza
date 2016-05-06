@@ -13,6 +13,7 @@ use Session;
 use DB;
 use View;
 use App;
+use App\Modelo\Calificacion;
 
 class Informes extends Controller {
 
@@ -72,28 +73,9 @@ class Informes extends Controller {
             }
         }
         $datos['nombre'] = Alumno::getNombreByCod(Session::get('PAGINACION')->getAlumno());
-        $datos['secciones'] = $this->secciones();
-        $datos['valores']  = $this->valores();
-        $datos['apartados'] = $this->apartados();
-        
+        $datos['modeloinforme'] = Informe::InformeCompleto();
+       
         return view('informes/calificar',$datos);
-    }
-    
-    private function valores(){
-        
-        $result = DB::table('valor')->get();
-        
-        return $result;
-    }
-    private function secciones(){
-        $result = DB::table('seccion')->get();
-        
-        return $result;
-    }
-    private function apartados(){
-        $result = DB::table('apartado')->get();
-        
-        return $result;
     }
     
     public function crearInforme(Request $request){
@@ -125,16 +107,16 @@ class Informes extends Controller {
     }
     public function generarPDF(Request $request){
         
-       //dd(Informe::InformeCompleto());
-        
         $profesor = new Profesor(Session::get('USUARIO')->getEmail());
         
-        $datos['ASIGNATURAS'] = Informe::getAsignaturas($profesor->grupoTutorCod());
-        $datos['MODELOINFORME'] = Informe::InformeCompleto();
+        $asignaturas = Informe::getAsignaturas($profesor->grupoTutorCod());
+        $modeloinforme = Informe::InformeCompleto();
+        $calificacion = new Calificacion($request->EVAL);
+        $calificacion->setAlumno($request->COD);
         
-      
-        $vista = View::make('informes.pdf.informe',compact('datos'))->render();
-        
+        $vista = View::make('informes.pdf.informePdf',compact('asignaturas','modeloinforme','calificacion'))->render();
+       //return View::make('informes.pdf.informePdf',compact('asignaturas','modeloinforme','calificacion'))->render();
+
         $pdf = App::make('dompdf.wrapper');
         
         $pdf->loadHTML($vista);
