@@ -65,7 +65,8 @@
 
 @section('migas')
 <li>{!!Html::link('inicio','Inicio')!!}</li>
-<li><a href="#"></a>Informes</li>
+<li>{!!Html::link('informes/elegirGrupo','Elegir Alumnos')!!}</li>
+<li>Calificar</li>
 @stop
 
 @section('titulo')

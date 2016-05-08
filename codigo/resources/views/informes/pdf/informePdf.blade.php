@@ -112,14 +112,19 @@
         <hr>
         <table>
             <tr>
-                <th class='asignatura' rowspan="2">Asignaturas</th>
+               
+                
+                <th class='asignatura' colspan="2" rowspan="2">Asignaturas</th>
                 <th colspan="{{count($modeloinforme[3]->APARTADOS)+1}}">Competencias</th>
             </tr>
             <tr>      
                 @foreach($modeloinforme[3]->APARTADOS as $key=>$apartado)
-                <th class='competencia' colspan=""><div class="vertical-text">{{($key+1).'.'.$apartado->NOMBRE}}</div></th>
+                <td class='competencia' colspan=""><div class="vertical-text">{{($key+1).'.'.$apartado->NOMBRE}}</div></td>
                 @endforeach
-                <th class='observaciones'><div class="vertical-text">Observaciones</div></th>
+                <td class='observaciones'><div class="">Observaciones</div></td>
+            </tr>
+            <tr>
+                 <td rowspan="8"></td>
             </tr>
             @foreach($asignaturas as $asignatura)
                 <tr>

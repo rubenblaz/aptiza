@@ -7,7 +7,7 @@
 
 @section('migas')
 <li>{!!Html::link('inicio','Inicio')!!}</li>
-<li><a href="#"></a>Informes</li>
+<li><a href="#"></a>Elegir Alumnos</li>
 @stop
 @section('titulo')
 Elegir Alumnos
@@ -15,7 +15,6 @@ Elegir Alumnos
 @section('contenido')
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
-
         {!! Form::open(['url'=>'/informes/calificar', 'method' => 'POST']) !!}
         <div class="form-group">
             {!!Form::label('grupos','Grupos', ['class' => 'control-label'])!!}
@@ -23,16 +22,21 @@ Elegir Alumnos
         </div>
         <div class="form-group">
             <label>Evaluacion</label><br>
-            @foreach($evaluaciones as $eval)
+            @foreach($evaluaciones as $key=>$eval)
             <div class="radio-inline">
-                <label><input type="radio"  value={{$eval}} name="evaluacion">{{$eval}}</label>
+                <label>
+                    @if($key==0)
+                    <input type="radio" checked value={{$eval}} name="evaluacion">{{$eval}}
+                    @else
+                        <input type="radio" value={{$eval}} name="evaluacion">{{$eval}}
+                    @endif
+                </label>
             </div>
             @endforeach
         </div>
         <div class="form-group">
             <label for="asignaturas">Asignaturas</label>
-            <select name='asignatura' class="form-control" id="asignaturas" multiple>
-
+            <select name='asignatura' class="form-control" id="asignaturas">
             </select>
         </div>
         <div class="form-group">

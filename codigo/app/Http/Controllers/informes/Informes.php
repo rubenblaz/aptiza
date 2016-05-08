@@ -10,7 +10,6 @@ use App\Modelo\Evaluacion;
 use App\Modelo\PagAlumnos;
 use App\Modelo\Informe;
 use Session;
-use DB;
 use View;
 use App;
 use App\Modelo\Calificacion;
@@ -102,6 +101,7 @@ class Informes extends Controller {
         $datos['evaluaciones'] = Evaluacion::listEvaluacion();
         $datos['alumnos'] = $lista_alumnos;
         $datos['grupo'] = $profesor->grupoTutor();
+        $datos['calificacion'] = new Calificacion($eval);
         
         return view('informes/generarInforme',$datos);
     }
