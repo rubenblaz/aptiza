@@ -121,6 +121,6 @@ class Informes extends Controller {
         
         $pdf->loadHTML($vista);
         
-        return $pdf->stream('reporte');
+        return $pdf->stream('reporte.pdf'); //nombre del pdf
     }
 }

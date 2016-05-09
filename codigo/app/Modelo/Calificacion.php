@@ -23,7 +23,7 @@ class Calificacion {
                 ->join('valor','valor.COD','=','informe_calificacion.VALOR')
                 ->where('ALUMNO', $alumno)
                 ->where('EVALUACION', $this->eval)
-                ->select('informe.ASIGNATURA','informe_calificacion.APARTADO','informe_calificacion.VALOR','valor.NOMBRE')
+                ->select('informe.ASIGNATURA','informe_calificacion.APARTADO','informe_calificacion.VALOR')
                 ->get();
     }
 
@@ -70,12 +70,6 @@ class Calificacion {
                     ->get();
         
         return $consulta[0]->TODOCALIFICADO;    
-            
-//            select count(*) as tal,
-//            (select count(*) from 
-//                    asignatura,grupo,matricula 
-//                    where matricula.GRUPO  = grupo.NOMBRE and asignatura.CURSO = grupo.CURSO 
-//                    and matricula.ALUMNO = 9818) as que from informe where alumno= 9818 and EVALUACION = 1;
     }
 
 }

@@ -148,7 +148,7 @@ Calificar
                     <p class="apartado-radio">{{$apartado->NOMBRE}}<p>
                     <div class="radio radio-inline">
                         @foreach($apartado->VALORES as $key => $valor)<!--Primera opción por defecto-->
-                            <label><input type="radio" {{($key==0)?'checked':''}} name="{{$apartado->COD}}" value="{{$valor->COD}}"/>{{$valor->NOMBRE}}</label>
+                            <label><input type="radio" <?php echo($key==0)?'checked':'';?> name="{{$apartado->COD}}" value="{{$valor->COD}}"/>{{$valor->NOMBRE}}</label>
                         @endforeach    
                     </div>                    
                 @endforeach
