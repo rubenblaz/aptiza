@@ -8,20 +8,24 @@ namespace App\Modelo;
  * @author Ernesto
  */
 use DB;
+use App\Modelo\Alumno;
 
 class Calificacion {
 
     private $eval;
     private $calific;
+    private $alumno;
+    private $grupo;
 
-    function __construct($eval) {
+    function __construct($eval,$grupo) {
         $this->eval = $eval;
+        $this->grupo = $grupo;
     }
     public function setAlumno($alumno) {
-
+        $this->alumno = Alumno::byCodigo($alumno);
         $this->calific = DB::table('informe')->join('informe_calificacion', 'informe_calificacion.INFORME', '=', 'informe.COD')
                 ->join('valor','valor.COD','=','informe_calificacion.VALOR')
-                ->where('ALUMNO', $alumno)
+                ->where('ALUMNO', $this->alumno->getCod())
                 ->where('EVALUACION', $this->eval)
                 ->select('informe.ASIGNATURA','informe_calificacion.APARTADO','informe_calificacion.VALOR')
                 ->get();
@@ -71,5 +75,15 @@ class Calificacion {
         
         return $consulta[0]->TODOCALIFICADO;    
     }
+    function getEval() {
+        return $this->eval;
+    }
+    function getGrupo(){
+        return $this->grupo;
+    }
+    function getAlumno() {
+        return $this->alumno;
+    }
+
 
 }

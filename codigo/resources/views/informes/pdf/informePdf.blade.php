@@ -15,7 +15,7 @@
         body{
             font-family: sans-serif;
             font-size: 9pt;
-            margin: 18mm 18mm 18mm 18mm;
+            margin: 18mm 18mm 10mm 18mm;
         }
         .cabecera{ 
             margin-bottom:5mm
@@ -33,7 +33,7 @@
         .cabecera tr:nth-child(1) td:nth-child(2){
             height: 20mm;
             width: 60.2%;
-   
+
             font-family: sans-serif;
             font-weight: bolder;
             font-size: 12pt;
@@ -51,25 +51,22 @@
             font-family: sans-serif;
         }
         .cabecera_alumno{
+            font-size: 10pt;
             margin-bottom: 9mm;
             width: 100%;
             border-collapse: collapse;
             table-layout: fixed;
-            
         }
-        .cabecera_alumno tr:first-child td{
-            border:solid 1px black;
-            vertical-align: middle;
-            height: 12mm;
-            padding-left: 2mm;
-        }
-        .cabecera_alumno tr:nth-child(2) td{
-            text-align: center;
+        .cabecera_alumno td{
             border:1px solid black;
         }
-        .cabecera_alumno tr:nth-child(2) td:first-child{
-            border:0px solid black;
-            background-color:white;
+        .cabecera_alumno tr:first-child td{
+            vertical-align: middle;
+            height: 12mm;
+            padding-left: 1mm;
+        }
+        .cabecera_alumno tr:nth-child(2) td{
+            text-align: center; 
         }
         .estadillo{
             width: 100%;
@@ -77,7 +74,7 @@
             border: solid 1px black;
             table-layout: fixed;
             margin-bottom: 5mm;
-        
+
         }
         .estadillo td{
             border:1px solid black;
@@ -129,28 +126,29 @@
             padding-left:2mm;
             margin-bottom: 4mm;
         }
-        .lista_competencias{
-            display: block;
-            margin: 0 auto;
+        .lista_competencias {
+            text-align: center;
         }
         .lista_competencias li{
             display: inline;
         }
-        .titulo_secc_valor{
-           padding:0px;
-           margin: 0px;
+        .list_secc_valor{
+            font-size: 8pt;
+        }
+        .list_secc_valor p{
+            padding:0px;
+            margin: 0px;
+            font-weight: bolder;
         }
         .list_secc_valor ul{
             list-style: none;
             padding-left: 15px;
             text-height:text-size;
             margin:2mm;
-            font-size: 7pt;
         }
         .list_secc_valor ul:nth-child(2) li{
             display:inline;
-            margin-right: 5px;
-            
+            margin-right: 5px;  
         }
         hr{
             page-break-after:always;
@@ -167,7 +165,7 @@
                     I.E.S. FRAY ANDRES PUERTOLLANO
                 </td>
                 <td colspan="3">
-                    INFORME DE EVALUACIÓN<br>Curso:Primero E.S.O.
+                    INFORME DE EVALUACIÓN<br>Curso:Curso:{{$calificacion->getGrupo()->getCurso()}}
                 </td>
                 <td rowspan='2'>
                     Consejería de Educación y Ciencia
@@ -181,20 +179,21 @@
         </table>
         <table class="cabecera_alumno">
             <tr>
-                <td style="width:10%">ALUMNO/A</td>
-                <td style="width:52%" colspan="5">Ernesto Ruiz Moya</td>
-                <td style="width:18%" colspan="2">GRUPO</td>
-                <td style="width:18%" colspan="2">1ºA</td>
+                <td style="width:19%">ALUMNO/A</td>
+                <td style="width:56%" colspan="5">{{$calificacion->getAlumno()->getNomCompleto()}}</td>
+                <td style="width:9%" colspan="2">GRUPO</td>
+                <td style="width:15%" colspan="2">{{$calificacion->getGrupo()->getNombre()}}</td>
             </tr>
             <tr>
-                <td style="width:100%" colspan="2"></td><!--???-->
-                <td style="width:25%" >Evaluación</td>
-                <td style="width:1%">1º</td>
-                <td style="width:1%"></td>
-                <td style="width:2%">2º</td>
-                <td style="width:1%"></td>
-                <td style="width:3%" colspan="2">3º/final</td>
-                <td style="width:1%"></td>
+                <td style="width:19%;border:0px"></td> 
+                <td style="width:41%;border:0px"></td> 
+                <td style="width:15%" >Evaluación</td>
+                <td style="width:0%">1º</td>
+                <td style="width:0%">{{($calificacion->getEval() == 1)?'X':''}}</td>
+                <td style="width:0%">2º</td>
+                <td style="width:7%">{{($calificacion->getEval() == 2)?'X':''}}</td>
+                <td style="width:10%" colspan="2">3º/final</td>
+                <td style="width:7%">{{($calificacion->getEval() == 3)?'X':''}}</td>
             </tr>
         </table>
         <table class="estadillo">
@@ -230,17 +229,17 @@
             </tr>
             @endforeach
         </table>
-     
+
         <div class="aviso">Los objetivos, contenidos, criterios de evaluación y calificación trimestrales corresponden a la información facilitada a los padres o tutores legales por el tutor del grupo en la reunión inicial del curso.</div>
-       
+
 
         <div class="list_secc_valor">
             @foreach($modeloinforme as $seccion)
             @if($seccion->COD < 4)
             @if($seccion->COD == 2)
-            <p class='titulo_secc_valor'>Grado de consecución de objetivos y contenidos atendiendo a los criterios de evaluación del plan de Trabajo Individualizado con Adaptación Curricular para Alumnos con Necesidades Específicas de Apoyo Educativo.</p>
+            <p>Grado de consecución de objetivos y contenidos atendiendo a los criterios de evaluación del plan de Trabajo Individualizado con Adaptación Curricular para Alumnos con Necesidades Específicas de Apoyo Educativo.</p>
             @else
-            <p class='titulo_secc_valor'>{{$seccion->NOMBRE}}</p>
+            <p>{{$seccion->NOMBRE}}</p>
             @endif
             <ul>
                 @foreach($seccion->APARTADOS[0]->VALORES as $key=>$valor)
@@ -250,32 +249,33 @@
             @endif
             @endforeach
         </div>
-        <p>Si necesita más informaicón puede solicitarla al tutor/a, dpto de orientaicón y jefatura de estudios.</p>
-        <p style="margin-left: 50mm">Puertollano, ____ de _____________ de 20 ____</p>
-        <p style="margin-left: 80mm">El tutor/a:</p>
-        <p style="text-align:center">(Cotar y entregar al tutor/a el enterado del informe de evaluación trimestral)</p>
-   
-        <table style="width:100%;border-top:1px dotted black">
-            <tr>
-                <th style="width: 20%;padding-top:2mm">ALUMNO/A</th>
-                <th colspan="2" style="border-bottom:1px solid black;width:80%"></th>
-                
-            </tr>
-            <tr>
-                <td style='padding-top:3mm'>Padre /madre o tutor/a</td>
-                <td></td>
-                <td style='padding-top:3mm'>Fecha:.......</td>
-            </tr>
-        </table>
+       <div style="position:fixed;left:18mm;bottom:65mm;width:176mm">
+            <p>Si necesita más informaicón puede solicitarla al tutor/a, dpto de orientaicón y jefatura de estudios.</p>
+            <p style="margin-left: 50mm">Puertollano, ____ de _____________ de 20 ____</p>
+            <p style="margin-left: 80mm;margin-bottom:3mm">El tutor/a:</p>
+            <p style="text-align:center">(Cotar y entregar al tutor/a el enterado del informe de evaluación trimestral)</p>
+            
+            <table style="width:100%;border-top:1px dotted black">
+                <tr>
+                    <th style="width: 20%;padding-top:2mm">ALUMNO/A</th>
+                    <th colspan="2" style="border-bottom:1px solid black;width:80%"></th>
+                </tr>
+                <tr>
+                    <td style='padding-top:3mm'>Padre /madre o tutor/a</td>
+                    <td></td>
+                    <td style='padding-top:3mm'>Fecha:.......</td>
+                </tr>
+            </table>
+        </div>
         <hr><!-- Salto de página -->
-        
-         <table class='estadillo cabecera'>
+
+        <table class='estadillo cabecera'>
             <tr>
                 <td rowspan="2">
                     I.E.S. FRAY ANDRES PUERTOLLANO
                 </td>
                 <td colspan="3">
-                    INFORME DE EVALUACIÓN<br>PLAN DE TRABAJO INDIVIDUALIZADO<br>Curso:Primero E.S.O.
+                    INFORME DE EVALUACIÓN<br>PLAN DE TRABAJO INDIVIDUALIZADO<br>Curso:{{$calificacion->getGrupo()->getCurso()}}
                 </td>
                 <td rowspan='2'>
                     Consejería de Educación y Ciencia
@@ -287,7 +287,27 @@
                 <td>Página 2 de 2</td>
             </tr>
         </table>
-        
+
+        <table class="cabecera_alumno">
+            <tr>
+                <td style="width:19%">ALUMNO/A</td>
+                <td style="width:56%" colspan="5">{{$calificacion->getAlumno()->getNomCompleto()}}</td>
+                <td style="width:9%" colspan="2">GRUPO</td>
+                <td style="width:15%" colspan="2">{{$calificacion->getGrupo()->getNombre()}}</td>
+            </tr>
+            <tr>
+                <td style="width:19%;border:0px"></td> 
+                <td style="width:41%;border:0px"></td> 
+                <td style="width:15%" >Evaluación</td>
+                <td style="width:0%">1º</td>
+                <td style="width:0%">{{($calificacion->getEval() == 1)?'X':''}}</td>
+                <td style="width:0%">2º</td>
+                <td style="width:7%">{{($calificacion->getEval() == 2)?'X':''}}</td>
+                <td style="width:10%" colspan="2">3º/final</td>
+                <td style="width:7%">{{($calificacion->getEval() == 3)?'X':''}}</td>
+            </tr>
+        </table>
+
         <table class="estadillo">
             <tr>
                 <th class='asignatura' colspan="2" rowspan="2">ASIGNATURAS</th>
@@ -318,12 +338,20 @@
             </tr>
             @endforeach
         </table>
-        <p>Las competencias básicas se han trabajado en cada un a de las materias cursadas por el alumno y el nivel de adquisición alcanzado ha sido:</p>
+
+        <p style="font-size:7pt">Las competencias básicas se han trabajado en cada un a de las materias cursadas por el alumno y el nivel de adquisición alcanzado ha sido:</p>
+
         <ul class='lista_competencias'>
             @foreach($modeloinforme[3]->APARTADOS[0]->VALORES as $key=>$valor)
-            <li><b>{{$key+1}}</b>:{{$valor->NOMBRE}}</li>
+            <li><b>{{$key+1}}</b>: {{$valor->NOMBRE}}</li>
             @endforeach
         </ul>
+
+        <p style="font-size:7pt">"Competencia básica es el conjunto de conocimientos, destrezas y actutitudes necesarias para la realización y el desarrollo personal"(LOE).<br>
+            "Es un cojunto multifuncional y transferible de conocimientos, destrezas y actitudes que todos los individuos necesitan para surealización y desarrollo personal, inclusión y empleo"(Unión Europea)</p>
+
+        <p style="border-top: 1px solid black;font-weight:bolder;margin-bottom: 20mm">OBSERVACIONES</p>
+
         
     </body>
 </html>

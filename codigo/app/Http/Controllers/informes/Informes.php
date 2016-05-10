@@ -20,7 +20,7 @@ class Informes extends Controller {
 
         $profe = new Profesor(Session::get('USUARIO')->getEmail());
 
-        $grupos = (new Grupo())->listByProfesor($profe->getCod());
+        $grupos = Grupo::listByProfesor($profe->getCod());
 
         $datos['grupos'] = $grupos;
         $datos['grupo'] = ($grupo = array_keys($grupos)[0]);
@@ -100,8 +100,7 @@ class Informes extends Controller {
         $datos['actualeval'] = $eval;
         $datos['evaluaciones'] = Evaluacion::listEvaluacion();
         $datos['alumnos'] = $lista_alumnos;
-        $datos['grupo'] = $profesor->grupoTutor();
-        $datos['calificacion'] = new Calificacion($eval);
+        $datos['calificacion'] = new Calificacion($eval,Grupo::getGrupoTutor($profesor->getCod()));
         
         return view('informes/generarInforme',$datos);
     }
@@ -111,7 +110,8 @@ class Informes extends Controller {
         
         $asignaturas = Informe::getAsignaturas($profesor->grupoTutorCod());
         $modeloinforme = Informe::InformeCompleto();
-        $calificacion = new Calificacion($request->EVAL);
+ 
+        $calificacion = new Calificacion($request->EVAL,Grupo::getGrupoTutor($profesor->getCod()));
         $calificacion->setAlumno($request->COD);
         
         $vista = View::make('informes.pdf.informePdf',compact('asignaturas','modeloinforme','calificacion'))->render();
@@ -120,7 +120,9 @@ class Informes extends Controller {
         $pdf = App::make('dompdf.wrapper');
         
         $pdf->loadHTML($vista);
+
+        return $pdf->stream('Informe_'.$calificacion->getAlumno()->getNomCompleto().'.pdf'); //nombre del pdf
         
-        return $pdf->stream('reporte.pdf'); //nombre del pdf
+        //return $pdf->download('Informe_'.$calificacion->getAlumno()->getNomCompleto().'.pdf'); //nombre del pdf //implementar opcion de descargar o abrir en ventana
     }
 }

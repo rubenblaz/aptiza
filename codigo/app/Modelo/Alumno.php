@@ -23,15 +23,12 @@ class Alumno {
 
     static function byCodigo($codigo){
 
-    $result = DB::table('alumno')
+    $r = DB::table('alumno')
             ->where('COD',$codigo)
             ->get();
 
-    $datos = $result[0];
-    $this->cod = $datos->COD;
-    $this->nombre = $datos->NOMBRE;
-    $this->apellidos = $datos->APELLIDOS;
-    $this->email = $datos->EMAIL;
+        $c = $r[0];
+        return new Alumno($c->COD,$c->NOMBRE,$c->APELLIDOS,$c->EMAIL);
     }
     
     static function listByGrupo($grupo){ //En un futuro filtrar tambien por asignatura
@@ -55,10 +52,10 @@ class Alumno {
         $lista_alumno = array();
         
         $result = DB::table('alumno')
-                ->join('informe','informe.ALUMNO','=','alumno.COD')
+               // ->join('informe','informe.ALUMNO','=','alumno.COD')
                 ->join('matricula','matricula.ALUMNO','=','alumno.COD')
                 ->where('GRUPO',$grupo)
-                ->where('EVALUACION',$eval)
+                //->where('EVALUACION',$eval)
                 ->select('alumno.COD','NOMBRE','APELLIDOS','EMAIL')
                 ->groupBy('alumno.COD')
                 ->get();
@@ -99,15 +96,15 @@ class Alumno {
     function setEmail($email) {
         $this->email = $email;
     }
-    static function getNombreByCod($cod){
-        $result = DB::table('alumno')
-                ->where('COD',$cod)
-                ->select('NOMBRE','APELLIDOS')
-                ->get();
-        
-        return $result[0]->NOMBRE.' '.$result[0]->APELLIDOS;
-    }
-    public function esInformeCompleto(){
-        //Query que comprueba si existe calificación para todas sus asignaturas.
+//    static function getNombreByCod($cod){
+//        $result = DB::table('alumno')
+//                ->where('COD',$cod)
+//                ->select('NOMBRE','APELLIDOS')
+//                ->get();
+//        
+//        return $result[0]->NOMBRE.' '.$result[0]->APELLIDOS;
+//    }
+    function getNomCompleto(){
+        return $this->nombre.' '.$this->apellidos;
     }
 }

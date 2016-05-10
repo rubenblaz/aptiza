@@ -3,8 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/xampp/htdocs/aptiza/codigo/resources/views/informes/generarInforme.blade.php</file>
             <file>file:/C:/xampp/htdocs/aptiza/codigo/storage/framework/views/a0fabc5c91f0f3df16d29b4afd489efdd15f2565.php</file>
             <file>file:/C:/xampp/htdocs/aptiza/codigo/app/Modelo/Alumno.php</file>
+            <file>file:/C:/xampp/htdocs/aptiza/codigo/app/Modelo/Profesor.php</file>
+            <file>file:/C:/xampp/htdocs/aptiza/codigo/app/Modelo/Informe.php</file>
+            <file>file:/C:/xampp/htdocs/aptiza/codigo/app/Modelo/Grupo.php</file>
+            <file>file:/C:/xampp/htdocs/aptiza/codigo/app/Modelo/Calificacion.php</file>
             <file>file:/C:/xampp/htdocs/aptiza/codigo/app/Http/Controllers/informes/Informes.php</file>
             <file>file:/C:/xampp/htdocs/aptiza/codigo/resources/views/informes/pdf/informePdf.blade.php</file>
         </group>
