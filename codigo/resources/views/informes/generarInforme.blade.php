@@ -10,7 +10,7 @@
 <li><a href="#"></a>Informes</li>
 @stop
 @section('titulo')
-Elegir Alumnos
+Generar informes de alumnos
 @stop
 @section('contenido')
 <div class="row">
@@ -19,12 +19,12 @@ Elegir Alumnos
         <h3>Evaluacion</h3>
             @foreach($evaluaciones as $evaluacion)
                 <div class="btn-group" role="group" arial-label="...">
-                    {{link_to_route('informes/generarInforme',$evaluacion,['evaluacion'=>$evaluacion],['class'=>'btn '.(($evaluacion == $actualeval)? 'btn-danger':'btn-primary'),'role'=>'button'])}}
+                    {{link_to_route('informes/generarInforme',$evaluacion,['evaluacion'=>$evaluacion],['class'=>'btn '.(($evaluacion == $actualeval)? 'btn-info':'btn-default'),'role'=>'button'])}}
                 </div>
             @endforeach
         <h3>Alumnos</h3>
         @foreach($alumnos as $alumno)
-            <p>{{link_to_route('informes/generarPDF','PDF',[$alumno->getCod(),$actualeval],['class'=>'btn btn-sm '.(($calificacion->esCompleta($alumno->getCod()))? 'btn-success':'btn-danger'),'role'=>'button','target'=>'_blank'])}}&nbsp;&nbsp;&nbsp;{{$alumno->getNomCompleto()}}</p>
+            <p>{{link_to_route('informes/generarPDF','PDF',[$alumno->getCod(),$actualeval],['class'=>'btn btn-sm '.(($calificacion->esCompleta($alumno->getCod()))? 'btn-success':'btn-default'),'role'=>'button','target'=>'_blank'])}}&nbsp;&nbsp;&nbsp;{{$alumno->getNomCompleto()}}</p>
         @endforeach
     </div>
     @stop

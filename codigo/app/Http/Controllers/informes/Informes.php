@@ -25,8 +25,7 @@ class Informes extends Controller {
         $datos['grupos'] = $grupos;
         $datos['grupo'] = ($grupo = array_keys($grupos)[0]);
         
-        $eval = Evaluacion::listEvaluacion();
-        $datos['evaluaciones'] = $eval;
+        $datos['evaluaciones'] = Evaluacion::listEvaluacion();
         return view('informes\elegirGrupo', $datos);
     }
 
@@ -71,7 +70,7 @@ class Informes extends Controller {
                 Session::get('PAGINACION')->anterior();
             }
         }
-        $datos['nombre'] = Alumno::getNombreByCod(Session::get('PAGINACION')->getAlumno());
+        $datos['nombre'] = Alumno::ByCodigo(Session::get('PAGINACION')->getAlumno())->getNomCompleto();
         $datos['modeloinforme'] = Informe::InformeCompleto();
        
         return view('informes/calificar',$datos);
@@ -115,14 +114,11 @@ class Informes extends Controller {
         $calificacion->setAlumno($request->COD);
         
         $vista = View::make('informes.pdf.informePdf',compact('asignaturas','modeloinforme','calificacion'))->render();
-       //return View::make('informes.pdf.informePdf',compact('asignaturas','modeloinforme','calificacion'))->render();
 
         $pdf = App::make('dompdf.wrapper');
         
         $pdf->loadHTML($vista);
 
-        return $pdf->stream('Informe_'.$calificacion->getAlumno()->getNomCompleto().'.pdf'); //nombre del pdf
-        
-        //return $pdf->download('Informe_'.$calificacion->getAlumno()->getNomCompleto().'.pdf'); //nombre del pdf //implementar opcion de descargar o abrir en ventana
+        return $pdf->stream('Informe_'.$calificacion->getAlumno()->getNomCompleto().'.pdf'); //nombre del pdf //Con "donwload" en vez de "stream" se crea una descarga.   
     }
 }

@@ -70,7 +70,7 @@
 @stop
 
 @section('titulo')
-Calificar
+Calificar alumnos
 @stop
 
 @section('contenido')
@@ -176,4 +176,13 @@ Calificar
 </div>
 @stop
 @section('scripts')
+    <script type="text/javascript">
+        $(function(){
+            $('.alert').hide().slideDown();
+            
+            $(".alert").fadeTo(2500, 500).slideUp(500, function () {
+                $(".alert").alert('close');
+            });
+        });
+    </script>           
 @stop

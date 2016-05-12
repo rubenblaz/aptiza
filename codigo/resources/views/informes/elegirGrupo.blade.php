@@ -7,7 +7,7 @@
 
 @section('migas')
 <li>{!!Html::link('inicio','Inicio')!!}</li>
-<li><a href="#"></a>Elegir Alumnos</li>
+<li><a href="#"></a>Elegir alumnos a calificar</li>
 @stop
 @section('titulo')
 Elegir Alumnos
@@ -15,7 +15,12 @@ Elegir Alumnos
 @section('contenido')
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
-        {!! Form::open(['url'=>'/informes/calificar', 'method' => 'POST']) !!}
+    <div class="alert alert-danger" style='display:none' role="alert">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span>
+                Eliga al menos un alumno al que calificar.
+    </div>
+        {!! Form::open(['url'=>'/informes/calificar', 'method' => 'POST','id'=>'formulario']) !!}
         <div class="form-group">
             {!!Form::label('grupos','Grupos', ['class' => 'control-label'])!!}
             {!! Form::select('grupo',$grupos, $grupo,['class' => 'form-control']) !!}   
@@ -79,6 +84,14 @@ Elegir Alumnos
                     });
                 });
             }
+            
+            $( "#formulario" ).submit(function( event ) {
+                if($(this).find('input[name="alumnos[]"]:checked').length === 0){
+                    event.preventDefault();
+                    $(".alert").show(200);
+                    //alert('Debe elegir minimo a un alumno para calificar');
+                }
+            });
         });
     </script>
     @stop

@@ -96,14 +96,7 @@ class Alumno {
     function setEmail($email) {
         $this->email = $email;
     }
-//    static function getNombreByCod($cod){
-//        $result = DB::table('alumno')
-//                ->where('COD',$cod)
-//                ->select('NOMBRE','APELLIDOS')
-//                ->get();
-//        
-//        return $result[0]->NOMBRE.' '.$result[0]->APELLIDOS;
-//    }
+
     function getNomCompleto(){
         return $this->nombre.' '.$this->apellidos;
     }
