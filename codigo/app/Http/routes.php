@@ -56,7 +56,7 @@ Route::group(['middleware' => ['web']], function () {
 });
 
 //Rutas de Administrador
-Route::group(['middleware' => ['web', 'validarRol:0']], function () {
+Route::group(['middleware' => ['web', 'validarRol:0']], function() {
     Route::get('admininicio', 'Usuarios@inicio');
 
     Route::get('/admin-aulas/', ['as' => 'admin-aulas', 'uses' => 'reservas\ReservasAdminController@mostrar_aulas']);
@@ -86,8 +86,14 @@ Route::group(['middleware' => ['web', 'validarRol:0']], function () {
 
 });
 
-//Rutas de Profesor
+//Rutas de Tutor
 Route::group(['middleware' => ['web', 'validarRol:1']], function () {
+    
+    
+});
+
+//Rutas de Profesor
+Route::group(['middleware' => ['web', 'validarRol:2']], function () {
 
     //Rutas de reservas
     Route::get('toreservas', ['as' => 'toreservas', 'uses' => 'reservas\reservas@store']);
@@ -95,5 +101,15 @@ Route::group(['middleware' => ['web', 'validarRol:1']], function () {
     Route::get('tomisreservas', 'reservas\reservas@misreservas');
     Route::get('delreserva', ['as' => 'delreserva', 'uses' => 'reservas\reservas@reservaborrar']);
     Route::match(array('GET', 'POST'), 'reservar', 'reservas\reservas@hacerReserva');
+    
+    //Rutas de informes
+    Route::get('/informes/elegirGrupo', ['as' => 'informes/elegirGrupo','uses'=> 'informes\Informes@elegirGrupo']);
+    Route::post('/informes/ajaxAlumnos', ['as' => 'informes/ajaxAlumnos','uses'=> 'informes\Informes@ajaxAlumnos']);
+    Route::post('/informes/calificar', ['as' => 'informe/calificar','uses' => 'informes\Informes@calificar']);
+    Route::get('/informes/calificarAlumno/{PAG}','informes\Informes@calificarAlumno');
+    Route::get('/informes/calificarAlumno',['as'=>'informes/calificarAlumno','uses'=>'informes\Informes@calificarAlumno']);
+    Route::post('/informes/crearInforme',['as' =>'informes/crearInforme','uses'=> 'informes\Informes@crearInforme']);
+    Route::get('/informes/generarInforme',['as' =>'informes/generarInforme','uses'=> 'informes\Informes@generarInforme']);
+    Route::get('/informes/generarPDF/{COD}/{EVAL}',['as' => 'informes/generarPDF','uses' => 'informes\Informes@generarPDF']);
 });
 

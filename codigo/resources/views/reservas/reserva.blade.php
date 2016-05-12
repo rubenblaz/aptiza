@@ -148,7 +148,7 @@
                         <div id="loading" style="display:none"><p>Cargando...</p></div>
                         <ul id='horariolistado'>
                             @foreach($horario as $idhora => $hora)
-                            <li id='{{$idhora}}' class="">
+                            <li id='{{$idhora}}' class="" tabindex="{{$idhora}}">
                                 <span class="hora">{!!$hora!!}</span>
                                 <span class='reserva'></span>
                                 {!!Form::label($idhora,'Horas',['class'=>'control-label','style'=>'display:none'])!!}
@@ -171,6 +171,7 @@
         <!-- Respetar el orden de importación -->
         {!!Html::script('js/bootstrap-datepicker.js')!!}
         {!!Html::script('js/bootstrap-datepicker.es.min.js')!!}
+        
         <script>
             $('document').ready(function () {
                 mostrarmensajes();
@@ -286,6 +287,25 @@
                         }
                     }
                 });
+             
+    var initabulaciones = function(){ 
+                    var n = 20;
+                
+                    $('#datepicker td, th').each(function(){
+                        if(!$(this).hasClass('disabled') && !$(this).hasClass('dow'))$(this).attr("tabindex", n++);                   
+                    });
+                }
+                initabulaciones();
+                 
+                $(document).keypress(function(e){
+                    if(e.which == 32){
+                        $('[tabindex=' + document.activeElement.tabIndex + ']').click();
+                        initabulaciones();
+                        
+                        $('.active').focus();
+                    }
+                });  
+
             });
         </script>
         @stop
