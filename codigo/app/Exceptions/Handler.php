@@ -30,7 +30,7 @@ class Handler extends ExceptionHandler
      *
      * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
      *
-     * @param  \Exception  $e
+     * @param  \Exception $e
      * @return void
      */
     public function report(Exception $e)
@@ -41,19 +41,19 @@ class Handler extends ExceptionHandler
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $e
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Exception $e
      * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $e)
     {
-       if($e->getCode() == 23000){
+        if ($e->getCode() == 23000) {
             $fecha = $request->input('fecha');
             $horas = $request->input('horas');
-            $aula =$request->input('aula');
-           return redirect()->action('Reservas@store', ['fecha'=> $fecha,'aula'=>$aula,'tipomensaje'=>'error','mensaje' => 'No se ha podido realicar la reserva del aula '.$aula.' para el dia '.$fecha.' a todas las horas seleccionadas. Vuelva a revisar la disponibilidad del aula']);
-       }
-       
+            $aula = $request->input('aula');
+            return redirect()->action('Reservas@store', ['fecha' => $fecha, 'aula' => $aula, 'tipomensaje' => 'error', 'mensaje' => 'No se ha podido realicar la reserva del aula ' . $aula . ' para el dia ' . $fecha . ' a todas las horas seleccionadas. Vuelva a revisar la disponibilidad del aula']);
+        }
+
         return parent::render($request, $e);
     }
 }

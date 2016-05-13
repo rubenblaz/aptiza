@@ -49,11 +49,11 @@ class profesor
     {
 
         /**$alumnos = DB::table('empresas')
-            ->join('alumnos', 'alumnos.IDEMPRESA', '=', 'empresas.EMAIL')
-            ->select('alumnos.N_EXP','alumnos.CURSO','alumnos.NOMBRE', 'alumnos.APELLIDOS', 'empresas.NOMBRE as NOMBRE_E')
-            ->where('alumnos.CURSO', $curso_tutor[0]->CURSO)
-            ->paginate(10);
-        **/
+         * ->join('alumnos', 'alumnos.IDEMPRESA', '=', 'empresas.EMAIL')
+         * ->select('alumnos.N_EXP','alumnos.CURSO','alumnos.NOMBRE', 'alumnos.APELLIDOS', 'empresas.NOMBRE as NOMBRE_E')
+         * ->where('alumnos.CURSO', $curso_tutor[0]->CURSO)
+         * ->paginate(10);
+         **/
         /*$alumnos = DB::table('alumnos')
             ->select('N_EXP', 'NOMBRE', 'APELLIDOS', 'CURSO', 'CALIFICACION')
             ->where('CURSO', $curso_tutor[0]->CURSO)
@@ -91,12 +91,12 @@ class profesor
     public function nombreCurso($email)
     {
         /**
-        $consulta = DB::table('cursos')
-            ->join('profesores', 'profesores.CURSO', '=', 'cursos.IDCICLO')
-            ->select('cursos.CICLO')
-            ->where('profesores.EMAIL', $email)
-            ->get();
-          **/
+         * $consulta = DB::table('cursos')
+         * ->join('profesores', 'profesores.CURSO', '=', 'cursos.IDCICLO')
+         * ->select('cursos.CICLO')
+         * ->where('profesores.EMAIL', $email)
+         * ->get();
+         **/
         $consulta = DB::table('grupo')
             ->join('profesor', 'profesor.COD', '=', 'grupo.TUTOR')
             ->select('grupo.NOMBRE')
@@ -113,20 +113,20 @@ class profesor
     public function misAlumnos2($curso)
     {
         /**
-        $consulta = DB::table('alumnos')
-            ->join('empresas', 'empresas.EMAIL', '=', 'alumnos.IDEMPRESA')
-            ->select('alumnos.NOMBRE', 'alumnos.APELLIDOS', 'alumnos.EMAIL', 'alumnos.TELEFONO_M', 'alumnos.TELEFONO_F', 'empresas.NOMBRE AS NOMBRE_E', 'empresas.CONVENIO')
-            ->where('alumnos.CURSO', $curso)
-            ->get();
-          **/
+         * $consulta = DB::table('alumnos')
+         * ->join('empresas', 'empresas.EMAIL', '=', 'alumnos.IDEMPRESA')
+         * ->select('alumnos.NOMBRE', 'alumnos.APELLIDOS', 'alumnos.EMAIL', 'alumnos.TELEFONO_M', 'alumnos.TELEFONO_F', 'empresas.NOMBRE AS NOMBRE_E', 'empresas.CONVENIO')
+         * ->where('alumnos.CURSO', $curso)
+         * ->get();
+         **/
         /**
-        $consulta = DB::table('alumno')
-            ->join('matricula', 'matricula.GRUPO', '=', 'alumno.COD')
-            ->join('alumno_empresa', 'alumno_empresa.IDALUMNO', '=', 'alumno.COD')
-            ->join('empresas', 'empresas.EMAIL', '=', 'alumno_empresa.IDEMPRESA')
-            ->select('alumno.NOMBRE', 'alumno.APELLIDOS', 'alumno.EMAIL', 'alumno_empresa.IDEMPRESA AS EMPRESA_EMAIL', 'empresas.CONVENIO' )
-            ->where('matricula.GRUPO', $curso)
-            ->get();
+         * $consulta = DB::table('alumno')
+         * ->join('matricula', 'matricula.GRUPO', '=', 'alumno.COD')
+         * ->join('alumno_empresa', 'alumno_empresa.IDALUMNO', '=', 'alumno.COD')
+         * ->join('empresas', 'empresas.EMAIL', '=', 'alumno_empresa.IDEMPRESA')
+         * ->select('alumno.NOMBRE', 'alumno.APELLIDOS', 'alumno.EMAIL', 'alumno_empresa.IDEMPRESA AS EMPRESA_EMAIL', 'empresas.CONVENIO' )
+         * ->where('matricula.GRUPO', $curso)
+         * ->get();
          * **/
         $consulta = DB::table('alumno')
             ->join('matricula', 'alumno.COD', '=', 'matricula.ALUMNO')
@@ -137,5 +137,58 @@ class profesor
             ->get();
         return $consulta;
     }
+
+    /**
+     * Obtiene los alumnos del tutor logueado
+     * @param $curso
+     * @return mixed
+     */
+    public function misAlumnos3($curso)
+    {
+        $consulta = DB::table('matricula')
+            ->join('alumno', 'alumno.COD', '=', 'matricula.ALUMNO')
+            ->select('alumno.NOMBRE', 'alumno.APELLIDOS', 'alumno.COD')
+            ->where('matricula.GRUPO', $curso)
+            ->paginate(10);
+
+        return $consulta;
+
+    }
+
+    /**
+     * Devuelve los alumnos que coinciden con la selección de aptos para las FCT
+     * @param $seleccion
+     * @return array
+     */
+    public function comprobarAlumnosSeleccion($seleccion)
+    {
+        $curso = $this->cursoTutor(Session::get('USUARIO')->getEmail())[0]->NOMBRE;
+        $alumnos_encontrados = array();
+        for ($i = 0; $i < count($seleccion); $i++) {
+            $alumnos_encontrados = DB::table('alumno_empresa')
+                ->select('IDALUMNO')
+                ->where('IDALUMNO', $seleccion[$i])
+                ->get();
+        }
+        return $alumnos_encontrados;
+    }
+
+    /**
+     * Inserta los alumnos en la tabla que une empresas con alumnos.
+     * @param $seleccion
+     */
+    public function admitirAlumnos($seleccion)
+    {
+        $curso = $this->cursoTutor(Session::get('USUARIO')->getEmail())[0]->NOMBRE;
+        $empresa = DB::table('empresas')
+            ->select('EMAIL')
+            ->first();
+        for ($i = 0; $i < count($seleccion); $i++) {
+            DB::table('alumno_empresa')->insert(
+                ['IDALUMNO' => $seleccion[$i], 'IDEMPRESA' => $empresa->EMAIL, 'IDCURSO' => $curso]
+            );
+        }
+    }
+
 
 }

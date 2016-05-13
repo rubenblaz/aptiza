@@ -51,8 +51,8 @@
         </a>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
             <li>{{ Html::link('/consulta', 'Consultar empresas') }}</li>
-            <li title="Asignar empresas">{{ Html::link('/practicas', 'Asignar empresas') }}</li>
-            {{--<li title="Solicitar encuestas">{{ Html::link('/solencuestas', 'Solicitar encuestas') }}</li>--}}
+            <li title="Habilitar periodo de FCT">{{ Html::link('/admitirfcts', 'Habilitar a los alumnos a hacer FCT') }}</li>
+            <li title="Asignar empresas">{{ Html::link('/practicas', 'Asignar empresas a alumnos') }}</li>
             <li title="Memoria final PDF">{{ Html::link('/memoria', 'Memoria final - PDF') }}</li>
             <li title="Memoria final Excel">{{ Html::link('/memoria2', 'Memoria final - Excel') }}</li>
             {{--<li title="Resumen alumnos">{{ Html::link('/resumenalumnos', 'Resumen encuestas alumnos') }}</li>--}}

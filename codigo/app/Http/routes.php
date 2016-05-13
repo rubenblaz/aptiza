@@ -110,6 +110,8 @@ Route::group(['middleware' => ['web', 'validarRol:3']], function () {
     Route::match(array('GET', 'POST'), 'generarexcel1', 'fct\usuarios@generar_excel');
     Route::resource('excel','ExcelController');
     Route::get('/excel', 'ExcelController@store');
+    Route::get('/admitirfcts' , 'fct\usuarios@practicas_admitir');
+    Route::match(array('GET', 'POST'), 'validado7', 'fct\usuarios@practicas_admitir_submit');
 });
 
 //Rutas de empresas FCT

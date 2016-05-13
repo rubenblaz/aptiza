@@ -17,6 +17,49 @@ use Hash;
 class usuarios extends Controller
 {
     /**
+     * Admite a los alumnos para el periodo de FCT
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function practicas_admitir()
+    {
+        $profesor1 = new profesor();
+
+        $curso_tutor = $profesor1->cursoTutor(Session::get('USUARIO')->getEmail());
+
+        $alumnos = $profesor1->misAlumnos3($curso_tutor[0]->NOMBRE);
+
+        $datos = [
+          'alumnos' => $alumnos
+        ];
+
+        return view('fct/admitirfcts', $datos);
+    }
+
+    public function practicas_admitir_submit(Request $req){
+        $profesor1 = new profesor();
+        $seleccion = $req->get('seleccionado');
+        $alumnos_encontrados = array();
+        $mensaje = 'ok';
+
+
+        $profesor1->admitirAlumnos($seleccion);
+
+
+        if(Session::has('operacion')){
+            Session::put('operacion', $mensaje);
+        }else{
+            Session::put('operacion', $mensaje);
+        }
+
+        $alumnos_encontrados = $profesor1->comprobarAlumnosSeleccion($seleccion);
+
+        //dd($alumnos_encontrados);
+
+        return redirect('admitirfcts');
+
+    }
+
+    /**
      * @param Request $req
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      * Recoge los datos de una empresa nueva y la crea en la bbdd.
@@ -158,7 +201,6 @@ class usuarios extends Controller
 
         return redirect('practicas');
     }
-
 
 
     /**
