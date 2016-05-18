@@ -3,43 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/C:/xampp/htdocs/aptiza/codigo/resources/views/solicitarecupass.blade.php</file>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/app/Http/Controllers/Recuperarpass.php</file>
             <file>file:/C:/xampp/htdocs/aptiza/codigo/resources/views/perfilUsuario.blade.php</file>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/app/Http/Requests/RecuPassRequest.php</file>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/app/Http/Requests/FicheroRequest.php</file>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/app/Http/Requests/PerfilRequest.php</file>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/app/Http/Requests/Request.php</file>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/resources/views/admin/aulas/modal.blade.php</file>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/app/Modelo/Usuario.php</file>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/resources/views/admin/usuarios/formPassword.blade.php</file>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/app/Http/Requests/RecuEmailRequest.php</file>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/resources/views/emails/recuperarpass.blade.php</file>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/resources/views/admin/horas/modal.blade.php</file>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/app/Http/Requests/PasswordRequest.php</file>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/app/Http/routes.php</file>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/resources/views/admin/usuarios/editUsuario.blade.php</file>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/app/Http/Requests/UserEditRequest.php</file>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/resources/views/admin/aulas/administrar_aula.blade.php</file>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/app/Http/Requests/UserRequest.php</file>
+            <file>file:/C:/xampp/htdocs/aptiza/codigo/resources/views/tipoinicio.blade.php</file>
+            <file>file:/C:/xampp/htdocs/aptiza/codigo/public/css/aptiza.css</file>
             <file>file:/C:/xampp/htdocs/aptiza/codigo/resources/views/login.blade.php</file>
+            <file>file:/C:/xampp/htdocs/aptiza/codigo/resources/views/includes/menu.blade.php</file>
             <file>file:/C:/xampp/htdocs/aptiza/codigo/resources/views/reestablecepass.blade.php</file>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/resources/views/admin/usuarios/formUsuario.blade.php</file>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/app/Http/Kernel.php</file>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/app/Http/Controllers/Usuarios.php</file>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/resources/views/admin/horas/administrar_horas.blade.php</file>
-=======
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/resources/views/informes/generarInforme.blade.php</file>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/storage/framework/views/a0fabc5c91f0f3df16d29b4afd489efdd15f2565.php</file>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/app/Modelo/Alumno.php</file>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/app/Modelo/Profesor.php</file>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/app/Modelo/Informe.php</file>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/app/Modelo/Grupo.php</file>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/app/Modelo/Calificacion.php</file>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/app/Http/Controllers/informes/Informes.php</file>
-            <file>file:/C:/xampp/htdocs/aptiza/codigo/resources/views/informes/pdf/informePdf.blade.php</file>
->>>>>>> Informes
+            <file>file:/C:/xampp/htdocs/aptiza/codigo/resources/views/layouts/plantilla.blade.php</file>
+            <file>file:/C:/xampp/htdocs/aptiza/codigo/resources/views/layouts/plantilla_login.blade.php</file>
         </group>
     </open-files>
 </project-private>

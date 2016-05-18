@@ -1,14 +1,5 @@
-@extends('layouts.plantilla')
-
-
-@section('element-migas')
-@stop
-@section('element-titulo')     
-@stop
-@section('element-contenido')
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+@extends('layouts.plantilla_login')
+@section('contenido')
             @if(isset($error))
             <div class="alert alert-danger alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -39,7 +30,4 @@
                     {!!Form::close()!!}
                 </div>
             </div>
-        </div>
-    </div>
-</div>
 @stop
