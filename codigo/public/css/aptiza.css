@@ -12,17 +12,20 @@ html{
 }
 body {
     font-family: 'Lato';
-    background-color: whitesmoke !important;
-/*    background-image: url('../img/background.jpg');
-    background-size:cover;
-    background-repeat: no-repeat;*/
     margin-top: 20px;
     height: 100%;
+    background-color: #eeeeee ;
+    background-image: url('../img/background_color.jpg');
+    background-size:cover;
+    background-repeat: no-repeat;
+}
+.cuerpo{
+    border: 5px solid black;
+    box-shadow: 0px 5px 10px black;
 }
 
 /*---Cabecera y Menú ----*/
 .cabecera-menu{
-    background-color: #215891;
     height: 100px;
 }
 .logo-cabecera{
@@ -45,7 +48,6 @@ body {
 }
 .menu{
     padding: 0px ;
-    margin-bottom: -20px !important;
 }
 .breadcrumb{
     background-color: #215891;
@@ -55,23 +57,10 @@ body {
 .breadcrumb li a{
     color: #b6b6b6;
 }
-.breadcrumb .active{
+.breadcrumb li:last-child{
     color: #f2cf3d;
 }
 
-@media (max-width: 768px) {
-    .cabecera-menu {
-        display: none;
-    }
-    .navbar-brand{
-        display:inline;
-    }
-}
-@media (min-width: 768px) {
-    .navbar-brand{
-        display:none;
-    }
-}
 /*--- Contendio ----*/
 
 section{
@@ -83,6 +72,8 @@ section{
     border-bottom: solid 3px #f2c53d;
     color:whitesmoke;
     background-color: #215891;
+    padding-top: 15px;
+    padding-left: 50px;
 }
 .titulo h1{
     margin-top:0px;
@@ -117,5 +108,25 @@ footer{
 @media screen and (max-width: 765px){
     body{
         background-size: auto;
+    }
+}
+@media (max-width: 768px) {
+    body{
+       margin-top:0px;
+    }
+    .cabecera-menu {
+        display: none;
+    }
+    .navbar-brand{
+        display:inline;
+    }
+    .titulo{
+        padding-top: 10px;
+        padding-left: 10px;
+    }
+}
+@media (min-width: 768px) {
+    .navbar-brand{
+        display:none;
     }
 }

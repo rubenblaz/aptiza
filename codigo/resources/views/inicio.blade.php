@@ -5,7 +5,7 @@
 
 @endsection
 @section('migas')
-                <li class="active">Inicio</li>
+<li></li>  <!--<li class="active">Inicio</li>-->
 @stop
 @section('titulo')
     Inicio
@@ -21,7 +21,8 @@
                 <h1 class="text-right">Herramienta de gestión para docentes.</h1>
             </article>
             <article class="articulo col-md-6 col-sm-6 col-xs-12 col-sm-offset-0 col-md-offset-0 col-xs-offset-0">
-                <img class=''src="img/ilus_llave.svg" alt="Ilustraciíon de llave inglesa" />
+                <img class='img-responsive'src="img/ilus_llave.svg" alt="Ilustraciíon de llave inglesa" />
+                <div class="clear-fix"></div>
             </article>
             <article class="articulo col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <h3>{!!Session::has('USUARIO')?"Bienvenido <span class='label label-primary'>".Session::get('USUARIO')->getNombre()."</span>":""!!}</h3>

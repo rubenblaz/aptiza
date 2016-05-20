@@ -7,10 +7,10 @@
 
 @section('migas')
 <li>{!!Html::link('inicio','Inicio')!!}</li>
-<li><a href="#"></a>Informes</li>
+<li><a href="#"></a>Generar</li>
 @stop
 @section('titulo')
-Generar informes de alumnos
+Generar informes
 @stop
 @section('contenido')
 <div class="row">

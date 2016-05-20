@@ -7,10 +7,10 @@
 
 @section('migas')
 <li>{!!Html::link('inicio','Inicio')!!}</li>
-<li><a href="#"></a>Elegir alumnos a calificar</li>
+<li><a href="#"></a>Selección</li>
 @stop
 @section('titulo')
-Elegir Alumnos
+Seleción alumnos
 @stop
 @section('contenido')
 <div class="row">

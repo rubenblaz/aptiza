@@ -90,6 +90,9 @@
         font-size: 2em;
         color:lightskyblue;
     }
+    .datepicker{
+        margin: 0px auto;
+    }
 
 </style>
 @stop
@@ -103,7 +106,7 @@
 @stop
 @section('contenido')
     <div class="row">
-        <div class="col-md-10 col-md-offset-0">
+        <div class="col-md-10 col-md-offset-1 col-sm-12">
             <!-- Zona de Mensajes al usuario -->
             <div id="zona_mensajes"></div>
             @if(!empty($tipomensaje))
@@ -121,46 +124,46 @@
     </div>
             <div class="row">
                 {!! Form::open(['url'=>'reservar', 'method' => 'POST']) !!}
-                <div class="form-group col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-12 col-sm-offset-3 col-xs-offset-0">
-                    <!-- Input Fecha, utilizando el Datepicker -->
-                    @if(isset($fecha))
-                    <div id="datepicker" data-date="{{$fecha}}" ></div> <!--Si viene de editar de la sección de Mis reservas-->
-                    <label for='input_fecha_oculto' style='display:none'>fecha</label>
-                    <input name="fecha" hidden value="{{$fecha}}" id="input_fecha_oculto">
-                    @else
-                    <div id="datepicker" data-date="{{\Carbon\Carbon::today()->format('Y/m/d')}}" ></div> <!-- Toma esta fecha para establecer el dia de hoy del datepicker -->
-                    <label for='input_fecha_oculto' style='display:none'>fecha</label>
-                    <input name="fecha" hidden value="{{\Carbon\Carbon::today()->format('Y/m/d')}}" id="input_fecha_oculto">
-                    @endif
-                </div>
-                <div class='col-md-8 col-md-offset-0 col-sm-10 col-sm-offset-1'>
-                    <!-- Select Aulas -->
-                    <div class="form-group">
-                        {!!Form::label('aula','Aulas', ['class' => 'control-label'])!!}
-                        @if(isset($aula))
-                        {!! Form::select('aula',$aulas, $aula,['class' => 'form-control']) !!}
+                <div class="form-group col-md-3 col-md-offset-1 col-sm-12">
+                    <div class="center-block"><!-- Input Fecha, utilizando el Datepicker -->
+                        @if(isset($fecha))
+                        <div id="datepicker" data-date="{{$fecha}}" ></div> <!--Si viene de editar de la sección de Mis reservas-->
+                        <label for='input_fecha_oculto' style='display:none'>fecha</label>
+                        <input name="fecha" hidden value="{{$fecha}}" id="input_fecha_oculto">
                         @else
-                        {!! Form::select('aula',$aulas, $aulaselec,['class' => 'form-control']) !!}
-                        @endif
-                    </div>
-                    <!-- Plantilla de horario -->
-                    <div  id='horario' class="form-group">
-                        <div id="loading" style="display:none"><p>Cargando...</p></div>
-                        <ul id='horariolistado'>
-                            @foreach($horario as $idhora => $hora)
-                            <li id='{{$idhora}}' class="" tabindex="{{$idhora}}">
-                                <span class="hora">{!!$hora!!}</span>
-                                <span class='reserva'></span>
-                                {!!Form::label($idhora,'Horas',['class'=>'control-label','style'=>'display:none'])!!}
-                                {!!Form::checkbox('horas[]',$idhora,false,['class'=>'pull-right clearfix','id'=>$idhora,'hidden'=>'true'])!!}
-                            </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    <div class="form-group" style="clear:both">
-                        {!!Form::submit('Aceptar',['class' => 'btn btn-info pull-right'])!!}
-                    </div>
-                    {!!Form::close()!!}
+                        <div id="datepicker" data-date="{{\Carbon\Carbon::today()->format('Y/m/d')}}" ></div> <!-- Toma esta fecha para establecer el dia de hoy del datepicker -->
+                        <label for='input_fecha_oculto' style='display:none'>fecha</label>
+                        <input name="fecha" hidden value="{{\Carbon\Carbon::today()->format('Y/m/d')}}" id="input_fecha_oculto">
+                        @endif</div>
+                </div>
+                <div class='col-md-6 col-md-offset-1 col-sm-12'>
+                  <div class="seleccion" sytle="margin:0px auto">  <!-- Select Aulas -->
+                        <div class="form-group">
+                            {!!Form::label('aula','Aulas', ['class' => 'control-label'])!!}
+                            @if(isset($aula))
+                            {!! Form::select('aula',$aulas, $aula,['class' => 'form-control']) !!}
+                            @else
+                            {!! Form::select('aula',$aulas, $aulaselec,['class' => 'form-control']) !!}
+                            @endif
+                        </div>
+                        <!-- Plantilla de horario -->
+                        <div  id='horario' class="form-group">
+                            <div id="loading" style="display:none"><p>Cargando...</p></div>
+                            <ul id='horariolistado'>
+                                @foreach($horario as $idhora => $hora)
+                                <li id='{{$idhora}}' class="" tabindex="{{$idhora}}">
+                                    <span class="hora">{!!$hora!!}</span>
+                                    <span class='reserva'></span>
+                                    {!!Form::label($idhora,'Horas',['class'=>'control-label','style'=>'display:none'])!!}
+                                    {!!Form::checkbox('horas[]',$idhora,false,['class'=>'pull-right clearfix','id'=>$idhora,'hidden'=>'true'])!!}
+                                </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        <div class="form-group" style="clear:both">
+                            {!!Form::submit('Aceptar',['class' => 'btn btn-primary pull-right'])!!}
+                        </div>
+                        {!!Form::close()!!}</div>
                 </div>
         </div>
         @stop

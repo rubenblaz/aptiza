@@ -3,10 +3,10 @@
 <!-- Plantilla PDF para informes -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>{{$calificacion->getAlumno()->getNomCompleto()}}</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
+        <link rel="shortcut icon" href="{{asset('favicon.ico')}}" />
 
     <style type="text/css">
         html{
@@ -158,6 +158,8 @@
         }
 
     </style>
+
+</head>
     <body>
         <table class='estadillo cabecera'>
             <tr>
@@ -351,7 +353,5 @@
             "Es un cojunto multifuncional y transferible de conocimientos, destrezas y actitudes que todos los individuos necesitan para surealización y desarrollo personal, inclusión y empleo"(Unión Europea)</p>
 
         <p style="border-top: 1px solid black;font-weight:bolder;margin-bottom: 20mm">OBSERVACIONES</p>
-
-        
     </body>
 </html>

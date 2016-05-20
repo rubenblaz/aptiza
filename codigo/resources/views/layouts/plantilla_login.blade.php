@@ -17,10 +17,15 @@
         <link rel="stylesheet" href="" />
         <style type="text/css">
             html body{
-                background-color: #F2CF3D;
+                background-color: #eeeeee;
+/*                background-color: #F2CF3D;*/
+background-image: url('img/background_color.jpg');
+    background-size:cover;
+    background-repeat: no-repeat;
             }
             .logo{
-                background: #215891;
+/*               background-color: white ;*/
+    
                 margin-bottom: 30px;
             }
             h1{

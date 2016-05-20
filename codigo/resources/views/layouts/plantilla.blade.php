@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="shortcut icon" href="favicon.ico" />
+        <link rel="shortcut icon" href="{{asset('favicon.ico')}}" />
 
         <title>Aptiza</title>
 
@@ -13,9 +13,10 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
 
         <!-- Estilos -->
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-        {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
-        {!!Html::style('css/aptiza.css')!!}
+        <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">-->
+        <!--<link rel="stylesheet" href="css/bootstrap_theme.css" />-->
+        {{ Html::style('css/bootstrap_theme.css') }}
+        {{Html::style('css/aptiza.css')}}
 
         @if(Session::has('USUARIO') and Session::get('USUARIO')->hasRol(0))
         <!--Carga el estilo del administrador si el usuario tiene el rol 0-->
@@ -31,7 +32,7 @@
                     <div class="col-lg-6 col-md-6 pull-left">
                         <div class="centro-logo-cabecera">
                             <a href="{{ url('inicio') }}">
-                                {{ HTML::image('img/centro_logo.jpg','Imagen logo del centro',['class' => '']) }}
+                                {{ HTML::image('img/centro_logo.png','Imagen logo del centro',['class' => '']) }}
                             </a>
                         </div>
                     </div>
@@ -59,7 +60,7 @@
                                 @endif
                                 <!-- Zona de logo -->
                                 <a class="navbar-brand" href="{{ url('inicio') }}">
-                                    {{ HTML::image('img/centro_logo.jpg', 'Marca de Aptiza', array('class' => 'centro-logo-collapse')) }}
+                                    {{ HTML::image('img/centro_logo.png', 'Marca de Aptiza', array('class' => 'centro-logo-collapse')) }}
                                 </a>
                             </div>
                             @if(Session::has('USUARIO'))
