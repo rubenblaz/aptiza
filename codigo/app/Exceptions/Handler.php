@@ -47,13 +47,12 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        /*if ($this->isHttpException($e)){
-            if($e instanceof InvalidArgumentException){
-                return response()->view('inicio');
-            }
-        }*/
-
+        
+        if($e->getLine() == 669){
+            return view('inicio');
+        }
         if ($e->getCode() == 23000) {
+
             $fecha = $request->input('fecha');
             $horas = $request->input('horas');
             $aula = $request->input('aula');
